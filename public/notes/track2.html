@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track 2 — Connect AI Agents to Data and Tools Using MCP</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c10;
+    --surface: #13151c;
+    --surface2: #1a1d27;
+    --border: #272a38;
+    --accent: #43e8b0;
+    --accent2: #ff6b6b;
+    --accent3: #5b8fff;
+    --accent4: #ffd166;
+    --accent5: #a97bff;
+    --text: #d8e0f0;
+    --muted: #6a7290;
+    --code-bg: #0e0f14;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Lora', Georgia, serif; font-size: 17px; line-height: 1.9; max-width: 880px; margin: 0 auto; padding: 64px 32px 120px; }
+
+  .header { border-bottom: 1px solid var(--border); padding-bottom: 44px; margin-bottom: 60px; }
+  .eyebrow { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; display: inline-block; }
+  .tag.g { color: var(--accent); background: rgba(67,232,176,0.08); border: 1px solid rgba(67,232,176,0.2); }
+  .tag.b { color: var(--accent3); background: rgba(91,143,255,0.08); border: 1px solid rgba(91,143,255,0.2); }
+  .tag.v { color: var(--accent5); background: rgba(169,123,255,0.08); border: 1px solid rgba(169,123,255,0.2); }
+
+  h1 { font-family: 'Syne', sans-serif; font-size: 2.7rem; font-weight: 800; line-height: 1.12; color: #fff; margin-bottom: 14px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .meta { font-family: 'DM Mono', monospace; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+
+  .toc { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; margin-bottom: 60px; }
+  .toc-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { font-family: 'DM Mono', monospace; font-size: 0.84rem; color: var(--accent); margin-bottom: 9px; line-height: 1.5; }
+  .toc li span { color: var(--muted); }
+
+  h2 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; margin: 60px 0 22px; display: flex; align-items: center; gap: 14px; }
+  h2 .n { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); background: rgba(67,232,176,0.1); border: 1px solid rgba(67,232,176,0.2); padding: 3px 10px; border-radius: 3px; letter-spacing: 0.1em; flex-shrink: 0; }
+  h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--accent3); margin: 34px 0 13px; }
+  h4 { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent4); text-transform: uppercase; letter-spacing: 0.12em; margin: 26px 0 10px; }
+  p { margin-bottom: 17px; }
+  strong { color: #fff; font-weight: 600; }
+  em { font-style: italic; color: var(--accent3); }
+  mark { background: rgba(255,209,102,0.13); color: var(--accent4); padding: 1px 5px; border-radius: 3px; font-style: normal; }
+
+  .callout { border-radius: 8px; padding: 20px 26px; margin: 26px 0; border-left: 3px solid; }
+  .callout.green  { background: rgba(67,232,176,0.07);  border-color: var(--accent); }
+  .callout.red    { background: rgba(255,107,107,0.07); border-color: var(--accent2); }
+  .callout.blue   { background: rgba(91,143,255,0.07);  border-color: var(--accent3); }
+  .callout.yellow { background: rgba(255,209,102,0.07); border-color: var(--accent4); }
+  .callout.purple { background: rgba(169,123,255,0.07); border-color: var(--accent5); }
+  .callout-title { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.17em; text-transform: uppercase; margin-bottom: 9px; }
+  .callout.green .callout-title  { color: var(--accent); }
+  .callout.red .callout-title    { color: var(--accent2); }
+  .callout.blue .callout-title   { color: var(--accent3); }
+  .callout.yellow .callout-title { color: var(--accent4); }
+  .callout.purple .callout-title { color: var(--accent5); }
+  .callout p { margin-bottom: 0; font-size: 0.95rem; }
+
+  table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.91rem; }
+  th { font-family: 'DM Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-align: left; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  td { padding: 12px 16px; border-bottom: 1px solid rgba(39,42,56,0.6); vertical-align: top; line-height: 1.65; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-family: 'DM Mono', monospace; font-size: 0.83rem; color: var(--accent); white-space: nowrap; }
+
+  .diagram { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 28px 24px; margin: 24px 0; font-family: 'DM Mono', monospace; font-size: 0.84rem; line-height: 2.2; color: var(--muted); text-align: center; }
+  .b { display: inline-block; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 14px; margin: 2px 3px; color: var(--text); }
+  .b.g { border-color: var(--accent); color: var(--accent); }
+  .b.b2 { border-color: var(--accent3); color: var(--accent3); }
+  .b.y { border-color: var(--accent4); color: var(--accent4); }
+  .b.v { border-color: var(--accent5); color: var(--accent5); }
+  .arr { color: var(--border); margin: 0 5px; }
+
+  blockquote { border-left: 2px solid var(--border); margin: 18px 0; padding: 8px 22px; color: var(--muted); font-style: italic; font-size: 0.93rem; }
+
+  .step { display: flex; gap: 16px; margin: 14px 0; align-items: flex-start; }
+  .sn { font-family: 'DM Mono', monospace; font-size: 0.75rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 50%; width: 27px; height: 27px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); margin-top: 3px; }
+  .sc { flex: 1; }
+  .sc p { margin-bottom: 5px; }
+
+  pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; overflow-x: auto; font-family: 'DM Mono', monospace; font-size: 0.85rem; line-height: 1.7; color: #c9d9f0; }
+  pre .c { color: #3a4060; font-style: italic; }
+  pre .k { color: var(--accent4); }
+  pre .s { color: #a8ffb0; }
+  pre .v { color: #a8d8ff; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 0.82em; background: var(--code-bg); border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px; color: #a8d8ff; }
+  ul, ol { padding-left: 22px; margin-bottom: 16px; }
+  li { margin-bottom: 9px; line-height: 1.75; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">
+    <span class="tag g">Google Cloud Gen AI Academy · APAC 2026 · Track 2</span>
+    <span class="tag b">MCP Workshop</span>
+    <span class="tag v">Full Learning Notes</span>
+  </div>
+  <h1>Connect AI Agents to Data<br>and Tools Using <em>MCP</em></h1>
+  <p class="meta">Speaker: Rahmen Irani (Developer Advocate, Google Cloud) · ~85 min<br>Notes written from full transcript — IELTS Band 7.5 · by Claude</p>
+</div>
+
+<div class="toc">
+  <div class="toc-label">Contents</div>
+  <ol>
+    <li>Who is Rahmen Irani — and what this session is about <span>— The goal</span></li>
+    <li>The evolution of AI — from rules to agents <span>— Why this track exists</span></li>
+    <li>The core problem — why plain APIs are not enough <span>— What breaks</span></li>
+    <li>What is MCP? <span>— Model Context Protocol explained properly</span></li>
+    <li>Two options Google provides <span>— MCP Toolbox vs Google MCP Servers</span></li>
+    <li>Option 1 — MCP Toolbox for Databases <span>— Open source, runs anywhere</span></li>
+    <li>Code Lab 1 — BigQuery + MCP Toolbox + ADK Agent <span>— Full walkthrough</span></li>
+    <li>Option 2 — Google Managed MCP Servers <span>— Fully hosted, production-grade</span></li>
+    <li>Code Lab 2 — Bakery Intelligence Agent <span>— BigQuery + Maps cross-product queries</span></li>
+    <li>What you actually built — the big picture <span>— Key takeaways</span></li>
+    <li>Your checklist <span>— What to do right now</span></li>
+  </ol>
+</div>
+
+
+<h2><span class="n">01</span> Who Is Rahmen Irani — and What This Session Is About</h2>
+
+<p>The speaker for Track 2 is <strong>Rahmen Irani</strong>, a Developer Advocate at Google Cloud with over seven years of experience. His specific job is to take products that Google releases and make them understandable to developers — bridging the gap between what Google engineers build and what developers actually need to know to get started. That background matters here because Track 2 is, at its core, about a protocol that is new enough that most developers have not yet used it.</p>
+
+<p>The single, clear goal of this session is stated at the very beginning:</p>
+
+<blockquote>"Our goal today would be to connect the agents that you write to real world data — and that is critical because at the end of the day you want these agents to actually work off your data and give you results that are grounded in your own data."</blockquote>
+
+<p>The session covers this in three parts: first, some theory about what the problem is and what MCP is; then two hands-on code labs, each using a different Google tool to achieve the same goal in a different way.</p>
+
+
+<h2><span class="n">02</span> The Evolution of AI — Why This Track Exists</h2>
+
+<p>Rahmen opens with a quick contextual arc — where AI has been and where we are now. Understanding this arc is important because it explains exactly why connecting agents to data is the unsolved challenge this track addresses.</p>
+
+<h3>Stage 1 — Rules-Based AI</h3>
+<p>The earliest form of AI was entirely deterministic. A developer explicitly coded every possible path, handled every edge case, and defined every output. The logic was clear but extremely brittle — anything outside the explicitly programmed paths would fail. The system was only as capable as the developer's ability to anticipate every scenario in advance.</p>
+
+<h3>Stage 2 — Traditional Machine Learning</h3>
+<p>Classification, regression, prediction — these models learned patterns from data rather than following hand-coded rules. More powerful, but with their own constraints: you needed large, clean, correctly labelled datasets, significant tuning effort, and the outputs were only as reliable as the training data.</p>
+
+<h3>Stage 3 — Generative AI (Large Language Models)</h3>
+<p>A wave of models trained on vast knowledge bases, capable of generating text, images, video, and other content from a simple prompt. Transformative, but with one fundamental limitation: <strong>the knowledge is frozen at training time.</strong> These models cannot access your internal data, cannot know what happened after their training cutoff date, and cannot act on the world — they can only respond to prompts.</p>
+
+<h3>Stage 4 — Autonomous Agents (Where We Are Now)</h3>
+<p>Agents go beyond responding. They understand the user's intent, reason about what steps to take, plan a sequence of actions, execute those actions, receive feedback, and continue — sometimes handing off to other agents. They are goal-directed. Rahmen puts it directly:</p>
+
+<blockquote>"The utility of these agents is going to come only if they are going to be acting on your data — or in other words working with your own data. You don't want the limitations of traditional generative AI models which are cut off in terms of their knowledge. It's definitely not going to be your internal data."</blockquote>
+
+<p>This is the motivation for Track 2: agents are only as useful as the data they can access. And connecting agents to real-world data in a reliable, maintainable, scalable way is the unsolved problem this session teaches you to solve.</p>
+
+
+<h2><span class="n">03</span> The Core Problem — Why Plain APIs Are Not Enough</h2>
+
+<p>Before explaining MCP, Rahmen spends time establishing why the obvious solution — just let the agent call your existing APIs — is insufficient. This is worth understanding clearly, because it explains what problem MCP is actually solving.</p>
+
+<p>The traditional approach: you put an API in front of your database or service, and any client application (including an AI agent) calls that API to get data. We have been doing this for years. So what is the problem?</p>
+
+<ul>
+  <li><strong>APIs change.</strong> New versions are released. Breaking changes happen. Client applications that were integrated against an old version suddenly fail.</li>
+  <li><strong>Boilerplate accumulates.</strong> Every new data source requires you to write connection code, handle authentication, manage retries on failure, implement error handling, and maintain all of it. Each new integration multiplies this burden.</li>
+  <li><strong>There is no standard.</strong> Every API speaks a slightly different language. Every integration is a bespoke piece of work. There is no common way for an AI agent to discover what a service is capable of, what tools it exposes, or how to call them.</li>
+  <li><strong>Discovery is missing.</strong> When a new capability is added to a backend service, the agent has no automatic way to learn about it. The developer must manually update the integration code.</li>
+</ul>
+
+<div class="callout yellow">
+  <div class="callout-title">What Was Actually Needed</div>
+  <p>A standardised protocol that defines: how a service describes its capabilities; how an AI client discovers those capabilities automatically; and how changes to backend services propagate to the client without requiring manual code updates. That is what MCP was built to provide.</p>
+</div>
+
+
+<h2><span class="n">04</span> What Is MCP?</h2>
+
+<p>MCP stands for <strong>Model Context Protocol</strong>. It was introduced by Anthropic and has since been adopted by Google as a standard across many of its services.</p>
+
+<p>The simplest way to understand it: <strong>MCP is to AI agents what HTTP is to web browsers.</strong> HTTP standardised how browsers communicate with web servers. MCP standardises how AI agents communicate with tools and data sources.</p>
+
+<h3>What MCP Defines</h3>
+<p>The protocol specifies two sides of the connection:</p>
+
+<div class="diagram">
+  <div>
+    <span class="b b2">AI Application / Agent (MCP Client)</span>
+    <span class="arr">⟷ MCP Protocol ⟷</span>
+    <span class="b g">Data Sources / Tools (MCP Server)</span>
+  </div>
+  <div style="margin-top: 12px; font-size: 0.78rem; color: var(--muted);">
+    Your ADK agent · Gemini CLI · Cloud Code · Any AI tool
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Databases · APIs · Google Cloud services · External tools
+  </div>
+</div>
+
+<p>On the <strong>server side</strong> (MCP Server): a service describes its capabilities — what tools it has, what each tool does, what inputs it takes, what it returns. This metadata is machine-readable.</p>
+
+<p>On the <strong>client side</strong> (MCP Client): the AI application reads the metadata, discovers what the server can do, and knows how to invoke the tools without the developer writing bespoke integration code for each service.</p>
+
+<h3>What This Means in Practice</h3>
+<p>Rahmen gives a concrete example. If a user asks an agent "what are the directions from here to the nearest coffee shop?" — the agent, using MCP, discovers that it has access to a Maps MCP server that has a tool capable of calculating distances and returning directions. It invokes that tool automatically. The developer did not write any routing logic. The agent figured out which tool to use from the metadata, called it, and returned the result.</p>
+
+<div class="callout green">
+  <div class="callout-title">Why Google Adopted It</div>
+  <p>Google has made MCP the standard for connecting its own services to AI agents. Any investment you make in learning MCP is not Google-specific — because MCP is an open, cross-industry standard, the same protocol works with any MCP-compatible AI tool. Write once, integrate everywhere.</p>
+</div>
+
+<h3>The Two Sides of the Ecosystem</h3>
+
+<table>
+  <thead><tr><th>Side</th><th>What it is</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><td>MCP Client</td><td>The AI application that wants to use tools</td><td>Your ADK agent, Gemini CLI, Claude Code, VS Code Copilot, any chat interface</td></tr>
+    <tr><td>MCP Server</td><td>The service that exposes tools via the protocol</td><td>A database, a Google Cloud service, a third-party API, your own custom backend</td></tr>
+  </tbody>
+</table>
+
+
+<h2><span class="n">05</span> Two Options Google Provides</h2>
+
+<p>Google gives you two distinct ways to connect your agents to data via MCP. Rahmen is careful to present both without pushing you towards one — because both serve different needs. Understanding the difference is important before choosing which to use for your project.</p>
+
+<table>
+  <thead><tr><th>Option</th><th>What it is</th><th>Best for</th></tr></thead>
+  <tbody>
+    <tr><td>MCP Toolbox for Databases</td><td>Open-source binary. You download and run it yourself — locally or on any server.</td><td>Your own databases, custom data sources, local development, maximum flexibility</td></tr>
+    <tr><td>Google Managed MCP Servers</td><td>Fully managed MCP servers hosted by Google. You get an endpoint — no setup, no hosting.</td><td>Google Cloud services (BigQuery, Maps, GKE, GCE). Production scale, zero infrastructure management.</td></tr>
+  </tbody>
+</table>
+
+<p>Rahmen frames this clearly: the Toolbox is the flexible, open option. The Managed Servers are the convenient, scalable option. For a project that uses Google Cloud services and wants to get to production fast, the Managed Servers are the right choice. For a project that needs to connect to a non-Google database, or one running locally, the Toolbox is the right choice. You can also use both together.</p>
+
+
+<h2><span class="n">06</span> Option 1 — MCP Toolbox for Databases</h2>
+
+<p>The MCP Toolbox for Databases is an open-source project. Its entire purpose is to eliminate the boilerplate code that you would otherwise need to write every time you want to connect an application to a database. It handles connection pooling, dropped connections, retries, observability, and query execution — and exposes all of this to your AI agent through a standard MCP interface.</p>
+
+<h3>Key Properties</h3>
+
+<ul>
+  <li><strong>Open source</strong> — the full source code is publicly available. You can inspect it, contribute to it, and modify it.</li>
+  <li><strong>Available as a self-contained binary</strong> — you download a single executable file for your operating system (Linux, macOS, Windows). There are no dependencies to install. It runs anywhere.</li>
+  <li><strong>Deploy anywhere</strong> — run it on your local laptop for development, or deploy it to Cloud Run (or any other server) for production. The configuration is identical either way.</li>
+  <li><strong>Not locked to Google databases</strong> — while it supports Cloud SQL, BigQuery, AlloyDB, and Spanner, it also supports open-source databases (MySQL, PostgreSQL, SQLite) and commercial databases through community contributions.</li>
+</ul>
+
+<h3>Supported Databases</h3>
+
+<table>
+  <thead><tr><th>Category</th><th>Databases Supported</th></tr></thead>
+  <tbody>
+    <tr><td>Google Cloud</td><td>BigQuery, Cloud SQL, AlloyDB, Spanner</td></tr>
+    <tr><td>Open Source</td><td>MySQL, PostgreSQL, SQLite</td></tr>
+    <tr><td>Commercial</td><td>Various — see official documentation for full list</td></tr>
+    <tr><td>Local</td><td>Any supported database running on your own machine</td></tr>
+  </tbody>
+</table>
+
+<h3>How the Toolbox Works — The Architecture</h3>
+
+<div class="diagram">
+  <div>
+    <span class="b b2">ADK Agent</span>
+    <span class="arr">→</span>
+    <span class="b g">MCP Toolbox Server<br><small style="font-size:0.75rem;color:var(--muted);">running on port 5000</small></span>
+    <span class="arr">→</span>
+    <span class="b y">Your Database<br><small style="font-size:0.75rem;color:var(--muted);">BigQuery / Cloud SQL / MySQL / etc.</small></span>
+  </div>
+</div>
+
+<p>The Toolbox sits between your agent and your database. Your agent does not need to know anything about database connection strings, SQL syntax, authentication, or connection management. It simply calls the tool that the Toolbox exposes, and the Toolbox handles everything else.</p>
+
+<h3>Configuration — The tools.yaml File</h3>
+
+<p>The entire configuration of the Toolbox happens in <strong>one single file</strong>: <code>tools.yaml</code>. This is the beauty Rahmen keeps returning to — all the complexity of database connectivity is reduced to one readable configuration file. Here is what it looks like:</p>
+
+<pre>
+<span class="c"># tools.yaml — the ONLY file you need to configure the Toolbox</span>
+
+<span class="k">sources</span>:
+  <span class="v">mybq_source</span>:          <span class="c"># any name you choose</span>
+    <span class="k">kind</span>: <span class="s">bigquery</span>       <span class="c"># or: cloud-sql, alloydb, postgresql, mysql, etc.</span>
+    <span class="k">project</span>: <span class="s">your-project-id</span>   <span class="c"># replace with your actual project ID</span>
+
+<span class="k">toolsets</span>:
+  <span class="v">my_bq_toolset</span>:         <span class="c"># any name you choose</span>
+    <span class="k">tools</span>:
+      - <span class="s">search_release_notes_bq</span>
+
+<span class="k">tools</span>:
+  <span class="v">search_release_notes_bq</span>:
+    <span class="k">kind</span>: <span class="s">bigquery-sql</span>
+    <span class="k">source</span>: <span class="s">mybq_source</span>
+    <span class="k">statement</span>: |
+      SELECT product_name, description, published_at
+      FROM `bigquery-public-data.google_cloud_release_notes.release_notes`
+      WHERE DATE(published_at) >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+      ORDER BY published_at DESC
+</pre>
+
+<p>That is the entire configuration. You define your data source, define what tools exist, and write the SQL query that each tool executes. When your agent calls the tool named <code>search_release_notes_bq</code>, the Toolbox runs that SQL against your BigQuery dataset and returns the results. No connection code. No authentication handling. No retry logic. It is all abstracted away.</p>
+
+<div class="callout blue">
+  <div class="callout-title">Key Insight — Replace the Query, Change the Use Case</div>
+  <p>The tools.yaml file shown above uses a Google Cloud public dataset as an example. In your own project, you replace the SQL statement with a query against your own data. Your agent then answers questions about your data instead of Google's release notes. The architecture is identical. Only the configuration changes.</p>
+</div>
+
+
+<h2><span class="n">07</span> Code Lab 1 — BigQuery + MCP Toolbox + ADK Agent</h2>
+
+<p>The first code lab builds a complete pipeline: a BigQuery public dataset, exposed through the MCP Toolbox, consumed by an ADK agent. The agent can then answer natural language questions about Google Cloud release notes.</p>
+
+<h3>What the Lab Builds</h3>
+
+<div class="diagram">
+  <div>
+    <span class="b b2">ADK Agent</span>
+    <span class="arr">↓ asks question in natural language</span>
+  </div>
+  <div style="margin-top:8px;">
+    <span class="b g">MCP Toolbox Server (port 5000)</span>
+    <span class="arr">↓ executes SQL query</span>
+  </div>
+  <div style="margin-top:8px;">
+    <span class="b y">BigQuery — google_cloud_release_notes</span>
+  </div>
+</div>
+
+<p>The user asks: <em>"Give me the Google Cloud release notes from the last 7 days."</em> The agent figures out that it has a tool (<code>search_release_notes_bq</code>) that retrieves this information. It calls the tool. The Toolbox executes the SQL. The result comes back to the agent. The agent formats and presents the answer.</p>
+
+<h3>Step-by-Step Lab Walkthrough</h3>
+
+<div class="step">
+  <div class="sn">1</div>
+  <div class="sc">
+    <p><strong>Verify your project.</strong> Open Cloud Shell at <code>shell.cloud.google.com</code>. Run <code>gcloud config list project</code> to confirm you are working in the correct project. If not, run <code>gcloud config set project YOUR_PROJECT_ID</code>. This is the most common mistake — running commands against the wrong project.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">2</div>
+  <div class="sc">
+    <p><strong>Identify your dataset.</strong> The lab uses the BigQuery public dataset <code>bigquery-public-data.google_cloud_release_notes.release_notes</code>. This is already available to everyone. You can preview it by running a query in the BigQuery console. This will be the data your agent answers questions about.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">3</div>
+  <div class="sc">
+    <p><strong>Download the MCP Toolbox binary.</strong> Create a folder, navigate into it, and download the binary for your OS. Since Cloud Shell is a Linux VM, use the Linux version:
+    <pre>mkdir mcp-toolbox && cd mcp-toolbox
+curl -O https://storage.googleapis.com/mcp-toolbox-releases/v0.x.x/toolbox_linux_amd64
+chmod +x toolbox_linux_amd64</pre>
+    Check the releases page for the latest version number. Rahmen notes you can use the version specified in the lab or download the latest — either will work.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">4</div>
+  <div class="sc">
+    <p><strong>Create tools.yaml.</strong> Inside the same folder, create the configuration file. Define your BigQuery source, your toolset, and your SQL query tool. Replace <code>your-project-id</code> with your actual project ID. The structure is exactly as shown in Section 06 above.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">5</div>
+  <div class="sc">
+    <p><strong>Start the Toolbox server.</strong> Run the binary with your configuration file:
+    <pre>./toolbox_linux_amd64 --tools-file tools.yaml</pre>
+    The output should say: initialised 1 source, 1 toolset with 1 tool, ready to serve. It listens on <strong>port 5000</strong> by default. If port 5000 is in use, add <code>--port 5001</code> (or any available port).</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">6</div>
+  <div class="sc">
+    <p><strong>Test via the web UI.</strong> Run the toolbox with the <code>--ui</code> flag to get a visual testing interface:
+    <pre>./toolbox_linux_amd64 --tools-file tools.yaml --ui</pre>
+    In Cloud Shell, click the <strong>Web Preview</strong> button, change the port to 5000, and click Preview. You should see: a hello-world confirmation, and at <code>/api/toolset</code>, the metadata of your exposed tools. You can also run the tool directly from the UI and see the results before writing a single line of agent code. <strong>Always test the Toolbox before integrating it with your agent.</strong></p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">7</div>
+  <div class="sc">
+    <p><strong>Create the ADK agent.</strong> In a new terminal tab (keep the Toolbox running in the first), create a Python environment, activate it, and install dependencies:
+    <pre>python3 -m venv venv && source venv/bin/activate
+pip install google-adk toolbox-core</pre>
+    Note the additional package: <code>toolbox-core</code>. This is the MCP Toolbox Python client library that lets your ADK agent connect to the Toolbox server.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">8</div>
+  <div class="sc">
+    <p><strong>Write agent.py.</strong> The agent is straightforward — the key change from a standard ADK agent is how the tools are loaded:
+    <pre>
+from google.adk.agents import Agent
+from toolbox_core import ToolboxClient
+
+<span class="c"># Connect to the Toolbox server running on port 5000</span>
+toolbox = ToolboxClient(<span class="s">"http://localhost:5000"</span>)
+
+<span class="c"># Load the tool set you defined in tools.yaml</span>
+tools = toolbox.load_toolset(<span class="s">"my_bq_toolset"</span>)
+
+<span class="c"># Create the ADK agent with those tools</span>
+root_agent = Agent(
+    name=<span class="s">"release_notes_agent"</span>,
+    model=<span class="s">"gemini-2.5-flash"</span>,
+    instruction=<span class="s">"You help users find and understand Google Cloud release notes."</span>,
+    tools=tools
+)
+</pre>
+    That is the complete integration. Three lines connect your agent to your database.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">9</div>
+  <div class="sc">
+    <p><strong>Run and test.</strong> With the Toolbox server still running in the other terminal:
+    <pre>adk run my_agent_folder/</pre>
+    Type: <em>"Give me the Google Cloud release notes from the last 7 days."</em> The agent calls the tool, the Toolbox executes the SQL, and the results come back. Try variations — last 2 days, last 3 days, specific products.</p>
+  </div>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">What You Just Proved</div>
+  <p>With no direct database connection code in your agent, no SQL in your Python, no authentication handling, and no retry logic — your agent is answering questions about live data from BigQuery. The entire database layer is abstracted behind one YAML file and one Python import.</p>
+</div>
+
+
+<h2><span class="n">08</span> Option 2 — Google Managed MCP Servers</h2>
+
+<p>In December 2024, Google announced a set of <strong>fully managed MCP servers</strong> — a different approach to connecting agents to Google Cloud services. These are not tools you download or run. They are endpoints hosted by Google that you simply enable in your project and configure in your agent.</p>
+
+<h3>First Wave of Managed MCP Servers</h3>
+
+<table>
+  <thead><tr><th>MCP Server</th><th>What it exposes</th></tr></thead>
+  <tbody>
+    <tr><td>BigQuery MCP Server</td><td>Query your BigQuery datasets, discover table schemas, execute SQL — all without writing SQL yourself</td></tr>
+    <tr><td>Google Maps MCP Server</td><td>Search places, calculate routes, get directions, look up location data</td></tr>
+    <tr><td>GKE MCP Server</td><td>Manage Google Kubernetes Engine clusters and workloads</td></tr>
+    <tr><td>GCE MCP Server</td><td>Manage Google Compute Engine virtual machines</td></tr>
+  </tbody>
+</table>
+
+<p>Rahmen notes that more managed servers will be added over time. The four listed above were the first wave at the time of this session.</p>
+
+<h3>Key Differences from the MCP Toolbox</h3>
+
+<table>
+  <thead><tr><th>Aspect</th><th>MCP Toolbox</th><th>Google Managed MCP Servers</th></tr></thead>
+  <tbody>
+    <tr><td>Hosting</td><td>You run it. Local laptop or your own server.</td><td>Google runs it. You get an endpoint URL.</td></tr>
+    <tr><td>Setup</td><td>Download binary, write tools.yaml, start server.</td><td>Enable in your project via gcloud, configure API key if needed.</td></tr>
+    <tr><td>Databases supported</td><td>Any — Google Cloud, open source, commercial, local</td><td>Google Cloud services only (in the first release)</td></tr>
+    <tr><td>Scalability</td><td>Depends on where you host it</td><td>Google-grade scalability, best-in-class reliability</td></tr>
+    <tr><td>IAM integration</td><td>Basic</td><td>Full Google Cloud IAM — control exactly which accounts can invoke which servers</td></tr>
+    <tr><td>Cost</td><td>You pay for the infrastructure you use</td><td>Managed by Google — see documentation for pricing</td></tr>
+    <tr><td>Cross-product queries</td><td>Requires combining multiple Toolbox configs</td><td>Multiple managed servers combine seamlessly in a single agent</td></tr>
+  </tbody>
+</table>
+
+<h3>How to Enable Managed MCP Servers</h3>
+
+<p>Managed servers are enabled via the <code>gcloud</code> CLI — they are integrated directly into the Google Cloud command-line tooling:</p>
+
+<pre>
+<span class="c"># List which MCP servers are currently enabled in your project</span>
+gcloud beta services mcp list
+
+<span class="c"># Enable the BigQuery MCP server</span>
+gcloud beta services mcp enable bigquery
+
+<span class="c"># Enable the Maps MCP server (also creates an API key automatically)</span>
+gcloud beta services mcp enable maps-tools
+</pre>
+
+<p>Once enabled, each server has a stable endpoint URL. Your ADK agent connects to that URL using the same MCP client pattern — no custom code, just a URL and authentication.</p>
+
+<div class="callout purple">
+  <div class="callout-title">The Power of Combining Managed Servers</div>
+  <p>The real strength of Google Managed MCP Servers is <strong>cross-product queries</strong>. A single user prompt can trigger calls to two or more MCP servers simultaneously. The agent combines the results intelligently — without you writing any client code for either service. You will see this in action in Code Lab 2.</p>
+</div>
+
+
+<h2><span class="n">09</span> Code Lab 2 — Bakery Intelligence Agent (BigQuery + Maps)</h2>
+
+<p>The second code lab demonstrates the full power of combining managed MCP servers. The scenario is a fictitious bakery business that wants to expand. The agent has access to two data sources — a BigQuery dataset containing the business's own internal data (sales history, foot traffic, prices, demographics) and the Google Maps MCP server. A single natural language prompt can trigger the agent to query both sources, combine the results, and produce a rich, actionable answer.</p>
+
+<h3>The Bakery Dataset</h3>
+<p>A custom BigQuery dataset is set up by the lab's setup scripts. It contains four tables:</p>
+
+<table>
+  <thead><tr><th>Table</th><th>What it contains</th></tr></thead>
+  <tbody>
+    <tr><td>bakery_prices</td><td>Product names, prices, and which region they are sold in</td></tr>
+    <tr><td>sales_history</td><td>Historical sales data by product, region, and date</td></tr>
+    <tr><td>foot_traffic</td><td>Hourly foot traffic measurements for current locations (e.g. 9–10am, 11am–12pm)</td></tr>
+    <tr><td>demographics</td><td>Demographic profiles of the areas around current and potential locations</td></tr>
+  </tbody>
+</table>
+
+<h3>Example Prompts the Agent Can Answer</h3>
+
+<p>These are taken directly from the code lab — and they are worth reading carefully, because they show how much reasoning and cross-system integration is happening behind a single sentence:</p>
+
+<blockquote>"I want to open a bakery in Los Angeles. Find the zip code with the highest morning foot traffic score."</blockquote>
+
+<blockquote>"Can you search for existing bakeries in that area to see if the market is saturated? Give me the results with map links."</blockquote>
+
+<blockquote>"I want a revenue projection for December 25. Look at my sales history for similar products and do a forecast."</blockquote>
+
+<blockquote>"I want to open a new bakery. Find a neighbourhood with early morning activity, based on foot traffic data, and find the zip code with the highest score."</blockquote>
+
+<p>For the first prompt alone, the agent needs to: query the foot_traffic table in BigQuery, aggregate by zip code, identify the highest score, and return the result. For the second, it then calls the Maps MCP server to search for competing bakeries nearby and returns URLs to each location. All of this happens from a single sentence.</p>
+
+<h3>How the Agent Is Wired Up</h3>
+
+<p>The <code>tools.py</code> file in the lab defines two tool sets — one for each MCP server:</p>
+
+<pre>
+from google.adk.tools.mcp import MCPToolset
+
+<span class="c"># Google Maps MCP Server — fully managed, uses API key for auth</span>
+def get_maps_tools():
+    return MCPToolset(
+        connection_params={
+            <span class="s">"url"</span>: <span class="s">"https://maps.googleapis.com/mcp/v1"</span>,
+            <span class="s">"api_key"</span>: os.environ[<span class="s">"MAPS_API_KEY"</span>]
+        }
+    )
+
+<span class="c"># BigQuery MCP Server — fully managed, uses Google auth (ADC)</span>
+def get_bigquery_tools():
+    return MCPToolset(
+        connection_params={
+            <span class="s">"url"</span>: <span class="s">"https://bigquery.googleapis.com/mcp/v1"</span>
+        }
+    )
+</pre>
+
+<p>The <code>agent.py</code> file then combines both tool sets into a single agent:</p>
+
+<pre>
+from tools import get_maps_tools, get_bigquery_tools
+
+root_agent = Agent(
+    name=<span class="s">"bakery_intelligence_agent"</span>,
+    model=<span class="s">"gemini-2.5-flash"</span>,
+    instruction=<span class="s">"""
+    Help the user make data-driven business decisions.
+    For demographic, pricing, and sales data — use the BigQuery toolset only.
+    For real-world location analysis, competition, and routes — use the Maps toolset.
+    Always include hyperlinks to locations when relevant.
+    """</span>,
+    tools=[*get_maps_tools(), *get_bigquery_tools()]
+)
+</pre>
+
+<h3>What the Agent Does Behind the Scenes (Per Rahmen's Demo)</h3>
+
+<p>When the user asks about opening a bakery in Los Angeles, here is the sequence of tool calls the agent makes — automatically, without any hardcoded logic:</p>
+
+<div class="step">
+  <div class="sn">1</div>
+  <div class="sc"><p>Calls BigQuery MCP to discover the available datasets and table schemas in the project.</p></div>
+</div>
+<div class="step">
+  <div class="sn">2</div>
+  <div class="sc"><p>Constructs a SQL query to aggregate foot traffic by zip code — without you writing the SQL. The agent writes the query itself based on its understanding of the task.</p></div>
+</div>
+<div class="step">
+  <div class="sn">3</div>
+  <div class="sc"><p>Executes the query and receives the zip code with the highest morning foot traffic score.</p></div>
+</div>
+<div class="step">
+  <div class="sn">4</div>
+  <div class="sc"><p>Calls the Maps MCP server to search for existing bakeries in that zip code.</p></div>
+</div>
+<div class="step">
+  <div class="sn">5</div>
+  <div class="sc"><p>Combines all results and presents a complete answer with location URLs, data-backed reasoning, and actionable recommendations.</p></div>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">The Critical Point</div>
+  <p>You did not write a single SQL query. You did not write a single line of Maps API code. You did not tell the agent which data source to use for which part of the question. The agent inferred all of that from the tool metadata and the user's natural language prompt. <strong>This is what MCP enables.</strong></p>
+</div>
+
+<h3>Setup Scripts — How the Lab Environment Is Created</h3>
+
+<p>The code lab uses a GitHub repository with pre-built setup scripts. Here is what they do:</p>
+
+<div class="step">
+  <div class="sn">1</div>
+  <div class="sc"><p><strong>setup_environment.sh</strong> — enables all required Google Cloud APIs, enables the BigQuery and Maps MCP servers in your project, and creates a Google Maps Platform API key. It also writes the API key into your agent's <code>.env</code> file automatically.</p></div>
+</div>
+<div class="step">
+  <div class="sn">2</div>
+  <div class="sc"><p><strong>setup_bigquery.sh</strong> — creates a Google Cloud Storage bucket, uploads the CSV data files (prices, demographics, sales history, foot traffic), creates the BigQuery dataset, creates all four tables, and loads the CSV data into them.</p></div>
+</div>
+<div class="step">
+  <div class="sn">3</div>
+  <div class="sc"><p>After both scripts run, your BigQuery dataset is ready, your MCP servers are enabled, and your API keys are configured. You are ready to run the agent.</p></div>
+</div>
+
+<pre>
+<span class="c"># Clone the repository</span>
+git clone https://github.com/google/mcp-examples
+
+<span class="c"># Authenticate</span>
+gcloud auth application-default login
+
+<span class="c"># Run setup scripts</span>
+cd mcp-examples/examples/launch-my-bakery/setup
+bash setup_environment.sh
+bash setup_bigquery.sh
+
+<span class="c"># Navigate to agent folder and run</span>
+cd ../adk_agent
+source venv/bin/activate
+adk web
+</pre>
+
+
+<h2><span class="n">10</span> What You Actually Built — The Big Picture</h2>
+
+<p>Rahmen closes by summarising the two things the session demonstrated:</p>
+
+<h3>Code Lab 1 — MCP Toolbox (Open Source)</h3>
+<p>You connected a custom BigQuery dataset to an ADK agent using an open-source, self-hosted MCP server. The Toolbox handled all database connectivity. Your agent code had no SQL, no connection management, and no database-specific logic. You configured everything in a single YAML file.</p>
+
+<h3>Code Lab 2 — Google Managed MCP Servers (Fully Managed)</h3>
+<p>You built an agent that combined two fully managed Google MCP servers — BigQuery and Maps — to answer complex, multi-source business questions from a single natural language prompt. No API client code for either service. No SQL queries written by you. The agent handled all of it.</p>
+
+<div class="callout yellow">
+  <div class="callout-title">Rahmen's Closing Message</div>
+  <p>"The powerful message I want you to go back with is that in order to connect your agents to real world data, the abstractions provided shielded you from a lot of boilerplate code. You didn't have to write SQL queries, connection code, or retries. And cross-product queries — which you saw in the second code lab — are extremely powerful."</p>
+</div>
+
+<p>The implications for your own projects are direct: any dataset you have — in BigQuery, Cloud SQL, AlloyDB, or even a local database — can be exposed to an ADK agent through MCP with minimal configuration. Your agent then answers questions about your data in natural language, combining multiple sources when needed, without you maintaining the integration code.</p>
+
+
+<h2><span class="n">11</span> Your Checklist — What to Do Right Now</h2>
+
+<ul>
+  <li>Log into your Hack2Skill dashboard. Find Track 2 under Cohort 1.</li>
+  <li>Check your email for Track 2 Google Cloud credits (separate from Track 1 credits).</li>
+  <li>Complete <strong>Code Lab 1</strong>: Set up the MCP Toolbox, configure tools.yaml with the BigQuery public dataset, build the release notes ADK agent, and test it. Test the Toolbox UI before writing agent code.</li>
+  <li>Complete <strong>Code Lab 2</strong>: Clone the bakery repository, run the setup scripts, enable the managed MCP servers, and run the Bakery Intelligence Agent. Try the example prompts and observe the cross-product queries in the ADK web UI.</li>
+  <li>Attempt the Track 2 MCQ assessment after completing both code labs.</li>
+  <li>Submit your Track 2 project — take the bakery architecture and replace it with a domain that interests you. Cybersecurity angle: a threat intelligence agent combining a CVE database (BigQuery) with a WHOIS/geolocation API via MCP.</li>
+  <li>Optionally: complete Google Skills Labs for Track 2 (credits provided).</li>
+</ul>
+
+</body>
+</html>

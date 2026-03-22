@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default async function TrackOneCheatsheetPage() {
-  redirect("/track-1");
+  redirect("/home.html");
 }

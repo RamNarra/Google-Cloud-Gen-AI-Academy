@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Cloud Gen AI Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090c14;
+      --surface: #11162a;
+      --border: #2a3652;
+      --text: #dce3f0;
+      --muted: #7f8fb9;
+      --g: #43e8b0;
+      --b: #79a2ff;
+      --y: #ffd166;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Lora', serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% -20%, rgba(67,232,176,0.1), transparent 40%),
+        radial-gradient(circle at 100% 0%, rgba(121,162,255,0.12), transparent 32%),
+        linear-gradient(180deg, #070a11 0%, #090c14 45%, #070a11 100%);
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(18,24,40,0.96), rgba(12,17,30,0.96));
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9fc3ff;
+      border: 1px solid rgba(121,162,255,0.35);
+      background: rgba(121,162,255,0.12);
+      border-radius: 6px;
+      padding: 5px 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.12;
+      color: #f3f6ff;
+    }
+
+    p {
+      margin: 0;
+      color: #c6d3ef;
+      font-size: 1.05rem;
+      line-height: 1.85;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #151c30, #101626);
+      padding: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.42rem;
+      color: #f3f6ff;
+    }
+
+    .meta {
+      margin: 0 0 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(67,232,176,0.4);
+      background: rgba(67,232,176,0.12);
+      color: #7cf3c6;
+    }
+
+    .btn.blue {
+      border-color: rgba(121,162,255,0.4);
+      background: rgba(121,162,255,0.12);
+      color: #a5c0ff;
+    }
+
+    .btn.yellow {
+      border-color: rgba(255,209,102,0.4);
+      background: rgba(255,209,102,0.12);
+      color: #ffe2a0;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="tag">Google Cloud Gen AI Academy APAC 2026</div>
+      <h1>Session Notes Home</h1>
+      <p>This home page links directly to your original HTML files without transformation. Cheatsheets are intentionally excluded.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Introductory Session</h2>
+        <p class="meta">Detailed Notes</p>
+        <a class="btn" href="/notes/intro.html">Open HTML Notes</a>
+      </article>
+
+      <article class="card">
+        <h2>Track 1</h2>
+        <p class="meta">Workshop Notes</p>
+        <a class="btn blue" href="/notes/track1.html">Open HTML Notes</a>
+      </article>
+
+      <article class="card">
+        <h2>Track 2</h2>
+        <p class="meta">Detailed Notes</p>
+        <a class="btn yellow" href="/notes/track2.html">Open HTML Notes</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

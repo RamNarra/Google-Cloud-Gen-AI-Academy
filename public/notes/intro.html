@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introductory Session — Google Cloud Gen AI Academy APAC 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c10;
+    --surface: #13151c;
+    --surface2: #1a1d27;
+    --border: #272a38;
+    --accent: #7c6aff;
+    --accent2: #ff6b6b;
+    --accent3: #43e8b0;
+    --accent4: #ffd166;
+    --accent5: #56b4ff;
+    --text: #d8e0f0;
+    --muted: #6a7290;
+    --code-bg: #0e0f14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.9;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 32px 120px;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 44px;
+    margin-bottom: 60px;
+  }
+
+  .eyebrow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .tag.purple { color: var(--accent); background: rgba(124,106,255,0.1); border: 1px solid rgba(124,106,255,0.25); }
+  .tag.green  { color: var(--accent3); background: rgba(67,232,176,0.08); border: 1px solid rgba(67,232,176,0.2); }
+  .tag.blue   { color: var(--accent5); background: rgba(86,180,255,0.08); border: 1px solid rgba(86,180,255,0.2); }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.7rem;
+    font-weight: 800;
+    line-height: 1.12;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  h1 em { font-style: normal; color: var(--accent); }
+
+  .meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 60px;
+  }
+
+  .toc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .toc ol { padding-left: 18px; }
+  .toc li {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.84rem;
+    color: var(--accent);
+    margin-bottom: 9px;
+    line-height: 1.5;
+  }
+  .toc li span { color: var(--muted); }
+
+  /* SECTIONS */
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 60px 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  h2 .n {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(124,106,255,0.12);
+    border: 1px solid rgba(124,106,255,0.22);
+    padding: 3px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent3);
+    margin: 34px 0 13px;
+  }
+
+  h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 26px 0 10px;
+  }
+
+  p { margin-bottom: 17px; }
+
+  strong { color: #fff; font-weight: 600; }
+  em { font-style: italic; color: var(--accent5); }
+  mark {
+    background: rgba(255,209,102,0.13);
+    color: var(--accent4);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-style: normal;
+  }
+
+  /* CALLOUTS */
+  .callout {
+    border-radius: 8px;
+    padding: 20px 26px;
+    margin: 26px 0;
+    border-left: 3px solid;
+  }
+  .callout.purple { background: rgba(124,106,255,0.07); border-color: var(--accent); }
+  .callout.red    { background: rgba(255,107,107,0.07); border-color: var(--accent2); }
+  .callout.green  { background: rgba(67,232,176,0.07);  border-color: var(--accent3); }
+  .callout.yellow { background: rgba(255,209,102,0.07); border-color: var(--accent4); }
+  .callout.blue   { background: rgba(86,180,255,0.07);  border-color: var(--accent5); }
+
+  .callout-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+  }
+  .callout.purple .callout-title { color: var(--accent); }
+  .callout.red .callout-title    { color: var(--accent2); }
+  .callout.green .callout-title  { color: var(--accent3); }
+  .callout.yellow .callout-title { color: var(--accent4); }
+  .callout.blue .callout-title   { color: var(--accent5); }
+  .callout p { margin-bottom: 0; font-size: 0.95rem; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.91rem; }
+  th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(39,42,56,0.6);
+    vertical-align: top;
+    line-height: 1.65;
+  }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-family: 'DM Mono', monospace; font-size: 0.83rem; color: var(--accent3); white-space: nowrap; }
+
+  /* DIAGRAM */
+  .diagram {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin: 24px 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.84rem;
+    line-height: 2.2;
+    color: var(--muted);
+    text-align: center;
+  }
+  .b { display: inline-block; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 14px; margin: 2px 3px; color: var(--text); }
+  .b.p { border-color: var(--accent); color: var(--accent); }
+  .b.g { border-color: var(--accent3); color: var(--accent3); }
+  .b.y { border-color: var(--accent4); color: var(--accent4); }
+  .b.b2 { border-color: var(--accent5); color: var(--accent5); }
+  .arr { color: var(--border); margin: 0 5px; font-size: 1rem; }
+
+  /* QUOTE (speaker voice) */
+  blockquote {
+    border-left: 2px solid var(--border);
+    margin: 18px 0;
+    padding: 8px 22px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.93rem;
+  }
+
+  /* STEP */
+  .step { display: flex; gap: 16px; margin: 14px 0; align-items: flex-start; }
+  .sn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 27px; height: 27px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    margin-top: 3px;
+  }
+  .sc { flex: 1; }
+  .sc p { margin-bottom: 5px; }
+
+  /* HR */
+  hr { border: none; border-top: 1px solid var(--border); margin: 52px 0; }
+
+  /* SPEAKER CARD */
+  .speaker-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .speaker-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: var(--accent4);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .speaker-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+  .speaker-role { font-family: 'DM Mono', monospace; font-size: 0.76rem; color: var(--muted); }
+
+  /* QA BOX */
+  .qa {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .qa-q {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.83rem;
+    color: var(--accent4);
+    margin-bottom: 12px;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .qa-q::before { content: "Q"; background: rgba(255,209,102,0.12); border: 1px solid rgba(255,209,102,0.25); padding: 1px 7px; border-radius: 3px; flex-shrink: 0; }
+  .qa-a { font-size: 0.94rem; color: var(--text); }
+  .qa-a strong { color: #fff; }
+
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: #a8d8ff;
+  }
+
+  ul, ol { padding-left: 22px; margin-bottom: 16px; }
+  li { margin-bottom: 9px; line-height: 1.75; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">
+    <span class="tag purple">Google Cloud Gen AI Academy · APAC 2026</span>
+    <span class="tag green">Introductory Session</span>
+    <span class="tag blue">Full Learning Notes</span>
+  </div>
+  <h1>What Are Agents — And Why Does <em>This Programme</em> Exist?</h1>
+  <p class="meta">Speakers: Koshik (Hack2Skill Host) · Prashanth Subrahmanyam (Google Cloud DevRel, APAC)<br>Notes written from full transcript — IELTS Band 7.5 · by Claude</p>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-label">What is inside these notes</div>
+  <ol>
+    <li>Who is in the room — the two speakers <span>and what they represent</span></li>
+    <li>The programme at a glance — what it is and where it came from</li>
+    <li>The structure unpacked — cohorts, phases, tracks, and what happens in each</li>
+    <li>Rewards and recognition — certificates, goodies, elite club, graduation</li>
+    <li>What are AI agents? — Prashanth's full definition</li>
+    <li>Why agents exist — the hype, and what is actually behind it</li>
+    <li>Where agents make sense — and where they absolutely do not</li>
+    <li>The challenges of agentic systems — what Prashanth warned honestly about</li>
+    <li>The architecture of any agentic application — three things every agent needs</li>
+    <li>What you will learn across all three tracks</li>
+    <li>Google Cloud as the home for agents — the full picture</li>
+    <li>Q&A from the live session — six questions answered in full</li>
+  </ol>
+</div>
+
+
+<!-- SECTION 1 -->
+<h2><span class="n">01</span> Who Is in the Room</h2>
+
+<p>This session has two voices. It is useful to know who they are and what they represent before reading the content, because it explains the tone of each part of the session.</p>
+
+<div class="speaker-card">
+  <div class="speaker-icon">HOST</div>
+  <div>
+    <div class="speaker-name">Koshik</div>
+    <div class="speaker-role">Hack2Skill — Programme Host</div>
+    <p style="margin-top:10px; font-size:0.93rem;">Koshik opens the session and handles the logistics portion. He explains the programme structure, the reward tiers, and how the cohort system works. Hack2Skill is the platform that runs the Gen AI Academy on behalf of Google Cloud. Think of Koshik as the administrative and motivational voice — he explains <em>what the programme is</em>.</p>
+  </div>
+</div>
+
+<div class="speaker-card">
+  <div class="speaker-icon">TECH</div>
+  <div>
+    <div class="speaker-name">Prashanth Subrahmanyam</div>
+    <div class="speaker-role">Google Cloud Developer Relations — APAC Lead</div>
+    <p style="margin-top:10px; font-size:0.93rem;">Prashanth handles the technical and conceptual portion of the session. He is the person who explains <em>what agents are, why they matter, where they should and should not be used, and what the architecture of an agentic system looks like</em>. His section is the one with dense learning value. He is based in India, is clearly passionate about this space, and — importantly — is honest about the limitations of agentic systems, which most speakers in this space are not.</p>
+  </div>
+</div>
+
+
+<!-- SECTION 2 -->
+<h2><span class="n">02</span> The Programme at a Glance</h2>
+
+<p>The Gen AI Academy started in India. According to Koshik, it received a strong reception in its first edition — developers were genuinely engaging with it, upskilling on Google Cloud, and producing tangible outcomes. Based on that success, Google Cloud and Hack2Skill decided to expand it to the entire APAC region in 2026.</p>
+
+<p><strong>What countries are included?</strong> India, Australia, Indonesia, Philippines, Singapore, Bangladesh, China, Korea, New Zealand, and other countries across Southeast Asia, the Korean region, and broader APAC.</p>
+
+<p>The programme is described as a <strong>"premier challenge-based learning and development programme"</strong> — a phrase that is repeated several times throughout the session. This phrasing is deliberate. It signals that the curriculum is not passive watching of videos; it is structured around doing things and producing outcomes. More on this shortly.</p>
+
+<p>The programme is open to <strong>both working professionals and students</strong> who are at least 18 years old. You do not need to be employed, enrolled in a specific university, or already experienced in AI. You need to be able to code — preferably in Python — and be willing to learn.</p>
+
+<div class="callout blue">
+  <div class="callout-title">One Important Context Note</div>
+  <p>This session was recorded in February 2026. Cohort 1 had already started in January. Prashanth and Koshik both acknowledge this directly — if you are joining after the session, you are not starting from the very beginning of Cohort 1, but the content and labs are accessible on the dashboard and you can still complete everything required for the certificate.</p>
+</div>
+
+
+<!-- SECTION 3 -->
+<h2><span class="n">03</span> The Structure — Cohorts, Phases, Tracks</h2>
+
+<p>The programme runs as three quarterly cohorts followed by a Grand Hackathon. Understanding this structure clearly is important before you begin, because each element gates the next. Let us go through every layer.</p>
+
+<h3>The Three Cohorts</h3>
+
+<table>
+  <thead><tr><th>Cohort</th><th>Period</th><th>Focus</th></tr></thead>
+  <tbody>
+    <tr><td>Cohort 1</td><td>January – March 2026</td><td>Production-ready Gen AI applications — ADK, Cloud Run, MCP, databases</td></tr>
+    <tr><td>Cohort 2</td><td>April – June 2026</td><td>New tracks (to be announced)</td></tr>
+    <tr><td>Cohort 3</td><td>July – September 2026</td><td>New tracks (to be announced)</td></tr>
+    <tr><td>Grand Hackathon</td><td>October – December 2026</td><td>Cross-cohort finale for all alumni</td></tr>
+  </tbody>
+</table>
+
+<p>Each cohort is <strong>independent</strong> — it has its own tracks, its own content, its own hackathon, and its own winners. You can participate in one cohort or all of them. Completing more cohorts increases your chances of reaching the Gen AI Elite Club (top 100 performers overall).</p>
+
+<h3>The Two Phases Within Each Cohort</h3>
+
+<p>Every cohort is divided into two phases that follow each other in sequence:</p>
+
+<div class="diagram">
+  <span class="b p">Phase 1: The Academy</span>
+  <span class="arr">→ then →</span>
+  <span class="b g">Phase 2: The Hackathon</span>
+</div>
+
+<p>The Academy phase is the learning phase. The Hackathon phase is the application and competition phase. You cannot skip to the hackathon — you must complete the academy steps first.</p>
+
+<h3>The Five Steps Inside the Academy Phase</h3>
+
+<p>Inside Phase 1 (the Academy), there are five sequential steps. Each step must be completed before the next one unlocks. Here is exactly what each step involves:</p>
+
+<div class="step">
+  <div class="sn">1</div>
+  <div class="sc">
+    <p><strong>Select a Track.</strong> In Cohort 1, there are three tracks. You choose one or more. Each track addresses a different aspect of building production Gen AI applications. Choosing more than one is optional — it increases your learning and potentially your score.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">2</div>
+  <div class="sc">
+    <p><strong>Attend Workshops.</strong> Each track has its own dedicated workshop, delivered live by a Google developer. Workshops are multilingual — English, Bahasa Indonesia, Korean, and Chinese versions are all available. Workshop recordings are also available on the dashboard if you missed the live session. This is the theoretical and demo-based learning.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">3</div>
+  <div class="sc">
+    <p><strong>Complete Code Labs (Mandatory).</strong> After attending a workshop, you complete the corresponding hands-on code lab. This is not optional — it is a required step. The code labs are hosted on Google Cloud's infrastructure. Credits are provided to you so you do not pay anything. The code lab walks you through implementing what was taught in the workshop.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">4</div>
+  <div class="sc">
+    <p><strong>Complete Google Skills Labs (Optional but recommended).</strong> These are additional, deeper labs on Cloud Skills Boost — Google's learning platform. They are not mandatory for the certificate, but they go deeper into the topics. Credits are also provided for these. Koshik describes them as "your learning investment" — they are there for people who want to go beyond the minimum.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">5</div>
+  <div class="sc">
+    <p><strong>MCQ Assessment (Gateway).</strong> After completing the workshop and code lab, you attempt a multiple-choice assessment. There is a minimum benchmark score you must clear. This MCQ is not a formality — it gates the project submission step. If you do not pass the MCQ, you cannot submit a project. Take it seriously.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="sn">6</div>
+  <div class="sc">
+    <p><strong>Project Submission.</strong> Once you pass the MCQ, you submit a project. This is a prototype — a working implementation of something you built using what you learned in your chosen track. The project must be submitted individually through the academy platform. Its quality, alongside your MCQ score, determines whether you are a top-10 performer.</p>
+  </div>
+</div>
+
+<h3>Phase 2 — The Cohort Hackathon</h3>
+
+<p>After all academy steps are done, the cohort hackathon opens. A <strong>single common problem statement</strong> is given to all participants. Everyone — regardless of which track they chose — works on the same challenge. Teams are 1 to 4 people. You can participate solo. The hackathon tests whether you can apply your academy learning to a real, novel problem under pressure.</p>
+
+<div class="callout yellow">
+  <div class="callout-title">Important: One Problem Statement for Everyone</div>
+  <p>Unlike a typical hackathon where you choose your idea, here the problem is fixed. Your differentiation cannot come from a uniquely interesting problem — it must come from the quality, depth, and creativity of your solution. This makes the academy phase more important than it initially seems, because you need genuinely strong technical capability to stand out.</p>
+</div>
+
+<h3>The Three Tracks in Cohort 1</h3>
+
+<table>
+  <thead><tr><th>Track</th><th>Focus Area</th><th>Key Technologies</th></tr></thead>
+  <tbody>
+    <tr><td>Track 1</td><td>Build and deploy AI agents</td><td>Gemini, ADK (Agent Development Kit), Cloud Run</td></tr>
+    <tr><td>Track 2</td><td>Connect agents to the real world</td><td>MCP (Model Context Protocol), MCP Toolbox</td></tr>
+    <tr><td>Track 3</td><td>AI-ready databases for production agents</td><td>AlloyDB, Cloud SQL, PostgreSQL-compatible databases</td></tr>
+  </tbody>
+</table>
+
+<p>Prashanth is clear: you can choose one track or all three, depending on your interest and available time. The three tracks are designed so that, together, they cover the full picture of a production-ready agentic application. He explains this elegantly:</p>
+
+<blockquote>"Track 1 is about building the agent and giving it a runtime. Track 2 is about giving the agent hands and legs — connecting it to the world. Track 3 is about giving the agent memory and persistence — connecting it to data."</blockquote>
+
+
+<!-- SECTION 4 -->
+<h2><span class="n">04</span> Rewards and Recognition</h2>
+
+<p>Koshik covers this in detail. There are four distinct reward tiers, and they stack — completing more steps unlocks more.</p>
+
+<h3>Tier 1 — Gen AI Master Certificate</h3>
+<p>You earn this by completing <strong>all required action items in at least one track</strong>. That means: workshop attended + code lab completed + MCQ passed + project submitted. You only need to do this for one track to qualify for the certificate. It is track-specific — the certificate will state which track you completed.</p>
+
+<h3>Tier 2 — Graduation Ceremony</h3>
+<p>All participants who complete the full academy journey are invited to a graduation ceremony. The <strong>top 10 performers</strong> — selected on the combined criteria of MCQ score and project quality — will have their projects showcased at the ceremony. This is significant public recognition in front of the entire APAC developer community.</p>
+
+<h3>Tier 3 — Gen AI Elite Club</h3>
+<p>Participants who complete both the academy phase <em>and</em> the cohort hackathon, and rank within the <strong>top 100 performers</strong>, are invited into the Gen AI Elite Club. This is described as an exclusive alumni network for the top developers across the programme. It functions as a high-signal community — the kind of people in there are by definition the ones who went all the way.</p>
+
+<h3>Tier 4 — Goodies / Swag</h3>
+<p>Physical merchandise is distributed at various points during the programme through campaigns. This is what was shown in the video reel that brought you here — the gimbal, vacuum flask, Google Cloud merchandise. These are not guaranteed to every participant; they are awarded through specific campaigns for top performers or particularly active participants.</p>
+
+<div class="callout green">
+  <div class="callout-title">Cash Prizes</div>
+  <p>Up to <strong>$10,000 USD per cohort</strong> in cash prizes is available through the hackathon. Winners are selected based on their hackathon submission — building the most effective and innovative solution to the given problem statement.</p>
+</div>
+
+
+<!-- SECTION 5 -->
+<h2><span class="n">05</span> What Are AI Agents? — Prashanth's Full Definition</h2>
+
+<p>At roughly the 18-minute mark, Koshik hands over to Prashanth, and the session shifts completely in tone and depth. What follows is one of the cleaner explanations of agents given in a public format. It is worth understanding every part of it because this conceptual foundation is what the entire three-track curriculum builds on.</p>
+
+<p>Prashanth begins by acknowledging the hype directly and without embarrassment:</p>
+
+<blockquote>"Agents have been a buzzword since maybe the last year, maybe even before, but definitely it was a buzzword in 2025, and we are continuing into 2026. This is here — this is not something that went up the hype cycle, went down, and people forgot about it. We haven't exploited the full potential of agents."</blockquote>
+
+<p>He then gives the formal definition. The way Google Cloud thinks about agents:</p>
+
+<div class="callout purple">
+  <div class="callout-title">Prashanth's Definition of an Agent</div>
+  <p>An agent is an <strong>application</strong> — just like any software you have built before. But it has three specific characteristics: it uses a generative AI model as its brain to make decisions; it can act independently based on its own reasoning; and it pursues a <strong>user-specified goal</strong>, not a fixed sequence of instructions.</p>
+</div>
+
+<p>The key phrase is <em>goal-specified</em> rather than <em>instruction-specified</em>. With traditional software, you write: "if the user clicks this button, do this sequence of steps." With an agent, you write: "achieve this outcome for the user" — and the agent figures out which steps to take.</p>
+
+<h3>The Three Properties That Make Agents Different</h3>
+
+<p>Prashanth identifies three specific properties that distinguish agents from all previous software paradigms:</p>
+
+<h4>Property 1 — Flexibility</h4>
+<p>Traditional software follows hard-coded algorithmic paths. Every edge case must be anticipated and handled explicitly by the developer. Agents do not need this. Given a goal, an agent can handle edge cases it has never encountered before, adapt to unexpected inputs, and navigate situations that were never programmed into it. It reasons about what to do rather than executing what it was told.</p>
+
+<p>Prashanth gives a vivid contrast: a traditional customer support system asks you to press 1 for billing issues, press 2 for delivery problems, and so on — every possible scenario pre-mapped by a developer. An agentic customer support system simply listens to what you say in natural language, understands your problem, and navigates toward the right resolution on its own.</p>
+
+<h4>Property 2 — Outcome Focus</h4>
+<p>This is the most important conceptual shift. You do not tell an agent <em>how</em> to do something. You tell it <em>what</em> you want. The agent determines the path. Prashanth frames it this way: agents are led by the outcome, not the approach. This also makes prototyping faster — because you are not scripting every step, you can get a working agent up and running quickly and observe how it reaches the outcome.</p>
+
+<h4>Property 3 — Proactivity</h4>
+<p>Agents can be triggered by schedules, events, or external signals — not just by a human typing something. You can build agents that monitor systems overnight, watch for a specific market signal, check whether a vulnerability has been patched, or summarise your emails every morning without you asking. This is what Prashanth means by proactive: agents can deliver intelligence into your life without waiting to be prompted.</p>
+
+
+<!-- SECTION 6 -->
+<h2><span class="n">06</span> Where Agents Make Sense — and Where They Do Not</h2>
+
+<p>This section is one of the most intellectually honest parts of the entire session. Prashanth explicitly tells you when <em>not</em> to use agents. This is unusual — most product and developer advocates will push their technology into every scenario. Prashanth does not, and this builds significant credibility for what he says next.</p>
+
+<h3>Where Agents Are a Strong Fit</h3>
+
+<table>
+  <thead><tr><th>Use Case Type</th><th>Why Agents Work Well Here</th></tr></thead>
+  <tbody>
+    <tr><td>Personalised learning systems</td><td>The agent adapts to the learner's style, pace, and topic preferences dynamically. No two users follow the same path.</td></tr>
+    <tr><td>Real-time business intelligence</td><td>Agent uses live data signals to adjust behaviour. It is not answering from a static database — it is reacting to what is happening right now.</td></tr>
+    <tr><td>Customer experience systems</td><td>Replace brittle decision trees with agents that understand natural language, identify what the user needs, and route appropriately.</td></tr>
+    <tr><td>Cybersecurity monitoring</td><td>(Prashanth confirms this explicitly in Q&A) — agents can triage incidents, monitor for new vulnerabilities, and check existing systems automatically.</td></tr>
+    <tr><td>Any goal-oriented, multi-step workflow</td><td>If the task requires making multiple decisions, calling multiple systems, and adapting to what comes back — agents are the right tool.</td></tr>
+  </tbody>
+</table>
+
+<h3>Where Agents Are Overkill or Wrong</h3>
+
+<p>This is the crucial part. Prashanth identifies three clear situations where you should <em>not</em> build an agent:</p>
+
+<h4>Situation 1 — Simple Prompt-Response Tasks</h4>
+<p>If you have a large block of text and you want to summarise it, or you want to generate a document from a detailed system instruction, you do not need an agent. You need an API call. The task is: send prompt → receive output. There is no decision-making, no tool-calling, no iteration. An agent would add complexity with zero benefit.</p>
+
+<h4>Situation 2 — Pure Q&A from a Knowledge Base</h4>
+<p>If your system does one thing — a user asks a question, you retrieve relevant material from a knowledge base, and you return an answer — you need a <strong>RAG architecture</strong>, not an agent. RAG (Retrieval-Augmented Generation) is the correct tool here. It is simpler, cheaper, faster, and more predictable.</p>
+
+<blockquote>"Building chatbots that can tap into a RAG system is good enough. You don't necessarily need agents that are goal-oriented or need to be autonomous in these cases."</blockquote>
+
+<h4>Situation 3 — Regulated Environments Requiring Full Explainability</h4>
+<p>In some industries — banking, healthcare, insurance, certain areas of government — a system must be able to explain, precisely, why it took every decision it took. Traditional machine learning classifiers and rule-based systems can do this. Agentic systems, by their nature, cannot. The reasoning of a large language model is not fully traceable. In these environments, Prashanth says bluntly: <strong>use predictive AI, not generative AI.</strong> Stick to classifiers and explicit decision logic.</p>
+
+<div class="callout red">
+  <div class="callout-title">The Mental Test Before Building</div>
+  <p>Before you build an agent, ask yourself: does this task require the system to make independent decisions, adapt to unpredictable inputs, and pursue a goal across multiple steps? If yes — agent. If no — an API call, a RAG system, or a traditional ML model is more appropriate. Unnecessary agents are slower, harder to debug, and more expensive.</p>
+</div>
+
+
+<!-- SECTION 7 -->
+<h2><span class="n">07</span> The Challenges of Agentic Systems</h2>
+
+<p>Prashanth spends a substantial portion of the session on this topic. It is rare to hear a Google speaker acknowledge the weaknesses of a Google-promoted technology with this level of frankness. Every point he raises reflects a real engineering challenge you will encounter when you build agents.</p>
+
+<h3>Challenge 1 — Non-Determinism</h3>
+<p>Large language models are <strong>inherently non-deterministic</strong>. You can send the same input twice and get two different outputs. This is not a bug — it is a fundamental characteristic of how these models work. But it means you cannot guarantee that your agent will behave the same way every time it runs. Prashanth is explicit:</p>
+
+<blockquote>"If you need systems to behave exactly the same every single time, there is an expectation mismatch. I am not saying you should or should not expect it, but there is an expectation mismatch if you expect agents to behave in a predictable way."</blockquote>
+
+<p>For cybersecurity and regulated workloads, this is a significant concern. An agent that sometimes identifies a threat and sometimes does not — with the same input — is not production-safe without additional layers around it.</p>
+
+<h3>Challenge 2 — Immature Error Handling and Resilience</h3>
+<p>Agentic systems are newer than traditional software systems. The tooling, frameworks, and patterns for handling failures gracefully are still being developed. In a rule-based system, you can write explicit <code>try/catch</code> blocks, define fallback paths, and guarantee that the system recovers from every anticipated failure. In an agentic system, the flow is dynamic — the agent decides what to do next, and it may choose a path that leads to an unexpected failure state with no way out.</p>
+
+<p>Prashanth identifies this as partly a <strong>mindset problem</strong>: developers coming from traditional software backgrounds try to build agents the way they would build any other software — with rigid error handling and predictable flow control. That approach does not map cleanly onto agents. You have to design for resilience differently: give the agent instructions on how to recover, build in self-correction loops, and accept that some failures will happen unpredictably.</p>
+
+<h3>Challenge 3 — Security and Privacy Are Still Evolving</h3>
+<p>Security practices for agentic systems are not yet as mature as they are for traditional software. Questions like: <em>how do you prevent prompt injection attacks? how do you prevent an agent from being manipulated by a malicious tool response? how do you ensure sensitive data is not leaked through a tool call?</em> — these are active research and engineering problems. They are not solved. Prashanth says directly: <em>"Practices like security and privacy are still evolving areas in the world of agentic systems."</em></p>
+
+<h3>Challenge 4 — Traceability and Debuggability</h3>
+<p>When a traditional software bug occurs, you can trace it: line 47 of module X called function Y with argument Z and the output was wrong. The causality is clear. When an agent behaves unexpectedly, you often cannot do this. The large language model's reasoning — the chain of thought that led it to call a particular tool or produce a particular output — may not be fully inspectable. You can see <em>what</em> it did, but tracing <em>why</em> it did it is significantly harder.</p>
+
+<div class="callout yellow">
+  <div class="callout-title">Prashanth's Practical Guidance</div>
+  <p>Do not treat agentic systems the way you would treat traditional software. Build in checks and balances. Design your agent so that it can <em>self-correct</em> — let it recognise when it has gone off-path and find its way back. Use ADK's built-in evaluation tools to test agent behaviour systematically. Accept some level of non-determinism and design around it rather than fighting it.</p>
+</div>
+
+
+<!-- SECTION 8 -->
+<h2><span class="n">08</span> The Architecture of Any Agentic Application</h2>
+
+<p>Having covered what agents are, where they fit, and what their challenges are, Prashanth moves to the architecture question: if you have decided to build an agent, what does the infrastructure look like?</p>
+
+<p>He identifies three things that every production agentic application requires:</p>
+
+<div class="diagram">
+  <div style="margin-bottom: 12px; color: var(--text); font-size: 1rem;">Every agentic application needs exactly three things:</div>
+  <div>
+    <span class="b p">① Runtime</span>
+    <span style="color:var(--muted); margin: 0 12px;">+</span>
+    <span class="b g">② Model (Brain)</span>
+    <span style="color:var(--muted); margin: 0 12px;">+</span>
+    <span class="b y">③ Tools (Hands &amp; Legs)</span>
+  </div>
+  <div style="margin-top:14px; font-size:0.8rem; color:var(--muted);">
+    Cloud Run &nbsp;·&nbsp; Agent Engine
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Gemini 3, Gemma, others
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    APIs, databases, MCP servers
+  </div>
+</div>
+
+<h3>① The Runtime — Where the Agent Lives</h3>
+<p>Your agent needs to run somewhere that is always available — not your laptop, which shuts down, goes offline, and is only accessible to you. Prashanth uses a pointed analogy:</p>
+
+<blockquote>"It's like you built an HTML page on your personal machine and said, 'Okay, everyone come and use it.' That's not how it scales."</blockquote>
+
+<p>The runtime for this programme is <strong>Cloud Run</strong> — Google's serverless, container-based platform. It is always on, scales automatically, and requires no infrastructure management. For those who want more infrastructure control, <strong>GKE (Google Kubernetes Engine)</strong> is also available. For a runtime specifically optimised for agents, Google has built <strong>Agent Engine</strong> — a managed service for running agents in production.</p>
+
+<h3>② The Model — The Brain</h3>
+<p>The model is what provides the intelligence. Without a model, there is no reasoning, no decision-making, no language understanding. <strong>Gemini 3</strong> is Prashanth's recommended starting point — it is designed specifically for agentic workflows and for using tools. He makes an important note about model selection: start with a cost-effective model like <strong>Gemini Flash</strong> during development. Build your evaluation framework first, then swap to a higher-capability model if needed and compare against your evals. Never pick a model without first having a way to measure whether it is performing correctly for your use case.</p>
+
+<h3>③ Tools — The Hands and Legs</h3>
+<p>Tools are what allow the agent to interact with the world beyond the model's training data. Without tools, an agent can only reason and respond from what it already knows — which is static and may be outdated. Tools give the agent the ability to read from databases, call APIs, search the web, interact with other services, and even delegate to other agents. The protocol that standardises how agents talk to tools is <strong>MCP — Model Context Protocol</strong> — which is covered in Track 2.</p>
+
+
+<!-- SECTION 9 -->
+<h2><span class="n">09</span> What You Will Learn Across the Three Tracks</h2>
+
+<p>Prashanth walks through the specific technical skills each track delivers. Together, they map to the full architecture of a production agentic system.</p>
+
+<h3>Track 1 — ADK and Cloud Run</h3>
+<p>You will learn to build agents using ADK (the Agent Development Kit) in Python. ADK supports multiple agent types — sequential, parallel, loop — and handles orchestration, tool integration, memory, and deployment. You will also learn to use Cloud Run — how to deploy your agent as a serverless service, how to observe what is happening in production, and how to scale. You will go from running an agent locally to having it live on a public URL.</p>
+
+<h3>Track 2 — MCP (Model Context Protocol)</h3>
+<p>MCP is the industry-standard protocol for connecting agents to external tools and data sources. Track 2 teaches you to build MCP servers, connect your agents to real-world APIs and databases via MCP, and use MCP Toolbox — Google's library for common integrations. Cloud Run is also a great place to host your MCP servers, so this track builds directly on Track 1.</p>
+
+<h3>Track 3 — AI-Ready Databases and Agent Memory</h3>
+<p>Agents are stateless by default — they do not remember what happened in the previous session unless you give them a database. Track 3 teaches you to use <strong>AlloyDB</strong> and <strong>Cloud SQL</strong> — PostgreSQL-compatible databases that are vector-ready and AI-ready. You will learn how to give your agent persistent memory, store user context across sessions, and handle the data infrastructure that makes a production agentic application genuinely useful over time.</p>
+
+<div class="callout green">
+  <div class="callout-title">Prashanth on Observability — Across All Tracks</div>
+  <p>Regardless of which track you choose, you will learn about <strong>observability and monitoring</strong> — how to trace what tools are being called, what information is being passed between parts of the agent, and whether the agent is behaving as expected. This is Google Cloud's operations suite applied to agentic systems. It is what separates a hobby project from a production deployment.</p>
+</div>
+
+
+<!-- SECTION 10 -->
+<h2><span class="n">10</span> Google Cloud as the Home for Agents</h2>
+
+<p>Prashanth closes his main talk by making the case for Google Cloud as the complete infrastructure platform for agentic applications. This is a product pitch, but it is grounded in real technical specifics — and understanding the ecosystem is useful for your own architecture decisions.</p>
+
+<table>
+  <thead><tr><th>Capability</th><th>What Google Cloud Offers</th></tr></thead>
+  <tbody>
+    <tr><td>Models</td><td>Gemini (first-party), Gemma (open source), 150+ third-party models via Model Garden on Vertex AI</td></tr>
+    <tr><td>Databases</td><td>AlloyDB, Cloud SQL, Cloud Spanner, Firestore, BigQuery — all vector-ready and AI-ready</td></tr>
+    <tr><td>Runtimes</td><td>Cloud Run (serverless containers), Agent Engine (purpose-built for agents), GKE (Kubernetes for full control)</td></tr>
+    <tr><td>Tool connectivity</td><td>Native connectors for Google Drive, Gmail, Maps, and hundreds of other services via MCP</td></tr>
+    <tr><td>Monitoring</td><td>Cloud Operations Suite — full tracing, logging, and observability for production agents</td></tr>
+    <tr><td>Regions</td><td>Multiple APAC regions including Mumbai and Delhi (India), enabling data residency compliance</td></tr>
+  </tbody>
+</table>
+
+<p>The pitch Prashanth makes is this: you should not have to stitch together infrastructure from five different providers to run a production agent. Google Cloud provides everything in one ecosystem, and the services have low-latency connections to each other because they run on the same internal network. An agent on Cloud Run calling Gemini on Vertex AI has much lower latency than the same agent calling Gemini from your laptop over the public internet.</p>
+
+
+<!-- SECTION 11 -->
+<h2><span class="n">11</span> The Guided Challenge-Based Learning Philosophy</h2>
+
+<p>Before the Q&A, Prashanth makes an interesting meta-point. He says the programme itself is designed on an <em>agentic principle</em> — it is outcome-focused, not instruction-focused. This is not just a clever analogy. It has direct implications for how you should approach the curriculum.</p>
+
+<blockquote>"This programme is also outcome-focused. You are not just sitting through lectures. You will go through guided challenge-based learning — you will do hands-on, complete exercises, solve assessments and challenges, implement and submit projects, and challenge yourself with hackathons."</blockquote>
+
+<p>The intended outcome is not just that you understand agents theoretically. The intended outcome is that you leave the programme with <strong>market-ready projects and skills that you can immediately apply or showcase</strong>. The learning is structured to produce tangible, demonstrable work — the kind of portfolio output you can show in a job interview, on a LinkedIn post, or in a GitHub repository.</p>
+
+
+<!-- SECTION 12 -->
+<h2><span class="n">12</span> Live Q&A — Six Questions Answered in Full</h2>
+
+<p>The final third of the session is a live Q&A where Prashanth answers questions from participants. These answers contain practical details that do not appear in the main talk and are worth reading carefully.</p>
+
+<div class="qa">
+  <div class="qa-q">What are the prerequisites for ADK? What will we actually learn?</div>
+  <div class="qa-a">
+    <p>The only genuine prerequisite is <strong>the ability to program</strong>. If you can read and write Python, you are well-positioned — the courses are Python-focused. ADK supports other languages, but the workshops use Python. You do not need prior machine learning knowledge, mathematics beyond basic programming, or any prior Gen AI experience.</p>
+    <p>What you will learn: how to build agents with ADK; how to deploy agents to Cloud Run; how to connect agents to tools using MCP; how to test and observe your agent using ADK's local development UI (which has a built-in evaluation tab for running test cases); and how to use ADK's debugging capabilities to understand what is happening when your agent runs.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q">Which database is recommended for agentic AI?</div>
+  <div class="qa-a">
+    <p>Prashanth's answer: <strong>the database you are already using is probably fine</strong>, because all Google Cloud databases are vector-ready and AI-ready. However, the curriculum will focus on <strong>PostgreSQL-compliant databases</strong> — specifically <strong>Cloud SQL</strong> and <strong>AlloyDB</strong> — because they are the most widely used and require no new learning. If you already know PostgreSQL, you are already prepared.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q">How much does Cloud Run cost? Will we get charged?</div>
+  <div class="qa-a">
+    <p>Cloud Run has a <strong>generous free tier</strong>. Prashanth estimates upwards of a thousand calls per day are free — you can verify the exact numbers in the documentation. For the learning and development phase of this programme, you should not be charged anything. The programme also provides credits. If you eventually build something popular that drives real traffic beyond the free tier, you will start to incur costs — but that would be a good problem to have.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q">Can AI orchestration be used in cybersecurity and high-end sales?</div>
+  <div class="qa-a">
+    <p>Prashanth's answer is an enthusiastic <strong>yes</strong> for both. For cybersecurity specifically, he gives concrete examples: agents that triage security incidents, monitor systems for new vulnerabilities and check whether they affect your infrastructure, observe and alert on suspicious patterns. He also notes that Google Cloud has <strong>out-of-the-box agentic security products</strong> — bot detection, MCP server protection, and others — for teams that want managed security rather than DIY.</p>
+    <p>For sales, he mentions agents that use real-time signals and market data to adapt sales and marketing plans dynamically. The common thread is: any domain where goals are clear, data is available, and decisions need to be made adaptively in real time is a strong candidate for agentic systems.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q">How do I pick the right model for my use case? How do I test which one is best?</div>
+  <div class="qa-a">
+    <p>Prashanth recommends a specific workflow: <strong>start with Gemini Flash</strong> — the cost-effective, fast model. Build your system. Before you worry about which model to use, <strong>build your evaluation framework first</strong>. Define what "good output" looks like for your specific use case. Create test cases — a set of inputs and expected outputs. Run those evals against your agent regularly as you iterate.</p>
+    <p>Once you have that evaluation framework, <em>then</em> you can swap models and compare. Run Gemini Flash against your evals. Run Gemini Pro against the same evals. Compare performance against cost. Without an eval framework, you are guessing. With one, you are engineering.</p>
+    <p>ADK has an <strong>evaluation tab built into its local development UI</strong> for exactly this purpose. Use it from the beginning.</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q">Can agents be used in regulated environments like healthcare or finance?</div>
+  <div class="qa-a">
+    <p>The answer is nuanced. Prashanth says it is not a binary yes or no — it depends on what the specific regulation requires. Two common regulatory constraints he addresses:</p>
+    <p><strong>Data residency:</strong> If your regulation requires that data stays within a country's borders, you can still use agents — but you must deploy all components (model, database, APIs) within the compliant region. Google Cloud has regions in Mumbai and Delhi for India, and multiple regions across APAC. Staying within a region is technically straightforward.</p>
+    <p><strong>Human-in-the-loop requirements:</strong> In healthcare, you may be prohibited from giving medical recommendations directly to patients without physician review. In this case, you can still use an agent — but you must ensure the agent's output goes to a human reviewer before reaching the end user. Design your agent with a mandatory human review step. Do not make it fully autonomous in these contexts.</p>
+    <p><strong>Explainability requirements:</strong> If the regulation requires you to explain every decision, use ADK's workflow agents (sequential, rule-based flows) rather than fully autonomous LLM agents. You trade some flexibility for traceability.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="callout purple">
+  <div class="callout-title">Closing Thought from Prashanth</div>
+  <p>The session closes with one idea that Prashanth returns to repeatedly throughout: agents are outcome-focused, and so is this programme. The goal is not just that you understand these concepts — it is that you produce something real, deployable, and demonstrable. <strong>The best participants will not just complete the steps; they will think carefully about what problem they want to solve, use the tracks as infrastructure, and build something they are genuinely proud to show.</strong></p>
+</div>
+
+</body>
+</html>

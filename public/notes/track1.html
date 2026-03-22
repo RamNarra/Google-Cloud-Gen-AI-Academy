@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track 1 — Agentic AI: From Design to Deployment</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f13;
+    --surface: #15171d;
+    --surface2: #1c1f28;
+    --border: #2a2d3a;
+    --accent: #5b8fff;
+    --accent2: #ff6b6b;
+    --accent3: #4ecdc4;
+    --accent4: #ffd166;
+    --text: #dce3f0;
+    --muted: #7a8099;
+    --code-bg: #111318;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 32px 120px;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(91, 143, 255, 0.1);
+    border: 1px solid rgba(91, 143, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* SECTION HEADERS */
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 56px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2 .num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: rgba(91, 143, 255, 0.12);
+    border: 1px solid rgba(91, 143, 255, 0.2);
+    padding: 3px 9px;
+    border-radius: 3px;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent3);
+    margin: 32px 0 12px;
+  }
+
+  h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--accent4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 24px 0 10px;
+  }
+
+  p { margin-bottom: 16px; color: var(--text); }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-left: 3px solid;
+  }
+
+  .callout.blue {
+    background: rgba(91, 143, 255, 0.07);
+    border-color: var(--accent);
+  }
+
+  .callout.red {
+    background: rgba(255, 107, 107, 0.07);
+    border-color: var(--accent2);
+  }
+
+  .callout.green {
+    background: rgba(78, 205, 196, 0.07);
+    border-color: var(--accent3);
+  }
+
+  .callout.yellow {
+    background: rgba(255, 209, 102, 0.07);
+    border-color: var(--accent4);
+  }
+
+  .callout-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-style: normal;
+  }
+
+  .callout.blue .callout-title { color: var(--accent); }
+  .callout.red .callout-title { color: var(--accent2); }
+  .callout.green .callout-title { color: var(--accent3); }
+  .callout.yellow .callout-title { color: var(--accent4); }
+
+  .callout p { margin-bottom: 0; font-size: 0.96rem; }
+
+  /* TASK BOX */
+  .task-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent4);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 32px 0;
+  }
+
+  .task-box .task-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent4);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .task-box ol, .task-box ul {
+    padding-left: 20px;
+  }
+
+  .task-box li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* CODE */
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.84em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    border-radius: 4px;
+    color: #a8d8ff;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #c9d9f0;
+  }
+
+  pre .comment { color: #4a5568; font-style: italic; }
+  pre .key { color: #ff9d6e; }
+  pre .val { color: #a8d8ff; }
+  pre .str { color: #a8ffb0; }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.92rem;
+  }
+
+  th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(42, 45, 58, 0.5);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--accent3); white-space: nowrap; }
+
+  /* DIAGRAM */
+  .diagram {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin: 24px 0;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 2;
+    color: var(--muted);
+  }
+
+  .diagram .box {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 16px;
+    color: var(--text);
+    margin: 2px 4px;
+  }
+
+  .diagram .box.root { border-color: var(--accent); color: var(--accent); }
+  .diagram .box.seq { border-color: var(--accent3); color: var(--accent3); }
+  .diagram .box.agent { border-color: var(--accent4); color: var(--accent4); }
+  .diagram .box.tool { border-color: #a97bff; color: #a97bff; }
+  .diagram .arrow { color: var(--border); margin: 0 4px; }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* SPEAKER QUOTE */
+  blockquote {
+    border-left: 2px solid var(--border);
+    margin: 20px 0;
+    padding: 8px 20px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 56px;
+  }
+
+  .toc-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .toc ol {
+    padding-left: 20px;
+  }
+
+  .toc li {
+    margin-bottom: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+
+  .toc li span { color: var(--muted); }
+
+  /* HIGHLIGHT */
+  mark {
+    background: rgba(255, 209, 102, 0.15);
+    color: var(--accent4);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  strong { color: #fff; font-weight: 600; }
+  em { font-style: italic; color: var(--accent3); }
+
+  /* STEP INDICATOR */
+  .step {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .step-content { flex: 1; }
+  .step-content p { margin-bottom: 6px; }
+
+  /* SCROLL */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">Google Cloud Gen AI Academy · APAC 2026 · Track 1</div>
+  <h1>Agentic AI: From <span>Design</span> to Deployment</h1>
+  <p class="subtitle">Speaker: Tuya (Developer Relations Engineer, Google) · Full Workshop Notes by Claude</p>
+</div>
+
+<div class="toc">
+  <div class="toc-title">Contents</div>
+  <ol>
+    <li>What is Track 1 about? <span>— The big picture</span></li>
+    <li>The Evolution of AI: From Prompts to Agents <span>— How we got here</span></li>
+    <li>What is an AI Agent? <span>— The formula: Model + Tools + Orchestration</span></li>
+    <li>ADK — Agent Development Kit <span>— Google's open-source agent framework</span></li>
+    <li>Three Agent Types in ADK <span>— LLM, Workflow, Custom</span></li>
+    <li>Workflow Agents Deep Dive <span>— Sequential, Parallel, Loop</span></li>
+    <li>Cloud Run <span>— Why local is not production</span></li>
+    <li>The Hands-On Lab <span>— Zoo Tour Guide Agent walkthrough</span></li>
+    <li>The Full Agent Architecture Explained <span>— Code-level understanding</span></li>
+    <li>Deploying to Cloud Run <span>— Step by step</span></li>
+    <li>Security Principles <span>— What you must not ignore</span></li>
+    <li>Your Checklist <span>— What to do right now</span></li>
+  </ol>
+</div>
+
+
+<!-- SECTION 1 -->
+<h2><span class="num">01</span> What is Track 1 About?</h2>
+
+<p>The speaker opens by situating this track within the larger Gen AI Academy. This track — Track 1 — is specifically about one thing: <strong>how to go from just building an AI agent on your laptop to running it as a real, scalable, production-ready service that anyone on the internet can use.</strong></p>
+
+<p>The three technologies you will use to achieve this are:</p>
+
+<table>
+  <thead><tr><th>Technology</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td>Gemini</td><td>The language model — the "brain" of your agent</td></tr>
+    <tr><td>ADK</td><td>Agent Development Kit — the framework you use to build and wire up the agent</td></tr>
+    <tr><td>Cloud Run</td><td>Google's serverless platform — where you deploy the agent so others can reach it</td></tr>
+  </tbody>
+</table>
+
+<p>Tuya puts it simply: the goal is to teach you to <em>"move from just building a prototype into a production-ready agent."</em> That is the theme of the entire workshop.</p>
+
+
+<!-- SECTION 2 -->
+<h2><span class="num">02</span> The Evolution of AI — How We Got to Agents</h2>
+
+<p>Before explaining what agents are, Tuya walks through the history of how AI systems evolved. This context is important because understanding <em>why</em> agents exist tells you exactly <em>when</em> to use them.</p>
+
+<h3>Stage 1 — Plain LLM with a Prompt</h3>
+<p>A few years ago, using AI meant sending a text prompt to a large language model and getting a text response back. You would use it to write reports, answer questions, analyse trends. The model was just a clever text-in, text-out machine. <strong>The problem?</strong> These models would sometimes produce plausible-sounding but factually wrong answers. They were confident, but not always correct. This phenomenon is called <em>hallucination</em>.</p>
+
+<h3>Stage 2 — RAG (Retrieval-Augmented Generation)</h3>
+<p>To reduce hallucination, developers introduced <strong>RAG</strong>. The idea is this: before sending a question to the language model, you first retrieve relevant, verified information from a database or document store. You include that information in the context window alongside the question. The model is now answering based on correct facts, not just its training data. <strong>This is called "grounding" — you are anchoring the model's output to the truth.</strong></p>
+
+<div class="callout blue">
+  <div class="callout-title">Analogy</div>
+  <p>Imagine asking someone a question. A plain LLM is like a person who answers from memory and might confabulate. A RAG-enabled LLM is like that person being handed a relevant document first — they now answer based on what is written in front of them.</p>
+</div>
+
+<h3>Stage 3 — LLM + Tools</h3>
+<p>RAG solved the accuracy problem, but models still could not <em>act</em>. They could reason and respond, but they could not go and fetch data from a live API, write to a database, or trigger an external process. So <strong>tooling</strong> was added. A tool is simply a function that the model is allowed to call — something like "search this database," "call this API," or "read this file." The model reasons about <em>which</em> tool to use and <em>when</em> to use it.</p>
+
+<h3>Stage 4 — A Single Agent</h3>
+<p>Once you combine a language model with a set of tools <em>and</em> a reasoning loop — a mechanism by which the model keeps deciding what to do next until the task is complete — you have an <strong>agent</strong>. An agent is self-directing. It does not just answer one question; it pursues a goal across multiple steps.</p>
+
+<h3>Stage 5 — Multi-Agent Systems</h3>
+<p>A single agent with many tools gets complex and hard to maintain. The cleaner solution is to have <strong>multiple specialised agents</strong> that each do one job well, and then collaborate. One agent books a calendar. Another sends an email. Another searches the web. A coordinating agent decides which sub-agent to call, and when. This is where we are now — building multi-agent systems.</p>
+
+<div class="diagram">
+  <div><span class="box">Plain LLM</span> <span class="arrow">→</span> <span class="box">+ RAG</span> <span class="arrow">→</span> <span class="box">+ Tools</span> <span class="arrow">→</span> <span class="box agent">Single Agent</span> <span class="arrow">→</span> <span class="box root">Multi-Agent System</span></div>
+</div>
+
+
+<!-- SECTION 3 -->
+<h2><span class="num">03</span> What Exactly is an AI Agent?</h2>
+
+<p>Tuya gives a clean formula. An AI agent has exactly three components:</p>
+
+<table>
+  <thead><tr><th>Component</th><th>What it is</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>Model</td><td>The reasoning brain</td><td>Gemini 2.5 Flash, Gemini 3.0 Pro, Gemma 3</td></tr>
+    <tr><td>Tools</td><td>What the agent can do — APIs, databases, sub-agents</td><td>Wikipedia search, calendar API, file reader</td></tr>
+    <tr><td>Orchestration</td><td>The coordinator — instructions, guardrails, memory, task tracking</td><td>ADK (Agent Development Kit)</td></tr>
+  </tbody>
+</table>
+
+<p>Without orchestration, you just have a model and some tools floating around. The orchestration layer is what brings them together into a coherent, purposeful system. It gives the agent a <em>persona</em> (its instructions), <em>memory</em> (so it can remember what it has done), and <em>guardrails</em> (so it does not do things it should not).</p>
+
+<div class="callout green">
+  <div class="callout-title">Key Insight</div>
+  <p>ADK is precisely the orchestration layer. Its job is to make building that coordination infrastructure easy, so you are not writing it all from scratch.</p>
+</div>
+
+
+<!-- SECTION 4 -->
+<h2><span class="num">04</span> ADK — The Agent Development Kit</h2>
+
+<p>Tuya describes ADK in these terms: it is a <strong>flexible, modular, open-source framework</strong> for building and deploying AI agents. Let us unpack each adjective:</p>
+
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 10px;"><strong>Flexible</strong> — you are not locked into one model or one deployment target. ADK works with Gemini natively but can use any model that LiteLLM supports.</li>
+  <li style="margin-bottom: 10px;"><strong>Modular</strong> — you build your agent from composable pieces: agents, tools, memory stores, callbacks. Swap parts without rewriting everything.</li>
+  <li style="margin-bottom: 10px;"><strong>Open-source</strong> — the code is public. You can inspect it, contribute to it, or self-host it.</li>
+</ul>
+
+<p>Here is a summary of everything ADK provides out of the box:</p>
+
+<table>
+  <thead><tr><th>Capability</th><th>What it means for you</th></tr></thead>
+  <tbody>
+    <tr><td>Agent builder</td><td>Define agents with instructions, tools, memory in a few lines of Python</td></tr>
+    <tr><td>Orchestration</td><td>Chain agents in sequential, parallel, or loop patterns</td></tr>
+    <tr><td>Planning & callbacks</td><td>Hook into the agent's reasoning steps</td></tr>
+    <tr><td>Bidirectional streaming</td><td>Real-time, back-and-forth communication with your agent</td></tr>
+    <tr><td>Evaluation (evals)</td><td>Test your agent's output quality against defined test cases</td></tr>
+    <tr><td>Artifact management</td><td>Store and retrieve files produced by the agent</td></tr>
+    <tr><td>Code execution tool</td><td>Agent can write and run code to get results</td></tr>
+    <tr><td>Deploy command</td><td>One command ships your agent to Cloud Run as a Docker container</td></tr>
+  </tbody>
+</table>
+
+<div class="callout yellow">
+  <div class="callout-title">Compatibility Note</div>
+  <p>ADK is not isolated to its own ecosystem. It works natively with <strong>LangChain tools</strong> and <strong>CrewAI tools</strong>. So if you find a LangChain Wikipedia tool, you can plug it directly into an ADK agent — which is exactly what the lab does.</p>
+</div>
+
+
+<!-- SECTION 5 -->
+<h2><span class="num">05</span> The Three Agent Types in ADK</h2>
+
+<p>This is one of the most important conceptual sections of the workshop. ADK lets you build three fundamentally different kinds of agents, and choosing the right one for the right job is your first major design decision.</p>
+
+<h3>Type 1 — LLM Agent</h3>
+<p>This is the standard agent. The language model is the brain. When the user inputs something, the model receives it, decides what to do, calls tools if needed, and generates a response. This is the workhorse type. Use it when your task requires reasoning, synthesis, or dynamic decision-making.</p>
+
+<h3>Type 2 — Workflow Agent</h3>
+<p>Sometimes you do not need AI reasoning to decide what happens next — you know exactly what the order of operations should be. Workflow agents manage the <em>flow of execution</em> rather than making decisions themselves. They are the conductors. Use them when you want to <strong>control how multiple agents or steps execute</strong> — whether that is one after another, all at the same time, or in a loop.</p>
+
+<h3>Type 3 — Custom Agent</h3>
+<p>When your business logic is too unique to fit into either of the above patterns — when you need very specific control over how an agent decides and acts — you build a custom agent from scratch. You implement the full logic yourself. Tuya describes this as the option for <em>"fuzzy logic"</em> use cases that do not map cleanly to any standard pattern.</p>
+
+
+<!-- SECTION 6 -->
+<h2><span class="num">06</span> Workflow Agents — Deep Dive</h2>
+
+<p>The lab makes heavy use of workflow agents, specifically the sequential type, so Tuya spends time explaining all three sub-patterns. Pay close attention to these — they become the backbone of your zoo agent.</p>
+
+<h3>Sequential Agent — One After Another</h3>
+<p>Agents run in order: Step 1 finishes, then Step 2 starts, then Step 3. There is no branching, no skipping. Each agent receives the output of the previous one. Use this when the result of step A is needed as input for step B.</p>
+
+<div class="diagram">
+  <span class="box agent">Agent 1</span> <span class="arrow">→</span> <span class="box agent">Agent 2</span> <span class="arrow">→</span> <span class="box agent">Agent 3</span>
+</div>
+
+<p><strong>Lab use case:</strong> The zoo agent runs the Researcher Agent first, then passes that research output to the Response Formatter Agent. Pure sequential.</p>
+
+<h3>Parallel Agent — All at Once</h3>
+<p>All sub-agents start simultaneously. They work independently and finish at their own pace. Use this when tasks do not depend on each other and you want speed.</p>
+
+<div class="diagram">
+  <div><span class="box seq">Parallel Controller</span></div>
+  <div style="margin-top:4px;">
+    <span class="arrow">↓</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">↓</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="arrow">↓</span>
+  </div>
+  <div>
+    <span class="box agent">Agent 1</span>&nbsp;&nbsp;&nbsp;<span class="box agent">Agent 2</span>&nbsp;&nbsp;&nbsp;<span class="box agent">Agent 3</span>
+  </div>
+</div>
+
+<p><strong>Example use case:</strong> You are building a research tool that simultaneously searches three different sources — Wikipedia, a news API, and an internal database. Running all three in parallel is much faster than running them one by one.</p>
+
+<h3>Loop Agent — Repeat Until Done</h3>
+<p>The loop agent executes a set of steps repeatedly until a <strong>termination condition</strong> is met. It stops when either the condition is satisfied, or the maximum number of iterations is reached — whichever comes first.</p>
+
+<p>Tuya gives a memorable example for this. Imagine you are building a coding agent whose job is to write code that passes 10 test cases. Here is how the loop works:</p>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><p>Agent generates the initial code.</p></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><p>The test runner checks how many of the 10 test cases pass. Let us say 7 pass.</p></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><p>Since the condition (all 10 passing) is not yet met, the loop runs again. The agent revises its code.</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><p>The loop continues until either all 10 test cases pass, or the maximum number of iterations (say, 5) is reached.</p></div></div>
+
+<div class="callout blue">
+  <div class="callout-title">Why This Matters</div>
+  <p>The loop agent is how you implement <strong>self-correction</strong> in AI systems. It is the pattern behind any AI agent that iterates and improves — code generation, report writing, strategy refinement. For your CTF background, think of it as: the agent keeps trying attack vectors until one works or it exhausts its budget.</p>
+</div>
+
+
+<!-- SECTION 7 -->
+<h2><span class="num">07</span> Cloud Run — Why Your Local Machine is Not Enough</h2>
+
+<p>At this point in the workshop, Tuya shifts to the deployment infrastructure. He is setting up the answer to a crucial question: <em>once you build an agent, how do other people use it?</em></p>
+
+<p>The blunt answer is that running it on your laptop means only you can use it. Your friends, your users, people in different time zones — none of them can reach it. You need a server. But managing a server yourself is complex. <strong>Cloud Run solves this.</strong></p>
+
+<p>Cloud Run is Google Cloud's <strong>serverless, container-based runtime platform</strong>. Here is what that means practically:</p>
+
+<table>
+  <thead><tr><th>Feature</th><th>What it means for you</th></tr></thead>
+  <tbody>
+    <tr><td>Serverless</td><td>You never manage virtual machines, operating systems, or hardware. Google handles all of it.</td></tr>
+    <tr><td>Container-based</td><td>Your agent is packaged into a Docker container. ADK does this packaging for you automatically.</td></tr>
+    <tr><td>Scale to zero</td><td>When nobody is using your agent, it shuts down and costs you nothing. When a request comes in, it starts up again automatically.</td></tr>
+    <tr><td>Auto-scale up</td><td>You define a maximum. If 1,000 users hit your agent simultaneously, Cloud Run spins up more instances automatically.</td></tr>
+    <tr><td>Low latency to Gemini</td><td>Because Cloud Run and Gemini are both inside Google Cloud's internal network, the calls between them are faster than calling Gemini from your laptop over the internet.</td></tr>
+    <tr><td>Logging built-in</td><td>Every request, every error, every tool call — all logged automatically. You can inspect them in the Cloud Console.</td></tr>
+  </tbody>
+</table>
+
+<div class="callout green">
+  <div class="callout-title">The ADK Deploy Command</div>
+  <p>The most important thing to know: ADK provides a single command — <code>adk deploy cloud run</code> — that takes your Python agent code, packages it into a Docker container, pushes it to Google's Artifact Registry, and deploys it to Cloud Run. You do not write a Dockerfile. You do not configure Kubernetes. One command.</p>
+</div>
+
+
+<!-- SECTION 8 -->
+<h2><span class="num">08</span> The Hands-On Lab — The Zoo Tour Guide Agent</h2>
+
+<p>The lab builds a multi-agent system that acts as a <strong>Zoo Tour Guide</strong>. When a user asks a question about an animal — "Where can I find polar bears?" or "What do tigers eat?" — the system researches the answer and responds in a clean, formatted way. The data source is Wikipedia.</p>
+
+<p>This might sound toy-ish, but the architecture is identical to a real production system. The Wikipedia tool could just as easily be a threat-intel API, a CVE database, or a corporate knowledge base. The structure is what you are learning.</p>
+
+<p>Here is the complete architecture of what gets built:</p>
+
+<div class="diagram">
+  <div><strong style="color:#fff;">User Input</strong></div>
+  <div><span class="arrow">↓</span></div>
+  <div><span class="box root">Root Agent (Greeter)</span></div>
+  <div style="font-size:0.78rem; color: var(--muted); margin: 4px 0;">Welcomes user, understands intent, transfers control</div>
+  <div><span class="arrow">↓ transfer control</span></div>
+  <div><span class="box seq">Tour Guide Workflow (Sequential Agent)</span></div>
+  <div style="margin-top:8px; display:flex; justify-content:center; gap:32px; flex-wrap:wrap;">
+    <div>
+      <div><span class="box agent">Researcher Agent</span></div>
+      <div style="font-size:0.72rem; color:var(--muted); margin-top:4px;">Uses zoo data + Wikipedia</div>
+      <div style="margin-top:4px;"><span class="box tool">Wikipedia Tool</span>&nbsp;<span class="box tool">Zoo Data Tool</span></div>
+    </div>
+    <div style="display:flex; align-items:center; color:var(--muted); font-size:1.2rem;">→</div>
+    <div>
+      <div><span class="box agent">Response Formatter Agent</span></div>
+      <div style="font-size:0.72rem; color:var(--muted); margin-top:4px;">Takes research_data, formats output</div>
+    </div>
+  </div>
+  <div style="margin-top:12px;"><span class="arrow">↓</span></div>
+  <div><strong style="color:#fff;">Formatted Response to User</strong></div>
+</div>
+
+<h3>How Data Passes Between Agents — The output_key Pattern</h3>
+
+<p>This is a detail Tuya explains carefully and it is worth understanding completely. When the Researcher Agent finishes, it produces output. How does the Response Formatter Agent access that output?</p>
+
+<p>ADK uses a pattern called <strong><code>output_key</code></strong>. When you define an agent, you can assign a key name to its output. Whatever that agent produces gets stored in the shared session state under that key. The next agent can then reference the key directly — like looking up a variable — instead of receiving the entire previous context.</p>
+
+<pre>
+<span class="comment"># Researcher agent stores its output under the key "research_data"</span>
+researcher_agent = LlmAgent(
+    name=<span class="str">"researcher"</span>,
+    instruction=<span class="str">"Research the animal using zoo data and Wikipedia..."</span>,
+    tools=[zoo_data_tool, wikipedia_tool],
+    <span class="key">output_key</span>=<span class="str">"research_data"</span>
+)
+
+<span class="comment"># Formatter agent reads that key from state</span>
+formatter_agent = LlmAgent(
+    name=<span class="str">"formatter"</span>,
+    instruction=<span class="str">"Use {research_data} to format a clean response..."</span>
+)
+</pre>
+
+<div class="callout blue">
+  <div class="callout-title">Why Not Just Pass Everything?</div>
+  <p>If you passed the entire context from one agent to the next, the context window would grow rapidly and become expensive. Using <code>output_key</code> means each agent only receives what it actually needs, keeping things efficient and predictable.</p>
+</div>
+
+<h3>Root Agent vs Sub-Agent — Transfer Control vs Tool Call</h3>
+
+<p>The Root Agent is the entry point. It greets the user and routes their request. When a user asks about an animal, the Root Agent does not handle that itself — it delegates to the Tour Guide Workflow.</p>
+
+<p>There are two ways to delegate in ADK:</p>
+
+<table>
+  <thead><tr><th>Pattern</th><th>Behaviour</th><th>When to use</th></tr></thead>
+  <tbody>
+    <tr><td>Transfer control</td><td>The root agent hands over completely. The sub-agent takes over the conversation.</td><td>When the sub-agent needs to run a full multi-step workflow</td></tr>
+    <tr><td>Agent as tool</td><td>The root agent calls the sub-agent like a function, gets its output, and continues.</td><td>When the root agent needs the result but remains in control</td></tr>
+  </tbody>
+</table>
+
+<p>In the lab, the Root Agent uses <strong>transfer control</strong> — once the user asks a question, the Tour Guide Workflow takes over entirely.</p>
+
+
+<!-- SECTION 9 -->
+<h2><span class="num">09</span> The Code — File by File</h2>
+
+<p>Tuya walks through the project structure and explains what each file does. Here is what your project folder looks like:</p>
+
+<pre>
+zoo-guide-agent/
+├── <span class="key">__init__.py</span>       <span class="comment"># Makes this folder a Python package; imports root agent</span>
+├── <span class="key">agent.py</span>          <span class="comment"># All agent definitions, tools, workflow logic</span>
+├── <span class="key">requirements.txt</span>  <span class="comment"># Python dependencies (google-adk, langchain, wikipedia...)</span>
+└── <span class="key">.env</span>              <span class="comment"># Environment variables — PROJECT_ID, MODEL, SERVICE_ACCOUNT</span>
+</pre>
+
+<h4>__init__.py</h4>
+<p>This is the Python package initialiser. It does one thing: imports the root agent object. ADK needs this to identify the entry point of your application.</p>
+
+<pre>
+from .agent import root_agent
+</pre>
+
+<h4>requirements.txt</h4>
+<p>Tuya uses <code>google-adk==1.14</code>. He notes you can update to the latest version if you prefer. Other dependencies: LangChain (for the Wikipedia tool) and wikipedia itself.</p>
+
+<pre>
+google-adk==1.14
+langchain
+wikipedia
+</pre>
+
+<h4>.env</h4>
+<p>This is the configuration file. It holds sensitive and environment-specific values that you do not want hardcoded in your source code.</p>
+
+<pre>
+<span class="key">PROJECT_ID</span>=<span class="str">your-project-id</span>           <span class="comment"># From Google Cloud Console</span>
+<span class="key">PROJECT_NUMBER</span>=<span class="str">your-project-number</span>   <span class="comment"># Needed for Cloud Run deployment</span>
+<span class="key">SERVICE_ACCOUNT</span>=<span class="str">name@project-id.iam.gserviceaccount.com</span>
+<span class="key">MODEL</span>=<span class="str">gemini-2.5-flash</span>               <span class="comment"># Swap to 3.0 Pro or Flash if you want</span>
+</pre>
+
+<div class="callout red">
+  <div class="callout-title">⚠ Critical Security Rule</div>
+  <p>Never commit your <code>.env</code> file to GitHub. Not even to a private repo. Not even "just for testing." If it contains project credentials or an API key, it can be exploited. Add <code>.env</code> to your <code>.gitignore</code> file before you do anything else.</p>
+</div>
+
+<h4>agent.py — The Core Logic</h4>
+<p>This is where everything lives. Tuya walks through it in this order:</p>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-content">
+    <p><strong>Imports</strong> — ADK agent types, LangChain Wikipedia tool, Cloud Logging, environment loading.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-content">
+    <p><strong>Cloud Logging initialisation</strong> — every prompt gets logged to Google Cloud so you can trace what users are asking and what tools are being called.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-content">
+    <p><strong>Tool definitions</strong> — the Wikipedia tool (from LangChain) and the zoo data tool (a local function) are defined. At this stage, they are just functions. They have not been given to any agent yet.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">4</div>
+  <div class="step-content">
+    <p><strong>Researcher Agent</strong> — instruction: "You are a researcher with access to zoo data and Wikipedia. Use zoo data first. If not found, search Wikipedia. Synthesise the result." Tools attached: zoo tool + Wikipedia tool. <code>output_key = "research_data"</code>.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">5</div>
+  <div class="step-content">
+    <p><strong>Response Formatter Agent</strong> — instruction: "Use <code>{research_data}</code> and format a clean, helpful response." No tools needed — it only works with what the Researcher already found.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">6</div>
+  <div class="step-content">
+    <p><strong>Tour Guide Workflow</strong> — a <code>SequentialAgent</code> that chains Researcher → Formatter. This is the worker that does the actual research and response.</p>
+  </div>
+</div>
+<div class="step">
+  <div class="step-num">7</div>
+  <div class="step-content">
+    <p><strong>Root Agent (Greeter)</strong> — instruction: "Greet the user. When they ask about an animal, store their prompt and transfer control to the Tour Guide Workflow." Tools: <code>app_prompt_to_state</code> (saves the prompt), <code>tour_guide_workflow</code> (the sub-agent). This is the <code>root_agent</code> that ADK uses as its entry point.</p>
+  </div>
+</div>
+
+
+<!-- SECTION 10 -->
+<h2><span class="num">10</span> Deploying to Cloud Run — Step by Step</h2>
+
+<p>This is the practical sequence Tuya demonstrates live. Follow this exactly when you do the codelab.</p>
+
+<div class="task-box">
+  <div class="task-header">🛠 Lab — Complete Setup Sequence</div>
+  <ol>
+    <li>Go to <code>console.cloud.google.com</code> → Create a new project. Give it a name. Note that <strong>project name and project ID are not always the same</strong> — get the project ID from the portal, not from memory.</li>
+    <li>Open Cloud Shell Editor at <code>shell.cloud.google.com</code>. Authorise when prompted.</li>
+    <li>Enable the required APIs by running this in the terminal:<br>
+    <code>gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com aiplatform.googleapis.com compute.googleapis.com</code></li>
+    <li>In the terminal: <code>mkdir zoo-guide-agent && cd zoo-guide-agent</code></li>
+    <li>Open the workspace folder in the Cloud Shell Editor.</li>
+    <li>Create <code>requirements.txt</code>, <code>__init__.py</code>, <code>agent.py</code> — copy the lab content into each.</li>
+    <li>Get your project ID and number:<br>
+    <code>export PROJECT_ID=$(gcloud config get-value project)</code><br>
+    <code>export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")</code></li>
+    <li>Create a service account (this is for the agent — not your own credentials):<br>
+    <code>gcloud iam service-accounts create zoo-agent-sa --display-name="Zoo Agent SA"</code></li>
+    <li>Grant the service account Vertex AI User role only:<br>
+    <code>gcloud projects add-iam-policy-binding $PROJECT_ID --member="serviceAccount:zoo-agent-sa@$PROJECT_ID.iam.gserviceaccount.com" --role="roles/aiplatform.user"</code></li>
+    <li>Create your <code>.env</code> file with PROJECT_ID, PROJECT_NUMBER, SERVICE_ACCOUNT, and MODEL.</li>
+    <li>Load the env: <code>source .env</code></li>
+    <li>Create a virtual environment, activate it, install requirements:<br>
+    <code>python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt</code></li>
+    <li>Deploy to Cloud Run:<br>
+    <code>adk deploy cloud run --project $PROJECT_ID --region asia-south1 --service-name zoo-tour-guide --with-ui --service-account $SERVICE_ACCOUNT ./</code></li>
+    <li>When prompted to create an Artifact Registry Docker repository, type <code>yes</code>.</li>
+    <li>Wait 5–10 minutes for deployment. You will receive a URL. Browse to it — your agent is live.</li>
+  </ol>
+</div>
+
+<div class="callout yellow">
+  <div class="callout-title">Tuya's Tip on Errors</div>
+  <p>If any command fails or times out, <strong>just run it again</strong>. Most of the setup commands are idempotent — running them twice does not break anything. It either confirms the resource already exists, or completes what was interrupted. Do not panic and start over.</p>
+</div>
+
+<h3>What Happens Under the Hood During Deployment</h3>
+
+<p>When you run the <code>adk deploy</code> command, here is what ADK does automatically behind the scenes:</p>
+
+<div class="step"><div class="step-num">1</div><div class="step-content"><p>Reads your agent.py and packages your Python code into a Docker container image.</p></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-content"><p>Pushes that image to <strong>Artifact Registry</strong> (Google's private container registry — like Docker Hub, but inside your project).</p></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-content"><p>Deploys the container to <strong>Cloud Run</strong> with the configuration you specified — service name, region, service account.</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-content"><p>Since you used <code>--with-ui</code>, it also serves a web-based chat interface at the returned URL so you can interact with your agent in a browser.</p></div></div>
+
+
+<!-- SECTION 11 -->
+<h2><span class="num">11</span> Security — What You Must Not Ignore</h2>
+
+<p>Tuya, to his credit, keeps returning to security throughout the lab. Given your background, you will recognise these immediately — but they are worth documenting because they reflect real production practices.</p>
+
+<h3>Principle of Least Privilege on Service Accounts</h3>
+<p>The agent runs under a <strong>service account</strong> — a non-human identity in Google Cloud. You give the service account only the specific permissions it needs. In this lab, that is just <code>roles/aiplatform.user</code> — the ability to call Vertex AI models. Nothing else. The agent cannot delete your project, read your billing data, or access other Google Cloud services. Tuya is explicit: <em>"We don't want to provide any random access to our service account."</em></p>
+
+<h3>Do Not Share Your Cloud Run URL Publicly (Unless Intended)</h3>
+<p>When you deploy with unauthenticated access enabled (as in this lab — fine for testing), the URL is publicly reachable. Anyone who finds that URL can talk to your agent and <strong>consume your Google Cloud credits</strong>. For a real production system, you would put authentication in front of the endpoint — OAuth, API keys, a firewall rule, or a VPN.</p>
+
+<h3>Environment Files are Secrets</h3>
+<p>Your <code>.env</code> file contains your project ID and service account details. Even if the project number seems harmless, the pattern of leaking configuration to GitHub is dangerous. When the file also contains API keys — from Gemini, VirusTotal, or anything else — the risk is direct credential compromise. Add <code>.env</code> to <code>.gitignore</code>. Always.</p>
+
+<h3>Premium Features Need Auth Layers</h3>
+<p>The lab's agent answers questions for free. But if you extend your agent to do something with real-world consequences — booking tickets, processing payments, accessing personal data — you need a proper authentication and authorisation layer before those capabilities are reachable.</p>
+
+<div class="callout red">
+  <div class="callout-title">Tuya's Exact Words</div>
+  <p>"Always have security concept in your mind so that you are not building random things and don't know where the weakest point in your system is."</p>
+</div>
+
+
+<!-- SECTION 12 -->
+<h2><span class="num">12</span> What to Do Right Now — Your Checklist</h2>
+
+<div class="task-box">
+  <div class="task-header">✅ Immediate Action Items</div>
+  <ol>
+    <li><strong>Log into your Hack2Skill dashboard.</strong> This is your single source of truth. All recordings, codelab links, MCQ access, and project submission — everything is here.</li>
+    <li><strong>Check your email for the Google Cloud credits redemption link.</strong> You need this to run the lab. If you have not received it, request it through the dashboard or reach out on Discord.</li>
+    <li><strong>Complete the Track 1 codelab</strong> — build and deploy the Zoo Guide agent to Cloud Run. Do not skip the deployment step. Most participants will run it locally and stop there. Deploying to Cloud Run puts you in a different tier.</li>
+    <li><strong>Attempt the MCQ assessment.</strong> The MCQ is a gateway. You must clear a minimum score to unlock project submission. It covers what was taught in the workshop — agent types, ADK, Cloud Run, deployment basics.</li>
+    <li><strong>Submit your project.</strong> This opens after you pass the MCQ. Build something aligned with the track — use the zoo agent as your base architecture and replace the tools with something meaningful to you.</li>
+    <li><strong>Participate in the cohort hackathon</strong> — teams of 1 to 4. A single common problem statement is given to all. You solve it with what you have built during the academy phase.</li>
+  </ol>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">Optional but Valuable</div>
+  <p>Complete the <strong>Google Skills Labs</strong> associated with Track 1. These are additional Cloud Skills Boost labs — not mandatory for the certificate, but they go deeper into Vertex AI, Cloud Run, and ADK. Credits are provided. Use them — most participants will not bother, and depth is exactly what separates top-10 performers from the rest.</p>
+</div>
+
+<hr>
+
+<div class="callout yellow">
+  <div class="callout-title">For Your Project Submission — Personal Recommendation</div>
+  <p>The Zoo Tour Guide architecture is: <strong>Root Agent → Sequential Workflow → Researcher (with Wikipedia tool) → Formatter</strong>. Swap Wikipedia for a <strong>CVE feed, VirusTotal API, or threat intelligence API</strong>. Keep the same skeleton. You now have a security intelligence agent that can answer questions like "What are the latest vulnerabilities in OpenSSL?" or "Is this hash associated with known malware?" — deployed live on Cloud Run, production-ready. That is a top-10 submission in a field of chatbots.</p>
+</div>
+
+</body>
+</html>
