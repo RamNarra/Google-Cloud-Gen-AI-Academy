@@ -110,6 +110,18 @@ ul {
   animation: pulseGlow 4.5s ease-in-out infinite;
 }
 
+.hero-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 60% 30%, black, transparent 75%);
+}
+
 .notes-shell {
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -119,6 +131,7 @@ ul {
     rgba(13, 16, 24, 0.9)
   );
   padding: 1.25rem;
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24);
 }
 
 .notes-article {
