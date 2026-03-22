@@ -5,8 +5,8 @@ type SectionHeaderProps = {
 
 export default function SectionHeader({ number, title }: SectionHeaderProps) {
   return (
-    <h2 className="mb-5 mt-14 flex items-center gap-3 text-3xl font-semibold text-[#e7ffe7]">
-      <span className="rounded border border-[#43e8b0]/30 bg-[#43e8b0]/12 px-2.5 py-1 font-mono text-xs tracking-[0.12em] text-[#9cffc8]">
+    <h2 className="mb-6 mt-14 flex items-center gap-3 text-3xl font-semibold text-[#f3f6ff]">
+      <span className="rounded border border-[#43e8b0]/35 bg-[#43e8b0]/12 px-2.5 py-1 font-mono text-xs tracking-[0.12em] text-[#7cf3c6]">
         {number}
       </span>
       <span className="leading-tight">{title}</span>

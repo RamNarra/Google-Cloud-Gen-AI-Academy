@@ -1,22 +1,24 @@
-import Link from "next/link";
+import { readFile } from "fs/promises";
+import path from "path";
 
-export default function TrackTwoPage() {
+import { renderHtmlNotes } from "@/lib/renderHtmlNotes";
+
+export default async function TrackTwoPage() {
+  const html = await readFile(
+    path.join(process.cwd(), "content", "track2-notes.html"),
+    "utf8",
+  );
+
   return (
-    <section className="glass-panel mx-auto max-w-3xl rounded-3xl p-10 text-center shadow-[0_14px_30px_rgba(0,0,0,0.35)]">
-      <p className="mb-4 inline-flex rounded-full border border-[#ffd166]/35 bg-[#ffd166]/14 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.16em] text-[#ffe2a0]">
-        Track 2
-      </p>
-      <h1 className="mb-4 text-4xl font-semibold sm:text-5xl">Coming Soon</h1>
-      <p className="mb-8 text-lg text-[#c4cce5]">
-        Track 2 content will be published after the session materials are
-        released.
-      </p>
-      <Link
-        href="/"
-        className="inline-block rounded-full border border-[#5b8fff]/35 bg-[#5b8fff]/14 px-6 py-2.5 text-sm font-medium text-[#d8e0f0] transition hover:-translate-y-0.5 hover:bg-[#5b8fff]/22"
-      >
-        Back to Home
-      </Link>
+    <section className="mx-auto max-w-5xl">
+      <div className="mb-4 inline-flex rounded-full border border-[#2a3652] bg-[#101523] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#8fa4d8]">
+        Track 2 - Full Notes
+      </div>
+      <div className="notes-shell">
+        <article className="notes-article space-y-4 text-[17px] text-[#dce3f0]">
+          {renderHtmlNotes(html)}
+        </article>
+      </div>
     </section>
   );
 }

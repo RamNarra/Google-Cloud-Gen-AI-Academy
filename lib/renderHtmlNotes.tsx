@@ -51,6 +51,25 @@ const extractBodyHtml = (html: string) => {
   return match ? match[1] : html;
 };
 
+const toneClass = (node: Element) => {
+  if (hasClass(node, "g") || hasClass(node, "green") || hasClass(node, "root"))
+    return "tone-g";
+  if (
+    hasClass(node, "b") ||
+    hasClass(node, "blue") ||
+    hasClass(node, "bl") ||
+    hasClass(node, "seq") ||
+    hasClass(node, "b2")
+  )
+    return "tone-b";
+  if (hasClass(node, "v") || hasClass(node, "purple") || hasClass(node, "p") || hasClass(node, "tool"))
+    return "tone-v";
+  if (hasClass(node, "y") || hasClass(node, "yellow") || hasClass(node, "agent"))
+    return "tone-y";
+  if (hasClass(node, "r") || hasClass(node, "red")) return "tone-r";
+  return "tone-n";
+};
+
 export function renderHtmlNotes(html: string): ReactNode {
   const body = extractBodyHtml(html);
 
@@ -60,8 +79,9 @@ export function renderHtmlNotes(html: string): ReactNode {
     if (hasClass(node, "r")) return "border-[#ff6b6b]/30";
     if (hasClass(node, "v") || hasClass(node, "p"))
       return "border-[#7c6aff]/30";
-    if (hasClass(node, "bl")) return "border-[#5b8fff]/30";
-    return "border-[#224022]";
+    if (hasClass(node, "bl") || hasClass(node, "b"))
+      return "border-[#5b8fff]/30";
+    return "border-[#26334a]";
   };
 
   const options: HTMLReactParserOptions = {
@@ -70,7 +90,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "h1") {
         return (
-          <h1 className="mb-3 text-3xl font-semibold leading-tight text-[#e7ffe7] sm:text-5xl">
+          <h1 className="mb-3 text-3xl font-semibold leading-tight text-[#f3f6ff] sm:text-5xl">
             {domToReact(domNode.children as any, options)}
           </h1>
         );
@@ -91,8 +111,8 @@ export function renderHtmlNotes(html: string): ReactNode {
             title.toLowerCase().includes("file by file")
           ) {
             return (
-              <h2 className="mb-5 mt-14 flex items-center gap-3 rounded-lg border border-[#224022] bg-[#0d140d] px-4 py-3 text-3xl font-semibold text-[#b8ffb8]">
-                <span className="rounded border border-[#43e8b0]/30 bg-[#43e8b0]/12 px-2.5 py-1 font-mono text-xs tracking-[0.12em] text-[#9cffc8]">
+              <h2 className="mb-5 mt-14 flex items-center gap-3 rounded-lg border border-[#2a3652] bg-[#121a2b] px-4 py-3 text-3xl font-semibold text-[#eaf2ff]">
+                <span className="rounded border border-[#43e8b0]/35 bg-[#43e8b0]/12 px-2.5 py-1 font-mono text-xs tracking-[0.12em] text-[#7cf3c6]">
                   {number}
                 </span>
                 <span className="leading-tight">{title}</span>
@@ -105,7 +125,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "h3") {
         return (
-          <h3 className="mb-2 mt-8 text-xl font-semibold text-[#e7ffe7]">
+          <h3 className="mb-2 mt-8 text-xl font-semibold text-[#79a2ff]">
             {domToReact(domNode.children as any, options)}
           </h3>
         );
@@ -118,19 +138,26 @@ export function renderHtmlNotes(html: string): ReactNode {
         );
         if (looksLikeFile) {
           return (
-            <h4 className="mb-2 mt-6 inline-flex rounded border border-[#224022] bg-[#0b150b] px-3 py-1 font-mono text-xs tracking-[0.08em] text-[#9cffc8]">
+            <h4 className="mb-2 mt-6 inline-flex rounded border border-[#2a3652] bg-[#121a2b] px-3 py-1 font-mono text-xs tracking-[0.08em] text-[#9fc3ff]">
               {headingText}
             </h4>
           );
         }
         return (
-          <h4 className="mb-2 mt-6 font-mono text-xs uppercase tracking-[0.14em] text-[#8cb78c]">
+          <h4 className="mb-2 mt-6 font-mono text-xs uppercase tracking-[0.14em] text-[#9db4de]">
             {domToReact(domNode.children as any, options)}
           </h4>
         );
       }
 
       if (domNode.name === "p" && !parentHasClass(domNode, "row")) {
+        if (hasClass(domNode, "meta") || hasClass(domNode, "subtitle")) {
+          return (
+            <p className="mb-3 font-mono text-[12px] leading-6 text-[#7484ad]">
+              {domToReact(domNode.children as any, options)}
+            </p>
+          );
+        }
         return (
           <p className="mb-4 text-[1rem] leading-8">
             {domToReact(domNode.children as any, options)}
@@ -138,11 +165,30 @@ export function renderHtmlNotes(html: string): ReactNode {
         );
       }
 
+      if (domNode.name === "div" && hasClass(domNode, "eyebrow")) {
+        return (
+          <div className="mb-5 flex flex-wrap gap-2.5">
+            {domToReact(domNode.children as any, options)}
+          </div>
+        );
+      }
+
+      if (
+        (domNode.name === "span" || domNode.name === "div") &&
+        hasClass(domNode, "tag")
+      ) {
+        return (
+          <span className={`notes-tag ${toneClass(domNode)}`}>
+            {domToReact(domNode.children as any, options)}
+          </span>
+        );
+      }
+
       if (domNode.name === "div" && hasClass(domNode, "section-label")) {
         return (
-          <div className="mb-4 mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#8cb78c]">
+          <div className="mb-4 mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#8ea3cb]">
             <span>{domToReact(domNode.children as any, options)}</span>
-            <span className="h-px flex-1 bg-[#224022]" />
+            <span className="h-px flex-1 bg-[#2a3652]" />
           </div>
         );
       }
@@ -158,7 +204,7 @@ export function renderHtmlNotes(html: string): ReactNode {
       if (domNode.name === "div" && hasClass(domNode, "card")) {
         return (
           <div
-            className={`mb-4 rounded-xl border bg-gradient-to-b from-[#101610] to-[#0b100b] p-5 shadow-[0_10px_20px_rgba(0,0,0,0.25)] ${cardTone(domNode)} ${
+            className={`mb-4 rounded-xl border bg-gradient-to-b from-[#141b2e] to-[#0f1423] p-5 shadow-[0_10px_20px_rgba(0,0,0,0.28)] ${cardTone(domNode)} ${
               hasClass(domNode, "full") ? "md:col-span-2" : ""
             }`}
           >
@@ -169,7 +215,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "card-title")) {
         return (
-          <div className="mb-4 border-b border-[#224022] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#8cb78c]">
+          <div className="mb-4 border-b border-[#2a3652] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#8ea3cb]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -177,7 +223,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "row")) {
         return (
-          <div className="mb-2 flex items-start gap-2.5 text-[13px] leading-6 text-[#d8ffd8]">
+          <div className="mb-2 flex items-start gap-2.5 text-[13px] leading-6 text-[#dce3f0]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -199,7 +245,23 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "li" && parentHasClass(domNode, "checklist")) {
         return (
-          <li className="flex items-start gap-3 border-b border-[#224022]/40 pb-3 last:border-b-0">
+          <li className="flex items-start gap-3 border-b border-[#2a3652]/40 pb-3 last:border-b-0">
+            {domToReact(domNode.children as any, options)}
+          </li>
+        );
+      }
+
+      if (domNode.name === "ol" && parentHasClass(domNode, "toc")) {
+        return (
+          <ol className="toc-list">
+            {domToReact(domNode.children as any, options)}
+          </ol>
+        );
+      }
+
+      if (domNode.name === "li" && parentHasClass(domNode, "toc")) {
+        return (
+          <li className="toc-item">
             {domToReact(domNode.children as any, options)}
           </li>
         );
@@ -207,7 +269,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "track-header")) {
         return (
-          <div className="mb-1 grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#224022] pb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8cb78c]">
+          <div className="mb-1 grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#2a3652] pb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8ea3cb]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -215,7 +277,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "track-row")) {
         return (
-          <div className="grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#224022]/40 py-2 text-[12px] last:border-b-0">
+          <div className="grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#2a3652]/40 py-2 text-[12px] last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -223,7 +285,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "tier")) {
         return (
-          <div className="flex items-start gap-3 border-b border-[#224022]/40 py-3 text-[13px] last:border-b-0">
+          <div className="flex items-start gap-3 border-b border-[#2a3652]/40 py-3 text-[13px] last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -231,7 +293,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "qa-item")) {
         return (
-          <div className="border-b border-[#224022]/40 py-3 text-[13px] leading-6 last:border-b-0">
+          <div className="border-b border-[#2a3652]/40 py-3 text-[13px] leading-6 last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -314,12 +376,16 @@ export function renderHtmlNotes(html: string): ReactNode {
       if (domNode.name === "pre") {
         const raw = rawText(domNode).replace(/^\n+/, "").replace(/\n+$/, "");
         const lang = raw.includes("gcloud ") ? "bash" : "text";
-        return <CodeBlock language={lang}>{raw}</CodeBlock>;
+        return (
+          <CodeBlock language={lang}>
+            {domToReact(domNode.children as any, options)}
+          </CodeBlock>
+        );
       }
 
       if (domNode.name === "code") {
         return (
-          <code className="rounded border border-[#224022] bg-[#0b150b] px-1.5 py-0.5 text-[#b8ffb8]">
+          <code className="rounded border border-[#2a3652] bg-[#0f1524] px-1.5 py-0.5 text-[#9fc3ff]">
             {text(domNode)}
           </code>
         );
@@ -327,7 +393,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "header")) {
         return (
-          <section className="mb-12 border-b border-[#224022] pb-10">
+          <section className="mb-12 border-b border-[#2a3652] pb-10">
             {domToReact(domNode.children as any, options)}
           </section>
         );
@@ -335,7 +401,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "hdr")) {
         return (
-          <section className="mb-10 border-b border-[#224022] pb-8">
+          <section className="mb-10 border-b border-[#2a3652] pb-8">
             {domToReact(domNode.children as any, options)}
           </section>
         );
@@ -343,30 +409,69 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "toc")) {
         return (
-          <section className="mb-12 rounded-xl border border-[#224022] bg-[#0d120d] p-6">
+          <section className="mb-12 rounded-xl border border-[#2a3652] bg-[#101523] p-6">
             {domToReact(domNode.children as any, options)}
           </section>
         );
       }
 
-      if (domNode.name === "div" && hasClass(domNode, "diagram")) {
+      if (
+        domNode.name === "div" &&
+        (hasClass(domNode, "toc-title") || hasClass(domNode, "toc-label"))
+      ) {
         return (
-          <div className="my-6 rounded-lg border border-[#224022] bg-[#0b150b] p-6 text-center font-mono text-sm leading-8 text-[#a8d8a8]">
+          <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[#7484ad]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
       }
 
+      if (domNode.name === "div" && hasClass(domNode, "task-box")) {
+        return (
+          <section className="my-8 rounded-xl border border-[#2a3652] bg-[#101523] px-6 py-5 shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
+            {domToReact(domNode.children as any, options)}
+          </section>
+        );
+      }
+
+      if (domNode.name === "div" && hasClass(domNode, "task-header")) {
+        return (
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-[#ffd166]">
+            {domToReact(domNode.children as any, options)}
+          </div>
+        );
+      }
+
+      if (domNode.name === "div" && hasClass(domNode, "diagram")) {
+        return (
+          <div className="diagram-wrap my-6 rounded-lg border border-[#2a3652] bg-[#0f1524] p-6 text-center font-mono text-sm leading-8 text-[#b9c3e3]">
+            {domToReact(domNode.children as any, options)}
+          </div>
+        );
+      }
+
+      if ((domNode.name === "span" || domNode.name === "div") && hasClass(domNode, "box")) {
+        return <span className={`box ${toneClass(domNode)}`}>{domToReact(domNode.children as any, options)}</span>;
+      }
+
+      if ((domNode.name === "span" || domNode.name === "div") && hasClass(domNode, "b")) {
+        return <span className={`b ${toneClass(domNode)}`}>{domToReact(domNode.children as any, options)}</span>;
+      }
+
+      if ((domNode.name === "span" || domNode.name === "div") && (hasClass(domNode, "arrow") || hasClass(domNode, "arr"))) {
+        return <span className="arr">{domToReact(domNode.children as any, options)}</span>;
+      }
+
       if (domNode.name === "blockquote") {
         return (
-          <blockquote className="my-5 border-l-2 border-[#224022] pl-5 italic text-[#8cb78c]">
+          <blockquote className="my-5 border-l-2 border-[#2a3652] pl-5 italic text-[#7484ad]">
             {domToReact(domNode.children as any, options)}
           </blockquote>
         );
       }
 
       if (domNode.name === "hr") {
-        return <hr className="my-12 border-[#224022]" />;
+        return <hr className="my-12 border-[#2a3652]" />;
       }
 
       return undefined;
