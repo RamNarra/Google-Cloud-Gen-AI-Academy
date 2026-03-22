@@ -2,6 +2,12 @@
 
 :root {
   color-scheme: dark;
+  --bg: #0b0c10;
+  --surface: #12151f;
+  --surface-2: #181c29;
+  --border: #2a3042;
+  --text: #d8e0f0;
+  --muted: #9da6c2;
 }
 
 body {
@@ -14,10 +20,11 @@ body {
     ),
     radial-gradient(
       circle at 100% 0%,
-      rgba(67, 232, 176, 0.12),
+      rgba(67, 232, 176, 0.1),
       transparent 33%
     ),
-    #0b0c10;
+    linear-gradient(180deg, #0b0c10 0%, #0d1017 45%, #0b0c10 100%);
+  color: var(--text);
 }
 
 .font-mono {
@@ -43,4 +50,78 @@ a {
 ol,
 ul {
   padding-left: 1.35rem;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3042 #0f121a;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0f121a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #2a3042;
+  border-radius: 9999px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(91, 143, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(91, 143, 255, 0.14);
+  }
+}
+
+.page-enter {
+  animation: fadeUp 0.4s ease-out both;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(24, 28, 41, 0.9),
+    rgba(18, 21, 31, 0.92)
+  );
+  border: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+}
+
+.hero-glow {
+  animation: pulseGlow 4.5s ease-in-out infinite;
+}
+
+.notes-shell {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(19, 24, 36, 0.86),
+    rgba(13, 16, 24, 0.9)
+  );
+  padding: 1.25rem;
+}
+
+.notes-article {
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
 }

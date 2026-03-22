@@ -15,13 +15,13 @@ export default function ToggleBar({
 
   return (
     <div className="mb-8 flex justify-end">
-      <div className="inline-flex rounded-md border border-[#272a38] bg-[#13151c] p-1">
+      <div className="inline-flex rounded-full border border-[#2a3042] bg-[#151a27]/90 p-1 shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
         <Link
           href={toNotes ? notesHref : cheatsheetHref}
-          className={`rounded px-3 py-1.5 text-sm ${
+          className={`rounded-full px-4 py-1.5 text-sm font-medium transition hover:-translate-y-0.5 ${
             toNotes
-              ? "bg-[#5b8fff]/20 text-[#5b8fff]"
-              : "bg-[#43e8b0]/20 text-[#43e8b0]"
+              ? "bg-[#5b8fff]/20 text-[#cfe0ff]"
+              : "bg-[#43e8b0]/20 text-[#c6ffe9]"
           }`}
         >
           {toNotes ? "Switch to Full Notes" : "Switch to Cheat Sheet"}

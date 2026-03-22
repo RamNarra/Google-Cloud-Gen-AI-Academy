@@ -11,15 +11,17 @@ export default async function TrackOneCheatsheetPage() {
   );
 
   return (
-    <section className="mx-auto max-w-4xl">
+    <section className="mx-auto max-w-5xl">
       <ToggleBar
         current="cheatsheet"
         notesHref="/track-1"
         cheatsheetHref="/track-1/cheatsheet"
       />
-      <article className="space-y-4 text-[14px] text-[#d8e0f0]">
-        {renderHtmlNotes(html)}
-      </article>
+      <div className="notes-shell">
+        <article className="notes-article space-y-4 text-[14px] text-[#d8e0f0]">
+          {renderHtmlNotes(html)}
+        </article>
+      </div>
     </section>
   );
 }

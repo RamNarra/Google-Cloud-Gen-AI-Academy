@@ -3,19 +3,22 @@ import ProgressCard from "@/components/ProgressCard";
 export default function HomePage() {
   return (
     <section className="space-y-8">
-      <header className="rounded-xl border border-[#272a38] bg-[#13151c]/80 p-8">
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-[#5b8fff]">
-          Learning Dashboard
-        </p>
-        <h1 className="mb-4 text-4xl font-semibold leading-tight sm:text-5xl">
-          Google Cloud Gen AI Academy APAC 2026
-        </h1>
-        <p className="max-w-3xl text-lg text-[#c5cee8]">
-          This workspace organizes complete learning notes and concise reference
-          sheets for each session in the programme. It is designed for fast
-          revision, clean navigation between full workshops and cheat sheets,
-          and structured progress tracking across all tracks.
-        </p>
+      <header className="hero-glow relative overflow-hidden rounded-3xl border border-[#2a3042] bg-gradient-to-br from-[#1a1f31]/95 via-[#141a29]/95 to-[#101421]/95 p-8 sm:p-10">
+        <div className="pointer-events-none absolute inset-0 opacity-30 [background:linear-gradient(120deg,transparent_20%,rgba(91,143,255,0.3)_35%,transparent_48%,rgba(67,232,176,0.2)_68%,transparent_82%)]" />
+        <div className="relative">
+          <p className="mb-4 inline-flex rounded-full border border-[#5b8fff]/30 bg-[#5b8fff]/12 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] text-[#d9e7ff]">
+            Learning Dashboard
+          </p>
+          <h1 className="mb-5 text-4xl font-semibold leading-tight sm:text-6xl">
+            Google Cloud Gen AI Academy APAC 2026
+          </h1>
+          <p className="max-w-3xl text-lg text-[#c5cee8] sm:text-xl">
+            This workspace organizes complete learning notes and concise
+            reference sheets for each session in the programme. It is designed
+            for fast revision, clean navigation between full workshops and cheat
+            sheets, and structured progress tracking across all tracks.
+          </p>
+        </div>
       </header>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
