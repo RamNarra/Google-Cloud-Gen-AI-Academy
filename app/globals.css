@@ -133,9 +133,31 @@ ul {
   padding: 0.35rem 0.8rem;
 }
 
+.notes-article h1,
+.notes-article h2,
+.notes-article h3 {
+  font-family: var(--font-syne), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.notes-article h1 {
+  font-size: clamp(2rem, 4.5vw, 3.05rem);
+  line-height: 1.14;
+}
+
+.notes-article h2 {
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem);
+  line-height: 1.2;
+}
+
+.notes-article h3 {
+  font-size: clamp(1.12rem, 2vw, 1.45rem);
+}
+
 .notes-article p {
   color: #dce3f0;
   letter-spacing: 0.005em;
+  margin-bottom: 1.05rem;
 }
 
 .notes-article strong {
@@ -159,6 +181,31 @@ ul {
 
 .notes-article h4 {
   margin-top: 1.35rem;
+}
+
+.notes-article blockquote {
+  border-left: 2px solid #334363;
+  margin: 1.2rem 0;
+  padding: 0.3rem 1.35rem;
+  color: #8597c3;
+  font-style: italic;
+}
+
+.notes-article table {
+  margin: 1.2rem 0 1.45rem;
+}
+
+.notes-article pre {
+  margin: 1.2rem 0 1.45rem;
+}
+
+.notes-article ul,
+.notes-article ol {
+  margin-bottom: 1rem;
+}
+
+.notes-article li {
+  margin-bottom: 0.45rem;
 }
 
 .notes-tag {
@@ -223,6 +270,10 @@ ul {
   color: #43e8b0;
 }
 
+.toc-item::marker {
+  color: #7cf3c6;
+}
+
 .toc-item span {
   color: #7d8eb8;
 }
@@ -237,6 +288,7 @@ ul {
   );
   padding: 1.5rem;
   overflow-x: auto;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .notes-article .diagram > div {
@@ -381,4 +433,24 @@ ul {
 .notes-article pre code .str,
 .notes-article pre code .s {
   color: #8cf2c7;
+}
+
+@media (max-width: 768px) {
+  .notes-shell {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .notes-article {
+    padding: 0.2rem 0.35rem;
+  }
+
+  .notes-article p,
+  .notes-article li {
+    line-height: 1.75;
+  }
+
+  .toc-item {
+    font-size: 0.78rem;
+  }
 }
