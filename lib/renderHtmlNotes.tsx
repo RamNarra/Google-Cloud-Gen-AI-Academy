@@ -35,6 +35,17 @@ const text = (node: Element | undefined): string => {
     .trim();
 };
 
+const rawText = (node: Element | undefined): string => {
+  if (!node) return "";
+  return node.children
+    .map((child: any) => {
+      if (child.type === "text") return child.data;
+      if (child.type === "tag") return rawText(child as Element);
+      return "";
+    })
+    .join("");
+};
+
 const extractBodyHtml = (html: string) => {
   const match = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
   return match ? match[1] : html;
@@ -301,7 +312,7 @@ export function renderHtmlNotes(html: string): ReactNode {
       }
 
       if (domNode.name === "pre") {
-        const raw = text(domNode);
+        const raw = rawText(domNode).replace(/^\n+/, "").replace(/\n+$/, "");
         const lang = raw.includes("gcloud ") ? "bash" : "text";
         return <CodeBlock language={lang}>{raw}</CodeBlock>;
       }

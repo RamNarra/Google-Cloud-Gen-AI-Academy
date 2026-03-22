@@ -140,3 +140,59 @@ ul {
 .notes-article h4 {
   margin-top: 1.35rem;
 }
+
+.notes-article .diagram {
+  border: 1px solid #224022;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 18, 8, 0.98),
+    rgba(7, 12, 7, 0.98)
+  );
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.notes-article .diagram > div {
+  margin-top: 0.45rem;
+  margin-bottom: 0.45rem;
+}
+
+.notes-article .diagram .box {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #2f5231;
+  border-radius: 8px;
+  background: #0f1b0f;
+  color: #d8ffd8;
+  padding: 0.2rem 0.55rem;
+}
+
+.notes-article .diagram .box.root {
+  border-color: #43e8b0;
+  color: #b8ffda;
+  background: rgba(67, 232, 176, 0.12);
+}
+
+.notes-article .diagram .box.seq {
+  border-color: #67f18f;
+  color: #ccffd3;
+  background: rgba(103, 241, 143, 0.12);
+}
+
+.notes-article .diagram .box.agent {
+  border-color: #8cf18c;
+  color: #dbffdb;
+  background: rgba(140, 241, 140, 0.11);
+}
+
+.notes-article .diagram .box.tool {
+  border-color: #78be7e;
+  color: #d4ffd4;
+  background: rgba(90, 161, 99, 0.14);
+}
+
+.notes-article .diagram .arrow {
+  color: #8cb78c;
+  opacity: 0.95;
+}
