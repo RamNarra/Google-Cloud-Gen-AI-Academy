@@ -17,8 +17,11 @@ export default async function TrackOneNotesPage() {
         notesHref="/track-1"
         cheatsheetHref="/track-1/cheatsheet"
       />
+      <div className="mb-4 inline-flex rounded-full border border-[#2a2a2a] bg-[#121212] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#a1a1aa]">
+        Track 1 - Full Notes
+      </div>
       <div className="notes-shell">
-        <article className="notes-article space-y-4 text-[17px] text-[#d8e0f0]">
+        <article className="notes-article space-y-4 text-[17px] text-[#ededed]">
           {renderHtmlNotes(html)}
         </article>
       </div>
