@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises";
 import path from "path";
 
-import ToggleBar from "@/components/ToggleBar";
 import { renderHtmlNotes } from "@/lib/renderHtmlNotes";
 
 export default async function TrackOneNotesPage() {
@@ -12,12 +11,7 @@ export default async function TrackOneNotesPage() {
 
   return (
     <section className="mx-auto max-w-5xl">
-      <ToggleBar
-        current="notes"
-        notesHref="/track-1"
-        cheatsheetHref="/track-1/cheatsheet"
-      />
-      <div className="mb-4 inline-flex rounded-full border border-[#2a2a2a] bg-[#121212] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#a1a1aa]">
+      <div className="mb-4 inline-flex rounded-full border border-[#224022] bg-[#0f150f] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#8cb78c]">
         Track 1 - Full Notes
       </div>
       <div className="notes-shell">

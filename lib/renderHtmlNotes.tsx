@@ -50,7 +50,7 @@ export function renderHtmlNotes(html: string): ReactNode {
     if (hasClass(node, "v") || hasClass(node, "p"))
       return "border-[#7c6aff]/30";
     if (hasClass(node, "bl")) return "border-[#5b8fff]/30";
-    return "border-[#2a2a2a]";
+    return "border-[#224022]";
   };
 
   const options: HTMLReactParserOptions = {
@@ -59,23 +59,61 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "h1") {
         return (
-          <h1 className="mb-3 text-3xl font-semibold leading-tight text-white sm:text-5xl">
+          <h1 className="mb-3 text-3xl font-semibold leading-tight text-[#e7ffe7] sm:text-5xl">
             {domToReact(domNode.children as any, options)}
           </h1>
         );
       }
 
+      if (domNode.name === "h2") {
+        const numNode = domNode.children.find(
+          (child: any) =>
+            child.type === "tag" &&
+            (hasClass(child, "n") || hasClass(child, "num")),
+        ) as Element | undefined;
+        const number = text(numNode);
+        const title = text(domNode).replace(number, "").trim();
+
+        if (number && title) {
+          if (
+            title.toLowerCase().includes("the code") ||
+            title.toLowerCase().includes("file by file")
+          ) {
+            return (
+              <h2 className="mb-5 mt-14 flex items-center gap-3 rounded-lg border border-[#224022] bg-[#0d140d] px-4 py-3 text-3xl font-semibold text-[#b8ffb8]">
+                <span className="rounded border border-[#43e8b0]/30 bg-[#43e8b0]/12 px-2.5 py-1 font-mono text-xs tracking-[0.12em] text-[#9cffc8]">
+                  {number}
+                </span>
+                <span className="leading-tight">{title}</span>
+              </h2>
+            );
+          }
+          return <SectionHeader number={number} title={title} />;
+        }
+      }
+
       if (domNode.name === "h3") {
         return (
-          <h3 className="mb-2 mt-8 text-xl font-semibold text-white">
+          <h3 className="mb-2 mt-8 text-xl font-semibold text-[#e7ffe7]">
             {domToReact(domNode.children as any, options)}
           </h3>
         );
       }
 
       if (domNode.name === "h4") {
+        const headingText = text(domNode);
+        const looksLikeFile = /\.(py|txt|md|env|json|yaml|yml)$/i.test(
+          headingText,
+        );
+        if (looksLikeFile) {
+          return (
+            <h4 className="mb-2 mt-6 inline-flex rounded border border-[#224022] bg-[#0b150b] px-3 py-1 font-mono text-xs tracking-[0.08em] text-[#9cffc8]">
+              {headingText}
+            </h4>
+          );
+        }
         return (
-          <h4 className="mb-2 mt-6 font-mono text-xs uppercase tracking-[0.14em] text-[#ffd166]">
+          <h4 className="mb-2 mt-6 font-mono text-xs uppercase tracking-[0.14em] text-[#8cb78c]">
             {domToReact(domNode.children as any, options)}
           </h4>
         );
@@ -91,9 +129,9 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "section-label")) {
         return (
-          <div className="mb-4 mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#a1a1aa]">
+          <div className="mb-4 mt-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[#8cb78c]">
             <span>{domToReact(domNode.children as any, options)}</span>
-            <span className="h-px flex-1 bg-[#2a2a2a]" />
+            <span className="h-px flex-1 bg-[#224022]" />
           </div>
         );
       }
@@ -109,7 +147,7 @@ export function renderHtmlNotes(html: string): ReactNode {
       if (domNode.name === "div" && hasClass(domNode, "card")) {
         return (
           <div
-            className={`mb-4 rounded-xl border bg-gradient-to-b from-[#161616] to-[#111111] p-5 shadow-[0_10px_20px_rgba(0,0,0,0.25)] ${cardTone(domNode)} ${
+            className={`mb-4 rounded-xl border bg-gradient-to-b from-[#101610] to-[#0b100b] p-5 shadow-[0_10px_20px_rgba(0,0,0,0.25)] ${cardTone(domNode)} ${
               hasClass(domNode, "full") ? "md:col-span-2" : ""
             }`}
           >
@@ -120,7 +158,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "card-title")) {
         return (
-          <div className="mb-4 border-b border-[#2a2a2a] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#b0b7cb]">
+          <div className="mb-4 border-b border-[#224022] pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#8cb78c]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -128,7 +166,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "row")) {
         return (
-          <div className="mb-2 flex items-start gap-2.5 text-[13px] leading-6 text-[#e8e8eb]">
+          <div className="mb-2 flex items-start gap-2.5 text-[13px] leading-6 text-[#d8ffd8]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -136,7 +174,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "span" && hasClass(domNode, "dot")) {
         return (
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#5b8fff]" />
+          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#43e8b0]" />
         );
       }
 
@@ -150,7 +188,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "li" && parentHasClass(domNode, "checklist")) {
         return (
-          <li className="flex items-start gap-3 border-b border-[#262626] pb-3 last:border-b-0">
+          <li className="flex items-start gap-3 border-b border-[#224022]/40 pb-3 last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </li>
         );
@@ -158,7 +196,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "track-header")) {
         return (
-          <div className="mb-1 grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#2a2a2a] pb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#9da6c2]">
+          <div className="mb-1 grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#224022] pb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-[#8cb78c]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -166,7 +204,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "track-row")) {
         return (
-          <div className="grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#262626] py-2 text-[12px] last:border-b-0">
+          <div className="grid grid-cols-[80px_1fr_1fr] gap-2 border-b border-[#224022]/40 py-2 text-[12px] last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -174,7 +212,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "tier")) {
         return (
-          <div className="flex items-start gap-3 border-b border-[#262626] py-3 text-[13px] last:border-b-0">
+          <div className="flex items-start gap-3 border-b border-[#224022]/40 py-3 text-[13px] last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -182,23 +220,10 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "qa-item")) {
         return (
-          <div className="border-b border-[#262626] py-3 text-[13px] leading-6 last:border-b-0">
+          <div className="border-b border-[#224022]/40 py-3 text-[13px] leading-6 last:border-b-0">
             {domToReact(domNode.children as any, options)}
           </div>
         );
-      }
-
-      if (domNode.name === "h2") {
-        const numNode = domNode.children.find(
-          (child: any) =>
-            child.type === "tag" &&
-            (hasClass(child, "n") || hasClass(child, "num")),
-        ) as Element | undefined;
-        const number = text(numNode);
-        const title = text(domNode).replace(number, "").trim();
-        if (number && title) {
-          return <SectionHeader number={number} title={title} />;
-        }
       }
 
       if (domNode.name === "div" && hasClass(domNode, "callout")) {
@@ -276,12 +301,14 @@ export function renderHtmlNotes(html: string): ReactNode {
       }
 
       if (domNode.name === "pre") {
-        return <CodeBlock language="text">{text(domNode)}</CodeBlock>;
+        const raw = text(domNode);
+        const lang = raw.includes("gcloud ") ? "bash" : "text";
+        return <CodeBlock language={lang}>{raw}</CodeBlock>;
       }
 
       if (domNode.name === "code") {
         return (
-          <code className="rounded border border-[#272a38] bg-[#111318] px-1.5 py-0.5">
+          <code className="rounded border border-[#224022] bg-[#0b150b] px-1.5 py-0.5 text-[#b8ffb8]">
             {text(domNode)}
           </code>
         );
@@ -289,7 +316,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "header")) {
         return (
-          <section className="mb-12 border-b border-[#2a2a2a] pb-10">
+          <section className="mb-12 border-b border-[#224022] pb-10">
             {domToReact(domNode.children as any, options)}
           </section>
         );
@@ -297,7 +324,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "hdr")) {
         return (
-          <section className="mb-10 border-b border-[#2a2a2a] pb-8">
+          <section className="mb-10 border-b border-[#224022] pb-8">
             {domToReact(domNode.children as any, options)}
           </section>
         );
@@ -305,7 +332,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "toc")) {
         return (
-          <section className="mb-12 rounded-xl border border-[#2a2a2a] bg-[#121212] p-6">
+          <section className="mb-12 rounded-xl border border-[#224022] bg-[#0d120d] p-6">
             {domToReact(domNode.children as any, options)}
           </section>
         );
@@ -313,7 +340,7 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "div" && hasClass(domNode, "diagram")) {
         return (
-          <div className="my-6 rounded-lg border border-[#272a38] bg-[#111318] p-6 text-center font-mono text-sm leading-8 text-[#8f9ac2]">
+          <div className="my-6 rounded-lg border border-[#224022] bg-[#0b150b] p-6 text-center font-mono text-sm leading-8 text-[#a8d8a8]">
             {domToReact(domNode.children as any, options)}
           </div>
         );
@@ -321,14 +348,14 @@ export function renderHtmlNotes(html: string): ReactNode {
 
       if (domNode.name === "blockquote") {
         return (
-          <blockquote className="my-5 border-l-2 border-[#272a38] pl-5 italic text-[#9aa4c8]">
+          <blockquote className="my-5 border-l-2 border-[#224022] pl-5 italic text-[#8cb78c]">
             {domToReact(domNode.children as any, options)}
           </blockquote>
         );
       }
 
       if (domNode.name === "hr") {
-        return <hr className="my-12 border-[#272a38]" />;
+        return <hr className="my-12 border-[#224022]" />;
       }
 
       return undefined;

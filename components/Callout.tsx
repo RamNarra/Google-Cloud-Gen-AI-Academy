@@ -9,11 +9,11 @@ type CalloutProps = {
 };
 
 const styles: Record<CalloutType, string> = {
-  blue: "border-l-[#5b8fff] bg-[#5b8fff]/10 text-[#d8e0f0]",
-  green: "border-l-[#43e8b0] bg-[#43e8b0]/10 text-[#d8e0f0]",
-  yellow: "border-l-[#ffd166] bg-[#ffd166]/10 text-[#d8e0f0]",
-  red: "border-l-[#ff6b6b] bg-[#ff6b6b]/10 text-[#d8e0f0]",
-  purple: "border-l-[#7c6aff] bg-[#7c6aff]/10 text-[#d8e0f0]",
+  blue: "border-l-[#5b8fff] bg-[#0b120f] text-[#d8ffd8]",
+  green: "border-l-[#43e8b0] bg-[#0b120f] text-[#d8ffd8]",
+  yellow: "border-l-[#ffd166] bg-[#121109] text-[#d8ffd8]",
+  red: "border-l-[#ff6b6b] bg-[#140d0d] text-[#d8ffd8]",
+  purple: "border-l-[#7c6aff] bg-[#100d14] text-[#d8ffd8]",
 };
 
 const titleStyles: Record<CalloutType, string> = {
@@ -27,7 +27,7 @@ const titleStyles: Record<CalloutType, string> = {
 export default function Callout({ type, title, children }: CalloutProps) {
   return (
     <div
-      className={`my-6 rounded-md border border-[#272a38] border-l-4 p-5 ${styles[type]}`}
+      className={`my-6 rounded-md border border-[#224022] border-l-4 p-5 ${styles[type]}`}
     >
       <div
         className={`mb-2 font-mono text-[11px] uppercase tracking-[0.18em] ${titleStyles[type]}`}

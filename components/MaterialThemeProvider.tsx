@@ -8,10 +8,10 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#5b8fff",
+      main: "#43e8b0",
     },
     secondary: {
-      main: "#43e8b0",
+      main: "#5b8fff",
     },
     warning: {
       main: "#ffd166",
@@ -20,15 +20,15 @@ const theme = createTheme({
       main: "#ff6b6b",
     },
     info: {
-      main: "#7c6aff",
+      main: "#8cb78c",
     },
     background: {
-      default: "#0b0c10",
-      paper: "#12151f",
+      default: "#060806",
+      paper: "#0d120d",
     },
     text: {
-      primary: "#d8e0f0",
-      secondary: "#9da6c2",
+      primary: "#d8ffd8",
+      secondary: "#8cb78c",
     },
   },
   shape: {
@@ -57,8 +57,8 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         "::selection": {
-          backgroundColor: "rgba(91,143,255,0.35)",
-          color: "#ffffff",
+          backgroundColor: "rgba(67,232,176,0.3)",
+          color: "#021002",
         },
       },
     },
@@ -73,7 +73,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: "none",
-          border: "1px solid rgba(42, 48, 66, 0.9)",
+          border: "1px solid rgba(34, 64, 34, 0.9)",
         },
       },
     },
