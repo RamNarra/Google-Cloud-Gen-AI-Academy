@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-lora), serif;
+  background:
+    radial-gradient(
+      circle at 20% -20%,
+      rgba(91, 143, 255, 0.14),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(67, 232, 176, 0.12),
+      transparent 33%
+    ),
+    #0b0c10;
+}
+
+.font-mono {
+  font-family: var(--font-dm-mono), monospace;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #ffffff;
+}
+
+p,
+li {
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+}
+
+ol,
+ul {
+  padding-left: 1.35rem;
+}

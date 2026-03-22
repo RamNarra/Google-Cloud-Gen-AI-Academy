@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intro Session — Quick Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c10;
+    --s: #13151c;
+    --s2: #1a1d27;
+    --b: #272a38;
+    --p: #7c6aff;
+    --g: #43e8b0;
+    --y: #ffd166;
+    --r: #ff6b6b;
+    --bl: #56b4ff;
+    --t: #d8e0f0;
+    --m: #6a7290;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--t);
+    font-family: 'DM Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.75;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+
+  /* HEADER */
+  .hdr {
+    border-bottom: 1px solid var(--b);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--p);
+    background: rgba(124,106,255,0.1);
+    border: 1px solid rgba(124,106,255,0.2);
+    padding: 3px 10px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  .sub { font-size: 11px; color: var(--m); }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  @media(max-width:600px){ .grid { grid-template-columns: 1fr; } }
+
+  /* CARD */
+  .card {
+    background: var(--s);
+    border: 1px solid var(--b);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+
+  .card.full { grid-column: 1 / -1; }
+
+  .card-title {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--b);
+  }
+
+  .card.p .card-title { color: var(--p); }
+  .card.g .card-title { color: var(--g); }
+  .card.y .card-title { color: var(--y); }
+  .card.r .card-title { color: var(--r); }
+  .card.bl .card-title { color: var(--bl); }
+
+  /* ROW */
+  .row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .row:last-child { margin-bottom: 0; }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .card.p .dot { background: var(--p); }
+  .card.g .dot { background: var(--g); }
+  .card.y .dot { background: var(--y); }
+  .card.r .dot { background: var(--r); }
+  .card.bl .dot { background: var(--bl); }
+
+  .row strong { color: #fff; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 12.5px;
+    line-height: 1.65;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(39,42,56,0.5);
+  }
+  .checklist li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .cb {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--g);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-num {
+    font-size: 10px;
+    color: var(--g);
+    background: rgba(67,232,176,0.08);
+    border: 1px solid rgba(67,232,176,0.2);
+    padding: 1px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* TRACK TABLE */
+  .track-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(39,42,56,0.5);
+    font-size: 12px;
+    line-height: 1.6;
+    align-items: start;
+  }
+  .track-row:last-child { border-bottom: none; }
+  .track-row .tk { color: var(--y); }
+  .track-row .focus { color: #fff; }
+  .track-row .tech { color: var(--m); }
+
+  .track-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 10px;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--b);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--m);
+  }
+
+  /* REWARD TIER */
+  .tier {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(39,42,56,0.5);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .tier:last-child { border-bottom: none; }
+  .tier-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tier-label.t1 { color: var(--g); background: rgba(67,232,176,0.1); border: 1px solid rgba(67,232,176,0.2); }
+  .tier-label.t2 { color: var(--bl); background: rgba(86,180,255,0.1); border: 1px solid rgba(86,180,255,0.2); }
+  .tier-label.t3 { color: var(--y); background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.2); }
+  .tier-label.t4 { color: var(--p); background: rgba(124,106,255,0.1); border: 1px solid rgba(124,106,255,0.2); }
+
+  /* AGENT RULE */
+  .rule {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .rule:last-child { margin-bottom: 0; }
+  .yn {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .yn.yes { color: var(--g); background: rgba(67,232,176,0.1); border: 1px solid rgba(67,232,176,0.2); }
+  .yn.no  { color: var(--r); background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.2); }
+
+  /* CHALLENGE */
+  .ch {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  .ch:last-child { margin-bottom: 0; }
+  .chnum {
+    font-size: 10px;
+    color: var(--r);
+    background: rgba(255,107,107,0.1);
+    border: 1px solid rgba(255,107,107,0.2);
+    padding: 1px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* QA */
+  .qa-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(39,42,56,0.5);
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .qa-item:last-child { border-bottom: none; }
+  .qa-q { color: var(--y); margin-bottom: 5px; }
+  .qa-a { color: var(--t); }
+  .qa-a strong { color: #fff; }
+
+  /* ARCH */
+  .arch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .arch-box {
+    background: var(--s2);
+    border: 1px solid var(--b);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .arch-box.p { border-color: var(--p); color: var(--p); }
+  .arch-box.g { border-color: var(--g); color: var(--g); }
+  .arch-box.y { border-color: var(--y); color: var(--y); }
+  .arch-arr { color: var(--b); margin: 0 8px; font-size: 14px; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 0.9em; color: var(--bl); }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--m);
+    margin: 32px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--b); }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="badge">Gen AI Academy APAC 2026 · Intro Session · Quick Reference</div>
+  <h1>Introductory Session<br>Cheat Sheet</h1>
+  <p class="sub">Koshik (Hack2Skill) · Prashanth Subrahmanyam (Google Cloud DevRel APAC) · ~65 min</p>
+</div>
+
+<!-- PROGRAMME OVERVIEW -->
+<div class="section-label">Programme Structure</div>
+<div class="grid">
+
+  <div class="card g">
+    <div class="card-title">Cohort Timeline</div>
+    <div class="row"><span class="dot"></span><div><strong>Cohort 1</strong> — Jan–Mar 2026 (LIVE NOW)</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Cohort 2</strong> — Apr–Jun 2026</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Cohort 3</strong> — Jul–Sep 2026</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Grand Hackathon</strong> — Oct–Dec 2026</div></div>
+  </div>
+
+  <div class="card p">
+    <div class="card-title">Two Phases Per Cohort</div>
+    <div class="row"><span class="dot"></span><div><strong>Phase 1: Academy</strong> — Learn + build + assess + submit project</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Phase 2: Hackathon</strong> — Single problem statement, teams of 1–4, compete</div></div>
+  </div>
+
+</div>
+
+<!-- TRACKS -->
+<div class="section-label">Three Tracks — Cohort 1</div>
+<div class="card full bl">
+  <div class="card-title">Choose One or More</div>
+  <div class="track-header"><div>Track</div><div>Focus</div><div>Tech</div></div>
+  <div class="track-row">
+    <div class="tk">Track 1</div>
+    <div class="focus">Build &amp; deploy AI agents</div>
+    <div class="tech">Gemini · ADK · Cloud Run</div>
+  </div>
+  <div class="track-row">
+    <div class="tk">Track 2</div>
+    <div class="focus">Connect agents to real-world tools &amp; data</div>
+    <div class="tech">MCP · MCP Toolbox · Cloud Run</div>
+  </div>
+  <div class="track-row">
+    <div class="tk">Track 3</div>
+    <div class="focus">AI-ready databases &amp; agent memory</div>
+    <div class="tech">AlloyDB · Cloud SQL · PostgreSQL</div>
+  </div>
+</div>
+
+<!-- STEPS TO COMPLETE -->
+<div class="section-label">Academy Phase — Steps in Order</div>
+<div class="card full g">
+  <div class="card-title">Complete Every Step — Each Unlocks the Next</div>
+  <ul class="checklist">
+    <li><div class="step-num">01</div><div><strong>Select a track</strong> — from your dashboard. Pick based on interest. You can do all three.</div></li>
+    <li><div class="step-num">02</div><div><strong>Attend the workshop</strong> — live or recorded. Multilingual (EN / Bahasa / Korean / Chinese). Recording on dashboard.</div></li>
+    <li><div class="step-num">03</div><div><strong>Complete the Code Lab</strong> — <strong>MANDATORY.</strong> Hands-on implementation. Credits provided. Do not skip.</div></li>
+    <li><div class="step-num">04</div><div><strong>Google Skills Labs</strong> — optional but recommended. Deeper Vertex AI / Cloud Run / ADK labs. Credits provided.</div></li>
+    <li><div class="step-num">05</div><div><strong>MCQ Assessment</strong> — must clear minimum benchmark score to unlock project submission. Covers workshop + codelab content.</div></li>
+    <li><div class="step-num">06</div><div><strong>Project Submission</strong> — working prototype submitted individually. Quality + MCQ score = your ranking.</div></li>
+    <li><div class="step-num">07</div><div><strong>Cohort Hackathon</strong> — one fixed problem statement for everyone. Team 1–4. Apply what you built.</div></li>
+  </ul>
+</div>
+
+<!-- REWARDS -->
+<div class="section-label">Rewards — Four Tiers</div>
+<div class="card full y">
+  <div class="card-title">What You Can Win</div>
+  <div class="tier">
+    <div class="tier-label t1">Cert</div>
+    <div><strong>Gen AI Master Certificate</strong> — complete all action items in ≥1 track. Track-specific.</div>
+  </div>
+  <div class="tier">
+    <div class="tier-label t2">Top 10</div>
+    <div><strong>Graduation Ceremony + Project Showcase</strong> — selected on MCQ score + project quality.</div>
+  </div>
+  <div class="tier">
+    <div class="tier-label t3">Top 100</div>
+    <div><strong>Gen AI Elite Club</strong> — complete academy + hackathon. Exclusive alumni network.</div>
+  </div>
+  <div class="tier">
+    <div class="tier-label t4">Cash</div>
+    <div><strong>Up to $10,000 USD per cohort</strong> in hackathon prizes + physical swag during campaigns.</div>
+  </div>
+</div>
+
+<!-- WHAT IS AN AGENT -->
+<div class="section-label">What Is an Agent — Prashanth's Definition</div>
+<div class="grid">
+
+  <div class="card p">
+    <div class="card-title">Definition</div>
+    <div class="row"><span class="dot"></span><div>An application that uses a <strong>generative AI model</strong> to make decisions</div></div>
+    <div class="row"><span class="dot"></span><div>Acts <strong>independently</strong> based on its own reasoning</div></div>
+    <div class="row"><span class="dot"></span><div>Pursues a <strong>user-specified goal</strong> — not a fixed instruction sequence</div></div>
+    <div class="row"><span class="dot"></span><div>You tell it <strong>what to achieve</strong>, not how</div></div>
+  </div>
+
+  <div class="card bl">
+    <div class="card-title">Three Properties</div>
+    <div class="row"><span class="dot"></span><div><strong>Flexible</strong> — handles edge cases it was never explicitly programmed for</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Outcome-focused</strong> — goal sets the direction, agent picks the path</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Proactive</strong> — can run on schedules and triggers, not just user input</div></div>
+  </div>
+
+</div>
+
+<!-- WHEN TO USE / NOT USE AGENTS -->
+<div class="section-label">When to Use Agents — and When Not To</div>
+<div class="card full r">
+  <div class="card-title">Prashanth Was Explicit About Both</div>
+  <div class="rule"><div class="yn yes">USE</div><div>Multi-step, goal-oriented workflows that require dynamic decision-making</div></div>
+  <div class="rule"><div class="yn yes">USE</div><div>Personalised, adaptive systems (learning, customer experience, real-time business intelligence)</div></div>
+  <div class="rule"><div class="yn yes">USE</div><div>Cybersecurity monitoring, triage, vulnerability detection — confirmed in Q&A</div></div>
+  <div class="rule"><div class="yn no">SKIP</div><div>Simple prompt → response tasks. Just use an API call.</div></div>
+  <div class="rule"><div class="yn no">SKIP</div><div>Q&A from a static knowledge base. Use a RAG architecture instead.</div></div>
+  <div class="rule"><div class="yn no">SKIP</div><div>Fully regulated environments requiring explainability of every decision. Use predictive AI (classifiers).</div></div>
+</div>
+
+<!-- CHALLENGES -->
+<div class="section-label">Honest Challenges Prashanth Named</div>
+<div class="card full r">
+  <div class="card-title">Know These Before You Build</div>
+  <div class="ch"><div class="chnum">C1</div><div><strong>Non-determinism</strong> — same input may not produce same output. LLMs are inherently probabilistic.</div></div>
+  <div class="ch"><div class="chnum">C2</div><div><strong>Immature error handling</strong> — agents can enter unexpected failure states with no recovery path. Mindset shift required from traditional software.</div></div>
+  <div class="ch"><div class="chnum">C3</div><div><strong>Security &amp; privacy still evolving</strong> — prompt injection, tool manipulation, data leakage via agents are open problems.</div></div>
+  <div class="ch"><div class="chnum">C4</div><div><strong>Hard to debug</strong> — you can see what an agent did, but tracing <em>why</em> the LLM chose that path is often impossible.</div></div>
+</div>
+
+<!-- ARCHITECTURE -->
+<div class="section-label">Architecture — Every Agent Needs Three Things</div>
+<div class="card full g">
+  <div class="card-title">Prashanth's Framework</div>
+  <div class="arch" style="margin-bottom:16px;">
+    <div class="arch-box p">① Runtime<br><span style="font-size:10px;color:var(--m);">Cloud Run / Agent Engine</span></div>
+    <span class="arch-arr">+</span>
+    <div class="arch-box g">② Model (Brain)<br><span style="font-size:10px;color:var(--m);">Gemini 3 Flash / Pro</span></div>
+    <span class="arch-arr">+</span>
+    <div class="arch-box y">③ Tools (Hands)<br><span style="font-size:10px;color:var(--m);">APIs, DBs, MCP servers</span></div>
+  </div>
+  <div class="row"><span class="dot"></span><div>Track 1 covers the <strong>Runtime</strong></div></div>
+  <div class="row"><span class="dot"></span><div>Track 2 covers the <strong>Tools</strong> (via MCP)</div></div>
+  <div class="row"><span class="dot"></span><div>Track 3 covers the <strong>Data/Memory layer</strong> (databases)</div></div>
+</div>
+
+<!-- QA HIGHLIGHTS -->
+<div class="section-label">Key Q&A Answers</div>
+<div class="card full bl">
+  <div class="card-title">Direct Answers from Prashanth</div>
+  <div class="qa-item">
+    <div class="qa-q">Prerequisites?</div>
+    <div class="qa-a">Just basic programming. <strong>Python preferred</strong> but not mandatory. No ML/maths background needed.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q">Which database to use?</div>
+    <div class="qa-a">The curriculum uses <strong>AlloyDB + Cloud SQL</strong> (PostgreSQL-compatible). If you know Postgres, you're set.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q">Will Cloud Run cost money?</div>
+    <div class="qa-a"><strong>Free tier is generous</strong> (~1000+ calls/day free). Credits are provided. Development will cost you nothing.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q">Can agents be used in cybersecurity?</div>
+    <div class="qa-a"><strong>Yes, absolutely.</strong> Triage, monitoring, vulnerability checking. Google Cloud also has out-of-the-box security agents including MCP server protection.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q">How to pick and evaluate a model?</div>
+    <div class="qa-a">Start with <strong>Gemini Flash</strong>. Build your eval framework first (test cases with expected outputs). Then swap models and compare against evals. ADK has a built-in eval tab.</div>
+  </div>
+  <div class="qa-item">
+    <div class="qa-q">Agents in regulated environments?</div>
+    <div class="qa-a">Still possible. Use Google Cloud <strong>in-region deployment</strong> for data residency. Add <strong>human-in-the-loop</strong> for medical/legal. Use ADK workflow agents (not fully autonomous) for explainability requirements.</div>
+  </div>
+</div>
+
+<!-- YOUR NEXT ACTIONS -->
+<div class="section-label">Your Next Actions Right Now</div>
+<div class="card full g">
+  <div class="card-title">Do These In Order</div>
+  <ul class="checklist">
+    <li><div class="cb"></div><div>Log in to <code>vision.hack2skill.com/event/apac-genaiacademy</code> — this is your dashboard</div></li>
+    <li><div class="cb"></div><div>Select Track 1 (minimum) — Build & Deploy AI Agents</div></li>
+    <li><div class="cb"></div><div>Check email for Google Cloud credits redemption link. Request from dashboard if not received.</div></li>
+    <li><div class="cb"></div><div>Watch / re-watch the Track 1 workshop recording (also on dashboard)</div></li>
+    <li><div class="cb"></div><div>Complete the Track 1 Code Lab on Google Cloud Shell</div></li>
+    <li><div class="cb"></div><div>Optionally: complete Google Skills Labs for Track 1 (credits provided)</div></li>
+    <li><div class="cb"></div><div>Attempt MCQ — clear the minimum benchmark</div></li>
+    <li><div class="cb"></div><div>Submit your project — <strong>deploy to Cloud Run</strong>, don't just run locally</div></li>
+    <li><div class="cb"></div><div>Join Discord / follow programme email for hackathon problem statement release</div></li>
+  </ul>
+</div>
+
+</body>
+</html>

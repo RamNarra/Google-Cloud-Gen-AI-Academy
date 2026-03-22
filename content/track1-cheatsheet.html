@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track 1 — Quick Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c10;
+    --s: #13151c;
+    --s2: #1a1d27;
+    --b: #272a38;
+    --p: #5b8fff;
+    --g: #43e8b0;
+    --y: #ffd166;
+    --r: #ff6b6b;
+    --v: #a97bff;
+    --t: #d8e0f0;
+    --m: #6a7290;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--t);
+    font-family: 'DM Mono', monospace;
+    font-size: 13.5px;
+    line-height: 1.75;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 28px 80px;
+  }
+
+  .hdr { border-bottom: 1px solid var(--b); padding-bottom: 28px; margin-bottom: 36px; }
+  .badge {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--p); background: rgba(91,143,255,0.1); border: 1px solid rgba(91,143,255,0.2);
+    padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 14px;
+  }
+  h1 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 8px; }
+  .sub { font-size: 11px; color: var(--m); }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  @media(max-width:600px){ .grid { grid-template-columns: 1fr; } }
+
+  .card { background: var(--s); border: 1px solid var(--b); border-radius: 8px; padding: 18px 20px; }
+  .card.full { grid-column: 1 / -1; }
+
+  .card-title {
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--b);
+  }
+  .card.p .card-title { color: var(--p); }
+  .card.g .card-title { color: var(--g); }
+  .card.y .card-title { color: var(--y); }
+  .card.r .card-title { color: var(--r); }
+  .card.v .card-title { color: var(--v); }
+
+  .row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 12.5px; line-height: 1.6; }
+  .row:last-child { margin-bottom: 0; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .card.p .dot { background: var(--p); }
+  .card.g .dot { background: var(--g); }
+  .card.y .dot { background: var(--y); }
+  .card.r .dot { background: var(--r); }
+  .card.v .dot { background: var(--v); }
+  .row strong { color: #fff; }
+
+  /* AGENT TYPES TABLE */
+  .atype { padding: 11px 0; border-bottom: 1px solid rgba(39,42,56,0.5); font-size: 12.5px; line-height: 1.65; }
+  .atype:last-child { border-bottom: none; }
+  .atype-name { color: var(--g); margin-bottom: 4px; }
+  .atype-desc { color: var(--t); }
+  .atype-when { font-size: 11px; color: var(--m); margin-top: 3px; }
+
+  /* WORKFLOW TYPES */
+  .wf { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid rgba(39,42,56,0.5); font-size: 12.5px; line-height: 1.65; }
+  .wf:last-child { border-bottom: none; }
+  .wf-label { font-size: 10px; padding: 2px 8px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .wf-label.seq { color: var(--p); background: rgba(91,143,255,0.1); border: 1px solid rgba(91,143,255,0.2); }
+  .wf-label.par { color: var(--g); background: rgba(67,232,176,0.1); border: 1px solid rgba(67,232,176,0.2); }
+  .wf-label.lp  { color: var(--y); background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.2); }
+
+  /* ARCHITECTURE FLOW */
+  .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 0; row-gap: 8px; justify-content: center; margin: 14px 0; }
+  .fbox { background: var(--s2); border: 1px solid var(--b); border-radius: 6px; padding: 7px 13px; font-size: 11.5px; text-align: center; line-height: 1.4; }
+  .fbox small { display: block; font-size: 10px; color: var(--m); margin-top: 2px; }
+  .fbox.p { border-color: var(--p); color: var(--p); }
+  .fbox.g { border-color: var(--g); color: var(--g); }
+  .fbox.y { border-color: var(--y); color: var(--y); }
+  .fbox.v { border-color: var(--v); color: var(--v); }
+  .farr { color: var(--b); margin: 0 7px; font-size: 13px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 11px; font-size: 12.5px; line-height: 1.65; padding-bottom: 11px; border-bottom: 1px solid rgba(39,42,56,0.5); }
+  .checklist li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cb { width: 16px; height: 16px; border: 1.5px solid var(--g); border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+  .sn { font-size: 10px; color: var(--p); background: rgba(91,143,255,0.08); border: 1px solid rgba(91,143,255,0.2); padding: 1px 7px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+
+  /* FILES TABLE */
+  .file-row { display: grid; grid-template-columns: 140px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(39,42,56,0.5); font-size: 12px; line-height: 1.6; align-items: start; }
+  .file-row:last-child { border-bottom: none; }
+  .fn { color: var(--y); }
+  .fd { color: var(--t); }
+  .fd strong { color: #fff; }
+
+  /* SECURITY */
+  .sec { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 12.5px; line-height: 1.6; }
+  .sec:last-child { margin-bottom: 0; }
+  .warn { font-size: 10px; color: var(--r); background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.2); padding: 1px 7px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+
+  /* COMMAND */
+  pre { background: #0e0f14; border: 1px solid var(--b); border-radius: 6px; padding: 14px 16px; font-family: 'DM Mono', monospace; font-size: 11.5px; line-height: 1.8; color: #c9d9f0; overflow-x: auto; margin-top: 12px; }
+  pre .c { color: #3a4060; font-style: italic; }
+  pre .k { color: var(--y); }
+  pre .v { color: #a8d8ff; }
+
+  code { font-family: 'DM Mono', monospace; font-size: 0.88em; color: #a8d8ff; background: #0e0f14; border: 1px solid var(--b); padding: 1px 6px; border-radius: 3px; }
+
+  .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--m); margin: 32px 0 14px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--b); }
+
+  .note { font-size: 11.5px; color: var(--m); margin-top: 10px; }
+  .note strong { color: var(--y); }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="badge">Track 1 · Agentic AI: From Design to Deployment · Cheat Sheet</div>
+  <h1>Track 1 Workshop<br>Quick Reference</h1>
+  <p class="sub">Speaker: Tuya (Google DevRel) · Lab: Zoo Tour Guide Agent · Deploy to Cloud Run</p>
+</div>
+
+<!-- TRACK GOAL -->
+<div class="section-label">What This Track Is About</div>
+<div class="card full p">
+  <div class="card-title">One Goal</div>
+  <div class="row"><span class="dot"></span><div>Move from a local prototype to a <strong>production-ready agent on Cloud Run</strong> that anyone can reach via a URL. Three tools: <strong>Gemini</strong> (brain) + <strong>ADK</strong> (framework) + <strong>Cloud Run</strong> (runtime).</div></div>
+</div>
+
+<!-- EVOLUTION -->
+<div class="section-label">How We Got to Agents</div>
+<div class="card full g">
+  <div class="card-title">The Evolution — In Order</div>
+  <div class="flow">
+    <div class="fbox">Plain LLM<small>text in/out</small></div>
+    <span class="farr">→</span>
+    <div class="fbox">+ RAG<small>grounding</small></div>
+    <span class="farr">→</span>
+    <div class="fbox">+ Tools<small>actions</small></div>
+    <span class="farr">→</span>
+    <div class="fbox p">Single Agent<small>model+tools+loop</small></div>
+    <span class="farr">→</span>
+    <div class="fbox g">Multi-Agent<small>where we are now</small></div>
+  </div>
+  <p class="note"><strong>RAG = grounding</strong> — give the model correct facts before it answers, reducing hallucination. <strong>Tools</strong> = functions the model can call (APIs, DBs, other agents).</p>
+</div>
+
+<!-- AGENT FORMULA -->
+<div class="section-label">Agent = Three Components</div>
+<div class="grid">
+  <div class="card p">
+    <div class="card-title">Formula</div>
+    <div class="row"><span class="dot"></span><div><strong>Model</strong> — the brain (Gemini 2.5 Flash, 3.0 Pro, Gemma 3...)</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Tools</strong> — APIs, DBs, sub-agents, file readers</div></div>
+    <div class="row"><span class="dot"></span><div><strong>Orchestration</strong> — instructions, memory, guardrails, task tracking = ADK</div></div>
+  </div>
+  <div class="card y">
+    <div class="card-title">ADK = Orchestration Layer</div>
+    <div class="row"><span class="dot"></span><div>Open-source, Python-first, model-agnostic</div></div>
+    <div class="row"><span class="dot"></span><div>Works with <strong>LangChain tools</strong> and <strong>CrewAI tools</strong> natively</div></div>
+    <div class="row"><span class="dot"></span><div>One command deploys to Cloud Run: <code>adk deploy cloud run</code></div></div>
+    <div class="row"><span class="dot"></span><div>Built-in: eval tab, streaming, artifact mgmt, code execution</div></div>
+  </div>
+</div>
+
+<!-- THREE AGENT TYPES -->
+<div class="section-label">Three Agent Types in ADK</div>
+<div class="card full v">
+  <div class="card-title">Pick the Right Type for the Job</div>
+  <div class="atype">
+    <div class="atype-name">LLM Agent</div>
+    <div class="atype-desc">Language model is the brain. Handles reasoning, tool-calling, decision-making dynamically.</div>
+    <div class="atype-when">Use when: task requires reasoning and adapting to unpredictable input</div>
+  </div>
+  <div class="atype">
+    <div class="atype-name">Workflow Agent</div>
+    <div class="atype-desc">Manages execution order of multiple agents. Three sub-types: Sequential, Parallel, Loop.</div>
+    <div class="atype-when">Use when: you know the order of operations and want to control the flow</div>
+  </div>
+  <div class="atype">
+    <div class="atype-name">Custom Agent</div>
+    <div class="atype-desc">Full custom logic. You implement everything. For unique business logic that doesn't fit other patterns.</div>
+    <div class="atype-when">Use when: your use case is too specific for any standard workflow pattern</div>
+  </div>
+</div>
+
+<!-- WORKFLOW SUB-TYPES -->
+<div class="section-label">Workflow Agent Sub-Types</div>
+<div class="card full p">
+  <div class="card-title">Sequential · Parallel · Loop — Know All Three</div>
+  <div class="wf">
+    <div class="wf-label seq">Sequential</div>
+    <div>Agents run <strong>one after another</strong> in order. Output of step N becomes input to step N+1. <br><span style="color:var(--m);">Lab use: Researcher → Formatter</span></div>
+  </div>
+  <div class="wf">
+    <div class="wf-label par">Parallel</div>
+    <div>All sub-agents start <strong>simultaneously</strong>. Independent tasks. Faster for multi-source research.<br><span style="color:var(--m);">Use: search Wikipedia + DB + API at the same time</span></div>
+  </div>
+  <div class="wf">
+    <div class="wf-label lp">Loop</div>
+    <div>Repeats until <strong>condition met OR max iterations reached</strong>. Enables self-correction.<br><span style="color:var(--m);">Example: coding agent loops until all 10 test cases pass (max 5 tries)</span></div>
+  </div>
+</div>
+
+<!-- CLOUD RUN -->
+<div class="section-label">Cloud Run — Why You Need It</div>
+<div class="card full g">
+  <div class="card-title">Local ≠ Production. Cloud Run Bridges the Gap.</div>
+  <div class="row"><span class="dot"></span><div><strong>Serverless</strong> — no infra to manage. Google handles OS, hardware, patching.</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Scale to zero</strong> — when nobody uses it, it shuts down. Cost = ₹0 when idle.</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Auto-scales up</strong> — you set a max. Traffic spikes handled automatically.</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Low latency to Gemini</strong> — both on Google's internal network. Faster than calling from your laptop.</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Built-in logging</strong> — every request, every tool call, every error is logged automatically.</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Also good for MCP servers</strong> — deploy your own MCP tools here for Track 2.</div></div>
+</div>
+
+<!-- LAB ARCHITECTURE -->
+<div class="section-label">Lab Architecture — Zoo Tour Guide Agent</div>
+<div class="card full y">
+  <div class="card-title">What Gets Built</div>
+  <div class="flow" style="margin-bottom:14px;">
+    <div class="fbox">User Input</div>
+    <span class="farr">↓</span>
+    <div class="fbox p">Root Agent<small>Greeter</small></div>
+    <span class="farr">→ transfer control →</span>
+    <div class="fbox g">Sequential Workflow<small>Tour Guide</small></div>
+  </div>
+  <div class="flow">
+    <div class="fbox g">Researcher Agent<small>zoo data + Wikipedia</small></div>
+    <span class="farr">→ output_key: research_data →</span>
+    <div class="fbox v">Formatter Agent<small>formats clean response</small></div>
+  </div>
+  <p class="note">
+    <strong>output_key</strong> — stores agent output under a named key. Next agent reads it by key name instead of getting the full context. Keeps things efficient and cheap.<br>
+    <strong>transfer control</strong> — root agent hands over completely to the sub-workflow. Compare to "agent as tool" where root stays in control and just calls the sub-agent for its output.
+  </p>
+</div>
+
+<!-- FILE STRUCTURE -->
+<div class="section-label">Project File Structure</div>
+<div class="card full v">
+  <div class="card-title">Four Files — Know What Each Does</div>
+  <div class="file-row"><div class="fn">__init__.py</div><div class="fd">Python package entry point. Imports <code>root_agent</code>. ADK uses this to find your agent.</div></div>
+  <div class="file-row"><div class="fn">agent.py</div><div class="fd">Everything lives here — imports, logging, tool definitions, all agent definitions, root_agent.</div></div>
+  <div class="file-row"><div class="fn">requirements.txt</div><div class="fd"><strong>google-adk==1.14</strong> (or latest), langchain, wikipedia. Create venv → pip install.</div></div>
+  <div class="file-row"><div class="fn">.env</div><div class="fd">PROJECT_ID, PROJECT_NUMBER, SERVICE_ACCOUNT, MODEL. <strong>Never commit to GitHub.</strong></div></div>
+</div>
+
+<!-- DEPLOY SEQUENCE -->
+<div class="section-label">Full Deployment Sequence</div>
+<div class="card full p">
+  <div class="card-title">Run These in Order — All on Google Cloud Shell</div>
+  <ul class="checklist">
+    <li><div class="sn">01</div><div>Go to <code>console.cloud.google.com</code> → Create project → Get <strong>Project ID</strong> (≠ Project Name)</div></li>
+    <li><div class="sn">02</div><div>Open Cloud Shell at <code>shell.cloud.google.com</code> → Authorise</div></li>
+    <li><div class="sn">03</div><div>Enable APIs: Cloud Run, Artifact Registry, Cloud Build, Vertex AI, Compute<br><pre>gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com aiplatform.googleapis.com compute.googleapis.com</pre></div></li>
+    <li><div class="sn">04</div><div><code>mkdir zoo-guide-agent && cd zoo-guide-agent</code> → open folder in Cloud Shell Editor</div></li>
+    <li><div class="sn">05</div><div>Create all four files: <code>__init__.py</code>, <code>agent.py</code>, <code>requirements.txt</code>, <code>.env</code></div></li>
+    <li><div class="sn">06</div><div>Get env vars:<br><pre><span class="k">export</span> <span class="v">PROJECT_ID</span>=$(gcloud config get-value project)
+<span class="k">export</span> <span class="v">PROJECT_NUMBER</span>=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")</pre></div></li>
+    <li><div class="sn">07</div><div>Create service account (agent identity — least privilege):<br><pre>gcloud iam service-accounts create zoo-agent-sa
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:zoo-agent-sa@$PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/aiplatform.user"</pre></div></li>
+    <li><div class="sn">08</div><div><code>source .env</code> → load env vars into terminal session</div></li>
+    <li><div class="sn">09</div><div>Create venv → activate → install:<br><pre>python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt</pre></div></li>
+    <li><div class="sn">10</div><div>Deploy:<br><pre>adk deploy cloud run \
+  --project $PROJECT_ID \
+  --region asia-south1 \
+  --service-name zoo-tour-guide \
+  --with-ui \
+  --service-account $SERVICE_ACCOUNT \
+  ./</pre></div></li>
+    <li><div class="sn">11</div><div>Type <code>yes</code> when prompted to create Artifact Registry Docker repo → wait 5–10 min → get URL → browse to it</div></li>
+    <li><div class="sn">12</div><div>Clean up when done: delete Cloud Run service → delete Artifact Registry repo → or delete whole project</div></li>
+  </ul>
+</div>
+
+<!-- WHAT HAPPENS DURING DEPLOY -->
+<div class="section-label">What <code>adk deploy cloud run</code> Actually Does</div>
+<div class="card full g">
+  <div class="card-title">Under the Hood — Four Automatic Steps</div>
+  <div class="row"><span class="dot"></span><div><strong>Packages</strong> your Python code into a Docker container image (you write no Dockerfile)</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Pushes</strong> the image to Artifact Registry (private container repo inside your project)</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Deploys</strong> the container to Cloud Run with your config — service name, region, service account</div></div>
+  <div class="row"><span class="dot"></span><div><strong>Spins up a web UI</strong> (because of <code>--with-ui</code>) — you get a chat interface at the returned URL</div></div>
+</div>
+
+<!-- SECURITY RULES -->
+<div class="section-label">Security — Tuya Kept Repeating These</div>
+<div class="card full r">
+  <div class="card-title">Non-Negotiable Practices</div>
+  <div class="sec"><div class="warn">RULE 1</div><div><strong>Least privilege on service accounts.</strong> Grant only <code>roles/aiplatform.user</code>. Nothing more. The agent does not need your full user permissions.</div></div>
+  <div class="sec"><div class="warn">RULE 2</div><div><strong>Never commit .env to GitHub.</strong> Not even to a private repo. Add <code>.env</code> to <code>.gitignore</code> before anything else.</div></div>
+  <div class="sec"><div class="warn">RULE 3</div><div><strong>Don't share Cloud Run URL publicly if unauthenticated.</strong> Anyone with the link can talk to your agent and burn your credits.</div></div>
+  <div class="sec"><div class="warn">RULE 4</div><div><strong>Add auth before premium features.</strong> Booking, payments, personal data — put a firewall/OAuth layer in front. Never expose these unauthenticated.</div></div>
+  <div class="sec"><div class="warn">RULE 5</div><div><strong>If commands fail — rerun them.</strong> Most setup commands are idempotent. Running twice won't break anything. Rerun before panicking.</div></div>
+</div>
+
+<!-- YOUR ACTIONS -->
+<div class="section-label">Your Next Actions</div>
+<div class="card full g">
+  <div class="card-title">Do These to Complete Track 1</div>
+  <ul class="checklist">
+    <li><div class="cb"></div><div>Redeem Google Cloud credits from email / request via dashboard</div></li>
+    <li><div class="cb"></div><div>Create Google Cloud project at <code>console.cloud.google.com</code></div></li>
+    <li><div class="cb"></div><div>Open Cloud Shell → enable APIs → create project folder</div></li>
+    <li><div class="cb"></div><div>Build the Zoo Tour Guide agent — all four files</div></li>
+    <li><div class="cb"></div><div>Create service account with least-privilege only</div></li>
+    <li><div class="cb"></div><div><strong>Deploy to Cloud Run</strong> — don't just run locally. This is what separates you from most participants.</div></li>
+    <li><div class="cb"></div><div>Complete Google Skills Labs for Track 1 (optional but worth it)</div></li>
+    <li><div class="cb"></div><div>Pass MCQ assessment — minimum score required to unlock project submission</div></li>
+    <li><div class="cb"></div><div>Submit project — use zoo agent as skeleton, <strong>swap tools for something meaningful</strong></div></li>
+  </ul>
+</div>
+
+</body>
+</html>
