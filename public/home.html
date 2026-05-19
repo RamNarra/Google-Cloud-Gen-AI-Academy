@@ -73,6 +73,19 @@
       line-height: 1.85;
     }
 
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      color: var(--g);
+      margin: 40px 0 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .section-title.cohort-2 {
+      color: var(--y);
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -134,9 +147,20 @@
     <section class="hero">
       <div class="tag">Google Cloud Gen AI Academy APAC 2026</div>
       <h1>Google Cloud Gen AI Academy</h1>
-      <p>Welcome to the official learning hub for APAC 2026. Open any track below to access the complete session notes and continue your learning journey.</p>
+      <p>Welcome to the official learning hub for APAC 2026. Select your Cohort below to access session notes and continue your learning journey.</p>
     </section>
 
+    <h2 class="section-title cohort-2">Cohort 2 (New)</h2>
+    <section class="grid">
+      <article class="card">
+        <h2>Introductory Session</h2>
+        <p class="meta">Complete Session Notes</p>
+        <a class="btn yellow" href="/notes/cohort2-intro.html">Open Session</a>
+      </article>
+      <!-- Future tracks will be appended here -->
+    </section>
+
+    <h2 class="section-title">Cohort 1</h2>
     <section class="grid">
       <article class="card">
         <h2>Introductory Session</h2>
