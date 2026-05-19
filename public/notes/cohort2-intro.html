@@ -25,49 +25,111 @@
       min-height: 100vh;
       padding: 40px 20px 60px;
     }
-    .wrap { max-width: 800px; margin: 0 auto; }
+    .wrap { max-width: 900px; margin: 0 auto; }
     h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; color: #f3f6ff; margin-bottom: 20px; }
     h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--g); margin-top: 40px; margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px;}
     h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--b); margin-top: 24px;}
     p, li { font-size: 1.1rem; line-height: 1.7; color: #c6d3ef; margin-bottom: 12px; }
     ul { margin-top: 0; padding-left: 20px; }
+    .highlight { background: rgba(121,162,255,0.1); border-left: 3px solid var(--b); padding: 10px 15px; margin: 15px 0; font-family: 'DM Mono', monospace; font-size: 0.95rem; }
     .back { display: inline-block; margin-bottom: 20px; color: var(--b); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 14px; }
     .back:hover { text-decoration: underline; }
+    .qa-q { font-weight: bold; color: var(--y); margin-top: 15px;}
+    .qa-a { margin-bottom: 20px;}
   </style>
 </head>
 <body>
   <main class="wrap">
     <a href="/home.html" class="back">&larr; Back to Home</a>
-    <h1>Cohort 2: Introductory Session Summary</h1>
+    <h1>Cohort 2: Deep Dive Transcript & Complete Notes</h1>
     
-    <h2>Overview</h2>
-    <p>Following a massive response of over 200,000 registrations in Cohort 1, <strong>Google Cloud GenAI Academy APAC Edition Cohort 2</strong> is officially launching! It runs from April to June 2026. Registrations close on May 28th.</p>
-    <p><strong>Theme:</strong> Unified Data Analytics and Intelligence. You will learn to combine data pipelines, multimodal analytics, and autonomous agents to transform raw data into actionable intelligence.</p>
+    <h2>1. Introduction & Program Expansion</h2>
+    <p>The session kicked off welcoming participants to the Google Cloud GenAI Academy APAC Edition Cohort 2. Following the massive success in India, the program expands across the APAC region.</p>
+    <ul>
+      <li><strong>Cohort 1 Success:</strong> Generated nearly 200,000 (2 lakh) registrations from 12+ APAC countries, including 66,000+ organizations and institutions.</li>
+      <li><strong>Cohort 2 Timeline:</strong> Runs from April through June 2026. Registrations officially close on May 28th.</li>
+    </ul>
 
-    <h2>Learning Tracks</h2>
-    <p>The program features pathways simplified into one Student track and two Professional tracks. You start with Google Skill Labs, tackle workshops and Code Labs, clear an MCQ assessment, and advance to the Hackathon.</p>
+    <h2>2. Program Structure & Theme</h2>
+    <p><strong>Theme:</strong> Unified Data Analytics and Intelligence. You will learn to combine data pipelines, multimodal analytics, and autonomous agents to transform raw data into actionable intelligence at scale, primarily using Google Cloud tools like BigQuery, Vertex AI, Gemini, and the Agent Development Kit (ADK).</p>
+
+    <p>The Academy follows a two-part learning flow:</p>
+    <ul>
+      <li><strong>Phase 1: The Academy.</strong> Consists of targeted Workshops (expert-led instructor sessions), hands-on Google Skills Labs (optional practice), Code Labs, and a final MCQ assessment. <em>Note: Unlike Cohort 1, there are no project submissions during the Academy phase.</em></li>
+      <li><strong>Phase 2: The Hackathon.</strong> After passing the MCQs, participants proceed to the Hackathon, where a common problem statement will test the hands-on integrations of skills freshly learned.</li>
+    </ul>
     
-    <h3>For Professionals (Choose one or both)</h3>
+    <div class="highlight">
+      Rewards Include: Generous Cash prizes, the GenAI Master Certificate, exclusive goodies, graduation ceremony invite, and membership in the GenAI Elite Club Alumni network.
+    </div>
+
+    <h2>3. The Learning Tracks (Detailed Breakdown)</h2>
+    <p>The tracks have been streamlined to avoid confusion. There are two explicit tracks for <strong>Professionals</strong>, and one deep-dive track purely for <strong>Students</strong>.</p>
+    
+    <h3>Professional Track 1: Conversational Agents & BigQuery (Ingest, Transform & Govern)</h3>
+    <p><strong>Goal:</strong> Enabling conversational analytics through AI-powered data agents natively in BigQuery.</p>
     <ul>
-      <li><strong>Track 1 - Conversational Agents:</strong> Learn how to build and use conversational agents within BigQuery to intuitively chat with your data and simplify data engineering.</li>
-      <li><strong>Track 2 - AI-Assisted Data Science in BigQuery:</strong> Focus on building multimodal data science workflows combining structured and unstructured data using BQML, Gemini, embeddings, and algorithms directly within BigQuery.</li>
+      <li><strong>What you learn:</strong> Rather than just using standard components in production, you will focus on <em>understanding</em> data interactively. It covers the "agent catalog" inside BigQuery to create and manage data agents.</li>
+      <li><strong>Capabilities:</strong> Learn to interpret your natural-language questions into SQL, leveraging agent-driven insights instantly. You will be dealing with manual SQL workflows and migrating them to insight generation functions.</li>
+      <li><strong>Prerequisites:</strong> Basic Google Cloud knowledge, BigQuery familiarity, and beginner SQL.</li>
     </ul>
 
-    <h3>For Students</h3>
+    <h3>Professional Track 2: AI-Assisted Data Science in BigQuery (Intelligence)</h3>
+    <p><strong>Goal:</strong> Using BigQuery to build multi-modal data science workflows that fuse structured and unstructured (e.g., image) data.</p>
     <ul>
-      <li><strong>Agent Development Kit (ADK):</strong> Learn to design and deploy both single- and multi-agent applications. The curriculum covers integrating AI frameworks with proper context management, sequential/parallel routers, and memory sessions.</li>
+      <li><strong>What you learn:</strong> You will utilize Generative AI to simplify the workflow and automate model creation, writing fewer lines of code while running far more iterations simultaneously.</li>
+      <li><strong>Technologies utilized:</strong> BQML (BigQuery Machine Learning), Generative AI models, Embeddings, and Nearest Neighbor algorithms directly in the database.</li>
+      <li><strong>Prerequisites:</strong> Basic understanding of ML/AI, plus basic SQL and Python syntax.</li>
     </ul>
 
-    <h2>Major Cloud Next 2026 Announcements Highlighted</h2>
+    <h3>Student Track (Track 3): Agent Development Kit (ADK)</h3>
+    <p><strong>Goal:</strong> Designing and building AI agents (single and multi-agent systems) powered by the Google Agent Development Kit framework interacting with varied developer tools.</p>
     <ul>
-      <li><strong>Agentic Data Cloud Kit:</strong> Bring BigQuery and data services directly into your IDE (like VS Code or Cloud Shell) using intelligent agents that can build pipelines and analyze schemas.</li>
-      <li><strong>Cross-Cloud Lakehouse:</strong> Access external data sources like S3 databases directly from BigQuery natively.</li>
-      <li><strong>Spanner Omni:</strong> Graph data structure capabilities that can now run in air-gapped environments alongside vector support.</li>
-      <li><strong>Looker AI Insights:</strong> Conversational dashboards and proactive anomaly detection injected right into your BI workflow.</li>
+      <li><strong>What you learn:</strong> You'll engineer context-aware applications. The track dives into callbacks, memory session management, and routing architectures (sequential, loop, and parallel routing workflows).</li>
+      <li><strong>Deployment & Execution:</strong> Leveraging Gemini, Cloud Shell terminal commands, and python backend programming to handle state context.</li>
+      <li><strong>Prerequisites:</strong> Proficiency in Python syntax, G-Cloud commands, and understanding core GenAI agent patterns. Must grasp <em>why</em> an agent is needed before just writing the code.</li>
     </ul>
 
-    <h2>Graduation & Rewards</h2>
-    <p>By completing the required labs and MCQ testing, you will earn the prestigious <strong>GenAI Master Certificate</strong>, get access to the Elite Club alumni network, cash prizes, exclusive goodies, and qualify for the final hackathon phase!</p>
+    <h2>4. Advanced Tech Insights & Cloud Next 2026 Announcements</h2>
+    <p>Abirami (Staff Developer Advocate) provided an exclusive look at the newest features launched around Agentic frameworks that go beyond basic Cohort material:</p>
+    
+    <ul>
+      <li><strong>Agentic Data Cloud Kit:</strong> You can now download an extension in your IDE (VS Code, Cloud Shell). It gives the AI agent (e.g., Gemini 2.5 Flash, 3.1 Pro) skills and instructions about your specific database infrastructure. It allows your IDE bot to query, analyze, and generate pipelines touching your BigQuery or AlloyDB data without leaving the editor.</li>
+      <li><strong>Fluid Scaling & Fast Engines:</strong> BigQuery now implements a lightning engine generating 4.9x faster performance compared to Open Source Apache Spark, allowing intelligent pipeline authoring almost instantly.</li>
+      <li><strong>Cross-Cloud Lakehouse:</strong> Data no longer needs to be physically migrated first. You can perform analytics spanning across AWS S3 Iceberg data and Google Cloud native storage simultaneously.</li>
+      <li><strong>Spanner Omni:</strong> Spanner now natively supports <em>graph data structures</em> out of the box in air-gapped environments, on top of its relational structures and vector storage. Great for high-availability knowledge graphs!</li>
+      <li><strong>Looker AI:</strong> If building a full-stack dashboard for the hackathon, Looker now has proactive AI-powered anomaly detection and fully conversational data exploration.</li>
+    </ul>
+    
+    <div class="highlight">
+      "Anyone can build an app; what puts you in the winning bracket is contextual relevance. Think outside the box and use advanced analytics that are newly possible with AI to provide a unique business edge." - Abirami
+    </div>
+
+    <h2>5. Critical Q&A Highlights</h2>
+    
+    <p class="qa-q">Q: Should I take both Professional Tracks? How do they differ?</p>
+    <p class="qa-a"><strong>A:</strong> You can take one or both! If breaking it into a one-liner: Track 1 is learning to use conversational agents to interact directly with BigQuery datasets intuitively. Track 2 focuses on executing heavy Machine Learning and generating deep AI insights on top of structured/unstructured dataset fusion.</p>
+    
+    <p class="qa-q">Q: Will the Student Track's ADK have built-in memory management or multi-agent capability?</p>
+    <p class="qa-a"><strong>A:</strong> Yes, ADK supports single and multi-agent inherently. The ADK framework manages multiple context layers natively, including roll-back context, state context, memory context, tool context, and callback context. For multi-agent systems, it's about properly defining the logic tree (sequential/parallel).</p>
+
+    <p class="qa-q">Q: How do you prevent infinite looping when two agents communicate in a multi-agent workflow?</p>
+    <p class="qa-a"><strong>A:</strong> Provide a strict "exit parameter". The most straightforward traditional method is creating a hard reset (either hitting a timeout threshold in ms/seconds, or a hard limit on the number of prompt iterations). Beyond that, strict design patterns (sequential pipelines rather than free-form chatting) resolve it dynamically.</p>
+
+    <p class="qa-q">Q: Are backend engineers or fullstack developers better suited?</p>
+    <p class="qa-a"><strong>A:</strong> The line is blurring heavily! Full-stack developers must understand data ingest logic to construct well-integrated contextual frontends. Backend engineers will naturally thrive given the deep focus on data warehousing and processing layers. Neither is excluded.</p>
+
+    <p class="qa-q">Q: How to design a production-ready, low-latency, strongly grounded multi-modal LLM system?</p>
+    <p class="qa-a"><strong>A:</strong> There is no single answer—it wholly depends on the exact context: the nature of data (structured vs unstructured), the chosen base model (Gemini 2.5 Flash vs 3.1 Pro), and what "low latency" strictly means to the use case. Depending on the need, you pick the exact combination of GCP tools (e.g., using Spanner Omni for graph grounding vs standard BQ embeddings). The Hackathon will help you explore this.</p>
+
+    <p class="qa-q">Q: What about implementing a "Human-in-the-loop" validation system for AI outputs?</p>
+    <p class="qa-a"><strong>A:</strong> Multiple methods exist: (1) Setting up explicit "Assessment Agents" to review outputs prior to deployment. (2) Standard programmatic function calling, where the chain pauses and emails a payload to a human, halting execution until an "approve" parameter is passed back.</p>
+
+    <p class="qa-q">Q: Is it accessible for someone brand new to Cloud (e.g., a Pharmacy student)?</p>
+    <p class="qa-a"><strong>A:</strong> Yes, it is friendly to beginners, but the 90-minute live labs are fast-paced. A true beginner is advised to review entry-level Python, basic SQL, and the exact definition of an "Agent" in cloud prior to the workshops so they do not fall behind dynamically. BigQuery is famously simple to grasp quickly through natural language translation features available now.</p>
+    
+    <p class="qa-q">Q: Is it allowed for participants under 18?</p>
+    <p class="qa-a"><strong>A:</strong> Currently no. Participants must be 18+ (college age or professionals). High school students can read along with the labs publicly but cannot officially compete in the hackathon.</p>
 
   </main>
 </body>
