@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Track 1: Building AI Agents with ADK - Exhaustive Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090c14;
+      --surface: #11162a;
+      --border: #2a3652;
+      --text: #dce3f0;
+      --muted: #7f8fb9;
+      --g: #43e8b0;
+      --b: #79a2ff;
+      --y: #ffd166;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: #090c14;
+      min-height: 100vh;
+      padding: 40px 20px 60px;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; line-height: 1.8; }
+    h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; color: #f3f6ff; margin-bottom: 20px; line-height: 1.2; }
+    h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; color: var(--g); margin-top: 50px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;}
+    h3 { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--b); margin-top: 30px; margin-bottom: 12px; }
+    h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; color: #f3f6ff; margin-top: 20px; margin-bottom: 10px; }
+    p { font-size: 1.05rem; color: #c6d3ef; margin-bottom: 16px; }
+    li { font-size: 1.05rem; color: #c6d3ef; margin-bottom: 10px; }
+    ul, ol { margin-top: 0; padding-left: 24px; margin-bottom: 24px; }
+    .highlight { background: rgba(121,162,255,0.08); border-left: 4px solid var(--b); padding: 16px 20px; margin: 24px 0; font-family: 'DM Mono', monospace; font-size: 0.95rem; border-radius: 0 8px 8px 0; color: #a5c0ff; }
+    .expert-take { background: rgba(67,232,176,0.08); border-left: 4px solid var(--g); padding: 16px 20px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+    .qa-box { background: rgba(255,209,102,0.05); border: 1px solid rgba(255,209,102,0.2); padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+    .qa-q { font-weight: 600; color: var(--y); margin-top: 0; margin-bottom: 12px; font-size: 1.1rem;}
+    .qa-a { margin-bottom: 0;}
+    strong { color: #f3f6ff; font-weight: 600; }
+    .transcript-container { max-height: 600px; overflow-y: auto; background: var(--surface); padding: 20px; border: 1px solid var(--border); border-radius: 12px; font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--muted); margin-top: 40px; white-space: pre-wrap; line-height: 1.5; }
+    .back { display: inline-block; margin-bottom: 30px; color: var(--b); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+    .back:hover { color: #f3f6ff; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a href="/home.html" class="back">&larr; Back to Home</a>
+    <h1>Student Track 1: Building AI Agents with ADK</h1>
+    
+    <p>This is the ultimate, AIR-1 level breakdown of the <strong>Google Cloud GenAI Academy (APAC Edition) Cohort 2 - Student Track 1</strong>. This session is taught by Indranil Chandra (ML & Data Architect at Stocks). It covers building Agentic systems using Google’s ADK (Agent Development Kit), going from zero to deploying advanced, scalable multi-agent architectures.</p>
+
+    <div class="expert-take">
+      <strong>Spoon-Feeding Alert:</strong> If you know basic Python but have no idea what an "Agent" actually is beneath the hood, this document is explicitly engineered to spoon-feed you the exact architecture, code structure, and logic without losing context.
+    </div>
+
+    <h2>1. What Exactly is an AI Agent?</h2>
+    <p>We use ChatGPT every day (which is just a conversational interface). An <strong>AI Agent</strong> is different. It doesn't just talk; it <strong>plans, reasons, and executes tasks</strong> for you.</p>
+
+    <p>To do this, it requires <strong>four absolute core components:</strong></p>
+    <ol>
+      <li><strong>Model:</strong> This is the brain (e.g., Gemini, OpenAI, Claude). It reasons over the user's goals, creates a plan, and generates text.</li>
+      <li><strong>Tools:</strong> These are the "hands" of the agent. Models can't access live data. Tools (like a Weather API, Calendar API, or Flight Scraper) go out to the real world, fetch data, or perform actions, and give the data back to the model.</li>
+      <li><strong>Orchestration:</strong> The manager. It handles <em>when</em> to call the model, <em>which</em> tools are available, handling input/output parameters, and <em>maintaining memory/state</em>. It decides what to do based on what the tools return.</li>
+      <li><strong>Runtime:</strong> The execution environment where all this logic actually runs (e.g., a Python runtime, a container, or a serverless function).</li>
+    </ol>
+
+    <div class="highlight">
+      <strong>Real-World Example: Leave Balance Checker</strong><br><br>
+      <em>User:</em> "How many vacation leaves do I have?"<br>
+      <em>Orchestrator:</em> Calls Model.<br>
+      <em>Model:</em> Realizes it needs context. Tells Orchestrator to use Calendar Tool & Policy Tool.<br>
+      <em>Tools:</em> Calendar Tool finds out you took 5 days off. Policy Tool finds total allowed is 25.<br>
+      <em>Orchestrator:</em> Feeds these answers back to the Model.<br>
+      <em>Model (Reasoning):</em> "Okay, they took 5 days. Policy says 25. But wait, Calendar says 1 day was marked 'Out of Office' but outside business hours, so it wasn't a leave."<br>
+      <em>Model Output:</em> "You have 21 days of vacation leaves pending."
+    </div>
+
+    <h2>2. Enter ADK (Agent Development Kit)</h2>
+    <p>Google noticed everyone was building agents completely differently, making code hard to maintain. ADK was built to standardize and democratize this process—making agent development feel exactly like normal software development.</p>
+
+    <div class="qa-box">
+      <h3 class="qa-q">Core Characteristics of ADK</h3>
+      <p class="qa-a">
+        <strong>1. Model Agnostic:</strong> You aren't forced to use Gemini. You can plug in any open-source or proprietary model. The agent is the product, the model is easily swappable.<br><br>
+        <strong>2. Deployment Agnostic:</strong> It's just Python code. Run it locally, in a Docker container, in a VM, or on Vertex AI.<br><br>
+        <strong>3. Interoperability:</strong> Easily connect to your own existing memory systems or third-party libraries.
+      </p>
+    </div>
+
+    <h3>The 5 Levels of AI Abstraction</h3>
+    <p>ADK aims to hit the perfect sweet spot for developers. Here is where it sits in the hierarchy:</p>
+    <ul>
+      <li><strong>Level 0 (DIY):</strong> Hardcore ML engineer building everything from scratch. Huge dev time, hard to maintain.</li>
+      <li><strong>Level 1 (Low-Level LLM Frameworks):</strong> e.g., standard LangChain. Just wraps the model call to make talking to models easy.</li>
+      <li><strong>Level 2 (Low-Level Orchestration):</strong> e.g., LangGraph. Manages multiple components talking to each other but lacks high-level agentic patterns out-of-the-box.</li>
+      <li><strong>Level 3 (Agent Frameworks):</strong> <strong>This is ADK.</strong> Complete frameworks handling state, memory, sessions, and tool interfaces. Includes OpenAI Agents SDK as a competitor.</li>
+      <li><strong>Level 4 (No-Code):</strong> Future platforms where you just prompt a GUI without writing code.</li>
+    </ul>
+
+    <h2>3. The Three Types of Agents You Can Build</h2>
+    <p>ADK allows you to create three distinct types of agents depending on what you need them to do:</p>
+
+    <ol>
+      <li><strong>LLM Agents:</strong> <em>(Dynamic & Intelligent)</em> Uses an LLM at its core. Highly flexible. It decides on the fly what to do, what tools to call, and how to plan. It is <strong>non-deterministic</strong>, meaning it might solve exactly the same problem slightly differently each time.</li>
+      <li><strong>Workflow Agents:</strong> <em>(Structured & Predictable)</em> These do NOT use an LLM for flow control. They are strictly sequential, parallel, or looped pipelines. Highly <strong>deterministic</strong>. Perfect for compliance tasks (e.g., A refund agent <em>must</em> verify order ID -> check discount -> process refund in that exact order).</li>
+      <li><strong>Custom Agents:</strong> <em>(Highly Tailored)</em> A mix of both. Built by extending the base agent directly for specialized integrations.</li>
+    </ol>
+    
+    <div class="expert-take">
+      <strong>The Secret Sauce: Multi-Agent Systems</strong><br>
+      True power lies in combining these. A <strong>Workflow Agent</strong> acts as a manager, executing a strict process, but hands off certain dynamic language tasks to an <strong>LLM Agent</strong>.
+    </div>
+
+    <h2>4. ADK Components: Deep Dive</h2>
+    <p>To write ADK code, you must understand its components. They are imported directly into your Python scripts.</p>
+
+    <div class="qa-box">
+      <h3 class="qa-q">1. Tools (Hands of the Agent)</h3>
+      <p class="qa-a">
+        You can build <strong>Function Tools</strong> (standard Python functions), <strong>Agent Tools</strong> (using a specialized child agent AS a tool for a parent agent), or use <strong>Built-in Tools</strong> (Google Search, Code Execution, RAG pattern out of the box). You can also easily import CrewAI or LangChain tools.
+      </p>
+    </div>
+
+    <div class="qa-box">
+      <h3 class="qa-q">2. Memory, State & Sessions (The Brain's Context)</h3>
+      <p class="qa-a">
+        <strong>Session:</strong> Stores the <em>current</em> conversational thread.<br>
+        <strong>State:</strong> Stores the specific dynamic <em>data</em> within that interaction.<br>
+        <strong>Memory:</strong> Long-term storage accessible <em>across</em> sessions (e.g., remembering your name from a chat you had last week).
+      </p>
+    </div>
+
+    <div class="qa-box">
+      <h3 class="qa-q">3. Evaluation (Testing your Agent)</h3>
+      <p class="qa-a">
+        Traditional Unit testing doesn't work well due to LLM variability. ADK provides robust Eval frameworks (<code>test.json</code> and <code>test.evalset.json</code>) evaluating two things:<br>
+        <strong>1. Trajectory & Tool Use:</strong> Did the agent actually use the required tools in the right order? (If it answers correctly but skipped the API call, it hallucinated/guessed).<br>
+        <strong>2. Final Response matching:</strong> Assessing the quality and similarity of the final response to the expected dataset.
+      </p>
+    </div>
+
+    <h2>5. How to Actually Write the Code</h2>
+    <p>Here is exactly how the framework translates into Python imports:</p>
+    <ul>
+      <li><strong>Agents:</strong> <code>from google.adk.agents import ToolCallingAgent</code></li>
+      <li><strong>Tools:</strong> <code>from google.adk.tools import tool</code> (You just wrap regular functions).</li>
+      <li><strong>Runners:</strong> <code>from google.adk.runners import Runner</code> (This manages the execution lifecycle, similar to running a Flask app server).</li>
+      <li><strong>Sessions:</strong> <code>from google.adk.sessions import SessionService</code></li>
+      <li><strong>Memory:</strong> <code>from google.adk.memory import InMemory</code></li>
+      <li><strong>Models:</strong> <code>from google.adk.models import GeminiModel</code> (Interfacing via litellm).</li>
+      <li><strong>Planners:</strong> <code>from google.adk.planners import BasicPlanner</code> (For task routing).</li>
+      <li><strong>Code Executors:</strong> <code>from google.adk.code_executors import PythonCodeExecutor</code> (Crucial for AI coding agents to run scripts in safe bash environments).</li>
+      <li><strong>Evaluators/Events:</strong> Used to track agent trajectories and score them.</li>
+    </ul>
+
+    <h3>Production Folder Structure</h3>
+    <p>A real ADK app doesn't sit in one file. It looks like this:</p>
+    <div class="highlight">
+my_adk_project/<br>
+ ├── agent.py (Root sequential agent)<br>
+ ├── memory.py (Long-term memory backend interface)<br>
+ ├── artifacts.py (Loads docs for RAG)<br>
+ ├── prompts.py (System instructions/templates that act as the agent's brain)<br>
+ ├── tools.py (Shared utilities, e.g., file system access)<br>
+ ├── sub_agents/<br>
+ │    └── ... (Each sub-agent has its own specific agent.py, prompts.py, tools.py)<br>
+ ├── data/ (JSON configs and artifacts)<br>
+ ├── deploy/ (Cloud Run / Vertex AI setup)<br>
+ └── eval/ (Testing scripts)<br>
+    </div>
+
+    <h2>6. Business vs Developer Choices</h2>
+    <p>Before coding, choose the right route based on your skill level:</p>
+    <ul>
+      <li><strong>No-code / Business Users:</strong> Use <strong>Agent Space</strong> or <strong>Conversational Agent</strong> (fully managed GUIs).</li>
+      <li><strong>Developers:</strong> Use <strong>ADK framework</strong> or build from scratch and deploy on <strong>Vertex AI Agent Engine</strong>. You have absolute control.</li>
+    </ul>
+
+    <p style="margin-top: 40px; text-align: center; color: var(--g); font-weight: 500;"><em>End of Student Track 1 Notes. Time to write some code!</em></p>
+
+    <h2 style="margin-top:60px;">Original Raw Transcript</h2>
+    <div class="transcript-container">
+00:00:22
+[music] [music] [music] &gt;&gt; Hey. &gt;&gt; Hi guys, good morning and welcome to Cohort 2 of Google Cloud GenAI Academy APAC Edition. My name is Manisha Ahuja and I'm your co-host for today. So, following the success of Cohort 1, Cohort 2 shifts the focus to unified data analytics and intelligence. Uh this immersive journey empowers you to build autonomous data agents that bridge the gap between manual SQL and natural language discovery, moving beyond static dashboards to real-time agent-driven
+
+00:02:30
+insights. With a successful closure of Cohort 1, uh we decided to open the track for students as well. That is the reason we have introduced this course that is ADK crash course from beginner to expert, uh where you'll be uh learning about building AI agents with ADK, uh that is from single agents to multi-agent systems. Uh before I proceed further, I also wanted to let you know that the Cohort is divided into two structure, that is Academy and Hackathon. The Academy includes workshops, labs, and
+
+00:03:03
+assessment, and the Hackathon consists of uh prototype submission competition. Right? So, I'll not take much of your time today. Uh we'll move forward and let's welcome Mr. Indranil Chandra. Mr. Indranil Chandra is a ML and data architect at Stocks, and uh he's a creative technologist with a decade of experience in leveraging ML PL techniques, GenAI models, and cloud offerings to deliver consumer-centric products. Hi, Mr. Indranil. How are you doing today? All good. All good. Thank you, Manisha,
+
+00:03:36
+for that introduction. So, over to you. All right. Uh thank you so much, everyone, for tuning in today, and uh I hope you all have a lot of fun in the next 90 minutes, and uh learn uh something new that you probably wouldn't have worked on before or have used before, right? Uh, so today's session is going to be focused on building agentic systems using Google ADK. Uh, so we will be moving from building a single agent to multi-agent systems. And, uh, this is going to be a code lab workshop. We are going to be building
+
+00:04:12
+advanced AI agents using the ADK framework, moving from a single agent systems to scalable multi-agent architectures. You will also learn how to use agents and how they can use tools, retain memory, and collaborate to solve complex multi-step tasks, not just a simple chat interface. This will introduce you to key agent design principles, including enabling tool usage, implementing conversational memory, and structuring agents into coordinated multi-agent systems for real-world problem-solving. Uh, this will be uh, 90 minutes long,
+
+00:04:46
+close to 90 minutes long, and uh, primarily we'll be covering the entire piece Python coding language. So, some sort of proficiency or basic knowledge of Python coding will definitely be required. Uh, since we'll be conducting this in code labs, right? I hope you guys have already received an email uh, to claim your cloud credits. Uh, in case you have not, do check your email and you should be able to redeem it uh, pretty easy. Moving on to the agenda for today, we will be covering what is ADK, what are
+
+00:05:18
+the agent types, what are the ADK components, the ADK framework in depth, how do we build agent and multi-agent system using ADK, and then a hands-on lab to complete it with some real-life experience of having it. Hope you all are excited for what lies ahead. It's going to be super fun. And, the first thing that we want to start with, right? What's your idea of an AI agent, right? And, how is it different from what we use on a day-to-day basis, the conversational chat interfaces, right? Essentially, an AI agent plans,
+
+00:05:53
+reasons, and execute tasks for user. It has four key components. One is your model, which is essentially, for example, a Gemini model that you're using. It is used to reason over your goals, determine the plan, and generate a response out of it. The second key component is tools. It is used to fetch data, perform actions or transactions by calling other APIs or services. The third key component is the orchestration part. How do you call the model? When to call the model? Which tools are there available
+
+00:06:27
+to the model? Which tools to call when? What are the input parameters to these tools? What are the output parameters that needs to be expected from these tools, right? All of this orchestration, along with maintaining memory, state management, including the approach used to plan, the tools, data provided or fetched, etc. All of this is something that an orchestration handles. For example, let's say if you're building a trip planner agent, you would have different tools like a weather calling tool,
+
+00:06:58
+right? From where you will be fetching the weather of that particular location for which you want to plan a trip. You will also have, let's say, a trains tool, right? From where you can fetch all of the local timetable of the trains which are running in that particular location. Or different public transport, be it bus, be it anything else, right? You could also be looking at your flight schedules, right? What are What are the flights that are taking you to that particular location from the location
+
+00:07:24
+where you reside currently? And what are the flight prices? How do you optimize your travel in a way that you're spending the least amount of cost in that, right? So, all of this is not handled at a single place in a single model call, right? All of these are different tasks which are handled by different tools, and different tools then constitute and give this data back to the orchestrator, which then feeds all of this data into the AI model, based on which the AI model is able to generate the right result.
+
+00:07:53
+The last key component is a runtime, essentially an execution runtime, where all of this will be tied up together and working closely, right? I'm sure uh many of you must have used coding AI coding tools, right? Now, in this AI coding tools, again, there are these different tools that you have, right? Which are essentially, let's say uh a terminal tool, which can execute bash commands on your behalf. There will be a Git tool, which will essentially do all of your uh Git management-related work, right?
+
+00:08:23
+There will be a file management tool, which will make sure that you're interacting with the files in the right way, right? Now that we have understood what an agent is, let's try to take it further and understand what an ADK is. What exactly is agent development kit that Google has developed, and how it solves a particular problem, and what exactly is the problem that it is trying to solve. So, for example, take an example that uh you ask a question, "How many vacation leaves do you have?"
+
+00:08:51
+Now, this would typically be going into an agentic solution, wherein the orchestration will be responsible for calling multiple tools. It will go to the model first and say that, "Okay, given that this is the query that we need to answer, one of the first things that we have to do is query the calendar app and see how many vacations has the user already taken." Then, it will have to go and do a tool query saying, "Give me the number of vacation leaves which are there." It will also go to the policy document
+
+00:09:22
+and check how many maximum number of vacation leaves can a particular employee in that organization take. Now, having done all of this, it will have to then summarize the relevant part. It will have to reason over it. What is a redundant versus what is relevant for the particular query that the user has asked? There, for example, when you're querying your calendar app, it might be possible that you kept uh you marked a particular day as out of office, wherein you were just out of office outside the
+
+00:09:53
+business hour for some kind of a activity or some function that you wanted to attend. And you just wanted to make sure that uh the on-call engineers are aware of it that you are unavailable at that particular time, and hence you put a out of office status. However, you were not practically on leave on that particular day, right? Now, these are the kind of complex uh results that your particular model would be getting from the tool calls, and now it needs to reason over it, reason over the result
+
+00:10:19
+of the orchestration tool, and uh generate the final result, right? For example, the final output that you will get out of this particular question would be something like uh you have 20 days of vacation leaves that are pending. Now, this is one typical use case wherein you would be building an agentic system. Now, let us have a look at how ADK helps us resolve it, right? ADK is essentially a powerful open foundation for building complex production-ready AI agents with greater control. Now, it tries to solve a particular
+
+00:10:52
+problem, which is there was a lack of a open foundational framework for building complex AI agent, which led to everyone building AI agents in their own way. Now, that is all well and good. However, it becomes very difficult to maintain AI agents over a period of time if there is no standard convention that is followed, right? Also, a lot of the heavy-lifting task around state management, memory management, tool calling, uh you want to standardize them, so that building an AI agent shouldn't feel like building a
+
+00:11:24
+rocket science or building a rocket, right? It should be as easy as doing software development. And that was the core concept or the core mindset with which ADK was developed, right? They wanted to build a powerful open foundation for building complex production ready AI agents with greater control. Moving further, uh the one of the other core ideas of building ADK was to make it model agnostic. So, even though ADK has been developed by Google, it does not mandate that you only have to use Google's GenAI models
+
+00:11:58
+for it to work well. It can work with any open-source model. It can work with any model which is out there. As long as you are interfacing with that in the correct way, you should be able to plug and play any model. And that also essentially means that your solution is essentially not married to a particular model. But the AI agent that you're building is the product. The model that is working beneath it can always be replaced based on however good or bad the performance of a particular model is or how the agent evolves over
+
+00:12:30
+time in terms of the complexity of the use cases that it is handling. So, yeah, model agnostic, that is one of the key foundation of building ADK. Deployment agnostic, ADK is also packaged in a way that it can be deployed into any application environment. It is as simple as running any Python code anywhere, right? You can package it within a container, you can run it within a VM, you can run it as a serverless offering. It depends on what your particular use case is and how comfortable are you with
+
+00:13:02
+that particular deployment pattern. And you should be able to deploy ADK there. Interoperability, as I said, right? You want to make sure that you can plug and play different tools, you can plug and play different models, you can plug and play different things into this entire ecosystem. For example, for memory management, you want to hook up your agent to a particular memory management layer that your particular enterprise uses or let's say a particular layer that you have already built over a
+
+00:13:31
+period of time. For example, I have built a memory layer in my local file system itself, which has essentially record of all the things that I've worked in the last 1 year and it has a graphical representation of it. Now, whenever I'm doing any work in my local right, any agent that I'm developing, I would want that any particular agent that I'm developing for my own self, though all of those agents should be able to look up into that particular local file system that I've created,
+
+00:14:02
+which is my own memory of the work that I've done in the last 1 year, right? So, Google ADK helps you in creating and building this kind of use cases really easy. So, that's the interoperability part. With Google ADK, we want to make agent development feel like software development. We don't want this tool to be only available to data scientists and ML engineers or AI engineers. We want this to be available to everyone to really democratize the process of agentic application development.
+
+00:14:38
+Now, the levels of abstraction that where where this particular ADK solution comes in, right? So, there are in total five levels of abstraction. Four is what we say, but the zeroth level is essentially a do-it-yourself abstraction, wherein you're saying that okay, I am someone who is a hardcore ML or AI engineer and I can build everything from scratch. In that case, essentially, you would be wanting to write every single piece of code from ground zero. You don't want to use any SDK, you don't want to use any
+
+00:15:12
+out-of-the-box kit, right? In that case, what that leads to is a larger development time. It It requires a lot of effort and it also creates a dependency. It is also a code because it is so It is written by you from the ground zero. It is not very easily maintainable by others, right? The level one abstraction, which is a low-level LLM framework, example LangChain, wherein essentially you have some sort of a framework which is built for abstracting the model call. So, let's say you are interacting with Gemini
+
+00:15:50
+model or whether you're interacted with any of the OpenAI family models or interacting with any of the Anthropic models, right? Your model call is something which is abstracted and encapsulated in a single interface. So, that takes away one level of complexity. But, that's just one wrapper, right? Because agent, as we discussed previously, right? It has multiple components and you have to abstract away as much of that as possible for you to easily develop and maintain that solution over time. Which led to
+
+00:16:18
+solutions like LangGraph. This is which is a low-level orchestration framework. So, it essentially assumes that a real-world agentic application will have multiple components talking with each other and you have to do that orchestration well and abstract out that entire orchestration piece from the user so that they are able to build the value chain on top of it, the product on top of it instead of focusing just on building the orchestration part. Then comes the level three, which is where ADK really fits in.
+
+00:16:52
+Which is the agent framework. Wherein ADK, the agent development kit by Google, as well as the other options like OpenAI agents SDK, right? We also have a Anthropic kit as well now, right? All of these frameworks, they are trying to build an entire end-to-end framework wherein all of the state management, memory management, session management, your tool interfaces, how do you implement different type of agentic patterns, right? All of that gets abstracted into the framework itself, and it should be very easy for anyone to
+
+00:17:29
+just build an agent on top of it, no matter how complex that particular agent is. If it's a sequential a simple sequential agent where one task happens, then another task happens, then another task happens, or be it a parallel agentic system wherein there are multiple which are happening in parallel and then everything comes back together and you get a summary of the entire execution, right? All of these different patterns you can implement very easily using this kind of agent frameworks. Now, there are no standardizations
+
+00:18:00
+around it, which is why you will see all of the major players today building their own SDKs, right? But, it's definitely a developer's choice today in terms of what SDK do they want to use today for building this complex agent. ATK was definitely one of the first movers in the industry. Google built ATK as as an effort to trying to standardize this entire process, and which is why you will see a lot of adoption happening on the Google ATK front. The last level, which ideally someday we would want to reach would reach would be
+
+00:18:34
+no code platforms wherein you are essentially not even writing any code. You are just giving a high-level objective like I want to build a travel itinerary planner agent for myself. And under the hood, it will automatically define that, okay, these are the session management that needs to be done, these are the state management that needs to be done, these are the tool calls that needs to be done on the weather front, on the public transport front, and whatnot, right? So, a no code platform would be
+
+00:19:01
+something which will take care of this entire piece. All right. Now that we have understood the level of abstractions which are present, right? And where ATK really fits in, let's jump into a little bit more about ADK and understand that in detail, right? So, it's essentially a client-side code framework and it is used to build sophisticated multi-agent solutions. ADK is essentially an SDK inspired by how we built our production agents and now you can use the same set of tools. This is the same framework that Google
+
+00:19:34
+has been using internally as well for building production grade agents and that is something that they have outsourced to the entire world for them to build on top of. It is a sweet spot between easy to use and high levels of control and quality. So, what does that give us? You can build multi-agent applications orchestrating actions across many agents and tools. You can interleave deterministic logic with actions driven by GenAI reasoning for effortless hybrid agents. You can also have intuitive local dev UI
+
+00:20:10
+for fast iteration. You can visualize agent topology and trace agents actions. This way you wouldn't have to spin up an entire infra or servers for quick runs or test. You can just launch the dev UI and see it in action. And that is something that we'll be covering during the code lab as well in the appendix section. Gemini is the default but any generative AI model is supported including the fine-tuned models. Life, audio, video, screen bidirectional streaming is taken into the core of the
+
+00:20:46
+SDK. This helps in building truly interactive and real-time agent experiences. Build your agents how Google build agents and that's essentially the motto behind building ADK. Now that we know what is ADK, let's jump into the different agent types and patterns and then we can see how ADK helps us in implementing them. Right? So, there are three patterns that we want to essentially discuss. Uh ADK essentially gives you a base agent, uh which you can extend into one of these three uh agent types.
+
+00:21:26
+An agent is a self-contained execution unit designed to act autonomously to achieve specific goals. There are three categories of agents. LLM agents. These agents utilize large language models at their core engine to understand natural language, reason, plan, generate responses, and dynamically decide how to proceed or which tools to use, making them ideal for flexible, language-centric tasks. The next we have is workflow agents. Workflow agents, on the other hand, are specialized agents that control the
+
+00:22:07
+execution flow of other agents in predetermined, deterministic patterns. Be it sequential pattern or a parallel pattern or a loop pattern, wherein you essentially keep on doing the same task again and again until uh the until a target quality is reached without using an LLM for the flow control itself. That is the crux of using a workflow agent. You really don't want the LLM to control that flow. It is something which is embedded into the workflow pattern itself. It is perfect for structured processes
+
+00:22:41
+needing predictable execution. For example, uh any uh workflow that requires a compliance-related check, right? You would always want to put a certain set of tasks that you do before you can your agent can go ahead and execute that. For example, if someone comes to your particular refund agent asking for a refund for the last order that they placed. You first have to check whether that particular order ID is a valid order ID or not. You also have to check what was the amount paid by the user for
+
+00:23:14
+that particular order, whether there were any discounts which are which were applied, which you will not be refunding now. So, all of these checks and balances you would do before you can go ahead and process the refund request from the user. So, this kind of workflow patterns are something that you can achieve very easily using this workflow agents. And the last is the custom logic. This is the final category. These agents are created by extending the base agent directly. They allow you to implement unique operational logic,
+
+00:23:47
+specific control flows, or specialized integrations not covered by the standard types, catering to highly tailored application requirements. For example, if you have a use case which requires something different from the normal sequential flow or the parallel flow or the loop flow or something that doesn't do a normal LLM agent call with reasoning and tools and transfer, right? You would typically be ending up developing a custom agent which would be specific for your particular use case. Now that we know the different agent
+
+00:24:19
+types, how do you choose the right agent type? So, this is that grid which can essentially help you in taking the right decision. Choosing the right agent type is an important pre-step to building any agentic system, and this table quickly summarizes the agent types. For example, in terms of the primary function, your LLM agent is used for reasoning, generation, and tool use. Workflow agent is used for controlling agent execution flow, and custom agent is used for implementing unique logic and integrations. In terms of the core
+
+00:24:56
+engine, the LLM agent has a large language model LLM or you can use a SLM also as the core engine. Uh workflow agent will have a predefined logic, either a sequence or a parallel or a loop logic that will define the workflow. And in the custom agent, you will essentially have a custom code as the core engine, which can have a combination of LLM as well as the workflow kind of a setup. Determinism, uh when you use LLM agent, it is non-deterministic. It is flexible, but it is non-deterministic. Uh workflow
+
+00:25:30
+agent is deterministic and predictable. Custom agent could be anything you want it to be. It can be either or based on the implementation. Primary use, LLM agents are used for language task, dynamic decisions. Workflow agents are used for structured processes and orchestration. Custom agents are used for tailored requirements and specific workflows. While each agent type serves a distinct purpose, the true power often comes from combining them. Complex applications frequently employ multi-agent
+
+00:26:03
+architectures where LLM agents handle intelligent language-based task execution. Workflow agents manage the overall process flow using standard patterns. Custom agents provide specialized capabilities or tools needed for unique integrations. You can build a multi-agent system with under 100 lines of code. You'll be able to get this in more detail in the subsequent sessions. But this is essentially what an agent multi-agent system would look like. There would be one root agent which will communicate with multiple child agents,
+
+00:26:37
+what you see in the diagram, and each of the child agents will have different tools which are available to them. Now we move into the next section, which is the ATK components. Now this is the A bit of the technical bit what we need to understand well for us to really understand the code lab that we'll be going through later on in a really better way. In the context of ADK, a tool represents a specific capability provided to an AI agent enabling it to perform actions and interact with the world beyond its core
+
+00:27:11
+text generation and reasoning abilities. Technically, a tool is a modular code component like a Python or a Java function, a class method, or even another specialized agent designed to execute a distinct predefined task. ADK offers flexibility by supporting several types of tools. Function tools that are created by you tailored to your specific needs. These are typically functions or methods. Uh you can define a standard synchronous function or methods in your code. You can always have agents also as
+
+00:27:45
+tools. That is a specialized agent as a tool for a parent agent, and this is something that we'll be covering during the code lab. And then you can also have long-running function tools that support for tools that perform asynchronous operations or take significant time to complete. For example, a research agent that needs to go in on the internet and research about a particular topic. There are built-in tools, ready-to-use tools provided by the ADK framework for common task. Example, Google Search is
+
+00:28:13
+one tool that is provided out of the box. Code execution is another tool, and retrieval augmented generation rag pattern is another tool. Therein, you can plug in your own files uh and use that for retrieving data from it for better result generation by your LLM model. The last part is the third-party tools. It integrate tools seamlessly from external popular libraries like LangChain tools and CrewAI tools. So, essentially, you can take other tools which are out there on the internet, and you can easily integrate
+
+00:28:48
+that with your ADK agents as well. And that essentially opens up a different avenue where you don't have to build really anything from scratch, as long as there is some tool which is out there, this is which is compatible with another framework, and that has been exposed for integration with other SDKs like the Google ADK, you would be very easily be able to integrate with that using Google ADK. Now, we'll be moving into the next section, which is the memory, state, and session. Meaningful multi-turn conversations
+
+00:29:23
+require agents to understand context. Just like humans, they need to recall the conversation history, what's been said and done to maintain continuity and avoid repetition. The Agent Development Kit, ADK, provides structured ways to manage this context through session, state, and memory. For example, a session would be something that would store the current conversation thread. A state would be something that would store the data within the current current conversation, and memory would be something which
+
+00:29:54
+would be searchable cross-session information that you can access from another session as well. All right, let's move on to the next session, which is the ADK evaluation. Now, when you're building any kind of Agent DK system, right? Evaluation is one of the key activities, what we typically call as evals, right? This is equivalent to a software testing in a normal software development world. You can develop any software that you want, but if you're not testing it correctly before you release it out to
+
+00:30:27
+the world, right? More often than not, it is going to break. Something is going to not work properly in the real world environment. And hence, a lot of focus has been given to evaluation, and how do you evaluate your particular AI agent that you're building using ADK. In traditional software development, unit test and integration test provide confidence that code functions as expected and remains stable throughout the changes. This test provide a clear pass or fail signal guiding further development.
+
+00:30:58
+However, LLM agents introduce a level of variability that makes traditional testing approaches insufficient. To bridge the gap between a proof of concept and a production-ready AI agent, a robust and automated evaluation framework is essential. Agent evaluation can be broken down into two components. Evaluating trajectory and tool use, it is important to analyze the steps an agent takes to reach a solution, not just the final solution. Including its choice of tools, strategies, and the efficiency
+
+00:31:30
+efficiency of its approach. We need to make sure that if you were supposed to call the weather tool and the uh the bus schedule tool, right? Before you come up of come up come up with the final itinerary suggestion, it needs to make sure or mandate that these tools are called before the final solution is done. You might come up with the right itinerary, you might come up with the most optimal itinerary, but if you did not make this tool call, it there is a good probability that it was just out of fluke it came up with
+
+00:32:02
+the right itinerary that you were expecting. So, for real world, you actually need to make sure that the trajectory of the tool use and the correct uh sequence of the tool use is also uh tested for. Then, you also want to evaluate the final response. We need to assess the quality, relevance, and correctness of the agent's final output. How does this work with ADK? ADK offers two methods for evaluating agent performance against predefined data sets and evaluation criteria. So, you can look at this uh uh
+
+00:32:33
+the methods that are given on this slide, right? So, essentially, you would define the evaluations using data sets class. You would have typically files like a test.json, right? For unit testing single simple agent model interactions, query expected tools or responses, you would be storing it over there. And you will also have a dot eval set.json, right? This is for your integration testing, multiple complex multi-turn conversations with initial session states and UI tools you can It can help you create this basically,
+
+00:33:04
+okay? You see the graph that is there on the right-hand side. That essentially gives you a feel of that. So you essentially give the inputs, which is agent's definition and the test files, the query and the expected results. Then the You will run the agent using the test query. You will see the actual results and the trajectory and the response. And that you will feed into the comparison function along with the expected results from the data set that you had defined. That will help you in coming up with the
+
+00:33:34
+observed value versus expected value delta. And that is something that you'll be quantifying in the evaluation report. So the second point which is written, which is the evaluation criteria, right? That is the one which defines how your this comparison is going to happen. So typically, you would be having something like a tool trajectory average score, which will be the accuracy of the tool usage. By default, it will default to one. And typically, there will be some number which will be quantifying
+
+00:34:01
+how good or bad the trajectory was. And then there will also be a response match score, which will be a similarity of how good the or how close the final response was as compared to the expected response. And this will This measure will give you a measure of how good or bad the final result is. During a actual evaluation, again, I repeat, you will have to do both evaluation of the trajectory and tool use along with the final response evaluation for you to really make a system which works deterministically
+
+00:34:31
+well. Moving on to the next section, which is the ADK framework itself, right? What are the key components of the framework that we want to cover? So, we discussed some of these components already. The agents, the tools, the runners, sessions, memory, and models, right? Let's go into the purpose of each one of this, what they solve, and how do you use it in the agent, right? So, the first component is agents. It defines your core agent classes and orchestrators. Uh how you would use it in an agent, it's a
+
+00:35:02
+simple import that you do from google.adk.agents. You import the tool calling agent or any other agent that you have defined, and you just initialize the object of that particular agent along with all the tools that you want to define in that particular agent. Then the tool section. It provides reusable tools that agents can invoke to perform specific task. For example, getting the weather data is a is a tool that your particular travel itinerary agent would have, right? So, the way you define it would be by importing
+
+00:35:33
+google.adk.tools. Import the tool, and then you define a tool object using the by defining the name of the tool that you want to give. For example, get weather would be the tool name, and the function definition, the function that this particular tool maps to. So, whenever this tool is invoked, that is the function that would be invoked. And the description. For example, the description for the get weather tool would be get the weather of the particular city that is given as an input argument. That
+
+00:36:01
+would be the description. Then there are runners. Uh manage It manages the execution life cycle of agents, handling inputs and outputs. Uh from google.adk.runners. Import runner. You define an object called as runner is equal to runner. You define the agent that you want to run, and then you essentially just invoke that particular object and execute it. This is very similar to how you would be typically be running an app using, let's say, something like a flask framework or a fast API, right? This is very similar to
+
+00:36:31
+how you launch your app server. Here, instead of launching your app server, you are essentially launching your agent and giving it a runtime runtime environment. Then there are sessions. It handles the conversational context and state management across interactions. Uh the way you define it is by importing the session service from the google.adk.sessions. You uh define an object for this particular session service and then you can essentially just create a session. Let's say you create a session for a
+
+00:37:00
+particular user ID. You would be storing everything that happens for that particular user ID in that particular session. So that whenever that user comes in, you should be able to easily uh look up into the session what happened for that particular user in the previous session and accordingly resume the conversation from there. Then there are memory uh component. Uh it implements your memory systems for state tracking allowing agents to remember info across sessions. Uh from google.adk.memory, you import your in uh memory and then
+
+00:37:30
+essentially you define a memory object that you can then use across your application for different memory related uh implementations. And then at last there is the models, which is the interfaces with supported language models, be it a Gemini model or a cloud model model, you can interface it via light LLM. Uh so essentially you do a from google.adk.models, you import the Gemini model. Similarly, you can import a different model as well and you create a model object which essentially initializes that particular
+
+00:38:00
+class that you just imported. Right? So these are the different uh components of the framework. Then the next set of components are essentially your planners, which manages planning and task routing logic within agents. Uh so this is essentially getting into the uh the workflow agents that we have talked about, right? So uh you can essentially plan a particular task as well. You can essentially define how a particular uh uh agent should reach the final conclusion and based on that you can define the task routing logic as well
+
+00:38:30
+using basic plan. Again, you essentially import the basic planner class from the google.edk.planners module and just initialize a object which you can then use further. Then there are code executors. You It enables you to execute code snippet as part of their operations. Uh for example, you can in import a Python code executor from the code executors module of Google ATK and initialize the object for that and then you can essentially invoke that particular object. You can execute that particular object using the
+
+00:39:03
+object name.execute function and you can run a particular Python code inside this object. If you have used any AI coding tool, right? You will see a lot of this execution actually happening from the bash scripts, right? So this are typically your code executor environment that your particular agent provides in a AI assisted coding tool that you essentially invoke to execute that piece of code. Then there is a evaluation component. It provides tools to access and evaluate agent performance. Uh again, very simple from the
+
+00:39:36
+evaluation module, you import the evaluator class. You initialize an object for that evaluator class and then you evaluate it.evaluate. You essentially execute the evaluate method of that using the agent response that you just got. Then there are events. It defines event structures for tracking agent activities and interaction. This is extremely important for observability of what your agent is doing at what point so that if things go wrong, you can always go back and track these events and see that how it reached
+
+00:40:08
+that particular faulty state. So again, you can define a particular agent event. Say for example, your agent invoked a particular tool, right? You can define an event called as type is equal to tool invocation and you can capture the details of the tool invocation event that happened and the event object will basically hold all of this information. Typically, you would be persisting this event object somewhere so that you can access it later as well. Then there are examples. It contains sample implementations and
+
+00:40:37
+templates for building agents. This essentially you can add on to that templates and sample implementation by just calling the sample agent component of your examples module and you can define what sample agent that you want to create. Now that we have gone through all of these different framework components, right? Let's look look at how a practical code base that has been implemented using ADK would look like, right? So you see this my ADK project that we have defined, right? Inside this project
+
+00:41:10
+you have multiple different directories and in all of those directories you have different modules and different files which all of them have some importance. For example, here you will see there is a root agent called a sequential agent which essentially forms from all of the sub agents that are defined, right? There is a sub agent directory and all of those sub agent directory are something which are orchestrated from the sequential agent. Now this is a typical example of a workflow workflow pattern, right?
+
+00:41:42
+Now you can also configure long-term memory back end using a memory.py file wherein you would be typically be interfa- doing all of that interfacing with the memory component that you had. You can also load documents for retrieval augmented generation, your rag by the artifact loader and that you would be defining in your artifacts.py. Then you will also be having prompts.py which will define the high-level system instructions or the templates for the root agent. It contains agent's brain and its workflow,
+
+00:42:11
+right? What What exactly does the agent need to do, right? You need to tell the agent that you need to act as a travel itinerary planner, right? So, this kind of instruction would typically be going into the prompts.py. Then there are tools.py, wherein you would define your generic utilities, which are shared across agents, not just specific to an agent. So, let's say for example, there is a certain file system interface that you want to leverage across multiple sub-agents, right? You don't have to
+
+00:42:39
+define that particular file system interface in all of the sub-agents. You can just define it once in tools.py, and you can import it at all of the sub-agents and use it over there. Then there are how specialized sub-agents are each of its own folder, right? That you have. And then there is a utility functions also, which is not tied to a specific agent. So, which is defined in the utils folder. And you can have different utilities. You can have a formatting utility, validation utility, and whatnot. All of this would be going
+
+00:43:08
+over there. The sub-agents uh folder will have multiple different sub-agents that you would define within them. Each of the sub-agents will have their own agent.py, prompts.py, and tools.py. Typically, most of the time, you would not have to define a separate tools.py. You would be importing the tools.py that you would have defined in the root of the folder itself. But, if there are any specific tools that a particular sub-agent needs to access that no other sub-agent should have access to or visibility into, you would typically be
+
+00:43:39
+defining within the sub-agent folder. Then there are data, which essentially stores the JSON configs and documents to be used as artifacts. There are deployment-related folder, which handles the deployment to Vertex AI agent engine on the Cloud Run. How do you deploy this particular agent that you have built? Then you will also have the basic test scripts, the unit testing script, the smoke test. All of this would typically be going into the test folder or the eval folder, right? You will have a evaluation.py, will have
+
+00:44:08
+a test_agent.py and whatnot. This is what a production grade agent looks like in terms of the folder structure and organization. Now, coming into the interesting part, which is building an actual agent, right? Um Now, if I want to build an agent, right? The first question that is asked is which Google Cloud option should I use? Should I go for Agent Space? Should I go for Conversational Agent? Should I go for ADK versus a Vertex AI Agent Engine or a open-source software from or something that I built from scratch
+
+00:44:41
+along with a Vertex AI Agent Engine, right? So, the answer really is depends on what level of maturity that you are into. Uh typically, uh we can split it up into two personas, whether you are a business user or a developer, just to keep things simple. Uh many users will also have both types of uh populations, right? But uh on the left-hand side of the screen, what you see are essentially uh you would use that if business users want to want a fully managed system, which is easy to use without any sort of code, not even a
+
+00:45:11
+single line of code. Uh it surely does expose some APIs, but it's mostly a graphical user interface. So, uh it is very easy for your business users to use the components which are defined on the left-hand side of the screen, which is Agent Space and Conversational Agent. On the right-hand side of the screen, uh you you are the components that your developers would typically use because they want full flexibility and control, right? They're willing to work harder to be less constrained on the
+
+00:45:36
+out-of-the-box solution. Maybe there are some UIs involved in developer tooling, but you need to know how to code to use this. For example, the entire ADK framework that we just discussed, it does require you to know some sort of a basic Python coding for you to use it well. And that's really the choice that you have to make. Now, moving on to the next component, you can you should have essentially received an email to claim your uh credits. if you have not, you can just scan this particular QR code which is
+
+00:46:06
+displayed uh and you can redeem redeem your uh cloud credits which we will be now using for going over the code labs. Uh once you have redeemed your credits, you would uh be scanning this URL to go into the code labs wherein uh the next set of things that we need to do is what we'll be getting into. All right, let's jump right into the code lab session now. So, before we go over there, right? What I want you guys to do is do check that if you have claimed your credits properly from the QR code that I showed
+
+00:46:42
+before, right? You would see something like this as a confirmation message that your credit will allow you to allow you to use Google Cloud, Gemini API, and Firebase, and uh it will be valid for 180 days. If this screen doesn't show up, that means there must be some problem with the redemption. Uh do check it out uh how do you go about uh redeeming it the right way. Just try to redeem it again if possible. Right? Now, let's get into the code lab session. Uh so, in this code lab, what you will
+
+00:47:15
+learn today. So, uh we will basically be covering all of this aspect. You will be creating your first agent. You will be working with custom tools. You will be using agent as a tool pattern. You will be using agent memory. Uh then the router agent, a sequential agent, a loop agent. A router agent is essentially one agent that will receive the task from the user, and then it will decide which is the child agent that it needs to give that particular task to for it to efficiently come up with the expected
+
+00:47:43
+result, right? This is one of the examples that we saw during the uh presentation, right? Uh then a loop agent which will essentially keep on going through that same loop until it finds the right solution, and the parallel agent wherein uh a task would be distributed amongst multiple parallel agents and they will all work in parallel and come back to the main parent agent saying that okay each of our task are done. Um So, by the end of this tutorial you should be able to build your first agent, go from a zero to a functional
+
+00:48:12
+fully functional agent that can understand a user's need, use tools, and use tools like Google search basically and generate detailed helpful responses. You will also master your custom tools, unlock the power true power of agents by connecting them to your own custom functions and APIs, construct multi-agent system, learn agent as a tool pattern wherein let's say there is some agent that you want to leverage as a tool in another agent, you can essentially call that particular agent just like how you would call any other
+
+00:48:40
+function or any other tool. And that really helps us in creating those kind of patterns that we discussed during the presentation wherein there is some third-party tool who has exposed or created a certain tool and we just want to leverage it out of the box. So, this agent as a tool pattern helps us in achieving that. And then orchestrate complex workflows wherein we can go beyond simple delegation and master advanced patterns like router, sequential chains, loops, and parallel execution to build robust, efficient,
+
+00:49:08
+and intelligent applications. And then in the end we will also give our agents memory, understand the critical role of conversational memory enabling your agents to handle follow-up. Now, the first thing that we'll be doing is setting up our GCP account. Now, to do this the first thing that you will have to do is go over here, go to your console.cloud.com. So, I'll be removing this entire piece. This is the URL that you need to go to. The console .cloud.google.com. It will be taking you into
+
+00:49:41
+a page which would look like this. Right? Now, the first thing that you need to do is enable billing account. Right? Right, so we will now be first checking whether our billing account has been set up properly or not. When you go to console.cloud.google.com, this is the kind of screen that you will land up into. If you don't worry if your screen doesn't look something like this, it is possible that this is the first time that you're coming into a console Google Cloud console, right? So you don't even
+
+00:50:12
+have any project set up, which is absolutely fine. It shows up like this for me because I already have some project set up. All you have to do is click over here at the left top corner. Click on billing. Now, inside billing you will have these sections, right? You can click on manage billing accounts. Typically, you would be seeing this kind of billing accounts. Now, because I have taken a lot of credits for multiple use cases and all, right? That's why I'm seeing this multiple accounts, but for
+
+00:50:43
+your use case, typically you'd be seeing only one account. I'm going to click on one of these accounts. When you go to this account detail, right? When you click on credits, it would it should show something like this. Try GCP instrument less credit. And this is where you should be able to see that your credit has been loaded properly into the Google account Google Cloud console account that you're using. If it doesn't show up over here, that means you were not able to redeem your cloud credits properly,
+
+00:51:18
+which would have been visible over here itself. But this is just another check to make sure that you've redeemed it properly. Now, if you have redeemed it properly, what you need to do is again go back to console.cloud.google.com. Once you go to console.cloud.google.com, irrespective of whether any of the projects that you're already working on shows up over here or not, you click on one of these options. Here you will click on a new project. Now, if you go back to your instructions, right? It says that
+
+00:51:50
+essentially you can create a new project with any name. So, let's create a new project with let's call it Google ADK code lab. It's okay if you don't have an organization. You can select no organization here. Just make sure that you make a note of the project name so that you are able to refer to it later on also during this entire code lab. Click on create. This will take some time. As you can see, this is already creating that particular project and you can see that the project has already been created.
+
+00:52:28
+Now, you can either click over here to select that particular project that you just created or you can just click here and you will see this new project that we just created. So, I can click over here. Now, for this particular project that I have selected, you will see this particular project ID, right? This project ID that you need to copy. You will just need to make a note of this particular project ID. This is something that will be requiring during the code lab. Right. Let's go back here.
+
+00:52:58
+You also need to do that in the billing section, you now have to tie up this particular project that you have created to that particular billing account that you have created where you have loaded the credits. So, you need to again open the left panel, click billing. So, I will go back over here, click left panel, click on billing. After I do that, it says that I can select one of the two options, right? Go to linked billing account or manage billing account. So, I need to go to manage billing account.
+
+00:53:30
+I will do the same thing. I will clear I will select the particular billing account which in my case is the second one where I have already the credits loaded. Then, I need to copy my project ID, go to console console.cloud.google.com, select the project selector, click on all tab, and it will you just need to select a particular project ID. So, I will go back here. I will go to again the console.credit console.cloud.google.com. And I will just select a particular project, which I was already into, but I just showed for
+
+00:54:14
+reference. So, that's all. That's pretty much all. Now, let's go back to the codelab. So, let's go into the next section, which is create your first agent with runner, right? So, runner is essentially the execution runtime, right? We need to create our first agent and execute it in that particular runtime. So, let's start with the fundamentals. We will create our first simple agent, the day trip agent. This agent's purpose is to generate a full day trip itinerary based on a user's request, including
+
+00:54:50
+budget considerations. This example introduces three core components of any agent interaction in the ADK, the core brain of the operation. It is defined by the instructions, its personality, and mission. The AI model it uses, like Gemini, and the tools it can access. The session conversation memory it stores, the history of interactions user messages and agent responses, and the runner, the engine that executes that particular task. It takes the agent and the session, processes the new user query,
+
+00:55:20
+and orchestrates the steps to generate a response. Now, how do you execute this particular codelab that we are going to look into? You essentially have to just click on this, your first agent the day trip, this particular link which is there. This will essentially launch a Google Colab notebook. The first thing that you will do after launching this Google Colab notebook is going over here and say save a copy in Drive. Just make sure that you are opening it in the Google account from where you have registered for this session so that
+
+00:55:54
+you're able to also do your submissions and everything cleanly. If you are not in the right Google account from where you have registered for this particular session, please navigate to the correct Google account. You can always do a add account or a sign up. You can log in into the other Google account from where you have registered and then go back to the Colab and again click on this and it should take you to that particular account from where you have registered. Then you will do a save a copy of this
+
+00:56:19
+in Drive so that you're able to edit this particular notebook, play around with it later on as well and make changes based on your own convenience. I'm clicking on this navigation kind of a tool where in I can look at all of these sections. So as we discussed in the first thing that we are going to do is your first agent, the day trip genie, right? So I will go to this particular first agent which is your day trip genie. Before I can run this, right? There are certain setup related activities that I
+
+00:56:48
+will have to complete. One of the setup related activities is giving the value of the project ID that I'm using. So I'm going to insert edit this particular field and I'm going to give the project ID that I had made a note of before, right? So when I go here to console.cloud.google.com and that particular project that I've created, one of the things that I see over here is the project ID, right? This project ID is something that I will I will be copying and I will be pasting it over here which is prime rainfall 496
+
+00:57:20
+this one. Right? Now once you have done this, all you have to essentially do is go to each of these cells and run it, right? So this is just a you can use shift enter or shift return in a Mac uh notebook for you to run a particular cell in this particular collab notebook that you are running. For example, if there is a particular code snippet that you want to run, you can also click on this play button for you to be able to run that. Now, currently if I try to run this, it will not run. It will say that first of
+
+00:57:52
+all, this notebook was not authored by Google because this is one of the employees who has authored it, right? So, you can always say that, "Okay, run anyway." The first thing that you see when you run this is a connecting icon that is coming here. So, this essentially is connecting your this particular Google Colab notebook to a runtime environment which is running somewhere remotely. Now, you see that the runtime environment is now connected and you will see the RAM and the disk usage as
+
+00:58:17
+well. Right? And you see right now it is executing this particular installations which are required. So, I can always stop the execution as well if I see that something is not right. Uh and I can then again rerun this cell as well by again clicking on the play button or just do a going into the cell and doing a shift enter or a shift right. So, this is on the setup part. Now, this will obviously take some time because it is installing all of the libraries and dependencies and everything, right? But,
+
+00:58:47
+I have already created a copy of this which I have already created in the past and I have configured with the project ID that I had created previously. And this is how it looks like once you have executed it. So, it loaded all of my libraries. It has already authenticated myself as a as a valid user who already holds a Google account, a Gmail account basically. And I can see that my project was also loaded and Vertex AI was configured for this particular project in US Central 1 region. You can always
+
+00:59:18
+obviously change the location as well based on the region that you are running from. But for all practical reason, you can keep it default for now to US Central 1 so that you don't run into trouble. Now, coming into the cool part, which is essentially running this part, right? So, I will close all of this just to make sure that you guys are not getting confused. Right. So, we will just be jumping between this code lab and the Jupiter notebook. So, the first thing that you will see in this particular section, which is your
+
+00:59:52
+the first agent the day trip genie, right? You will see a agent definition, a helper function called run agent query. We will use this utility throughout the notebook to simplify running queries and then there is a test run, which is essentially a run day trip genie, which essentially launches that particular agent. Right? Let's go here. So, if you see, this is all definitions, then after that you will see the agent definition. So, this is how easy it is to define an agent. This is essentially what it is. You are
+
+01:00:25
+creating a day trip agent, wherein you're essentially calling the agent class and saying that the name of my agent will be day trip agent. I will be using this model for my agent to run. The description of the agent is this, an agent specializing in generating spontaneous full day itineraries based on mood, interest, and budget. And this is the detailed instruction based on which your agent will function. So, it gives the detailed instruction saying that you are the spontaneous day trip generator,
+
+01:00:54
+a specialized AI assistant that creates engaging full day itineraries. Your mission is to transform a simple mood or interest into a complete day trip adventure with real-time details while respecting a budget. It gives certain guidelines saying that you should be budget aware. Pay close attention to the budget hints like cheap, affordable, or splurge. Use Google search to find activities like free museums, parks, paid attractions that match the user's budget. Then there are full day structured. You can create
+
+01:01:22
+a morning, afternoon, and evening activities. Yeah, uh create a real-time focus. Uh make sure that your searches for current operating hours and special events, you're searching for that, not something that has happened in the past. And then there are mood matching. You align the suggestions with the requested mood of the user, whether the user is feeling adventurous or relaxing or artsy and etc. Return the itinerary in markdown format with clear time blocks and specific values. And I attached a tool capability called
+
+01:01:52
+Google Search. As we discussed during the present uh presentation, Google ADK already provides certain tool capabilities that are provided out of the box. Like code interpreter is one of them. Google Search is one of them, right? So, I can just use the Google Search capability out of the box without having to write a single line of code. Then I just invoke that particular method saying that create a day trip agent. Uh there's a day trip agent that has been now created. And then essentially I'm going to run that
+
+01:02:19
+particular uh agent query against this day trip agent. So, there is a runner that I have now created, which is the execution environment, wherein I'm saying that the agent that is going to run in this execution environment is the agent that I will be invoking it with, which in our case will be this day trip agent that we have defined here. There will be a session service which will help me in all of the session management related work. And then there will be a app name, which essentially I will keep the same as the agent name for
+
+01:02:46
+now. Now, in this particular uh runner object, essentially you will be running it asynchronously. You will also be looking for every event in that. You will look at the user ID, the session ID, and any new message which is getting passed on by the user, which is essentially the user query. And you will be mapping it against the role of user, right? After that, if it is not a router, you will be just printing the event. If it is a router, you will be printing the final response, which is the agent
+
+01:03:17
+output that you have received at the end. So, this essentially is a function that you will technically be using for defining any agent. If you see here, the agent object is something that you're passing in the runtime as the argument. So, the run agent query you can leverage for defining any agent, and essentially it will run the agent, and it will give the final response back to you as the return object, [clears throat] right? Now, I am creating a session new session service for the memory management. I've
+
+01:03:50
+created a user ID called as ADK Adventurer 001. And then here essentially we are going to test that particular agent that we have created. I'm creating a day trip session. I'm creating a new session now by using create session, and then this is the query that the user is giving, which is plan a relaxing and artsy day trip near Sunnyvale, CA, California. Keep it affordable. This is the query that the user gave. Now, with this query you are essentially then going and running the agent against
+
+01:04:22
+the runtime environment that you have defined using runner and the behavior that you have defined. It you are saying that run this agent with the day trip agent, which we had defined here, right? We had already initialized our day trip agent. So, I'm saying run this agent against this agent execution environment with the day trip agent with this particular query that I have just defined and this is a day trip session. You run it against a particular session that I have defined here, which is a day trip
+
+01:04:53
+session, and this is my user ID, so that your day trip session that you're invoking is tagged against my user ID, so that I can go back and see the different execution runs for different users. Now, here you see that the agent went ahead and started the execution. This is the response uh, that it got back. And the final itinerary, uh, which you see over here. Uh, it also provided, uh, a lot of metadata information, which in your case, you might not be interested in if you're building a your, uh, first,
+
+01:05:27
+uh, agent. But, if you are a pro user who likes to debug every step that the agent took, then you can look at that metadata information also. And this is how the final response looks like. And because we had told the agent that always give the response in markdown format, which is why you see this bold formatting and this, uh, header, different, uh, level of HTML headers that you see, right? Uh, section headers. So, it essentially has, uh, uh, has a header called, uh, "An Artsy and Relaxing Escape Near San Miguel."
+
+01:05:57
+And then it gave me the morning itinerary, the lunch, uh, in lunch what I should do, after afternoon what I should do from 2:00 to 5:00 p.m. And then in evening time what I should do. And this is how easy it is to run and execute and build your first agent using Asia, uh, ADK, right? So, that's all. You created an agent, you created an object for it, you created a runtime, and you did some formatting and all of that over here. And once you did all of that, you initialized that new session, you wrote
+
+01:06:29
+the user's query, which you would typically be taking during the runtime itself, and then you essentially, uh, invoked the runtime with the, uh, day trip agent that you had created, the user query, the, the session, and the user ID. And that's all. You have the final response available to you. How cool? Right? Now, we go into the second, uh, section, which is how do you use custom tools, right? This you will find it in the simple function called tool calling a real-time weather API, right? So, if you
+
+01:06:58
+go to 2.1, uh, which is this section, right? You will see this. Now, here the difference so we're trying to do is there is a weather agent that we're trying to create and that weather agent essentially should be able to do a tool call on the get live weather forecast. Get the make a API call to an external API get based on the coordinates of that particular location that the user gave and retrieve the temperature. And this weather agent output will then be fed into the uh main agent, the itinerary
+
+01:07:34
+planner agent, from where it will utilize the weather data also to come up with a better itinerary. Right? Now, how this looks in action? Essentially, you now define the location coordinates. Uh typically in a real-world example, you would be integrating with your uh Google Maps API for saying that given a location name, it should return you the latitude and longitude of that particular location so that you can automate this part as well instead of hardcoding. But, for the the scope of this particular code lab, we're saying that
+
+01:08:06
+we have hardcoded the GPS data. There is a method that we have defined. This is essentially the function that is going to be used in your tool call for that weather agent. Uh wherein we said that given a location as an input, you should be able to return me the uh uh you should be able to return me this particular object, right? Uh for a successful case, you should be able to return me a temperature. Uh what is the current period temperature and the unit of that? Uh I mean, uh because there are
+
+01:08:34
+certain countries that works on Fahrenheit versus certain countries like India where I am based out of, it works on Celsius, right? So, you have to give the temperature unit as well so that your LLM can process it properly. And then the forecast uh for the current period as of that particular current period, what is the detailed forecast, right? Then, you go ahead once you have defined this particular tool, right? You go ahead and create a weather agent wherein you're saying that, "Hey, there is a
+
+01:09:00
+weather a weather agent that I'm going to create. The name of this is that. The model that I'm going to use is Gemini 2.5 flash. This is the description. This is the system instruction. You are a cautious trip planner. Before suggesting any outdoor activities, you must use the Get Live Weather Forecast tool to check the condition, incorporate the live weather details into your recommendation. And if you see here, we are defining a custom tool called Get Live Weather Forecast, which we have
+
+01:09:25
+just defined here. In the previous agent that we saw, we actually used a out-of-the-box tool, which was the Google Search tool. Here, we are creating a custom tool called as Get Live Weather Forecast tool that we have defined. Right? So, here again, once we have defined the this particular agent, you essentially again create a a an a runtime this thing. The run agent query essentially is the same thing that we are going to use. Here, we are creating a new weather session. We are giving a new query. I want to go
+
+01:09:56
+hiking near Lake Tahoe. What's the weather like, right? Here, it needs to first of all know what is the latitude and longitude of Lake Tahoe for it to work, right? Which is what we have defined here. And here, we have already incorporated a an external API call. With given the latitude and longitude coordinates, it should be able to give you the forecast as well as the current weather condition. So, you see this? When I run this query against this weather agent that I've created, this is the final
+
+01:10:25
+output that I get. The weather in Lake Tahoe is mostly clear with a low around 49° F. Now, it's using Fahrenheit because this is for a US location where Fahrenheit is the right unit of temperature measurement. And a light northeast wind between 0 to 5 mph. It sounds like a good weather for hiking, but you might want to bring layers since the temperature is on the cooler side. So, it says that, okay, take some clothes that can protect you from the cold cold, right? So, this is on the custom tools. Then,
+
+01:10:58
+there is an important pattern called as agent as a tool that we want to discuss, right? Uh agent as a tool, here I've taken an example of a trip data concierge agent that we want to build. There will be a orchestrator agent that we will uh create, which will have two tools within it. There will be a database agent, and there will be a concierge agent, call concierge agent. Now, concierge agent is going to use this particular agent that I've created, a separate concierge agent, which will
+
+01:11:25
+also do a food uh critic agent it will call, okay? And then, the call database agent is something that is going to return all of the hotels data. Now, this is a separate agent that I'm calling. Now, if you look at this pattern, this is a little different because this agent is essentially calling two other agents, database agent and concierge agent. What we saw previously was it was calling a simple function call. It was just a normal uh tool call that it was doing. Here, it is essentially calling another
+
+01:11:54
+agent all together, not just a tool call. Now, this agent can typically have three tools within it as well, right? But, this three tools I don't want to expose directly into this particular agent that I'm defining. This agent is just a orchestrator agent that needs to orchestrate, right? And uh this are the guys who are doing the actual tool calls and making sure that the task gets done. So, we will go into the 2.2 section to see how this works, right? So, the agent as a tool like consult it's it's it's like
+
+01:12:24
+consulting a specialist basically for a set of task that you want to achieve. Uh there is a top-level agent, there's a trip data concierge agent that calls multiple uh sub agent multiple different agents. In this case, there is a database agent, uh which internally calls a DB agent to fetch the raw data, and then there's a concierge agent, which calls the concierge agent, right? And this is how it looks like. So, your trip data concierge agent calls your uh DB agent as well as the call concierge
+
+01:12:51
+agent, And the call concierge agent also internally then calls another food critic agent, which is abstracted inside the concierge agent itself. It is never exposed directly to the trip data concierge. Now here again, I defined a DB agent, I defined a food critic agent, I defined a concierge agent. Now these are all independent agents that when I'm defining them, none of them know that what the other person is doing. Okay? So they are just independent agents that I have defined for now. Then when I go to define the tools for
+
+01:13:24
+the orchestrator, right? I define a tool called call DB agent, which is essentially in the implementation calling the particular DB agent that I have created, right? So it is creating an agent tool, which is essentially creating an object of the agent tool class itself. And I'm saying that this particular agent itself should be called like a function. Now this is like you you have a different module, which has a different class altogether, and you want you don't want to know what is happening
+
+01:13:56
+inside that class. You just want to call that particular class like a function call, and you just want to forget about it. So this is like I don't want to define that function at my side. I don't want to implement it. I already have a module which has implemented that function. I just want to call that particular module directly, that function in that particular module directly. And this is that pattern which this is establishing. Then there is a concierge agent also that I have defined, which is
+
+01:14:19
+essentially just a agent tool called definition, which defines that you can call this agent directly. And this is how the output will look like, and the output is something that you should then return back asynchronously. Similarly for the DB agent also, if you see, it returned the DB agent output from this particular call that is happening. Right? Then you go ahead and define the main orchestrator agent, which is the trip data concierge agent, wherein you say again the name, the model, the description, and the instruction.
+
+01:14:51
+And in the tools, if you see, this is the important part. Here, they have defined called database agent and called concierge agent as two different tools, which within the hood, if you look at it, they are essentially just calling that particular concierge agent over here. And the DB agent tool call, DB agent tool call is essentially calling the DB agent under the hood. Right? So, you have essentially exposed the agent itself as a function. So, once you define that, then again, you define a runtime
+
+01:15:23
+environment. You define the query. For example, here you say that find the top-rated hotels in San Francisco from the database, then suggest a dinner spot near the one with the most reviews. Now, here in this case, you will essentially if you look at the final output, right? It gave this the final response based on the information I found, top-rated hotels in San Francisco is the Grand Hotel, rating five, 450 reviews, and uh Seaside Inn, rating four, 620 reviews. The Seaside Inn has the most reviews.
+
+01:15:53
+Uh for a dinner spot near the Seaside Inn in San Francisco, I recommend House of Prime Rib. It is a renowned establishment known for its exquisite prime rib. Now, why did it recommend this the dinner spot? Because if you look at the architecture inside the concierge agent, I had also abstracted another food critic agent, which during the definition we had defined over here, right? So, if you look at this, there was a food critic agent that we had also defined, and to the concierge agent, we had given the tool call capability to
+
+01:16:21
+call the food critic agent. So, this is like from an agent, you call another agent as a tool call, as a tool call, and that called another agent as a tool call. So, essentially, you can build multiple these agents, which are all specializing in particular function, and you can call that particular specialist for that particular work based on whatever your queries. Now to the next section, we are talking about agent memory. So in the agent memory, essentially, we are now going to have a look at how the agent memory
+
+01:16:53
+section works, right? So we are going to go into the agent with a memory, the adaptive planner, right? So here, if you see, there is a adaptive memory demonstration that we want to give. Now here, we created a trip session. We gave a query, and then we ran against that query. Then we gave another query, which is a follow-up on the first query. The first query that we gave was, "Hi, I want to plan a 2-day trip to Lisbon, Portugal. I'm interested in historical sites and great local food."
+
+01:17:22
+And then it gave a query two saying that, "That sounds pretty good, whatever itinerary you gave me, but I'm not a huge fan of castles. Can you replace the morning activity for day one with something else historical?" Then it gave another query, the third query, saying that, "Yes, the new plan for day one is perfect. Please plan day two now keeping the food theme in mind." Now this, if you look at it, the final response that you get, right? You will see it gave response, first of all, for day one. So
+
+01:17:50
+if you see the step-by-step output, so you will see the first response, which is the response to the first query that I asked, which was the day one itinerary. It gave me that. Then I gave a feedback saying that, "That sounds pretty good, but I'm not a huge fan of castles. Can you replace that with morning activity for day one with some other historical things, right?" Then it gave me another response, "Okay, I understand you're not a huge fan of castles." So it understood
+
+01:18:16
+the context. "Let's adjust day one to focus on other historical aspect." Now it went to it went ahead and modified your day one itinerary based on the feedback that you gave. Now if you see here, there are not many castles and all that you see in the recommendation in the itinerary now. It looks a lot different than what was the first version. Then you gave another feedback, "Yes, that new plan for day one is perfect. Can you now plan day two keeping the food theme in mind? Uh here, the final response that you
+
+01:18:44
+see, now it gave you a uh an itinerary for day two. And if you see, it also mentioned this Campo de uh Aurique, right? A more local and authentic neighborhood with excellent traditional Portuguese eateries. So, it keeps on evolving based on the as the because it has this particular agent memory, right? So, it is evolving on top of the first response that it had it had given. Now, take the same example without an agent memory, right? In the same example, if you don't have a memory and if you give this input, uh the same
+
+01:19:17
+input that I you want to plan a two-day itinerary to Lisbon, Portugal, and then uh you say that yes, that looks perfect. Please plan day two, right? Now, let's see how the output here is, right? It came up with the right itinerary for day one saying that, okay, these are the uh this castle you should visit, then you should have lunch over here, then you should look at this fado show with dinner, right? And however, this is for Lisbon that it created, right? In Portugal. And that is exactly the query
+
+01:19:45
+that I had given. But in my follow-up query, when I say that yes, that looks perfect. Please plan day two. Look at what the result shows. So, it says that, "Perfect. I'm glad day one looks good. Let's plan a fantastic day two for your Madrid adventure." So, suddenly out of the blue, we are talking about Madrid. Where the user never mentioned Madrid. The plan was supposed to be to come up with the itinerary for uh for Lisbon, Portugal, right? Now, this is the classic case of when
+
+01:20:13
+you don't have memory into your agent, what kind of agentic amnesia it can lead to. Uh the user would be very frustrated if you give a itinerary for Madrid if they ask for a itinerary for Lisbon, Portugal in the first place. So, this is that classic case. Like if we did not have the memory component, it would be so difficult. And that's where ADK really shines that giving you those capabilities and components of memory and everything session management out of the box so that you don't have to build
+
+01:20:40
+all of this from scratch. All right. So, a quick recap of what we have seen till now. We have run our first agent with runner. We have seen how to define custom tools. We have seen how to use agent as a tool pattern. We have also seen how to leverage agent memory for building better agents. Now, we are going to look at the multi-agent frameworks that are there and the multi-agent patterns which are there so that we can leverage it for building more complex agent. So, the first example that we are going to look at is
+
+01:21:08
+a router agent. A classic example would be something like this wherein you would have a user query which comes in and the router agent essentially routes that particular user query into one of the three agents. Ideally, for this particular example that we are taking, we are taking a foodie agent, a weekend guide agent, and a day trip agent. A day trip agent that we have already defined previously, right? Foodie agent would come up with a restaurant recommendation. And if combo request detected, they
+
+01:21:38
+would also be looking at the transportation agent. For example, if the user queries that, "Okay, if you're giving me certain restaurant recommendation, also tell me how do I reach that restaurant from the particular places that I'm visiting in my itinerary, right?" So, this is a kind of a real-world workflow, a very complex workflow that you would want to achieve with this particular agentic solution, right? Now, for this use case, we are going to now move into a new notebook.
+
+01:22:07
+We are going to initialize the same notebook in the same process. We are going to first save a copy of this notebook in our Google Drive. Make sure that you're connected to the right Google account from where you have signed up. Then, we are going to first of all initialize the setup. We are going to keep our particular placeholder for this particular project ID that we have. We all know where to get the project ID now from. If you don't know, if you have followed the previous notebook setup,
+
+01:22:36
+you should be able to just copy paste from the previous notebook itself. Keep the location as it is and just make sure that you run each of these cells by doing either a shift enter or by clicking on this play button for all of the setup related steps that you have. Once you have done all of that, you would have a runtime environment which is already connected to a Google Colab runtime environment. Which for for my example, I have already initialized the setup and I have already initialized the environment and it is
+
+01:23:06
+already connected to a Google Colab runtime. Now, the example that we are talking about is a sequential workflow, right? Or a router agent workflow. So, a router agent basically classifies the request food search, event discovery, trip planner. Food search, it will all give you restaurant recommendation and along with the restaurant recommendation, it will also give you the transfer it will also call the transportation agent and give you the way to navigate to that particular restaurant. So, here is how the definition looks
+
+01:23:34
+like. You define a day trip agent first of all. So, each of these component you will also have to define independently, right? You define a day trip agent. You give the description, the instructions and you give Google search as a tool to this day trip agent. You define a foodie agent. Again, you give Google search as a tool to the foodie agent. Then, you have a weekend guide agent. Again, this guy is basically responsible for if you are a you are a local events guide. Your task is to find interesting
+
+01:24:01
+events, concerts, festivals, or activities happening on this specifically weekend. Then, you define the transportation agent. Now, in the router agent, essentially what you define is you are a request router. Your job is to analyze a user's query and decide your job is to analyze the user query and decide which of the following agents or workflows is best suited to handle that. You will look at all the available options, a foodie agent, weekend guide agent, day trip agent, find and navigate
+
+01:24:30
+combo, and all of this. And then, in the router agent, you essentially give the definition of all of these worker agents, saying that there is a day trip agent, there's a foodie agent, weekend guide agent, and a transportation agent. So, this is how you have essentially defined your this particular router router agent workflow. Then, once you have defined this, you are essentially creating again a runtime environment. This is essentially the set of query that the user would give one after the other. I want to eat the best
+
+01:24:57
+sushi in Palo Alto. Are there any cool outdoor concepts this weekend? And find me the best sushi in Palo Alto, and then tell me how to get there from the Caltrain station. Okay? Now, in example one, it should go to the foodie agent. In example two, it should go to the weekend guide agent. And example three, it should trigger the combo of the foodie agent and the transportation agent. So, here I have defined the runtime argument, and based on the chosen route, basically, if the let's say a find and
+
+01:25:24
+navigate combo, right? You will have to call the foodie session, get the foodie response, then you will also have to call the directions this thing, right? So, so all of that is something that you will have to combine together and generate the final response. And if the chosen route is in worker agent, what is a worker agent? This is where we had defined all of the worker agents, right? So, all of the sub agents that this particular orchestrator can connect to. Now, there, it will basically, given the
+
+01:25:55
+name of the chosen route, it will invoke that particular worker agent with the chosen route value. So, because it is an enum where you have the mapping defined, if you go to the worker agent with that particular name of day trip day trip agent, it will return you the object of the day trip agent, right? So, that you can then invoke and get the final result. So, in our this example, the three examples that we had given, right? This is the execution result of that. So, the first response that you would see is uh for
+
+01:26:25
+the absolute best sushi experience, go to Jin Shou. This is the final output that it gives. Then about are there any cool outdoor events this weekend? It gave this particular result saying that uh this weekend, uh which is May 16th to 18th, there are several outdoor concerts and festivals happening in various locations. And these are the ones that are happening. Uh to help me narrow down on the best recommendation, could you please recommend which city or region are you interested? Then the last question that
+
+01:26:52
+we gave, find me the best sushi in Palo Alto and tell me how to get there from Caltrain station. This is a combination. So, here it gave me that uh this result saying that the absolute best sushi in Palo Alto can be found in Fuki Sushi. And it is located over here. And to get to Fuki Sushi from the Palo Alto Caltrain station, this is how you should navigate. Walk to the walk to the uh bus stop, then take the 22 bus, and then exit at this particular point, right? So, and it also said that the bus ride
+
+01:27:22
+typically takes 10 to 15 minutes. So, this is how uh a particular kind of a router agent would operate, right? Now, going back uh to the uh going back to the code lab, right? We The next example that we will look at is the sequential agent, wherein we say that what I'm going to do is a find and navigate agent. I'm going to define. It's going to be first step one, call the foody agent. Then step two, call the transportation agent. And this is the kind of a uh sequential pattern that I
+
+01:27:54
+would follow that we had seen during the presentation, wherein we will first call foody agent, then we will call the transportation agent, and they will both have a shared state. Uh so that the transportation agent know uh what is the destination that we are looking at, for which we need to come up with the uh transportation directions, right? And the foody agent is going to come up with first the output, which is the restaurant that it needs to suggest. It's going to save that particular output in the state object, and that
+
+01:28:20
+state object is directly going to be accessed by the transportation agent and generate the directions or navigation direction based on that. Now, how this is implemented? Again, you define a foodie agent, you define the output key as destination. This is very important because you're saying that as a foodie agent, your output should not be a uh uh uh a kind of a text output. It needs to be a specific location output, a specific name of a place, a destination, basically. And this will be used there
+
+01:28:51
+by the ATK to save the uh to update in this state object, the destination value. Then you define the transportation agent. Now, here in the transportation agent also, uh you will see this, the user wants to go to destination. So, when you invoke the transportation agent, you will have to invoke it dynamically with the destination value that your foodie agent would have stored in the state object, which is a shared object, right? Then you define the sequential agent. You name it something. You define the
+
+01:29:19
+sub-agents which are there, the foodie agent and the transportation agent. Then there is a weekend guide agent also that you have defined. And then you define a router agent, wherein you will define the all the worker agents, just like how we had done previously. Then essentially you run this, and this is what you are giving as the input query. I want to eat the best sushi in Palo Alto. Are there any cool outdoor concerts? Find me the best sushi in Palo Alto and tell me how to get there at Caltrain station. The
+
+01:29:44
+only difference here is in the previous pattern, we had already defined that your uh transportation agent is always going to be invoked after foodie agent internally itself. Whereas here we are saying that first finish the implementation of the foodie agent, and let the foodie agent hand over the control entirely to the transportation agent, and share the particular values between these two agents via the shared state object. Here again, if you look at the output, so the first query that it gave, right?
+
+01:30:15
+Yeah, the first response was Jin Shou, which was essentially the suggestion of the place. Then the Foodie agent the other query that was are there any cool outdoor concerts for this weekend? So the router agent took the decision that it needs to be going to the Foodie agent. Sorry, the Weekend agent basically. And this is the final response that it came up with. It said that on the weekend of May 16th to 17th, 2026, these are the places that you can visit for the weekend for some weekend activity.
+
+01:30:44
+Then the next query was find me the best sushi in Palo Alto and tell me how to get there from Caltrain station. This is where the router agent took that decision that you essentially need to invoke the find and navigate agent, which is essentially a sequential pattern implementation. And there you said that, okay, from the from the the the common object that you have, right? The shared state object, you already have this value which is stored, which is the Jin Shou, right? This was the recommendation from the
+
+01:31:12
+Foodie agent. Now essentially, you would now have to use that itself to find the navigation route, right? So it did all of this analysis and then finally, you will see this to get to Jin Shou. So here, it did not actually go and invoke the Foodie agent again. It already saw that the Foodie agent was already invoked in the past conversation chain and it directly took the value of Jin Shou from that particular shared state object and based on that, it came up with this navigation options. So that's how you can leverage memory, you
+
+01:31:46
+can leverage a shared state object and you can leverage a sequential pattern to implement this kind of a complex pattern. Then the next section is around loop agent. So a loop agent is essentially you give a certain target that you want to achieve in that particular implementation. So let's say you have a planner agent which comes up with an initial plan and then there is a refinement loop wherein it will continuously keep on refining the output as long as the output is not up to the mark. Now, typically think of it like a
+
+01:32:13
+coding implementation where you have defined your test cases. Now, in that you have to continuously keep on evolving your coding output unless and until all of your test cases are passing. So, that would be an example of a loop agent, right? Here, the example that we are taking is there is a critic agent which checks whether uh certain thing is up to the mark or not and there is a refiner agent which keeps on evolving that output to meet that certain uh criteria that we need to meet. Uh and then we also give a max
+
+01:32:41
+iteration saying that do this only for three, otherwise this can also potentially go into a infinite loop. So, we say that iterate maximum of three times and then you just stop, right? So, if a bad critic uh then essentially go back to the refiner agent and come up with a new thing. So, here iterative ideas with loop agent you will go back to the notebook. And here you can see that example implementation. So, here we say that uh uh the completion phase is this. This is essentially when your agent loop knows
+
+01:33:11
+that the final expected outcome has been achieved and you can stop the loop. There's a planner agent. You are a trip planner based on the user's request, propose a single activity and all that. Then there is a critic agent. You are a logistics expert. Your job is to critique a travel plan. The user has a strict constraint on total travel time must be short. Current plan is this. Use your tools to check whether the current plan is up to the mark or not and if the travel time is over 45 minutes, provide
+
+01:33:35
+a critic like this plan is inefficient, find a restaurant closer to the activity. Then there's a refiner agent which will go back, work on top of this critic that the critic agent gave and keep on iterating the uh suggestion. There's a refinement loop that is defined here with all the sub agents which is the critic agent and the refiner agent. And then there is a iterative planner agent loop that is defined here which is again with the planner agent and the refinement loop that we have defined here. So, the
+
+01:34:02
+planner agent will come up with the initial plan, then it will give to the refinement loop. The refinement loop will continuously keep on running the critic agent and refiner agent unless and until the critic agent says that the plan is good enough, which was the stop phrase here, right? We said that the plan is feasible and meets all constraints. Until it reaches that point, the refiner agent will keep on refining the plan. And the maximum time this refinement loop will run is three. So, that's how easy it is to implement
+
+01:34:29
+this kind of complex pattern using just simple uh coding conventions, right? So, here example uh when we run this, right? Uh uh this is another example, by the way, of uh a museum finder agent, a concert finder agent, and a restaurant finder agent. Uh and basically how it runs. So, yeah, that's that's how a loop agent is im- Now, this is the last pattern that we want to have a look at, which is the parallel agent, wherein we have one use case that is given to an orchestrator agent, and that essentially triggers
+
+01:35:05
+three parallel agent that will all run in parallel, and then there will be a synthesizer agent, which will collect the result from all of these parallel agents and it generate the final result. For example, if we go back here and go to the section of parallel power, uh you will see these different parallel agents that are set up. So, for example, one museum finder agent, one concert finder agent, and one restaurant finder agent. So, all of these agents I want to run in parallel when I give a call to
+
+01:35:33
+the uh uh the actual orchestrator agent, right? So, I'm saying that I'm defining a parallel research uh research agent, wherein all of these sub agents are defined. Then there is a synthesizer agent that I've defined, which is essentially supposed to come up with the final response based on the outcome of these three agents that I defined here, right? So, if you look, the instructions look exactly what I'm talking about, right? You You need to combine the following research results into a clear bulleted
+
+01:36:00
+list for the user. The museum result, concept result, and the restaurant result. And then you define this parallel planner agent, and then you just invoke it. And that essentially gives you the capability of running multiple things in parallel where all of them will come up with their own research, go back into the synthesizer agent, generate the result, and give you the result time. That's all from our side from the Colab session. There are some two appendix which are given, which is essentially how you can
+
+01:36:29
+set up ADK web in your local environment. Uh if required, you can potentially follow the official ADK documentation as well to directly set that up instead of following this Colab. That will be uh more easier for you to follow. During the execution of this entire Colab or while you follow, you will potentially run into this kind of pop-ups when you're running this notebooks that I that we have shared, right? You essentially have to click on allow. You have to continue to grant the permission
+
+01:37:01
+and make sure that you continue over here also. This is required so that your Vertex AI environment can connect to the Google Colab account from where you have launched that particular Colab notebook. So, these permissions are required. These are just screenshots that you can take a reference of that you need to refer to. If you try to run the entire notebook in one go, there is a potential that you will run into 429 resource exhausted error. And don't worry about that. It's just coming because you are
+
+01:37:30
+running you're calling the Gemini API way too much at a very faster rate, and Google is just throttling your calls so that it doesn't run into any kind of trouble. So, just make sure you're running one cell at a time, not running multiple cells at a time, and I think you should be good. And that's it from our side for this particular session. Thank you. Thank you once again, Mr. Anil, for an excellent session. And thanks to everyone for who joined us today. I hope you really like the session and it gives
+
+01:38:00
+you a clarity on how to pursue with your ADK crash course. And, uh, we also hope that this workshop gave you a clear view of how, uh, this particular, uh, course can take you forward. And, as you you have already seen, cohort 2 is centered around unified data analytics and intelligence. That is a theme designed to help you move beyond traditional dashboards and manual analysis toward intelligent agent-driven systems that can understand, analyze, and act on data in real time. Your journey starts on the participant
+
+01:38:31
+dashboard as you have already registered, uh, on the platform. That is the only thing that will serve you, uh, as your central work- workspace throughout the program. This is where you will find session recordings, learning modules, code labs, assessments, and all important updates related to your selected track. Even, uh, after this live session, you will get this recording in your interaction session, that is in the dashboard. And you should already have received the credits and access instructions needed
+
+01:39:00
+to complete today's hands-on code lab. Make sure that you are completing your code labs on time, you are not exceeding the time of the submissions. And we strongly encourage you to work through the lab while the concepts are still fresh as it will help you put today's learning into practice in a structured and practical way. In addition to the core curriculum, you will also have access to optional Google skills lab you have already seen on your dashboard. So, this will offer you a deeper
+
+01:39:25
+exploration and additional hands-on practice to strengthen your understanding of the technologies covered on the program. And once you complete the workshops and labs for your selected track, you will be able to attend the MCQ assessment, which serves as the final milestone of the academy. And it will validate your understanding of the concepts covered throughout the cohort. I'll tell you one more time, there is no project submission, so there will be a workshop. Then you have to do code labs, then MCQ
+
+01:39:54
+assessment, and then you'll move forward to the hackathon phase of it. And one more thing, participants who complete all required components in at least one track will earn the Gen AI master certification. So, since you already have a student track one, that means you only have to go through track one only. And so, once you'll do that, after completing the academy, you'll advance to the cohort hackathon where you'll collaborate with fellow participants to solve a common problem statement and build innovative
+
+01:40:24
+real-world solutions using Google Cloud technologies. And all graduates will be invited to the graduation ceremony where top performers will be recognized and celebrated for their achievements. And one last thing I just wanted to say, participants who excel in both the academy and the hackathon and rank among the top 100 performers will earn an invitation to the Gen AI Elite Club. So, this is our exclusive alumni community of outstanding developers and innovators across the ecosystem. If you have any
+
+01:40:55
+questions, whether technical or program related, please reach out to our Discord community or by email. Discord community you will find on the dashboard, you can join it there, and you can start if you have any sorts of query, you can ask on the Discord community, and email you'll definitely find it there as well. So, once again, thank you so much for this wonderful session, and we'll see you in the next one. Thank you so much. Bye-bye.
+
+
+    </div>
+  </main>
+</body>
+</html>
