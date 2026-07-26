@@ -13,7 +13,7 @@ export interface ChapterItem {
     text: string;
     takeaway: string;
   };
-  diagramType: 'software-app' | 'sdlc-loop' | 'agile-loop' | 'jvm-coffee' | 'cookie-class' | 'tv-remote' | 'family-inherit' | 'actor-poly' | 'car-abstract' | 'array-lockers' | 'stack-plates' | 'queue-line' | 'hashmap-mail' | 'sql-library' | 'rest-waiter' | 'spring-factory' | 'git-docs' | 'docker-ship' | 'cloud-power' | 'ai-copilot' | 'fsm-store' | 'resume-story' | 'star-hr';
+  diagramType: 'software-app' | 'sdlc-loop' | 'agile-loop' | 'jvm-coffee' | 'cookie-class' | 'tv-remote' | 'family-inherit' | 'actor-poly' | 'car-abstract' | 'array-lockers' | 'stack-plates' | 'queue-line' | 'hashmap-mail' | 'sql-library' | 'rest-waiter' | 'spring-factory' | 'git-docs' | 'docker-ship' | 'cloud-power' | 'ai-copilot' | 'fsm-store' | 'resume-story' | 'star-hr' | 'pollaris-arch';
   simpleExplanation: string;
   commonMistake: string;
   whatToTellInterviewer: {
@@ -1191,59 +1191,59 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     title: 'Chapter 37: Renuka\'s Infor Experience (Enterprise AI Internship)',
     shortTitle: '37. Infor Internship',
     icon: '🏢',
-    estimatedMinutes: 7,
-    question: 'Tell me about your 4-month experience at Infor and the projects you worked on.',
+    estimatedMinutes: 8,
+    question: 'Tell me about your 4-month experience at Infor and the technical AI projects you worked on.',
     analogyStory: {
-      title: 'The Enterprise AI Inventory Predictor',
-      text: 'During her 4-month internship at Infor, Renuka worked on enterprise AI workflows. She built an AI Chatbot using GPT-4 and integrated AWS DeepAR time-series forecasting to predict inventory demand, helping enterprise customers avoid stocking out of products!',
-      takeaway: '4-month Infor internship focusing on AWS DeepAR demand forecasting & GPT-4 chatbot integration.'
+      title: 'The Enterprise AI Inventory Predictor & GPT-4 Assistant',
+      text: 'During her 4-month internship at Infor, Renuka worked in the enterprise SaaS engineering group focusing on AI capabilities for Supply Chain and Inventory Management. She worked on two key solutions: 1) Integrating a conversational AI chatbot using GPT-4 for internal enterprise documentation and query routing, and 2) Working with AWS DeepAR time-series forecasting models to predict warehouse inventory demand across thousands of SKUs.',
+      takeaway: '4-month Infor internship focusing on AWS DeepAR demand forecasting & GPT-4 RAG chatbot integration.'
     },
     diagramType: 'resume-story',
-    simpleExplanation: 'At Infor, Renuka gained hands-on experience in enterprise AI applications. She contributed to an AI-powered conversational chatbot using GPT-4 and worked with AWS DeepAR forecasting models to analyze supply chain demand patterns.',
-    commonMistake: 'Forgetting to mention the technical tools used (AWS DeepAR, GPT-4, enterprise cloud integration).',
+    simpleExplanation: 'At Infor, Renuka gained hands-on experience in enterprise AI applications for Supply Chain Management. AWS DeepAR is a deep learning time-series model (using Recurrent Neural Networks) that trains a unified model across thousands of related SKUs to predict demand spikes and prevent warehouse stock-outs. The GPT-4 chatbot uses Retrieval-Augmented Generation (RAG) with vector embeddings so users can query inventory reorder thresholds in natural language.',
+    commonMistake: 'Giving a vague answer about AI without explaining AWS DeepAR time-series forecasting or GPT-4 RAG vector embeddings.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
-        '1. State company and duration (4-month internship at Infor).',
-        '2. Mention project focus (Enterprise AI tools, GPT-4 chatbot, AWS DeepAR forecasting).',
-        '3. Conclude with impact (Gaining hands-on experience in enterprise SaaS workflows).'
+        '1. High-Level Story: 4-month internship at Infor working in the enterprise SaaS engineering group on AI capabilities for Supply Chain & Inventory Management.',
+        '2. Technical Solution #1: AWS DeepAR time-series forecasting models (Amazon SageMaker deep learning RNNs) trained across thousands of SKUs to predict warehouse inventory demand spikes.',
+        '3. Technical Solution #2: Conversational AI assistant using GPT-4 and RAG (Retrieval-Augmented Generation) vector embeddings to query inventory reorder policies without hallucinations.'
       ],
-      exampleScript: 'During my 4-month internship at Infor, I worked on enterprise AI capabilities. I contributed to an AI conversational chatbot using GPT-4 and worked with AWS DeepAR time-series models for inventory demand forecasting, gaining practical experience in enterprise cloud workflows.',
-      durationSec: 28,
-      tip: 'Highlight 4-month Infor internship + AWS DeepAR & GPT-4 AI tools.'
+      exampleScript: 'During my 4-month internship at Infor, I worked in the enterprise SaaS engineering group focusing on AI capabilities for Supply Chain and Inventory Management. My work centered on two key solutions: 1) Integrating a conversational AI chatbot using GPT-4 and RAG vector embeddings for enterprise query routing, and 2) Working with AWS DeepAR time-series forecasting models on SageMaker to predict multi-region warehouse inventory demand across thousands of SKUs.',
+      durationSec: 32,
+      tip: 'Mention: 4-month Infor internship + AWS DeepAR time-series forecasting + GPT-4 RAG vector embeddings.'
     },
-    onePictureSummary: ['🏢 Infor 4-Month Internship', '↓ 🤖 GPT-4 AI Chatbot', '↓ 📊 AWS DeepAR Forecasting', '↓ Enterprise SaaS Skills']
+    onePictureSummary: ['🏢 Infor 4-Month Internship', '↓ 🤖 GPT-4 RAG Vector Assistant', '↓ 📊 AWS DeepAR Time-Series RNN', '↓ Enterprise FSM AI Skills']
   },
   {
     id: 'ch-38-pollaris-story',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
     chapterNumber: 38,
-    title: 'Chapter 38: Pollaris Voting App (Firestore ACID Transactions)',
+    title: 'Chapter 38: Pollaris Online Polling Platform (Firestore ACID Transactions)',
     shortTitle: '38. Pollaris Project',
     icon: '🗳️',
-    estimatedMinutes: 8,
-    question: 'Can you explain your project Pollaris and the technical challenges you solved?',
+    estimatedMinutes: 9,
+    question: 'Can you explain your project Pollaris, its lifecycle, and how you solved race conditions using Firestore ACID Transactions?',
     analogyStory: {
-      title: 'The Single-Slot Vote Box',
-      text: 'When 100 people try to drop a vote into a box at the exact same millisecond, votes collide. Pollaris used Firestore ACID transactions to lock the vote box safely, guaranteeing 100% one-vote-per-user integrity without duplicate votes!',
-      takeaway: 'Used Firestore ACID Transactions to eliminate vote concurrency race conditions.'
+      title: 'The Atomic Single-Slot Vote Box & Private Security Token',
+      text: 'When 100 users try to drop a vote into a box at the exact same millisecond, concurrent writes collide! Pollaris uses Firestore ACID Transactions (`db.runTransaction()`) to lock the target poll document and voter ledger atomically, guaranteeing 100% one-vote-per-user data integrity without duplicate votes. Private polls use unguessable 16-character share URLs and server security rules to verify invitee emails.',
+      takeaway: 'Used Firestore ACID Transactions (`db.runTransaction()`) to eliminate vote concurrency race conditions.'
     },
-    diagramType: 'resume-story',
-    simpleExplanation: 'Pollaris is an enterprise polling platform built with Next.js 16 and Firebase Firestore. We used Firestore ACID transactions to eliminate race conditions during concurrent voting.',
-    commonMistake: 'Reciting scary HR resume buzzwords without explaining the core technical problem.',
+    diagramType: 'pollaris-arch',
+    simpleExplanation: 'Pollaris is an enterprise online polling platform built with Next.js 16 and Firebase Firestore. Key technical highlights: 1) Lifecycle: Polls move from Draft (editable) to Open (voting enabled, options locked) to Closed (read-only, auto-closed when end-at passes). 2) Security: Private polls use unguessable 16-character share tokens and server-side rules checking if user email exists in the invitees array. 3) Concurrency: `db.runTransaction()` locks poll documents atomically, enforcing one-vote-per-user constraint and updating aggregate counts without race conditions.',
+    commonMistake: 'Forgetting to mention `db.runTransaction()` when asked how race conditions and duplicate voting were prevented.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
-        '1. State project stack (Next.js 16 + Firebase Firestore).',
-        '2. State technical challenge (Preventing duplicate votes during concurrent high-traffic voting).',
-        '3. State solution (Using Firestore ACID transactions for 100% data integrity).'
+        '1. Project Architecture: Built with Next.js 16 and Firebase Firestore featuring Draft -> Open -> Closed lifecycle states.',
+        '2. Concurrency & Integrity: Used db.runTransaction() to lock poll documents atomically, replacing prior user selections and updating aggregate counts without race conditions.',
+        '3. Security & Visibility: Private polls use unguessable 16-character share tokens with server-side security rules verifying invited emails. Single-choice sums to 100%; Multi-choice calculates per distinct respondent.'
       ],
-      exampleScript: 'Pollaris is a cloud-native polling platform built with Next.js 16 and Firebase Firestore. The main technical challenge was preventing race conditions when multiple users voted simultaneously. I solved this using Firestore ACID transactions to enforce one-vote-per-user constraint, ensuring 100% data integrity.',
-      durationSec: 30,
-      tip: 'Problem (concurrent vote race conditions) -> Solution (Firestore ACID transactions).'
+      exampleScript: 'Pollaris is an enterprise online polling platform built with Next.js 16 and Firebase Firestore. The core technical challenge was preventing race conditions when multiple users voted simultaneously. I solved this using Firestore ACID transactions via db.runTransaction(), which locks the poll document atomically, enforces the one-vote-per-user constraint, and updates aggregate counts safely. Private polls are secured with unguessable 16-character share URLs and server-side invitee security rules.',
+      durationSec: 35,
+      tip: 'Problem (concurrent vote race conditions) -> Solution (Firestore ACID transactions via db.runTransaction()).'
     },
-    onePictureSummary: ['🗳️ Pollaris Voting App', '↓ Next.js + Firestore', '↓ ACID Transactions', '↓ 100% Vote Integrity']
+    onePictureSummary: ['🗳️ Next.js 16 + Firestore', '↓ 📋 Draft ➔ Open ➔ Closed Lifecycle', '↓ 🔒 db.runTransaction() ACID Lock', '↓ 100% Vote Integrity & Token Security']
   },
   {
     id: 'ch-39-renuka-self-intro',
@@ -1278,3 +1278,4 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🎓 JNTU ECE Degree', '↓ Java, SQL, REST APIs', '↓ Infor 4-Month Internship', '↓ STAR Method Framework']
   }
 ];
+
