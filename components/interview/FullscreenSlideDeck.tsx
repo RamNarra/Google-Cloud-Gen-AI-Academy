@@ -18,7 +18,7 @@ export default function FullscreenSlideDeck({
   onExit,
 }: FullscreenSlideDeckProps) {
   const [slideIndex, setSlideIndex] = useState(0);
-  const totalSlides = 5; // 5 Clean Kid-Friendly Slides (Voice recorder removed)
+  const totalSlides = 5; // 5 Clean Kid-Friendly Slides
 
   useEffect(() => {
     setSlideIndex(0);
@@ -104,7 +104,7 @@ export default function FullscreenSlideDeck({
           </div>
         )}
 
-        {/* SLIDE 3: ILLUSTRATED UML DIAGRAM */}
+        {/* SLIDE 3: ILLUSTRATED CONCEPT DIAGRAM */}
         {slideIndex === 2 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
@@ -157,29 +157,46 @@ export default function FullscreenSlideDeck({
           </div>
         )}
 
-        {/* SLIDE 5: SPOKEN INTERVIEW ANSWER & TIP */}
+        {/* SLIDE 5: WHAT TO TELL THE INTERVIEWER (STRUCTURE POINTS & EXAMPLE SCRIPT) */}
         {slideIndex === 4 && (
-          <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
-              30-SECOND INTERVIEW SPOKEN ANSWER
+          <div className="flex flex-col items-center text-center animate-fadeIn gap-4">
+            <span className="rounded-full bg-blue-600 px-5 py-2 font-mono text-xs sm:text-sm font-bold text-white shadow-xs">
+              WHAT TO TELL THE INTERVIEWER
             </span>
 
-            <div className="mt-4 w-full rounded-3xl border border-blue-200 bg-blue-50/60 p-6 shadow-sm">
-              <div className="flex items-center justify-between text-xs sm:text-sm text-blue-800 border-b border-blue-200 pb-3 font-mono font-bold">
-                <span>EXPECTED INTERVIEW ANSWER:</span>
-                <span>~{lesson.script30Sec.durationSec}s</span>
+            {/* Sentence Framing Structure Points */}
+            <div className="w-full rounded-2xl border border-blue-200 bg-blue-50/80 p-4 sm:p-5 text-left">
+              <span className="font-mono text-xs sm:text-sm font-extrabold text-blue-900 uppercase">
+                {lesson.whatToTellInterviewer.heading}
+              </span>
+              <ul className="mt-2.5 space-y-2 font-sans text-xs sm:text-base font-semibold text-slate-800">
+                {lesson.whatToTellInterviewer.structurePoints.map((pt, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-blue-600 font-bold">▪</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Example Spoken Script Box */}
+            <div className="w-full rounded-3xl border-2 border-emerald-500 bg-emerald-50/90 p-5 sm:p-6 text-left shadow-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm text-emerald-950 border-b border-emerald-200 pb-2 font-mono font-extrabold">
+                <span>STRUCTURED EXAMPLE SPOKEN ANSWER:</span>
+                <span>~{lesson.whatToTellInterviewer.durationSec}s</span>
               </div>
-              <p className="mt-4 text-base sm:text-xl font-bold leading-relaxed text-slate-900">
-                {lesson.script30Sec.answerText}
+              <p className="mt-3 text-base sm:text-xl font-bold leading-relaxed text-slate-950">
+                &ldquo;{lesson.whatToTellInterviewer.exampleScript}&rdquo;
               </p>
             </div>
 
-            <div className="mt-6 w-full max-w-lg rounded-2xl bg-emerald-50 border border-emerald-200 p-5 text-center">
-              <span className="font-mono text-xs sm:text-sm font-bold text-emerald-900">
-                ✅ INTERVIEW TIP:
+            {/* Interview Tip */}
+            <div className="w-full rounded-2xl bg-slate-900 text-white p-4 text-center">
+              <span className="font-mono text-xs sm:text-sm font-bold text-amber-300">
+                ✅ INTERVIEWER CONFIDENCE TIP:
               </span>
-              <p className="mt-1.5 text-xs sm:text-base text-emerald-950 font-medium leading-relaxed">
-                {lesson.interviewTip}
+              <p className="mt-1 text-xs sm:text-base text-slate-200 font-medium">
+                {lesson.whatToTellInterviewer.tip}
               </p>
             </div>
           </div>

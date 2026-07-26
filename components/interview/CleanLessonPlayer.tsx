@@ -46,7 +46,7 @@ export default function CleanLessonPlayer({
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(lesson.script30Sec.answerText);
+    const utterance = new SpeechSynthesisUtterance(lesson.whatToTellInterviewer.exampleScript);
     utterance.rate = 0.9;
     utterance.pitch = 1.0;
     utterance.lang = "en-US";
@@ -170,10 +170,10 @@ export default function CleanLessonPlayer({
         <div className="mt-4 rounded-2xl border border-blue-200 bg-white p-6 shadow-xs">
           <div className="flex items-center justify-between text-xs text-blue-600 border-b border-slate-100 pb-2">
             <span className="font-mono font-bold">YOUR 30-SECOND SPOKEN ANSWER (BAND 5.5 ENGLISH):</span>
-            <span className="font-mono">~{lesson.script30Sec.durationSec}s</span>
+            <span className="font-mono">~{lesson.whatToTellInterviewer.durationSec}s</span>
           </div>
           <p className="mt-3 text-base font-medium leading-relaxed text-slate-800">
-            {lesson.script30Sec.answerText}
+            {lesson.whatToTellInterviewer.exampleScript}
           </p>
         </div>
       </div>
@@ -248,7 +248,7 @@ export default function CleanLessonPlayer({
           </span>
         </div>
         <p className="mt-2 text-sm font-medium leading-relaxed text-emerald-900">
-          {lesson.interviewTip}
+          {lesson.whatToTellInterviewer.tip}
         </p>
 
         <button
