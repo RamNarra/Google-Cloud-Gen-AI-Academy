@@ -33,7 +33,7 @@ export interface PartItem {
 }
 
 export const TEXTBOOK_PARTS: PartItem[] = [
-  { id: 'part-1', partNumber: 1, title: 'Section I: FSM & Enterprise SaaS Domain', description: 'Enterprise SaaS, Multi-Tenancy, Financials & Supply Management, ERP Systems', icon: '🏢' },
+  { id: 'part-1', partNumber: 1, title: 'Section I: FSM & Enterprise SaaS Domain', description: 'FSM Associate Role, Enterprise SaaS, Multi-Tenancy, Financials & Supply Management, ERP Systems', icon: '🏢' },
   { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC Phases, Scrum vs Kanban, Sprint Planning, Stand-ups, Retrospectives, PM/QA/UX Teamwork', icon: '🏃' },
   { id: 'part-3', partNumber: 3, title: 'Section III: Java / J2EE & Object-Oriented Principles', description: 'Java, JVM, What is J2EE?, Maven/Gradle, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
   { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, Stacks, Queues, HashMaps, Hash Collision Handling, O(1) Complexity', icon: '🧱' },
@@ -47,12 +47,37 @@ export const TEXTBOOK_PARTS: PartItem[] = [
 export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
   // SECTION I: FSM & ENTERPRISE SAAS DOMAIN
   {
-    id: 'ch-1-enterprise-saas',
+    id: 'ch-1-fsm-role',
     partId: 'part-1',
     partTitle: 'Section I: FSM & SaaS',
     chapterNumber: 1,
-    title: 'Chapter 1: What is Enterprise SaaS & Multi-Tenancy?',
-    shortTitle: '1. Enterprise SaaS',
+    title: 'Chapter 1: Associate Software Engineer on the FSM Team',
+    shortTitle: '1. FSM SE Role',
+    icon: '🏢',
+    estimatedMinutes: 6,
+    question: 'What is the role of an Associate Software Engineer on the Financials & Supply Management (FSM) team?',
+    analogyStory: {
+      title: 'The Super-Chef in the Global Restaurant',
+      text: 'Imagine a global restaurant serving 10,000 customers in 50 countries simultaneously. The head master chefs build the menu, but the Associate Software Engineer is the talented line chef who cooks clean, high-quality meals (Java code), tests the food for safety (Unit Testing), and uses smart automated kitchen bots (AI Copilot) to deliver dishes fast! On the FSM product engineering team, you build modern Java SaaS software that tracks company money and warehouse inventory globally.',
+      takeaway: 'Your role is to design, develop, test, and maintain Java SaaS applications for the FSM product suite.'
+    },
+    diagramType: 'fsm-store',
+    simpleExplanation: 'As an Associate Software Engineer on the Financials & Supply Management (FSM) product engineering team, your daily responsibility is to design, develop, test, and maintain scalable Java-based enterprise SaaS applications. You collaborate with Product Managers, QA, and UX teams in Agile sprints, write clean well-documented code, and leverage AI tools like GitHub Copilot to accelerate software delivery across the SDLC.',
+    commonMistake: 'Thinking an Associate Software Engineer only fixes small bugs. You participate in sprint planning, architectural discussions, and build core features under senior engineer guidance!',
+    script30Sec: {
+      answerText: 'As an Associate Software Engineer on the FSM team, I design, develop, test, and maintain enterprise-grade SaaS solutions using Java and modern web services. I collaborate with cross-functional teams in Agile sprints, write clean documented code, and leverage AI tools to accelerate coding, testing, and debugging.',
+      durationSec: 28
+    },
+    onePictureSummary: ['💻 Modern Java Backend', '↓ 💰 FSM Enterprise SaaS', '↓ 🤖 AI SDLC Tools', '↓ 🏃 Agile Team Delivery'],
+    interviewTip: 'Mention designing, developing, testing, and maintaining Java SaaS apps with AI tools.'
+  },
+  {
+    id: 'ch-2-enterprise-saas',
+    partId: 'part-1',
+    partTitle: 'Section I: FSM & SaaS',
+    chapterNumber: 2,
+    title: 'Chapter 2: What is Enterprise SaaS & Multi-Tenancy?',
+    shortTitle: '2. Enterprise SaaS',
     icon: '☁️',
     estimatedMinutes: 6,
     question: 'What is Enterprise SaaS and what does multi-tenancy mean in cloud applications?',
@@ -72,12 +97,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Shared cloud infrastructure + private tenant data isolation.'
   },
   {
-    id: 'ch-2-fsm-domain',
+    id: 'ch-3-fsm-domain',
     partId: 'part-1',
     partTitle: 'Section I: FSM & SaaS',
-    chapterNumber: 2,
-    title: 'Chapter 2: Financials & Supply Management (FSM) Domain',
-    shortTitle: '2. FSM Domain',
+    chapterNumber: 3,
+    title: 'Chapter 3: Financials & Supply Management (FSM) Domain',
+    shortTitle: '3. FSM Domain',
     icon: '🏢',
     estimatedMinutes: 6,
     question: 'What is Financials & Supply Management (FSM) software and why do global businesses use it?',
@@ -97,12 +122,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Financial money tracking + Warehouse inventory supply chain.'
   },
   {
-    id: 'ch-3-erp-systems',
+    id: 'ch-4-erp-systems',
     partId: 'part-1',
     partTitle: 'Section I: FSM & SaaS',
-    chapterNumber: 3,
-    title: 'Chapter 3: What is an ERP (Enterprise Resource Planning) System?',
-    shortTitle: '3. ERP Systems',
+    chapterNumber: 4,
+    title: 'Chapter 4: What is an ERP (Enterprise Resource Planning) System?',
+    shortTitle: '4. ERP Systems',
     icon: '🔄',
     estimatedMinutes: 6,
     question: 'What is an ERP system and how does FSM fit into an ERP software suite?',
@@ -124,12 +149,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION II: SOFTWARE ENGINEERING & AGILE SDLC
   {
-    id: 'ch-4-sdlc-phases',
+    id: 'ch-5-sdlc-phases',
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
-    chapterNumber: 4,
-    title: 'Chapter 4: The 6 Phases of SDLC',
-    shortTitle: '4. SDLC 6 Phases',
+    chapterNumber: 5,
+    title: 'Chapter 5: The 6 Phases of SDLC',
+    shortTitle: '5. SDLC 6 Phases',
     icon: '🔄',
     estimatedMinutes: 7,
     question: 'What is SDLC and what are its main 6 phases?',
@@ -149,12 +174,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'List all 6 phases clearly: Requirements -> Design -> Coding -> Testing -> Deployment -> Maintenance.'
   },
   {
-    id: 'ch-5-scrum-vs-kanban',
+    id: 'ch-6-scrum-vs-kanban',
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
-    chapterNumber: 5,
-    title: 'Chapter 5: Agile Scrum vs Kanban Methodologies',
-    shortTitle: '5. Scrum vs Kanban',
+    chapterNumber: 6,
+    title: 'Chapter 6: Agile Scrum vs Kanban Methodologies',
+    shortTitle: '6. Scrum vs Kanban',
     icon: '🏃',
     estimatedMinutes: 7,
     question: 'What is the difference between Agile Scrum and Kanban methodologies?',
@@ -174,12 +199,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Scrum = 2-week fixed sprints; Kanban = continuous task board flow.'
   },
   {
-    id: 'ch-6-sprint-meetings',
+    id: 'ch-7-sprint-meetings',
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
-    chapterNumber: 6,
-    title: 'Chapter 6: Sprint Planning, Daily Stand-ups & Retrospectives',
-    shortTitle: '6. Sprint Meetings',
+    chapterNumber: 7,
+    title: 'Chapter 7: Sprint Planning, Daily Stand-ups & Retrospectives',
+    shortTitle: '7. Sprint Meetings',
     icon: '⏰',
     estimatedMinutes: 7,
     question: 'What happens during Sprint Planning, Daily Stand-up, and Sprint Retrospective meetings?',
@@ -201,12 +226,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION III: JAVA / J2EE & OBJECT-ORIENTED PRINCIPLES
   {
-    id: 'ch-7-java-jvm',
+    id: 'ch-8-java-jvm',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 7,
-    title: 'Chapter 7: What is Java & the JVM (Java Virtual Machine)?',
-    shortTitle: '7. Java & JVM',
+    chapterNumber: 8,
+    title: 'Chapter 8: What is Java & the JVM (Java Virtual Machine)?',
+    shortTitle: '8. Java & JVM',
     icon: '☕',
     estimatedMinutes: 8,
     question: 'What is Java and how does the JVM achieve "Write Once, Run Anywhere"?',
@@ -226,12 +251,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Bytecode + JVM = Platform Independence.'
   },
   {
-    id: 'ch-8-what-is-j2ee',
+    id: 'ch-9-what-is-j2ee',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 8,
-    title: 'Chapter 8: What is J2EE / Jakarta EE (Java Enterprise Edition)?',
-    shortTitle: '8. What is J2EE?',
+    chapterNumber: 9,
+    title: 'Chapter 9: What is J2EE / Jakarta EE (Java Enterprise Edition)?',
+    shortTitle: '9. What is J2EE?',
     icon: '🏢',
     estimatedMinutes: 7,
     question: 'What is J2EE (Jakarta EE) and how does it differ from standard Core Java (J2SE)?',
@@ -251,12 +276,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Core Java = base language; J2EE = enterprise web & transaction specification.'
   },
   {
-    id: 'ch-9-maven-gradle',
+    id: 'ch-10-maven-gradle',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 9,
-    title: 'Chapter 9: Maven & Gradle (Java Build Automation Tools)',
-    shortTitle: '9. Maven & Gradle',
+    chapterNumber: 10,
+    title: 'Chapter 10: Maven & Gradle (Java Build Automation Tools)',
+    shortTitle: '10. Maven & Gradle',
     icon: '🛠️',
     estimatedMinutes: 6,
     question: 'What are Maven and Gradle used for in Java application development?',
@@ -276,12 +301,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Automatic dependency downloading + build packaging.'
   },
   {
-    id: 'ch-10-classes-objects',
+    id: 'ch-11-classes-objects',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 10,
-    title: 'Chapter 10: Classes, Objects & Memory Allocation',
-    shortTitle: '10. Classes & Objects',
+    chapterNumber: 11,
+    title: 'Chapter 11: Classes, Objects & Memory Allocation',
+    shortTitle: '11. Classes & Objects',
     icon: '🍪',
     estimatedMinutes: 8,
     question: 'What is a Class and an Object in Java, and where are they stored in memory?',
@@ -301,12 +326,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Class = Blueprint; Object = Heap Memory Instance.'
   },
   {
-    id: 'ch-11-encapsulation',
+    id: 'ch-12-encapsulation',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 11,
-    title: 'Chapter 11: Encapsulation & Data Hiding',
-    shortTitle: '11. Encapsulation',
+    chapterNumber: 12,
+    title: 'Chapter 12: Encapsulation & Data Hiding',
+    shortTitle: '12. Encapsulation',
     icon: '📺',
     estimatedMinutes: 8,
     question: 'What is Encapsulation and how do you achieve it in Java?',
@@ -326,12 +351,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Private variables + public getters/setters = 100% full marks.'
   },
   {
-    id: 'ch-12-inheritance',
+    id: 'ch-13-inheritance',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 12,
-    title: 'Chapter 12: Inheritance & Code Reusability',
-    shortTitle: '12. Inheritance',
+    chapterNumber: 13,
+    title: 'Chapter 13: Inheritance & Code Reusability',
+    shortTitle: '13. Inheritance',
     icon: '🧬',
     estimatedMinutes: 8,
     question: 'What is Inheritance and how is it implemented in Java?',
@@ -351,12 +376,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Mention extends keyword and IS-A relationship.'
   },
   {
-    id: 'ch-13-polymorphism',
+    id: 'ch-14-polymorphism',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 13,
-    title: 'Chapter 13: Polymorphism (Overloading vs Overriding)',
-    shortTitle: '13. Polymorphism',
+    chapterNumber: 14,
+    title: 'Chapter 14: Polymorphism (Overloading vs Overriding)',
+    shortTitle: '14. Polymorphism',
     icon: '🎭',
     estimatedMinutes: 9,
     question: 'What is Polymorphism and what is the difference between Overloading and Overriding?',
@@ -376,12 +401,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Compile-time (Overloading) vs Runtime (Overriding) distinction is key.'
   },
   {
-    id: 'ch-14-abstraction',
+    id: 'ch-15-abstraction',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 14,
-    title: 'Chapter 14: Abstraction (Abstract Classes vs Interfaces)',
-    shortTitle: '14. Abstraction',
+    chapterNumber: 15,
+    title: 'Chapter 15: Abstraction (Abstract Classes vs Interfaces)',
+    shortTitle: '15. Abstraction',
     icon: '🚗',
     estimatedMinutes: 9,
     question: 'What is Abstraction and how does an Abstract Class differ from an Interface?',
@@ -403,12 +428,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION IV: DATA STRUCTURES & ALGORITHMS (DSA)
   {
-    id: 'ch-15-arrays',
+    id: 'ch-16-arrays',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 15,
-    title: 'Chapter 15: Arrays & Memory Contiguity',
-    shortTitle: '15. Arrays',
+    chapterNumber: 16,
+    title: 'Chapter 16: Arrays & Memory Contiguity',
+    shortTitle: '16. Arrays',
     icon: '📦',
     estimatedMinutes: 7,
     question: 'What is an Array and what are its advantages and limitations?',
@@ -428,12 +453,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Contiguous memory + O(1) index access.'
   },
   {
-    id: 'ch-16-stack-queue',
+    id: 'ch-17-stack-queue',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 16,
-    title: 'Chapter 16: Stacks & Queues (LIFO vs FIFO)',
-    shortTitle: '16. Stack & Queue',
+    chapterNumber: 17,
+    title: 'Chapter 17: Stacks & Queues (LIFO vs FIFO)',
+    shortTitle: '17. Stack & Queue',
     icon: '🧱',
     estimatedMinutes: 8,
     question: 'What is the difference between a Stack and a Queue?',
@@ -453,12 +478,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'LIFO vs FIFO is the fundamental difference.'
   },
   {
-    id: 'ch-17-hashmaps-collision',
+    id: 'ch-18-hashmaps-collision',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 17,
-    title: 'Chapter 17: HashMaps & Hash Collision Handling (O(1) Time)',
-    shortTitle: '17. HashMaps O(1)',
+    chapterNumber: 18,
+    title: 'Chapter 18: HashMaps & Hash Collision Handling (O(1) Time)',
+    shortTitle: '18. HashMaps O(1)',
     icon: '📬',
     estimatedMinutes: 9,
     question: 'How does a HashMap work internally in Java and how does it handle hash collisions?',
@@ -480,12 +505,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION V: RELATIONAL & NOSQL DATABASES
   {
-    id: 'ch-18-oracle-sqlserver',
+    id: 'ch-19-oracle-sqlserver',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 18,
-    title: 'Chapter 18: Relational DBs (Oracle & Microsoft SQL Server)',
-    shortTitle: '18. Oracle & SQL Server',
+    chapterNumber: 19,
+    title: 'Chapter 19: Relational DBs (Oracle & Microsoft SQL Server)',
+    shortTitle: '19. Oracle & SQL Server',
     icon: '🔑',
     estimatedMinutes: 8,
     question: 'What is a Relational Database (RDBMS) like Oracle or SQL Server?',
@@ -505,12 +530,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Structured tables + Primary/Foreign Keys + ACID transactions.'
   },
   {
-    id: 'ch-19-sql-joins',
+    id: 'ch-20-sql-joins',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 19,
-    title: 'Chapter 19: SQL Joins (INNER vs LEFT JOIN)',
-    shortTitle: '19. SQL Joins',
+    chapterNumber: 20,
+    title: 'Chapter 20: SQL Joins (INNER vs LEFT JOIN)',
+    shortTitle: '20. SQL Joins',
     icon: '🔗',
     estimatedMinutes: 9,
     question: 'What is the difference between INNER JOIN and LEFT JOIN in SQL?',
@@ -530,12 +555,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Matching rows only (INNER) vs All left rows (LEFT).'
   },
   {
-    id: 'ch-20-nosql-firestore',
+    id: 'ch-21-nosql-firestore',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 20,
-    title: 'Chapter 20: NoSQL Databases & Document Storage (Firestore)',
-    shortTitle: '20. NoSQL Databases',
+    chapterNumber: 21,
+    title: 'Chapter 21: NoSQL Databases & Document Storage (Firestore)',
+    shortTitle: '21. NoSQL Databases',
     icon: '🗂️',
     estimatedMinutes: 7,
     question: 'How do NoSQL databases differ from SQL relational databases?',
@@ -557,12 +582,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION VI: BACKEND FRAMEWORKS & WEB SERVICES
   {
-    id: 'ch-21-soap-vs-rest',
+    id: 'ch-22-soap-vs-rest',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 21,
-    title: 'Chapter 21: Web Services: SOAP vs REST APIs',
-    shortTitle: '21. SOAP vs REST',
+    chapterNumber: 22,
+    title: 'Chapter 22: Web Services: SOAP vs REST APIs',
+    shortTitle: '22. SOAP vs REST',
     icon: '🌐',
     estimatedMinutes: 7,
     question: 'What is a Web Service and what is the difference between SOAP and REST APIs?',
@@ -582,12 +607,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'SOAP = XML protocol; REST = JSON HTTP architectural style.'
   },
   {
-    id: 'ch-22-http-methods',
+    id: 'ch-23-http-methods',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 22,
-    title: 'Chapter 22: HTTP Methods & Status Codes',
-    shortTitle: '22. HTTP Methods',
+    chapterNumber: 23,
+    title: 'Chapter 23: HTTP Methods & Status Codes',
+    shortTitle: '23. HTTP Methods',
     icon: '🍽️',
     estimatedMinutes: 8,
     question: 'What are common HTTP methods (GET, POST, PUT, DELETE) and status codes (200, 201, 404, 500)?',
@@ -607,12 +632,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'GET/POST/PUT/DELETE + 200/404 status codes.'
   },
   {
-    id: 'ch-23-spring-boot',
+    id: 'ch-24-spring-boot',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 23,
-    title: 'Chapter 23: Spring Boot & 3-Tier Architecture',
-    shortTitle: '23. Spring Boot',
+    chapterNumber: 24,
+    title: 'Chapter 24: Spring Boot & 3-Tier Architecture',
+    shortTitle: '24. Spring Boot',
     icon: '🔌',
     estimatedMinutes: 9,
     question: 'What is Spring Boot and why do we use 3-tier architecture (@RestController, @Service, @Repository)?',
@@ -632,12 +657,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Explain Controller -> Service -> Repository flow.'
   },
   {
-    id: 'ch-24-spring-data-jpa',
+    id: 'ch-25-spring-data-jpa',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 24,
-    title: 'Chapter 24: Spring Data JPA & Hibernate (Object-Relational Mapping)',
-    shortTitle: '24. Spring Data JPA',
+    chapterNumber: 25,
+    title: 'Chapter 25: Spring Data JPA & Hibernate (Object-Relational Mapping)',
+    shortTitle: '25. Spring Data JPA',
     icon: '🛢️',
     estimatedMinutes: 8,
     question: 'What is ORM and how does Spring Data JPA simplify database queries?',
@@ -657,12 +682,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Object-Relational Mapping (ORM) maps Java Objects to SQL Tables.'
   },
   {
-    id: 'ch-25-spring-security-jwt',
+    id: 'ch-26-spring-security-jwt',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 25,
-    title: 'Chapter 25: Spring Security & JWT Tokens (API Authentication)',
-    shortTitle: '25. Spring Security',
+    chapterNumber: 26,
+    title: 'Chapter 26: Spring Security & JWT Tokens (API Authentication)',
+    shortTitle: '26. Spring Security',
     icon: '🔒',
     estimatedMinutes: 8,
     question: 'How do you secure REST APIs using Spring Security and JWT (JSON Web Tokens)?',
@@ -682,12 +707,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Stateless JWT tokens sent in HTTP Authorization header.'
   },
   {
-    id: 'ch-26-postman-swagger',
+    id: 'ch-27-postman-swagger',
     partId: 'part-6',
     partTitle: 'Section VI: Backend Services',
-    chapterNumber: 26,
-    title: 'Chapter 26: Postman & Swagger / OpenAPI (API Testing & Docs)',
-    shortTitle: '26. Postman & Swagger',
+    chapterNumber: 27,
+    title: 'Chapter 27: Postman & Swagger / OpenAPI (API Testing & Docs)',
+    shortTitle: '27. Postman & Swagger',
     icon: '🧪',
     estimatedMinutes: 6,
     question: 'How do you test and document REST APIs using Postman and Swagger/OpenAPI?',
@@ -709,12 +734,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION VII: AI TOOLS & GENAI IN THE SDLC WORKFLOW
   {
-    id: 'ch-27-ai-codegen',
+    id: 'ch-28-ai-codegen',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools in SDLC',
-    chapterNumber: 27,
-    title: 'Chapter 27: AI Code Generation (GitHub Copilot)',
-    shortTitle: '27. AI Code Generation',
+    chapterNumber: 28,
+    title: 'Chapter 28: AI Code Generation (GitHub Copilot)',
+    shortTitle: '28. AI Code Generation',
     icon: '🤖',
     estimatedMinutes: 7,
     question: 'How do code assistants like GitHub Copilot accelerate SDLC activities?',
@@ -734,12 +759,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Faster boilerplate generation + human developer verification.'
   },
   {
-    id: 'ch-28-prompt-eng',
+    id: 'ch-29-prompt-eng',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools in SDLC',
-    chapterNumber: 28,
-    title: 'Chapter 28: Prompt Engineering for Debugging & Documentation',
-    shortTitle: '28. Prompt Engineering',
+    chapterNumber: 29,
+    title: 'Chapter 29: Prompt Engineering for Debugging & Documentation',
+    shortTitle: '29. Prompt Engineering',
     icon: '💡',
     estimatedMinutes: 7,
     question: 'How do you use Prompt Engineering to debug stack traces and generate documentation?',
@@ -761,12 +786,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION VIII: DEVOPS, CONTAINERS & CLOUD INFRASTRUCTURE
   {
-    id: 'ch-29-git-pull-req',
+    id: 'ch-30-git-pull-req',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 29,
-    title: 'Chapter 29: Git Version Control & Pull Requests',
-    shortTitle: '29. Git Workflows',
+    chapterNumber: 30,
+    title: 'Chapter 30: Git Version Control & Pull Requests',
+    shortTitle: '30. Git Workflows',
     icon: '🌿',
     estimatedMinutes: 8,
     question: 'What is your Git workflow when developing a new feature with a global team?',
@@ -786,12 +811,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Feature branching + Pull Request peer review.'
   },
   {
-    id: 'ch-30-docker-k8s',
+    id: 'ch-31-docker-k8s',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 30,
-    title: 'Chapter 30: Docker Containers & Kubernetes',
-    shortTitle: '30. Docker & Kubernetes',
+    chapterNumber: 31,
+    title: 'Chapter 31: Docker Containers & Kubernetes',
+    shortTitle: '31. Docker & Kubernetes',
     icon: '📦',
     estimatedMinutes: 8,
     question: 'What problem does Docker solve and what is Kubernetes used for?',
@@ -811,12 +836,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Docker = environment consistency; Kubernetes = container cluster orchestration.'
   },
   {
-    id: 'ch-31-cloud-aws-gcp',
+    id: 'ch-32-cloud-aws-gcp',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 31,
-    title: 'Chapter 31: Cloud Platforms (AWS, Azure & GCP)',
-    shortTitle: '31. Cloud Platforms',
+    chapterNumber: 32,
+    title: 'Chapter 32: Cloud Platforms (AWS, Azure & GCP)',
+    shortTitle: '32. Cloud Platforms',
     icon: '⚡',
     estimatedMinutes: 7,
     question: 'What are the main advantages of Cloud Platforms like AWS, Azure, and GCP?',
@@ -838,12 +863,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION IX: RESUME PROJECT STORIES & BEHAVIORAL HR
   {
-    id: 'ch-32-pollaris-story',
+    id: 'ch-33-pollaris-story',
     partId: 'part-9',
     partTitle: 'Section IX: Resume & HR',
-    chapterNumber: 32,
-    title: 'Chapter 32: Pollaris (Cloud-Native Voting App)',
-    shortTitle: '32. Pollaris Project',
+    chapterNumber: 33,
+    title: 'Chapter 33: Pollaris (Cloud-Native Voting App)',
+    shortTitle: '33. Pollaris Project',
     icon: '🗳️',
     estimatedMinutes: 8,
     question: 'Can you explain your project Pollaris and the technical challenges you solved?',
@@ -863,12 +888,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Problem (concurrent vote race conditions) -> Solution (Firestore ACID transactions).'
   },
   {
-    id: 'ch-33-self-intro',
+    id: 'ch-34-self-intro',
     partId: 'part-9',
     partTitle: 'Section IX: Resume & HR',
-    chapterNumber: 33,
-    title: 'Chapter 33: "Tell Me About Yourself"',
-    shortTitle: '33. Self Introduction',
+    chapterNumber: 34,
+    title: 'Chapter 34: "Tell Me About Yourself"',
+    shortTitle: '34. Self Introduction',
     icon: '🗣️',
     estimatedMinutes: 5,
     question: 'Tell me about yourself and your background.',
