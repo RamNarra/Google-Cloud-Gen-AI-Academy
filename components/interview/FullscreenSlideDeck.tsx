@@ -18,7 +18,7 @@ export default function FullscreenSlideDeck({
   onExit,
 }: FullscreenSlideDeckProps) {
   const [slideIndex, setSlideIndex] = useState(0);
-  const totalSlides = 5; // Reduced from 6 to 5 (Voice recorder removed per request)
+  const totalSlides = 5; // 5 Clean Kid-Friendly Slides (Voice recorder removed)
 
   useEffect(() => {
     setSlideIndex(0);
@@ -29,6 +29,14 @@ export default function FullscreenSlideDeck({
       setSlideIndex((prev) => prev + 1);
     } else {
       onFinishLesson();
+    }
+  };
+
+  const handlePrevSlide = () => {
+    if (slideIndex > 0) {
+      setSlideIndex((prev) => prev - 1);
+    } else {
+      onExit();
     }
   };
 
@@ -181,25 +189,33 @@ export default function FullscreenSlideDeck({
       {/* Slide Bottom Navigation Controls */}
       <div className="mx-auto flex w-full max-w-3xl items-center justify-between border-t border-slate-100 pt-4">
         {/* Slide Progress Dots (5 Dots) */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {Array.from({ length: totalSlides }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setSlideIndex(idx)}
               className={`h-3 rounded-full transition-all ${
-                idx === slideIndex ? "w-8 bg-blue-600" : "w-3 bg-slate-200"
+                idx === slideIndex ? "w-7 sm:w-8 bg-blue-600" : "w-3 bg-slate-200"
               }`}
             />
           ))}
         </div>
 
-        {/* Action Button */}
-        <button
-          onClick={handleNextSlide}
-          className="rounded-2xl bg-blue-600 px-7 sm:px-9 py-4 font-sans text-xs sm:text-base font-extrabold text-white shadow-md hover:bg-blue-700 transition"
-        >
-          {slideIndex === totalSlides - 1 ? "I Understand — Finish Chapter 🎉" : "Continue →"}
-        </button>
+        {/* Action Buttons: [ ← Back ] and [ Continue → ] */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={handlePrevSlide}
+            className="rounded-2xl border border-slate-300 bg-slate-50 px-4 sm:px-6 py-3 sm:py-3.5 font-sans text-xs sm:text-base font-extrabold text-slate-800 hover:bg-slate-100 transition shadow-xs"
+          >
+            ← Back
+          </button>
+          <button
+            onClick={handleNextSlide}
+            className="rounded-2xl bg-blue-600 px-5 sm:px-8 py-3 sm:py-3.5 font-sans text-xs sm:text-base font-extrabold text-white shadow-md hover:bg-blue-700 transition"
+          >
+            {slideIndex === totalSlides - 1 ? "Finish Chapter 🎉" : "Continue →"}
+          </button>
+        </div>
       </div>
     </div>
   );
