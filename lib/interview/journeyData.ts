@@ -33,87 +33,115 @@ export interface PartItem {
 }
 
 export const TEXTBOOK_PARTS: PartItem[] = [
-  { id: 'part-1', partNumber: 1, title: 'Part 1: Software Engineering Fundamentals', description: 'Software, SDLC, Waterfall, Agile, Scrum, and Testing', icon: '📘' },
-  { id: 'part-2', partNumber: 2, title: 'Part 2: Java & Object-Oriented Programming', description: 'Java, JVM, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
-  { id: 'part-3', partNumber: 3, title: 'Part 3: Data Structures & Algorithms', description: 'Arrays, Linked Lists, Stacks, Queues, HashMaps, Time Complexity', icon: '🧱' },
-  { id: 'part-4', partNumber: 4, title: 'Part 4: Databases & SQL', description: 'Relational DBs, Primary & Foreign Keys, SQL Joins', icon: '🔗' },
-  { id: 'part-5', partNumber: 5, title: 'Part 5: Backend & Web Services', description: 'HTTP, REST APIs, JSON, Spring Boot 3-Tier Architecture', icon: '🍽️' },
-  { id: 'part-6', partNumber: 6, title: 'Part 6: Developer Tools & Infrastructure', description: 'Git, Docker, Cloud Platforms (AWS/GCP), AI Tools in SDLC', icon: '📦' },
-  { id: 'part-7', partNumber: 7, title: 'Part 7: FSM Domain & Enterprise SaaS', description: 'Financials & Supply Management domain concept', icon: '🏢' },
-  { id: 'part-8', partNumber: 8, title: 'Part 8: Your Resume Project Stories', description: 'Pollaris, Infor AI Internship, IoT Smart Locker, YOLOv8', icon: '📖' },
-  { id: 'part-9', partNumber: 9, title: 'Part 9: HR Questions & Self Introduction', description: 'Tell me about yourself, Strengths, Weaknesses, STAR method', icon: '🗣️' },
+  { id: 'part-1', partNumber: 1, title: 'Section I: FSM SaaS & Enterprise Architecture', description: 'Enterprise SaaS, Financials & Supply Management, Microservices, Security', icon: '🏢' },
+  { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC Phases, Agile Scrum/Kanban, Cross-Functional Collaboration', icon: '🏃' },
+  { id: 'part-3', partNumber: 3, title: 'Section III: Java/J2EE & Object-Oriented Principles', description: 'Java, JVM, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
+  { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, Stacks, Queues, HashMaps, O(1) Complexity', icon: '🧱' },
+  { id: 'part-5', partNumber: 5, title: 'Section V: Relational & NoSQL Databases', description: 'Oracle, SQL Server, Keys, SQL Joins, Firestore NoSQL', icon: '🔗' },
+  { id: 'part-6', partNumber: 6, title: 'Section VI: Backend & Web Services', description: 'HTTP Methods, RESTful APIs, Spring Boot 3-Tier Architecture', icon: '🍽️' },
+  { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools in SDLC Workflows', description: 'Code Generation, Prompt Engineering, Automated Testing, Debugging', icon: '🤖' },
+  { id: 'part-8', partNumber: 8, title: 'Section VIII: DevOps, Git & Cloud Infrastructure', description: 'Git Workflows, Docker, Kubernetes, CI/CD Pipelines, AWS/GCP', icon: '📦' },
+  { id: 'part-9', partNumber: 9, title: 'Section IX: Resume Project Stories (De-Inflated)', description: 'Pollaris Voting App, Infor AI Internship, IoT Smart Locker', icon: '📖' },
+  { id: 'part-10', partNumber: 10, title: 'Section X: HR, Behavioral & Self Introduction', description: 'Tell Me About Yourself, Cross-Functional Collaboration, STAR Method', icon: '🗣️' },
 ];
 
 export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
-  // PART 1: SOFTWARE ENGINEERING FUNDAMENTALS
+  // SECTION I: FSM SAAS & ENTERPRISE ARCHITECTURE
   {
-    id: 'ch-1-software',
+    id: 'ch-1-fsm-domain',
     partId: 'part-1',
-    partTitle: 'Part 1: Software Engineering',
+    partTitle: 'Section I: FSM SaaS',
     chapterNumber: 1,
-    title: 'Chapter 1: What is Software?',
-    shortTitle: '1. What is Software?',
-    icon: '📱',
-    estimatedMinutes: 5,
-    question: 'What is software and how does it differ from hardware?',
-    analogyStory: {
-      title: 'The Piano vs the Music Sheet',
-      text: 'Think of your smartphone or laptop as a physical piano (Hardware). Software is the sheet music! Without sheet music, the piano is silent. Software gives digital instructions telling hardware what to do.',
-      takeaway: 'Hardware is physical machine; Software is electronic instructions.'
-    },
-    diagramType: 'software-app',
-    simpleExplanation: 'Software is a collection of code, programs, and instructions that tell physical computer hardware how to perform specific tasks, like running Instagram, Uber, or web browsers.',
-    commonMistake: 'Thinking software includes physical chips or battery parts.',
-    script30Sec: {
-      answerText: 'Software consists of electronic code and programs that instruct hardware what tasks to execute. Hardware is the physical computer, while software is the operational logic, such as operating systems, web applications, and mobile apps.',
-      durationSec: 25
-    },
-    onePictureSummary: ['📱 Hardware Phone', '↓ 🎼 Software Music Sheet', '↓ Digital Instructions', '↓ Working App'],
-    interviewTip: 'Keep it simple: hardware is physical, software is electronic instructions.'
-  },
-  {
-    id: 'ch-2-se-intro',
-    partId: 'part-1',
-    partTitle: 'Part 1: Software Engineering',
-    chapterNumber: 2,
-    title: 'Chapter 2: What is Software Engineering?',
-    shortTitle: '2. Software Engineering',
-    icon: '🏗️',
+    title: 'Chapter 1: What is Enterprise SaaS & FSM Domain?',
+    shortTitle: '1. What is FSM SaaS?',
+    icon: '🏢',
     estimatedMinutes: 6,
-    question: 'What is Software Engineering and why is it important?',
+    question: 'What is Financials & Supply Management (FSM) software and why do global businesses use it?',
     analogyStory: {
-      title: 'Building a Doghouse vs a Skyscraper',
-      text: 'Anyone can hammer 4 wooden boards to build a small doghouse without a blueprint. But to build a 50-story skyscraper, civil engineers need blueprints, safety standards, and team coordination. Software Engineering applies structured engineering principles to build large enterprise applications.',
-      takeaway: 'Software engineering adds structure, quality, and scalability to software.'
+      title: 'The Global Store Super-Brain',
+      text: 'Imagine a global company selling laptops in 50 countries. Every day, they buy screens, pay factory workers, ship boxes, and invoice customers. FSM is the super-brain software that manages all financial money and warehouse supplies in real time on the cloud.',
+      takeaway: 'FSM software handles enterprise money (Financials) and warehouse goods (Supply Management).'
     },
-    diagramType: 'software-app',
-    simpleExplanation: 'Software Engineering is a disciplined, systematic approach to designing, developing, testing, and maintaining software to ensure high quality, reliability, and security.',
-    commonMistake: 'Confusing casual coding with disciplined software engineering.',
+    diagramType: 'fsm-store',
+    simpleExplanation: 'FSM stands for Financials and Supply Management. It is an enterprise cloud SaaS product that helps global companies track their money, invoices, inventory, and supplier shipments.',
+    commonMistake: 'Getting bogged down in complex accounting rules instead of high-level SaaS features.',
     script30Sec: {
-      answerText: 'Software Engineering is the systematic application of engineering principles to software development. It ensures that complex software products are reliable, scalable, well-documented, maintainable, and delivered on time.',
+      answerText: 'FSM stands for Financials and Supply Management. It is an enterprise-grade SaaS platform that powers global businesses by managing financial transactions, invoicing, inventory tracking, and supply chain logistics in real time.',
       durationSec: 25
     },
-    onePictureSummary: ['🔨 Doghouse Coding', '↓ 🏗️ Skyscraper Engineering', '↓ Quality & Safety', '↓ Reliable SaaS'],
-    interviewTip: 'Emphasize systematically building scalable, maintainable systems.'
+    onePictureSummary: ['🏢 Global Business', '↓ Financial Invoices', '↓ Supply Inventory', '↓ Cloud FSM SaaS'],
+    interviewTip: 'Enterprise money + warehouse inventory tracking.'
   },
   {
-    id: 'ch-3-sdlc',
+    id: 'ch-2-microservices',
     partId: 'part-1',
-    partTitle: 'Part 1: Software Engineering',
+    partTitle: 'Section I: FSM SaaS',
+    chapterNumber: 2,
+    title: 'Chapter 2: Microservices vs Monolith Architecture',
+    shortTitle: '2. Microservices Architecture',
+    icon: '🧩',
+    estimatedMinutes: 7,
+    question: 'What is the difference between Monolithic and Microservices architecture?',
+    analogyStory: {
+      title: 'The Swiss Army Knife vs Separate Power Tools',
+      text: 'A Monolith is a giant Swiss Army Knife where all blades share one handle. If the main spring breaks, all tools stop working! Microservices are separate power tools: if the drill breaks, the saw keeps cutting safely.',
+      takeaway: 'Microservices break large apps into small, independent services communicating over APIs.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'Monolithic applications package all features into a single codebase. Microservices architecture breaks an application into small, independent services that communicate over HTTP REST APIs, enabling independent deployment and scaling.',
+    commonMistake: 'Thinking microservices are easier to manage for tiny apps. Microservices add network complexity.',
+    script30Sec: {
+      answerText: 'In a Monolithic architecture, all application features share a single codebase and database. In Microservices architecture, the application is divided into small, autonomous services that communicate via REST APIs, allowing independent scaling, deployment, and fault isolation.',
+      durationSec: 27
+    },
+    onePictureSummary: ['📦 Giant Monolith', '↓ 🧩 Independent Services', '↓ REST API Interconnect', '↓ High Availability'],
+    interviewTip: 'Independent deployment + fault isolation.'
+  },
+  {
+    id: 'ch-3-security-perf',
+    partId: 'part-1',
+    partTitle: 'Section I: FSM SaaS',
     chapterNumber: 3,
-    title: 'Chapter 3: The Software Development Life Cycle (SDLC)',
-    shortTitle: '3. What is SDLC?',
+    title: 'Chapter 3: Performance, Reliability & Security Championing',
+    shortTitle: '3. Security & Reliability',
+    icon: '🛡️',
+    estimatedMinutes: 6,
+    question: 'How do you champion performance, reliability, and security across the product lifecycle?',
+    analogyStory: {
+      title: 'The Bank Vault Doors',
+      text: 'A bank doesn\'t install locks after money is stolen! It designs thick vault doors from day one. In enterprise SaaS, security (encryption & access tokens) and reliability (handling traffic spikes) are built into code from the start.',
+      takeaway: 'Security and performance must be designed upfront, not added as an afterthought.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'Championing performance, reliability, and security means writing clean code with low memory footprint, implementing proper exception handling, using encrypted data transmission (HTTPS/SSL), and following strict authorization access controls.',
+    commonMistake: 'Thinking security is only the responsibility of the DevOps team.',
+    script30Sec: {
+      answerText: 'Championing reliability and security means writing defensive code with proper error handling, optimizing memory and query performance, enforcing authentication and input validation, and preventing data leaks across development and production.',
+      durationSec: 26
+    },
+    onePictureSummary: ['🛡️ Data Encryption', '↓ Error Handling', '↓ Low Latency', '↓ Reliable Enterprise SaaS'],
+    interviewTip: 'Input validation + defensive coding + SSL encryption.'
+  },
+
+  // SECTION II: SOFTWARE ENGINEERING & AGILE SDLC
+  {
+    id: 'ch-4-sdlc-phases',
+    partId: 'part-2',
+    partTitle: 'Section II: Software Engineering & Agile SDLC',
+    chapterNumber: 4,
+    title: 'Chapter 4: The 6 Phases of SDLC',
+    shortTitle: '4. SDLC 6 Phases',
     icon: '🔄',
-    estimatedMinutes: 8,
+    estimatedMinutes: 7,
     question: 'What is SDLC and what are its main phases?',
     analogyStory: {
-      title: 'The Recipe to Bake a Cake',
+      title: 'Baking a Wedding Cake',
       text: 'Before baking a cake, you ask what flavor the customer wants (Requirements), write the recipe (Design), bake in oven (Coding), taste test (Testing), and serve on table (Deployment)! SDLC is this exact step-by-step process for software.',
       takeaway: 'SDLC guarantees software goes through planning, coding, testing, and release.'
     },
     diagramType: 'sdlc-loop',
     simpleExplanation: 'SDLC stands for Software Development Life Cycle. It defines 6 key stages: Requirements Analysis, Architectural Design, Implementation (Coding), Testing, Deployment, and Maintenance.',
-    commonMistake: 'Thinking coding is the first step of SDLC. Planning and requirements come first!',
+    commonMistake: 'Thinking coding is the first step of SDLC. Requirements come first!',
     script30Sec: {
       answerText: 'SDLC is the structured framework used by engineering teams to build software. It includes six main phases: Requirements Gathering, Architectural Design, Implementation, Testing, Deployment, and ongoing Maintenance.',
       durationSec: 26
@@ -122,45 +150,70 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'List all 6 phases clearly: Requirements -> Design -> Coding -> Testing -> Deployment -> Maintenance.'
   },
   {
-    id: 'ch-4-agile-scrum',
-    partId: 'part-1',
-    partTitle: 'Part 1: Software Engineering',
-    chapterNumber: 4,
-    title: 'Chapter 4: Waterfall vs Agile & Scrum Sprints',
-    shortTitle: '4. Waterfall vs Agile',
+    id: 'ch-5-agile-scrum',
+    partId: 'part-2',
+    partTitle: 'Section II: Software Engineering & Agile SDLC',
+    chapterNumber: 5,
+    title: 'Chapter 5: Agile Scrum & Kanban (Sprints & Stand-ups)',
+    shortTitle: '5. Agile & Scrum',
     icon: '🏃',
     estimatedMinutes: 8,
-    question: 'What is the difference between Waterfall and Agile Scrum methodology?',
+    question: 'What is Agile Scrum and what happens in daily standups and retrospectives?',
     analogyStory: {
-      title: 'The Pizza Shop Order',
-      text: 'Waterfall is ordering a 10-course dinner where you wait 4 hours until all dishes arrive together. Agile is getting slices hot out of the oven every 10 minutes so you can change toppings mid-way if you want!',
+      title: 'The Pizza Shop Slices',
+      text: 'Waterfall is waiting 4 hours for a 10-course meal. Agile is receiving hot pizza slices every 10 minutes so you can change toppings mid-way! Daily 15-minute standup meetings review: 1) What I did, 2) What I will do, 3) Blockers.',
       takeaway: 'Agile delivers working software in short 2-week iterations called sprints.'
     },
     diagramType: 'agile-loop',
-    simpleExplanation: 'Waterfall executes SDLC linearly in one long phase. Agile Scrum breaks work into 2-week iterations called sprints, incorporating daily standup meetings and continuous customer feedback.',
-    commonMistake: 'Thinking Agile means no planning or documentation at all.',
+    simpleExplanation: 'Agile Scrum divides development into 2-week sprints. The team holds daily 15-minute standup meetings to answer 3 questions: What did I do yesterday? What will I do today? Are there any blockers? At sprint end, retrospectives review team improvements.',
+    commonMistake: 'Thinking Agile means working without any plan or documentation.',
     script30Sec: {
-      answerText: 'In Waterfall, development occurs sequentially in one long phase. In Agile Scrum, development is divided into 2-week sprints. We deliver working software frequently, gather continuous feedback, and hold daily 15-minute standup meetings to review progress.',
+      answerText: 'In Agile Scrum, development is divided into short 2-week sprints. We deliver working software frequently, gather continuous feedback, and hold daily 15-minute standup meetings to track progress and remove blockers.',
       durationSec: 27
     },
-    onePictureSummary: ['🌊 Waterfall (One Long Phase)', '↓ 🏃 Agile (2-Week Sprints)', '↓ Daily Standup', '↓ Continuous Feedback'],
+    onePictureSummary: ['🏃 2-Week Sprint', '↓ Daily Standup (15m)', '↓ Working Demo', '↓ Continuous Feedback'],
     interviewTip: 'Sprint duration (2 weeks) and Daily Standups (15 mins) are key details.'
   },
-
-  // PART 2: JAVA & OBJECT-ORIENTED PROGRAMMING
   {
-    id: 'ch-5-java-jvm',
+    id: 'ch-6-cross-func-team',
     partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 5,
-    title: 'Chapter 5: What is Java & the JVM?',
-    shortTitle: '5. Java & JVM',
+    partTitle: 'Section II: Software Engineering & Agile SDLC',
+    chapterNumber: 6,
+    title: 'Chapter 6: Cross-Functional Team Collaboration (PM, QA, UX)',
+    shortTitle: '6. Cross-Functional Teams',
+    icon: '🤝',
+    estimatedMinutes: 6,
+    question: 'How do software engineers collaborate with Product Managers, QA, and UX designers?',
+    analogyStory: {
+      title: 'The Movie Crew Assembly',
+      text: 'A director (Product Manager) writes the script story. An art designer (UX) sketches the costumes. The actors (Developers) perform on camera. The film editors (QA) review every scene for flaws. Everyone works together to release a blockbuster!',
+      takeaway: 'Engineers build what PM requests, UX designs, and QA validates.'
+    },
+    diagramType: 'agile-loop',
+    simpleExplanation: 'Engineers collaborate with Product Managers to understand feature requirements, UX Designers to implement user-friendly Figma UI mockups, and QA Engineers to ensure test coverage and bug resolution prior to production release.',
+    commonMistake: 'Viewing QA as enemies! QA engineers are partners protecting customer quality.',
+    script30Sec: {
+      answerText: 'I collaborate closely with Product Managers to clarify feature specs, UX designers to implement responsive UI designs accurately, and QA engineers to write testable code and resolve defects quickly before release.',
+      durationSec: 26
+    },
+    onePictureSummary: ['📋 PM Requirements', '↓ 🎨 UX Designs', '↓ 💻 Developer Code', '↓ 🧪 QA Verification'],
+    interviewTip: 'Emphasize teamwork and open communication.'
+  },
+
+  // SECTION III: JAVA / J2EE & OOP FOUNDATIONS
+  {
+    id: 'ch-7-java-jvm',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 7,
+    title: 'Chapter 7: What is Java & the JVM?',
+    shortTitle: '7. Java & JVM',
     icon: '☕',
     estimatedMinutes: 8,
     question: 'What is Java and how does the JVM achieve "Write Once, Run Anywhere"?',
     analogyStory: {
       title: 'The Universal Translator',
-      text: 'If a book is written in English, someone in Japan needs a translator to read it. Java compiles code into universal "Bytecode" (.class file). The Java Virtual Machine (JVM) acts as an on-the-spot translator for Windows, Mac, or Linux!',
+      text: 'If a book is written in English, someone in Japan needs a translator. Java compiles code into universal "Bytecode" (.class file). The Java Virtual Machine (JVM) acts as an on-the-spot translator for Windows, Mac, or Linux!',
       takeaway: 'JVM executes Java bytecode on any operating system.'
     },
     diagramType: 'jvm-coffee',
@@ -174,37 +227,37 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Bytecode + JVM = Platform Independence.'
   },
   {
-    id: 'ch-6-classes-objects',
-    partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 6,
-    title: 'Chapter 6: Classes & Objects',
-    shortTitle: '6. Classes & Objects',
+    id: 'ch-8-classes-objects',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 8,
+    title: 'Chapter 8: Classes, Objects & Memory Allocation',
+    shortTitle: '8. Classes & Objects',
     icon: '🍪',
     estimatedMinutes: 8,
-    question: 'What is a Class and what is an Object in Java?',
+    question: 'What is a Class and an Object in Java, and where are they stored in memory?',
     analogyStory: {
       title: 'The Metal Cookie Cutter',
       text: 'A CLASS is a metal cookie cutter shape. An OBJECT is the real chocolate cookie stamped out in memory! You can stamp out 100 cookies (objects) from one cutter (class).',
       takeaway: 'Class is the blueprint; Object is the real instance created in memory.'
     },
     diagramType: 'cookie-class',
-    simpleExplanation: 'A Class is a blueprint defining fields (data) and methods (behavior). An Object is an actual instance of a class instantiated in heap memory using the `new` keyword.',
+    simpleExplanation: 'A Class is a blueprint defining fields (data) and methods (behavior). An Object is an actual instance of a class instantiated in Heap Memory using the `new` keyword.',
     commonMistake: 'Thinking a class takes up heap memory before `new` is called.',
     script30Sec: {
-      answerText: 'A Class is a blueprint or template that defines attributes and behaviors. An Object is a specific instance of a class instantiated in heap memory using the new keyword to execute application logic.',
-      durationSec: 25
+      answerText: 'A Class is a blueprint that defines properties and behaviors. An Object is an actual instance created in heap memory using the new keyword. Local variable references are stored on the Stack, pointing to objects on the Heap.',
+      durationSec: 26
     },
     onePictureSummary: ['📐 Class Blueprint', '↓ new Keyword', '↓ 🍪 Heap Object', '↓ Executable Instance'],
     interviewTip: 'Blueprint vs Instance is the gold standard answer.'
   },
   {
-    id: 'ch-7-encapsulation',
-    partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 7,
-    title: 'Chapter 7: Encapsulation (Data Protection)',
-    shortTitle: '7. Encapsulation',
+    id: 'ch-9-encapsulation',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 9,
+    title: 'Chapter 9: Encapsulation & Data Hiding',
+    shortTitle: '9. Encapsulation',
     icon: '📺',
     estimatedMinutes: 8,
     question: 'What is Encapsulation and how do you achieve it in Java?',
@@ -224,12 +277,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Private variables + public getters/setters = 100% full marks.'
   },
   {
-    id: 'ch-8-inheritance',
-    partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 8,
-    title: 'Chapter 8: Inheritance (Code Reuse)',
-    shortTitle: '8. Inheritance',
+    id: 'ch-10-inheritance',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 10,
+    title: 'Chapter 10: Inheritance & Code Reusability',
+    shortTitle: '10. Inheritance',
     icon: '🧬',
     estimatedMinutes: 8,
     question: 'What is Inheritance and how is it implemented in Java?',
@@ -239,7 +292,7 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
       takeaway: 'Inheritance allows child classes to reuse parent code and add new features.'
     },
     diagramType: 'family-inherit',
-    simpleExplanation: 'Inheritance allows a subclass to inherit attributes and methods from a superclass using the `extends` keyword, promoting code reusability and hierarchical design.',
+    simpleExplanation: 'Inheritance allows a subclass to inherit attributes and methods from a superclass using the `extends` keyword, promoting code reusability and establishing an IS-A relationship.',
     commonMistake: 'Thinking Java supports multiple inheritance with classes (Java supports single class inheritance, multiple interface implementation).',
     script30Sec: {
       answerText: 'Inheritance is an OOP concept where a subclass inherits properties and methods from a superclass using the extends keyword. It promotes code reusability and establishes an IS-A relationship between classes.',
@@ -249,12 +302,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Mention extends keyword and IS-A relationship.'
   },
   {
-    id: 'ch-9-polymorphism',
-    partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 9,
-    title: 'Chapter 9: Polymorphism (Overloading vs Overriding)',
-    shortTitle: '9. Polymorphism',
+    id: 'ch-11-polymorphism',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 11,
+    title: 'Chapter 11: Polymorphism (Overloading vs Overriding)',
+    shortTitle: '11. Polymorphism',
     icon: '🎭',
     estimatedMinutes: 9,
     question: 'What is Polymorphism and what is the difference between Overloading and Overriding?',
@@ -274,18 +327,18 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Compile-time (Overloading) vs Runtime (Overriding) distinction is key.'
   },
   {
-    id: 'ch-10-abstraction',
-    partId: 'part-2',
-    partTitle: 'Part 2: Java & OOP',
-    chapterNumber: 10,
-    title: 'Chapter 10: Abstraction (Abstract Classes & Interfaces)',
-    shortTitle: '10. Abstraction',
+    id: 'ch-12-abstraction',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & OOP',
+    chapterNumber: 12,
+    title: 'Chapter 12: Abstraction (Abstract Classes vs Interfaces)',
+    shortTitle: '12. Abstraction',
     icon: '🚗',
     estimatedMinutes: 9,
     question: 'What is Abstraction and how does an Abstract Class differ from an Interface?',
     analogyStory: {
       title: 'The Car Steering Wheel',
-      text: 'When driving a car, you turn the steering wheel. You don\'t need to know how the power steering fluid moves inside the engine block! Abstraction shows essential features while hiding implementation details.',
+      text: 'When driving a car, you turn the steering wheel. You don\'t need to know how power steering fluid moves inside the engine block! Abstraction shows essential features while hiding implementation details.',
       takeaway: 'Interface = 100% abstract contract. Abstract Class = Partial contract with shared code.'
     },
     diagramType: 'car-abstract',
@@ -299,20 +352,20 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Abstraction hides complexity; Encapsulation protects data.'
   },
 
-  // PART 3: DATA STRUCTURES & ALGORITHMS
+  // SECTION IV: DATA STRUCTURES & ALGORITHMS (DSA)
   {
-    id: 'ch-11-arrays',
-    partId: 'part-3',
-    partTitle: 'Part 3: DSA',
-    chapterNumber: 11,
-    title: 'Chapter 11: Arrays & Fixed Storage',
-    shortTitle: '11. Arrays',
+    id: 'ch-13-arrays',
+    partId: 'part-4',
+    partTitle: 'Section IV: DSA',
+    chapterNumber: 13,
+    title: 'Chapter 13: Arrays & Memory Contiguity',
+    shortTitle: '13. Arrays',
     icon: '📦',
     estimatedMinutes: 7,
     question: 'What is an Array and what are its advantages and limitations?',
     analogyStory: {
       title: 'The Row of Hotel Rooms',
-      text: 'An Array is like a row of 10 numbered hotel rooms side by side. If you know room index 4, you can walk straight to room 4 instantly in O(1) time! But you cannot expand the hotel row dynamically once built.',
+      text: 'An Array is a row of 10 numbered hotel rooms side by side. If you know room index 4, you can walk straight to room 4 instantly in O(1) time! But you cannot expand the hotel row dynamically once built.',
       takeaway: 'Array provides O(1) index access but has fixed size.'
     },
     diagramType: 'array-lockers',
@@ -326,12 +379,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Contiguous memory + O(1) index access.'
   },
   {
-    id: 'ch-12-stack-queue',
-    partId: 'part-3',
-    partTitle: 'Part 3: DSA',
-    chapterNumber: 12,
-    title: 'Chapter 12: Stacks & Queues',
-    shortTitle: '12. Stack & Queue',
+    id: 'ch-14-stack-queue',
+    partId: 'part-4',
+    partTitle: 'Section IV: DSA',
+    chapterNumber: 14,
+    title: 'Chapter 14: Stacks & Queues (LIFO vs FIFO)',
+    shortTitle: '14. Stack & Queue',
     icon: '🧱',
     estimatedMinutes: 8,
     question: 'What is the difference between a Stack and a Queue?',
@@ -351,12 +404,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'LIFO vs FIFO is the fundamental difference.'
   },
   {
-    id: 'ch-13-hashmaps',
-    partId: 'part-3',
-    partTitle: 'Part 3: DSA',
-    chapterNumber: 13,
-    title: 'Chapter 13: HashMaps (O(1) Fast Lookups)',
-    shortTitle: '13. HashMaps O(1)',
+    id: 'ch-15-hashmaps',
+    partId: 'part-4',
+    partTitle: 'Section IV: DSA',
+    chapterNumber: 15,
+    title: 'Chapter 15: HashMaps & O(1) Time Complexity',
+    shortTitle: '15. HashMaps O(1)',
     icon: '📬',
     estimatedMinutes: 8,
     question: 'How does a HashMap work internally and what is its time complexity?',
@@ -376,17 +429,17 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Key-Value pairs + O(1) time complexity.'
   },
 
-  // PART 4: DATABASES & SQL
+  // SECTION V: RELATIONAL & NOSQL DATABASES
   {
-    id: 'ch-14-sql-keys',
-    partId: 'part-4',
-    partTitle: 'Part 4: Databases & SQL',
-    chapterNumber: 14,
-    title: 'Chapter 14: Relational Databases & Keys',
-    shortTitle: '14. SQL Keys',
+    id: 'ch-16-relational-keys',
+    partId: 'part-5',
+    partTitle: 'Section V: Databases',
+    chapterNumber: 16,
+    title: 'Chapter 16: Relational DBs (Oracle/SQL Server) & Keys',
+    shortTitle: '16. Relational DB Keys',
     icon: '🔑',
     estimatedMinutes: 8,
-    question: 'What is a Primary Key and Foreign Key in relational databases?',
+    question: 'What is a Primary Key and Foreign Key in relational databases like Oracle or SQL Server?',
     analogyStory: {
       title: 'Student ID Badges & Classrooms',
       text: 'Every student wears a unique ID badge (Primary Key). On the badge, it says "Room 5" (Foreign Key). Foreign Key links the student table to the classroom table!',
@@ -403,12 +456,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'PK = unique row ID; FK = reference to another table.'
   },
   {
-    id: 'ch-15-sql-joins',
-    partId: 'part-4',
-    partTitle: 'Part 4: Databases & SQL',
-    chapterNumber: 15,
-    title: 'Chapter 15: SQL Joins (INNER vs LEFT JOIN)',
-    shortTitle: '15. SQL Joins',
+    id: 'ch-17-sql-joins',
+    partId: 'part-5',
+    partTitle: 'Section V: Databases',
+    chapterNumber: 17,
+    title: 'Chapter 17: SQL Joins (INNER vs LEFT JOIN)',
+    shortTitle: '17. SQL Joins',
     icon: '🔗',
     estimatedMinutes: 9,
     question: 'What is the difference between INNER JOIN and LEFT JOIN in SQL?',
@@ -427,15 +480,40 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['👟 Left Table', '↓ 👟 Right Table', '↓ INNER JOIN (Matches)', '↓ LEFT JOIN (All Left)'],
     interviewTip: 'Matching rows only (INNER) vs All left rows (LEFT).'
   },
-
-  // PART 5: BACKEND & WEB SERVICES
   {
-    id: 'ch-16-rest-apis',
+    id: 'ch-18-nosql-firestore',
     partId: 'part-5',
-    partTitle: 'Part 5: Backend & REST APIs',
-    chapterNumber: 16,
-    title: 'Chapter 16: REST APIs & HTTP Methods',
-    shortTitle: '16. REST APIs',
+    partTitle: 'Section V: Databases',
+    chapterNumber: 18,
+    title: 'Chapter 18: NoSQL Databases & Document Storage',
+    shortTitle: '18. NoSQL Databases',
+    icon: '🗂️',
+    estimatedMinutes: 7,
+    question: 'How do NoSQL databases differ from SQL relational databases?',
+    analogyStory: {
+      title: 'The Rigid Grid vs Flexible Folders',
+      text: 'A SQL database is like a strict Excel table where every row must fit fixed columns. A NoSQL database (like Firestore or MongoDB) is like a drawer of JSON document folders where each folder can hold different fields without schema locks.',
+      takeaway: 'SQL = Fixed relational tables. NoSQL = Flexible JSON document collections.'
+    },
+    diagramType: 'sql-library',
+    simpleExplanation: 'NoSQL databases store unstructured or semi-structured data as JSON documents or Key-Value pairs without fixed table schemas, allowing horizontal scaling and flexible schema iterations.',
+    commonMistake: 'Thinking NoSQL is always better than SQL. SQL is preferred for complex transactional relational data.',
+    script30Sec: {
+      answerText: 'SQL databases use rigid tables with predefined schemas and ACID transactions for relational data. NoSQL databases store flexible JSON documents, providing schema agility and easy horizontal scaling for modern cloud applications.',
+      durationSec: 26
+    },
+    onePictureSummary: ['📊 SQL Rigid Tables', '↓ 🗂️ NoSQL JSON Documents', '↓ Schema Flexibility', '↓ Horizontal Scaling'],
+    interviewTip: 'Fixed schema tables (SQL) vs Flexible JSON documents (NoSQL).'
+  },
+
+  // SECTION VI: BACKEND & WEB SERVICES
+  {
+    id: 'ch-19-rest-apis',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend & Web Services',
+    chapterNumber: 19,
+    title: 'Chapter 19: REST APIs & HTTP Methods',
+    shortTitle: '19. REST APIs',
     icon: '🍽️',
     estimatedMinutes: 9,
     question: 'What is a REST API and what are common HTTP methods and status codes?',
@@ -455,12 +533,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'GET/POST/PUT/DELETE + 200/404 status codes.'
   },
   {
-    id: 'ch-17-spring-boot',
-    partId: 'part-5',
-    partTitle: 'Part 5: Backend & REST APIs',
-    chapterNumber: 17,
-    title: 'Chapter 17: Spring Boot & 3-Tier Architecture',
-    shortTitle: '17. Spring Boot',
+    id: 'ch-20-spring-boot',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend & Web Services',
+    chapterNumber: 20,
+    title: 'Chapter 20: Spring Boot & 3-Tier Architecture',
+    shortTitle: '20. Spring Boot',
     icon: '🔌',
     estimatedMinutes: 9,
     question: 'What is Spring Boot and why do we use 3-tier architecture?',
@@ -480,104 +558,179 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Explain Controller -> Service -> Repository flow.'
   },
 
-  // PART 6: DEVELOPER TOOLS & INFRASTRUCTURE
+  // SECTION VII: AI TOOLS IN SDLC WORKFLOWS
   {
-    id: 'ch-18-git-docker',
-    partId: 'part-6',
-    partTitle: 'Part 6: Developer Tools',
-    chapterNumber: 18,
-    title: 'Chapter 18: Git Version Control & Docker Containers',
-    shortTitle: '18. Git & Docker',
-    icon: '📦',
-    estimatedMinutes: 9,
-    question: 'What is your Git workflow and what problem does Docker solve?',
-    analogyStory: {
-      title: 'The Time Machine & Metal Shipping Container',
-      text: 'Git is a notebook taking permanent snapshots in time (`git commit`). Docker is a sealed metal shipping container packing your Java code, JRE runtime, and config together so it runs identical on any laptop or cloud server!',
-      takeaway: 'Git tracks code changes; Docker packages app + runtime to run identically anywhere.'
-    },
-    diagramType: 'git-docs',
-    simpleExplanation: 'Git tracks source code changes across feature branches. Docker packages applications and dependencies into isolated containers, eliminating "it works on my machine" deployment bugs.',
-    commonMistake: 'Saying you push directly to production main branch without Pull Request review.',
-    script30Sec: {
-      answerText: 'In Git, I pull latest code, create feature branches with git checkout -b, commit changes, and open Pull Requests for review. Docker solves the "works on my machine" problem by packaging code, runtime, and dependencies into portable containers.',
-      durationSec: 28
-    },
-    onePictureSummary: ['🌿 Git Feature Branch', '↓ 📸 Commit Snapshot', '↓ 📦 Docker Container', '↓ ☁️ Runs Anywhere'],
-    interviewTip: 'Clean branching workflow + container portability.'
-  },
-  {
-    id: 'ch-19-ai-sdlc',
-    partId: 'part-6',
-    partTitle: 'Part 6: Developer Tools',
-    chapterNumber: 19,
-    title: 'Chapter 19: AI Tools in SDLC (Copilot & ChatGPT)',
-    shortTitle: '19. AI in SDLC',
+    id: 'ch-21-ai-codegen',
+    partId: 'part-7',
+    partTitle: 'Section VII: AI Tools in SDLC',
+    chapterNumber: 21,
+    title: 'Chapter 21: AI Code Generation (GitHub Copilot)',
+    shortTitle: '21. AI Code Generation',
     icon: '🤖',
     estimatedMinutes: 7,
-    question: 'How do you leverage AI tools to enhance productivity in software development?',
+    question: 'How do code assistants like GitHub Copilot accelerate SDLC activities?',
     analogyStory: {
-      title: 'The Airplane Co-Pilot',
-      text: 'An AI assistant like GitHub Copilot or ChatGPT is a co-pilot sitting next to you. It suggests checklists and code snippets, but YOU are the captain holding the steering wheel and verifying the flight path!',
-      takeaway: 'AI accelerates unit tests, boilerplate code, and debugging, but developers verify all outputs.'
+      title: 'The Smart Autocomplete',
+      text: 'When typing a text message, your phone suggests the next 3 words. GitHub Copilot analyzes your code context to suggest whole functions and unit test cases, allowing developers to type 50% faster while maintaining full code control!',
+      takeaway: 'Copilot suggests boilerplate functions and tests based on code context.'
     },
     diagramType: 'ai-copilot',
-    simpleExplanation: 'We use AI tools like GitHub Copilot and ChatGPT in daily development to generate unit tests, write boilerplate code, explain complex error logs, and draft technical documentation.',
-    commonMistake: 'Saying AI writes 100% of your code without human review.',
+    simpleExplanation: 'GitHub Copilot uses machine learning models to provide real-time inline code completions, auto-generate repetitive boilerplate methods, draft unit test cases, and explain unfamiliar syntax within the IDE.',
+    commonMistake: 'Accepting AI suggestions blindly without verifying logic and safety.',
     script30Sec: {
-      answerText: 'I use AI tools like GitHub Copilot and ChatGPT in daily workflows to accelerate development. I leverage them for generating unit tests, writing boilerplate code, debugging stack traces, and drafting documentation. I always review and test all AI-generated code.',
+      answerText: 'AI code assistants like GitHub Copilot accelerate development by autocompleting boilerplate code, generating unit tests, and suggesting algorithm implementations based on function comments, allowing engineers to focus on higher-level architectural decisions.',
       durationSec: 27
     },
-    onePictureSummary: ['🤖 AI Assistant', '↓ Test & Code Generator', '↓ Developer Review', '↓ High Quality Code'],
-    interviewTip: 'Emphasize AI speedup + human verification and testing.'
+    onePictureSummary: ['📝 Function Comment', '↓ 🤖 Copilot AI Context', '↓ ⚡ Auto-generated Code', '↓ Developer Verification'],
+    interviewTip: 'Faster boilerplate generation + human developer verification.'
   },
-
-  // PART 7: FSM DOMAIN & ENTERPRISE SAAS
   {
-    id: 'ch-20-fsm-domain',
+    id: 'ch-22-prompt-eng',
     partId: 'part-7',
-    partTitle: 'Part 7: FSM Domain',
-    chapterNumber: 20,
-    title: 'Chapter 20: Financials & Supply Management (FSM)',
-    shortTitle: '20. What is FSM?',
-    icon: '🏢',
-    estimatedMinutes: 6,
-    question: 'What is FSM product engineering and what does the software do?',
+    partTitle: 'Section VII: AI Tools in SDLC',
+    chapterNumber: 22,
+    title: 'Chapter 22: Prompt Engineering for Debugging & Documentation',
+    shortTitle: '22. Prompt Engineering',
+    icon: '💡',
+    estimatedMinutes: 7,
+    question: 'How do you use Prompt Engineering to debug stack traces and generate documentation?',
     analogyStory: {
-      title: 'The Global Store Super-Brain',
-      text: 'Imagine a global company selling laptops in 50 countries. Every day, they buy raw screens, pay factory workers, ship boxes, and invoice customers. FSM is the super-brain software that manages all financial money and warehouse supplies in real time on the cloud.',
-      takeaway: 'FSM software handles enterprise money (Financials) and warehouse goods (Supply Management).'
+      title: 'Asking a Specialist Doctor',
+      text: 'If you tell a doctor "I feel bad", they can\'t help! But if you state "I have a 101F fever for 2 days after eating seafood", they give exact medicine. Prompt Engineering gives LLMs clear context, error logs, and expected formats to get precise fixes.',
+      takeaway: 'Give AI LLMs exact stack traces, code snippets, and desired output rules.'
     },
-    diagramType: 'fsm-store',
-    simpleExplanation: 'FSM stands for Financials and Supply Management. It is an enterprise cloud SaaS product that helps global companies track their money, invoices, inventory, and supplier shipments.',
-    commonMistake: 'Getting bogged down in complex accounting rules instead of high level SaaS features.',
+    diagramType: 'ai-copilot',
+    simpleExplanation: 'Prompt Engineering is the practice of crafting clear instructions, error logs, and context parameters for AI models (like ChatGPT or GPT-4) to diagnose stack traces, refactor code, write API documentation, and generate test data.',
+    commonMistake: 'Pasting sensitive production secrets or private database passwords into public AI prompts.',
     script30Sec: {
-      answerText: 'FSM stands for Financials and Supply Management. It is an enterprise-grade SaaS platform that powers global businesses by managing financial transactions, invoicing, inventory tracking, and supply chain logistics in real time.',
-      durationSec: 25
+      answerText: 'I leverage prompt engineering by feeding precise error stack traces, relevant code snippets, and structured instructions to LLMs. This allows me to diagnose complex bugs in seconds, draft technical documentation, and generate test data safely.',
+      durationSec: 26
     },
-    onePictureSummary: ['🏢 Global Business', '↓ Financial Invoices', '↓ Supply Inventory', '↓ Cloud FSM SaaS'],
-    interviewTip: 'Enterprise money + warehouse inventory tracking.'
+    onePictureSummary: ['🔍 Error Stack Trace', '↓ 💡 Precise AI Prompt', '↓ 🛠️ Root Cause Fix', '↓ Clear Documentation'],
+    interviewTip: 'Precise context + error logs = accurate AI debugging.'
+  },
+  {
+    id: 'ch-23-ai-autotest',
+    partId: 'part-7',
+    partTitle: 'Section VII: AI Tools in SDLC',
+    chapterNumber: 23,
+    title: 'Chapter 23: AI-Driven Automated Testing & Documentation',
+    shortTitle: '23. AI Automated Testing',
+    icon: '🧪',
+    estimatedMinutes: 7,
+    question: 'How do emerging AI tools automate unit testing and documentation in enterprise applications?',
+    analogyStory: {
+      title: 'The Automated Quality Inspector',
+      text: 'Instead of manually clicking every button on a new smartphone, a robotic arm tests 1,000 screen taps per minute! AI test generators parse Java methods to create edge-case JUnit test scripts automatically.',
+      takeaway: 'AI tools auto-generate JUnit test cases covering edge cases.'
+    },
+    diagramType: 'ai-copilot',
+    simpleExplanation: 'AI testing frameworks analyze Java source code and automatically generate comprehensive JUnit test suites, mocking external dependencies and discovering edge-case inputs to maximize code coverage.',
+    commonMistake: 'Relying only on AI tests without manual integration testing.',
+    script30Sec: {
+      answerText: 'AI tools enhance quality assurance by analyzing method contracts to auto-generate JUnit unit tests, mock external REST calls, discover boundary condition bugs, and maintain up-to-date API documentation automatically.',
+      durationSec: 26
+    },
+    onePictureSummary: ['⚙️ Java Source Code', '↓ 🤖 AI Test Suite Generator', '↓ 🧪 Automated JUnit Tests', '↓ High Code Coverage'],
+    interviewTip: 'Edge-case discovery + automated JUnit generation.'
   },
 
-  // PART 8: RESUME PROJECT STORIES
+  // SECTION VIII: DEVOPS, GIT & CLOUD INFRASTRUCTURE
   {
-    id: 'ch-21-pollaris-project',
+    id: 'ch-24-git-pull-req',
     partId: 'part-8',
-    partTitle: 'Part 8: Resume Stories',
-    chapterNumber: 21,
-    title: 'Chapter 21: Pollaris (Cloud-Native Voting App)',
-    shortTitle: '21. Pollaris Story',
+    partTitle: 'Section VIII: DevOps & Cloud',
+    chapterNumber: 24,
+    title: 'Chapter 24: Git Version Control & Pull Requests',
+    shortTitle: '24. Git Workflows',
+    icon: '🌿',
+    estimatedMinutes: 8,
+    question: 'What is your Git workflow when developing a new feature with a global team?',
+    analogyStory: {
+      title: 'The Time-Machine Notebook',
+      text: 'Git is a time-machine notebook. You pull latest main code, branch off (`git checkout -b feature`), write code, snapshot (`git commit`), and submit a Pull Request (PR) for team members to review before merging to main!',
+      takeaway: 'Pull Requests ensure team code review before merging changes.'
+    },
+    diagramType: 'git-docs',
+    simpleExplanation: 'In Git, developers create isolated feature branches from main (`git checkout -b`), commit incremental changes (`git commit -m`), push to remote repositories (`git push`), and open Pull Requests for peer code review before merging.',
+    commonMistake: 'Committing code directly to production main branch without PR review.',
+    script30Sec: {
+      answerText: 'My Git workflow starts by pulling the latest main branch, creating a feature branch with git checkout -b, committing incremental atomic changes, pushing remote, and opening a Pull Request for code review before merging.',
+      durationSec: 27
+    },
+    onePictureSummary: ['🌿 Feature Branch', '↓ 📸 Commit Snapshot', '↓ 🔍 Pull Request Review', '↓ 🔀 Merge to Main'],
+    interviewTip: 'Feature branching + Pull Request peer review.'
+  },
+  {
+    id: 'ch-25-docker-k8s',
+    partId: 'part-8',
+    partTitle: 'Section VIII: DevOps & Cloud',
+    chapterNumber: 25,
+    title: 'Chapter 25: Docker Containers & Kubernetes',
+    shortTitle: '25. Docker & Kubernetes',
+    icon: '📦',
+    estimatedMinutes: 8,
+    question: 'What problem does Docker solve and what is Kubernetes used for?',
+    analogyStory: {
+      title: 'The Metal Shipping Container',
+      text: 'Docker is a sealed metal shipping container packing your Java app, JRE runtime, and configs together so it runs identical on any laptop or AWS cloud! Kubernetes is the harbor crane manager orchestrating 100 containers across servers.',
+      takeaway: 'Docker packages the app; Kubernetes manages and scales multi-container deployments.'
+    },
+    diagramType: 'docker-ship',
+    simpleExplanation: 'Docker packages applications and dependencies into isolated, lightweight containers to solve "works on my machine" issues. Kubernetes is a container orchestration platform that automatically scales, heals, and manages multi-container deployments.',
+    commonMistake: 'Confusing Docker (container packaging) with Kubernetes (multi-container orchestration).',
+    script30Sec: {
+      answerText: 'Docker packages applications and runtime dependencies into isolated containers to guarantee environment consistency. Kubernetes orchestrates containerized deployments by handling auto-scaling, load balancing, and self-healing across server clusters.',
+      durationSec: 28
+    },
+    onePictureSummary: ['📦 Docker Container', '↓ 🏗️ Kubernetes Cluster', '↓ Auto-scaling & Healing', '↓ Cloud Deployment'],
+    interviewTip: 'Docker = environment consistency; Kubernetes = container cluster orchestration.'
+  },
+  {
+    id: 'ch-26-cicd-devops',
+    partId: 'part-8',
+    partTitle: 'Section VIII: DevOps & Cloud',
+    chapterNumber: 26,
+    title: 'Chapter 26: CI/CD Pipelines & Automated Release',
+    shortTitle: '26. CI/CD Pipelines',
+    icon: '⚙️',
+    estimatedMinutes: 8,
+    question: 'What is CI/CD and how does GitHub Actions automate deployments?',
+    analogyStory: {
+      title: 'The Automated Car Car-wash',
+      text: 'Instead of washing a car by hand, you drive into an automated tunnel: soap spray (Build), scrub (Test), dry (Package), and drive out clean (Deploy)! CI/CD pipelines run automated builds and tests every time code is pushed.',
+      takeaway: 'CI builds and tests code automatically; CD deploys tested code to production.'
+    },
+    diagramType: 'git-docs',
+    simpleExplanation: 'CI/CD stands for Continuous Integration and Continuous Deployment. Pipelines (using tools like GitHub Actions or Jenkins) automatically compile code, run unit tests, build Docker images, and deploy artifacts to cloud servers on every push.',
+    commonMistake: 'Deploying manually over SSH instead of using automated CI/CD pipelines.',
+    script30Sec: {
+      answerText: 'Continuous Integration automatically builds and tests code whenever developers push changes to Git. Continuous Deployment packages verified code into Docker images and deploys them automatically to production with zero manual intervention.',
+      durationSec: 27
+    },
+    onePictureSummary: ['⚡ Git Push', '↓ 🔨 Auto Build', '↓ 🧪 Auto Test', '↓ 🚀 Auto Cloud Deploy'],
+    interviewTip: 'Auto build + auto test on push = Continuous Integration.'
+  },
+
+  // SECTION IX: RESUME PROJECT STORIES
+  {
+    id: 'ch-27-pollaris-story',
+    partId: 'part-9',
+    partTitle: 'Section IX: Resume Stories',
+    chapterNumber: 27,
+    title: 'Chapter 27: Pollaris (Cloud-Native Voting App)',
+    shortTitle: '27. Pollaris Project',
     icon: '🗳️',
     estimatedMinutes: 8,
     question: 'Can you explain your project Pollaris and the technical challenges you solved?',
     analogyStory: {
-      title: 'The Single-Slot Ticket Box',
-      text: 'When 100 people try to drop a vote into a box at the exact same millisecond, two votes might collide. Pollaris used Firestore ACID transactions to lock the vote box safely, guaranteeing 100% one-vote-per-user integrity without duplicate votes!',
+      title: 'The Single-Slot Vote Box',
+      text: 'When 100 people try to drop a vote into a box at the exact same millisecond, votes collide. Pollaris used Firestore ACID transactions to lock the vote box safely, guaranteeing 100% one-vote-per-user integrity without duplicate votes!',
       takeaway: 'Used Firestore ACID Transactions to eliminate vote concurrency race conditions.'
     },
     diagramType: 'resume-story',
-    simpleExplanation: 'Pollaris is an online polling web application built using Next.js 16 and Firebase Firestore. We used Firestore ACID transactions to eliminate race conditions during concurrent voting.',
-    commonMistake: 'Reciting scary HR resume buzzwords without explaining the core problem solved.',
+    simpleExplanation: 'Pollaris is an enterprise polling platform built with Next.js 16 and Firebase Firestore. We used Firestore ACID transactions to eliminate race conditions during concurrent voting.',
+    commonMistake: 'Reciting scary HR resume buzzwords without explaining the core technical problem.',
     script30Sec: {
       answerText: 'Pollaris is an enterprise polling platform built with Next.js 16 and Firebase Firestore. The main technical challenge was preventing race conditions when multiple users voted simultaneously. I solved this using Firestore ACID transactions to enforce one-vote-per-user constraint, ensuring 100% data integrity.',
       durationSec: 30
@@ -585,15 +738,40 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🗳️ Pollaris Voting App', '↓ Next.js + Firestore', '↓ ACID Transactions', '↓ 100% Vote Integrity'],
     interviewTip: 'Problem (concurrent vote race conditions) -> Solution (Firestore ACID transactions).'
   },
-
-  // PART 9: HR QUESTIONS & SELF INTRODUCTION
   {
-    id: 'ch-22-self-intro',
+    id: 'ch-28-infor-ai-story',
     partId: 'part-9',
-    partTitle: 'Part 9: HR & Self Intro',
-    chapterNumber: 22,
-    title: 'Chapter 22: "Tell Me About Yourself"',
-    shortTitle: '22. Self Introduction',
+    partTitle: 'Section IX: Resume Stories',
+    chapterNumber: 28,
+    title: 'Chapter 28: Infor AI Internship (AWS DeepAR & GPT-4)',
+    shortTitle: '28. Infor AI Internship',
+    icon: '🤖',
+    estimatedMinutes: 8,
+    question: 'What did you build during your AI Internship at Infor?',
+    analogyStory: {
+      title: 'The Warehouse Weather Forecast',
+      text: 'Just like meteorologists forecast rain, we used AWS DeepAR machine learning to forecast warehouse supply demand. We also built a GPT-4 AI safety chatbot that answered warehouse hazardous storage rules instantly!',
+      takeaway: 'Predictive forecasting with AWS DeepAR + Safety Compliance Chatbot using GPT-4.'
+    },
+    diagramType: 'resume-story',
+    simpleExplanation: 'At Infor, I built predictive supply chain models using AWS DeepAR to forecast vendor contract demand, and architected an enterprise AI chatbot leveraging OpenAI GPT-4 APIs to automate hazardous material storage compliance for warehouse operations.',
+    commonMistake: 'Exaggerating AI training details. Focus on how you used DeepAR and GPT-4 APIs.',
+    script30Sec: {
+      answerText: 'During my AI internship at Infor, I deployed predictive supply chain models using AWS DeepAR to forecast vendor demand. I also built a secure enterprise AI chatbot using OpenAI GPT-4 APIs to automate warehouse hazardous material storage compliance guidelines.',
+      durationSec: 30
+    },
+    onePictureSummary: ['📈 AWS DeepAR Forecast', '↓ 🤖 GPT-4 Compliance Bot', '↓ 🏬 Warehouse Operations', '↓ B2B AI Integration'],
+    interviewTip: 'DeepAR sales forecasting + GPT-4 compliance chatbot.'
+  },
+
+  // SECTION X: HR, BEHAVIORAL & SELF INTRODUCTION
+  {
+    id: 'ch-29-self-intro',
+    partId: 'part-10',
+    partTitle: 'Section X: HR & Behavioral',
+    chapterNumber: 29,
+    title: 'Chapter 29: "Tell Me About Yourself"',
+    shortTitle: '29. Self Introduction',
     icon: '🗣️',
     estimatedMinutes: 5,
     question: 'Tell me about yourself and your background.',
@@ -611,5 +789,30 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     },
     onePictureSummary: ['🎓 ECE Degree', '↓ Java, SQL, REST, AI', '↓ Project Stories', '↓ Ready for FSM Team'],
     interviewTip: 'Keep it technical, structured, and under 40 seconds.'
+  },
+  {
+    id: 'ch-30-star-method',
+    partId: 'part-10',
+    partTitle: 'Section X: HR & Behavioral',
+    chapterNumber: 30,
+    title: 'Chapter 30: Behavioral STAR Method (Conflict & Failure)',
+    shortTitle: '30. STAR Method HR',
+    icon: '⭐',
+    estimatedMinutes: 6,
+    question: 'Tell me about a time you faced a tough technical challenge or deadline.',
+    analogyStory: {
+      title: 'The STAR Navigator',
+      text: 'STAR stands for: S (Situation), T (Task), A (Action), R (Result). When asked a behavioral question, structure your story: What was the scenario? What was your task? What action did YOU take? What was the positive result?',
+      takeaway: 'S = Situation, T = Task, A = Action, R = Result.'
+    },
+    diagramType: 'star-hr',
+    simpleExplanation: 'Use the STAR method for behavioral questions. Explain the Situation, your specific Task, the technical Actions you implemented, and the measurable business Result.',
+    commonMistake: 'Rambling without a clear ending or blaming teammates for failure.',
+    script30Sec: {
+      answerText: 'In my Pollaris project, we faced a major race condition bug during load testing. My task was to guarantee vote data integrity. I implemented Firestore ACID transactions and established Docker containerized testing pipelines, resolving race conditions with 100% vote integrity.',
+      durationSec: 28
+    },
+    onePictureSummary: ['📍 Situation & Task', '↓ 🛠️ Technical Action', '↓ 📈 Positive Result', '↓ STAR Method Success'],
+    interviewTip: 'Structure: Situation -> Task -> Action -> Result.'
   }
 ];

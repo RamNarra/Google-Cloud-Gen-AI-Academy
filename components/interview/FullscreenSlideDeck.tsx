@@ -95,36 +95,36 @@ export default function FullscreenSlideDeck({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-between bg-white px-6 py-6 sm:px-12 sm:py-8 font-sans text-slate-900 selection:bg-blue-100">
-      {/* Slide Top Navigation */}
-      <div className="mx-auto flex w-full max-w-3xl items-center justify-between">
+    <div className="fixed inset-0 z-50 flex flex-col justify-between bg-white px-4 py-5 sm:px-10 sm:py-8 font-sans text-slate-900 selection:bg-blue-100 overflow-y-auto">
+      {/* Slide Top Navigation Header */}
+      <div className="mx-auto flex w-full max-w-3xl items-center justify-between border-b border-slate-100 pb-3">
         <div className="flex items-center gap-2">
-          <span className="text-2xl">{lesson.icon}</span>
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-            Chapter {lesson.chapterNumber} of {totalLessons} — {lesson.shortTitle}
+          <span className="text-2xl sm:text-3xl">{lesson.icon}</span>
+          <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
+            Ch {lesson.chapterNumber} of {totalLessons} — {lesson.shortTitle}
           </span>
         </div>
 
         <button
           onClick={onExit}
-          className="rounded-full bg-slate-100 px-3.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-200"
+          className="rounded-full bg-slate-100 px-4 py-2 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-200 transition"
         >
           ✕ Table of Contents
         </button>
       </div>
 
-      {/* Slide Content Area (Centered 100vh Slide) */}
-      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center my-auto">
+      {/* Slide Content Area (Centered 100vh Slide with Larger Fonts) */}
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center my-auto py-4">
         {/* SLIDE 1: QUESTION */}
         {slideIndex === 0 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="rounded-full bg-blue-50 px-3.5 py-1 font-mono text-xs font-bold text-blue-600">
+            <span className="rounded-full bg-blue-50 px-4 py-1.5 font-mono text-xs sm:text-sm font-bold text-blue-600">
               CORE CONCEPT QUESTION:
             </span>
-            <h2 className="mt-6 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">
+            <h2 className="mt-5 text-2xl font-extrabold leading-tight text-slate-900 sm:text-4xl">
               &ldquo;{lesson.question}&rdquo;
             </h2>
-            <p className="mt-4 text-sm text-slate-500 max-w-md">
+            <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-md">
               Let&apos;s learn this fundamental concept from scratch using a simple story.
             </p>
           </div>
@@ -133,20 +133,20 @@ export default function FullscreenSlideDeck({
         {/* SLIDE 2: STORY */}
         {slideIndex === 1 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
               REAL-LIFE STORY & ANALOGY
             </span>
-            <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
+            <h2 className="mt-3 text-xl font-bold text-slate-900 sm:text-3xl">
               {lesson.analogyStory.title}
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-slate-700 max-w-xl">
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-800 max-w-xl">
               {lesson.analogyStory.text}
             </p>
-            <div className="mt-6 rounded-2xl bg-blue-50/80 p-4 border border-blue-100 max-w-md">
-              <span className="font-mono text-[10px] font-bold uppercase text-blue-700">
+            <div className="mt-6 rounded-2xl bg-blue-50/80 p-4 border border-blue-100 max-w-md w-full">
+              <span className="font-mono text-xs font-bold uppercase text-blue-700">
                 KEY TAKEAWAY:
               </span>
-              <p className="mt-1 text-xs font-semibold text-blue-950">
+              <p className="mt-1 text-sm font-bold text-blue-950">
                 {lesson.analogyStory.takeaway}
               </p>
             </div>
@@ -156,10 +156,10 @@ export default function FullscreenSlideDeck({
         {/* SLIDE 3: INTERACTIVE ANIMATION */}
         {slideIndex === 2 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
               ILLUSTRATED CONCEPT ANIMATION
             </span>
-            <div className="w-full">
+            <div className="w-full mt-2">
               <HeroAnimatedDiagram type={lesson.diagramType} />
             </div>
           </div>
@@ -167,35 +167,35 @@ export default function FullscreenSlideDeck({
 
         {/* SLIDE 4: DEFINITION & COMMON MISTAKE */}
         {slideIndex === 3 && (
-          <div className="flex flex-col gap-6 text-center animate-fadeIn">
+          <div className="flex flex-col gap-5 text-center animate-fadeIn">
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+              <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
                 SIMPLE BAND 5.5 ENGLISH EXPLANATION
               </span>
-              <p className="mt-3 text-xl font-medium leading-relaxed text-slate-800">
+              <p className="mt-3 text-base sm:text-xl font-semibold leading-relaxed text-slate-900">
                 {lesson.simpleExplanation}
               </p>
             </div>
 
             {/* Common Mistake Warning Box */}
-            <div className="mx-auto w-full max-w-lg rounded-2xl border border-amber-200 bg-amber-50 p-5 text-left">
-              <span className="font-mono text-xs font-bold text-amber-800">
+            <div className="mx-auto w-full max-w-lg rounded-2xl border border-amber-200 bg-amber-50 p-4 sm:p-5 text-left">
+              <span className="font-mono text-xs sm:text-sm font-bold text-amber-900">
                 ❌ COMMON MISTAKE TO AVOID:
               </span>
-              <p className="mt-1 text-xs text-amber-900 font-medium leading-relaxed">
+              <p className="mt-1 text-xs sm:text-sm text-amber-950 font-medium leading-relaxed">
                 {lesson.commonMistake}
               </p>
             </div>
 
             {/* One Picture Memory Summary */}
             <div className="mx-auto w-full max-w-lg rounded-2xl bg-slate-50 border border-slate-200 p-4 text-center">
-              <span className="font-mono text-[10px] font-bold text-slate-500 uppercase">
+              <span className="font-mono text-xs font-bold text-slate-500 uppercase">
                 📸 ONE PICTURE MEMORY SUMMARY:
               </span>
               <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
                 {lesson.onePictureSummary.map((item, idx) => (
                   <React.Fragment key={idx}>
-                    <span className="font-mono text-xs font-bold text-slate-800">{item}</span>
+                    <span className="font-mono text-xs sm:text-sm font-bold text-slate-900">{item}</span>
                     {idx < lesson.onePictureSummary.length - 1 && (
                       <span className="text-slate-400 font-bold">➔</span>
                     )}
@@ -209,25 +209,25 @@ export default function FullscreenSlideDeck({
         {/* SLIDE 5: SPOKEN INTERVIEW ANSWER */}
         {slideIndex === 4 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
               30-SECOND INTERVIEW SPOKEN ANSWER
             </span>
 
-            <div className="mt-4 w-full rounded-3xl border border-blue-200 bg-blue-50/50 p-6 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-blue-700 border-b border-blue-100 pb-2 font-mono font-bold">
+            <div className="mt-4 w-full rounded-3xl border border-blue-200 bg-blue-50/50 p-5 sm:p-6 shadow-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm text-blue-700 border-b border-blue-100 pb-2 font-mono font-bold">
                 <span>EXPECTED INTERVIEW ANSWER:</span>
                 <span>~{lesson.script30Sec.durationSec}s</span>
               </div>
-              <p className="mt-4 text-lg font-medium leading-relaxed text-slate-900">
+              <p className="mt-4 text-base sm:text-xl font-semibold leading-relaxed text-slate-900">
                 {lesson.script30Sec.answerText}
               </p>
             </div>
 
-            <div className="mt-6 w-full max-w-lg rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center">
-              <span className="font-mono text-xs font-bold text-emerald-800">
+            <div className="mt-5 w-full max-w-lg rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center">
+              <span className="font-mono text-xs sm:text-sm font-bold text-emerald-900">
                 ✅ INTERVIEW TIP:
               </span>
-              <p className="mt-1 text-xs text-emerald-950 font-medium">
+              <p className="mt-1 text-xs sm:text-sm text-emerald-950 font-medium">
                 {lesson.interviewTip}
               </p>
             </div>
@@ -237,17 +237,17 @@ export default function FullscreenSlideDeck({
         {/* SLIDE 6: PRACTICE SPEAKING */}
         {slideIndex === 5 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
+            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-blue-600">
               LISTEN ➔ REPEAT ➔ VOICE PRACTICE
             </span>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4 w-full max-w-md">
               <button
                 onClick={toggleListenTTS}
-                className={`flex items-center gap-2 rounded-2xl px-6 py-3.5 text-xs font-bold transition shadow-sm ${
+                className={`flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-xs sm:text-sm font-bold transition shadow-sm ${
                   isPlayingTTS
                     ? "bg-amber-500 text-white animate-pulse"
-                    : "border border-blue-600 bg-blue-50 text-blue-600 hover:bg-blue-100"
+                    : "border border-blue-600 bg-blue-50 text-blue-700 hover:bg-blue-100"
                 }`}
               >
                 {isPlayingTTS ? "🔊 Stop Listening" : "🎧 1. Listen to Model Answer"}
@@ -256,14 +256,14 @@ export default function FullscreenSlideDeck({
               {!isRecording ? (
                 <button
                   onClick={handleStartRecord}
-                  className="flex items-center gap-2 rounded-2xl bg-blue-600 px-6 py-3.5 text-xs font-bold text-white shadow-md hover:bg-blue-700"
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-blue-700"
                 >
                   🎤 2. Record & Repeat Answer
                 </button>
               ) : (
                 <button
                   onClick={handleStopRecord}
-                  className="flex items-center gap-2 rounded-2xl bg-red-600 px-6 py-3.5 text-xs font-bold text-white shadow-md hover:bg-red-700 animate-pulse"
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-red-600 px-6 py-4 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-red-700 animate-pulse"
                 >
                   ⏹️ Stop (00:{recordSec < 10 ? `0${recordSec}` : recordSec})
                 </button>
@@ -271,7 +271,7 @@ export default function FullscreenSlideDeck({
             </div>
 
             {feedbackTip && (
-              <div className="mt-6 rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center text-xs font-bold text-emerald-800 w-full max-w-md">
+              <div className="mt-6 rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-center text-xs sm:text-sm font-bold text-emerald-900 w-full max-w-md">
                 {feedbackTip}
               </div>
             )}
@@ -279,16 +279,16 @@ export default function FullscreenSlideDeck({
         )}
       </div>
 
-      {/* Slide Bottom Controls */}
+      {/* Slide Bottom Navigation Controls */}
       <div className="mx-auto flex w-full max-w-3xl items-center justify-between border-t border-slate-100 pt-4">
         {/* Slide Progress Dots */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           {Array.from({ length: totalSlides }).map((_, idx) => (
             <button
               key={idx}
               onClick={() => setSlideIndex(idx)}
-              className={`h-2.5 rounded-full transition-all ${
-                idx === slideIndex ? "w-8 bg-blue-600" : "w-2.5 bg-slate-200"
+              className={`h-3 rounded-full transition-all ${
+                idx === slideIndex ? "w-8 bg-blue-600" : "w-3 bg-slate-200"
               }`}
             />
           ))}
@@ -297,7 +297,7 @@ export default function FullscreenSlideDeck({
         {/* Action Button */}
         <button
           onClick={handleNextSlide}
-          className="rounded-2xl bg-blue-600 px-7 py-3 font-sans text-xs font-extrabold text-white shadow-md transition hover:bg-blue-700"
+          className="rounded-2xl bg-blue-600 px-6 sm:px-8 py-3.5 sm:py-4 font-sans text-xs sm:text-sm font-extrabold text-white shadow-md hover:bg-blue-700 transition"
         >
           {slideIndex === totalSlides - 1 ? "I Understand — Finish Chapter 🎉" : "Continue →"}
         </button>
