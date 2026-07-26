@@ -33,94 +33,93 @@ export interface PartItem {
 }
 
 export const TEXTBOOK_PARTS: PartItem[] = [
-  { id: 'part-1', partNumber: 1, title: 'Section I: FSM SaaS & Enterprise Architecture', description: 'Enterprise SaaS, Financials & Supply Management, Microservices, Security', icon: '🏢' },
-  { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC Phases, Agile Scrum/Kanban, Cross-Functional Collaboration', icon: '🏃' },
-  { id: 'part-3', partNumber: 3, title: 'Section III: Java/J2EE & Object-Oriented Principles', description: 'Java, JVM, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
-  { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, Stacks, Queues, HashMaps, O(1) Complexity', icon: '🧱' },
-  { id: 'part-5', partNumber: 5, title: 'Section V: Relational & NoSQL Databases', description: 'Oracle, SQL Server, Keys, SQL Joins, Firestore NoSQL', icon: '🔗' },
-  { id: 'part-6', partNumber: 6, title: 'Section VI: Backend & Web Services', description: 'HTTP Methods, RESTful APIs, Spring Boot 3-Tier Architecture', icon: '🍽️' },
-  { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools in SDLC Workflows', description: 'Code Generation, Prompt Engineering, Automated Testing, Debugging', icon: '🤖' },
-  { id: 'part-8', partNumber: 8, title: 'Section VIII: DevOps, Git & Cloud Infrastructure', description: 'Git Workflows, Docker, Kubernetes, CI/CD Pipelines, AWS/GCP', icon: '📦' },
-  { id: 'part-9', partNumber: 9, title: 'Section IX: Resume Project Stories (De-Inflated)', description: 'Pollaris Voting App, Infor AI Internship, IoT Smart Locker', icon: '📖' },
-  { id: 'part-10', partNumber: 10, title: 'Section X: HR, Behavioral & Self Introduction', description: 'Tell Me About Yourself, Cross-Functional Collaboration, STAR Method', icon: '🗣️' },
+  { id: 'part-1', partNumber: 1, title: 'Section I: FSM & Enterprise SaaS Domain', description: 'Enterprise SaaS, Multi-Tenancy, Financials & Supply Management, ERP Systems', icon: '🏢' },
+  { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC Phases, Scrum vs Kanban, Sprint Planning, Stand-ups, Retrospectives, PM/QA/UX Teamwork', icon: '🏃' },
+  { id: 'part-3', partNumber: 3, title: 'Section III: Java / J2EE & Object-Oriented Principles', description: 'Java, JVM, What is J2EE?, Maven/Gradle, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
+  { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, Stacks, Queues, HashMaps, Hash Collision Handling, O(1) Complexity', icon: '🧱' },
+  { id: 'part-5', partNumber: 5, title: 'Section V: Relational & NoSQL Databases', description: 'Oracle DB, SQL Server, Primary/Foreign Keys, SQL Joins, NoSQL Firestore', icon: '🔗' },
+  { id: 'part-6', partNumber: 6, title: 'Section VI: Backend Frameworks & Web Services', description: 'SOAP vs REST APIs, HTTP Verbs, Spring Boot 3-Tier, Spring Data JPA, Spring Security, Postman', icon: '🍽️' },
+  { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools & GenAI in the SDLC Workflow', description: 'GitHub Copilot Code Generation, Prompt Engineering for Debugging, AI Automated Unit Testing', icon: '🤖' },
+  { id: 'part-8', partNumber: 8, title: 'Section VIII: DevOps, Containers & Cloud Infrastructure', description: 'Git PR Workflows, Docker, Kubernetes, CI/CD Pipelines, AWS/Azure/GCP Cloud', icon: '📦' },
+  { id: 'part-9', partNumber: 9, title: 'Section IX: Resume Project Stories & Behavioral HR', description: 'Pollaris Voting App, Firestore ACID Transactions, Tell Me About Yourself, STAR Method', icon: '🗣️' },
 ];
 
 export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
-  // SECTION I: FSM SAAS & ENTERPRISE ARCHITECTURE
+  // SECTION I: FSM & ENTERPRISE SAAS DOMAIN
   {
-    id: 'ch-1-fsm-domain',
+    id: 'ch-1-enterprise-saas',
     partId: 'part-1',
-    partTitle: 'Section I: FSM SaaS',
+    partTitle: 'Section I: FSM & SaaS',
     chapterNumber: 1,
-    title: 'Chapter 1: What is Enterprise SaaS & FSM Domain?',
-    shortTitle: '1. What is FSM SaaS?',
+    title: 'Chapter 1: What is Enterprise SaaS & Multi-Tenancy?',
+    shortTitle: '1. Enterprise SaaS',
+    icon: '☁️',
+    estimatedMinutes: 6,
+    question: 'What is Enterprise SaaS and what does multi-tenancy mean in cloud applications?',
+    analogyStory: {
+      title: 'The Big Apartment Building',
+      text: 'Imagine a big apartment building. Instead of every family building their own private water tank and generator, everyone lives in the same apartment building and shares the main water pipe and power grid. However, every family has their own private front door lock so no neighbor can enter another apartment! Enterprise SaaS Multi-Tenancy works the exact same way: thousands of company clients use the same cloud software application, but their data is completely locked and separated.',
+      takeaway: 'Multi-tenancy means multiple business clients share one cloud software system while keeping their private data strictly isolated.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'Enterprise Software-as-a-Service (SaaS) is cloud software delivered over the internet on a subscription basis. Multi-tenancy is an architectural design where a single running instance of software serves thousands of different enterprise customers (tenants) simultaneously, while using strict security rules to keep each customer\'s private data completely isolated and secure.',
+    commonMistake: 'Thinking multi-tenancy means different enterprise clients can see or accidentally access each other\'s data.',
+    script30Sec: {
+      answerText: 'Enterprise SaaS is software hosted in the cloud and accessed over the web. Multi-tenancy means a single software instance securely serves multiple enterprise customers simultaneously. The architecture shares server infrastructure while mathematically isolating each customer\'s private database records.',
+      durationSec: 25
+    },
+    onePictureSummary: ['🏬 One Cloud App Building', '↓ 🔑 Private Tenant Locks', '↓ ☁️ Web Access', '↓ Secure Multi-Tenancy'],
+    interviewTip: 'Shared cloud infrastructure + private tenant data isolation.'
+  },
+  {
+    id: 'ch-2-fsm-domain',
+    partId: 'part-1',
+    partTitle: 'Section I: FSM & SaaS',
+    chapterNumber: 2,
+    title: 'Chapter 2: Financials & Supply Management (FSM) Domain',
+    shortTitle: '2. FSM Domain',
     icon: '🏢',
     estimatedMinutes: 6,
     question: 'What is Financials & Supply Management (FSM) software and why do global businesses use it?',
     analogyStory: {
-      title: 'The Global Store Super-Brain',
-      text: 'Imagine a global company selling laptops in 50 countries. Every day, they buy screens, pay factory workers, ship boxes, and invoice customers. FSM is the super-brain software that manages all financial money and warehouse supplies in real time on the cloud.',
-      takeaway: 'FSM software handles enterprise money (Financials) and warehouse goods (Supply Management).'
+      title: 'The Global Toy Store Super-Brain',
+      text: 'Imagine a toy company selling teddy bears in 50 countries. Every single day, they must buy soft cotton from suppliers, pay factory workers, ship boxes across oceans, pay taxes in different currencies, and invoice customers. If they wrote all this down on paper, they would make huge mistakes and lose millions of dollars! FSM software acts as a global super-brain that automatically tracks every dollar spent (Financials) and every toy box moving through warehouses (Supply Management) in real time.',
+      takeaway: 'FSM software manages company money (Financials) and warehouse product movement (Supply Management).'
     },
     diagramType: 'fsm-store',
-    simpleExplanation: 'FSM stands for Financials and Supply Management. It is an enterprise cloud SaaS product that helps global companies track their money, invoices, inventory, and supplier shipments.',
-    commonMistake: 'Getting bogged down in complex accounting rules instead of high-level SaaS features.',
+    simpleExplanation: 'Financials and Supply Management (FSM) software is an enterprise SaaS platform that automates core business operations. The Financials module tracks general accounting ledgers, customer billing invoices, supplier payments, and multi-currency global tax reporting. The Supply Management module manages raw material purchasing, warehouse inventory levels, order fulfillment, and global shipping logistics.',
+    commonMistake: 'Getting lost in complicated accounting rules instead of explaining high-level SaaS features like billing, inventory, and supplier tracking.',
     script30Sec: {
-      answerText: 'FSM stands for Financials and Supply Management. It is an enterprise-grade SaaS platform that powers global businesses by managing financial transactions, invoicing, inventory tracking, and supply chain logistics in real time.',
-      durationSec: 25
-    },
-    onePictureSummary: ['🏢 Global Business', '↓ Financial Invoices', '↓ Supply Inventory', '↓ Cloud FSM SaaS'],
-    interviewTip: 'Enterprise money + warehouse inventory tracking.'
-  },
-  {
-    id: 'ch-2-microservices',
-    partId: 'part-1',
-    partTitle: 'Section I: FSM SaaS',
-    chapterNumber: 2,
-    title: 'Chapter 2: Microservices vs Monolith Architecture',
-    shortTitle: '2. Microservices Architecture',
-    icon: '🧩',
-    estimatedMinutes: 7,
-    question: 'What is the difference between Monolithic and Microservices architecture?',
-    analogyStory: {
-      title: 'The Swiss Army Knife vs Separate Power Tools',
-      text: 'A Monolith is a giant Swiss Army Knife where all blades share one handle. If the main spring breaks, all tools stop working! Microservices are separate power tools: if the drill breaks, the saw keeps cutting safely.',
-      takeaway: 'Microservices break large apps into small, independent services communicating over APIs.'
-    },
-    diagramType: 'software-app',
-    simpleExplanation: 'Monolithic applications package all features into a single codebase. Microservices architecture breaks an application into small, independent services that communicate over HTTP REST APIs, enabling independent deployment and scaling.',
-    commonMistake: 'Thinking microservices are easier to manage for tiny apps. Microservices add network complexity.',
-    script30Sec: {
-      answerText: 'In a Monolithic architecture, all application features share a single codebase and database. In Microservices architecture, the application is divided into small, autonomous services that communicate via REST APIs, allowing independent scaling, deployment, and fault isolation.',
-      durationSec: 27
-    },
-    onePictureSummary: ['📦 Giant Monolith', '↓ 🧩 Independent Services', '↓ REST API Interconnect', '↓ High Availability'],
-    interviewTip: 'Independent deployment + fault isolation.'
-  },
-  {
-    id: 'ch-3-security-perf',
-    partId: 'part-1',
-    partTitle: 'Section I: FSM SaaS',
-    chapterNumber: 3,
-    title: 'Chapter 3: Performance, Reliability & Security Championing',
-    shortTitle: '3. Security & Reliability',
-    icon: '🛡️',
-    estimatedMinutes: 6,
-    question: 'How do you champion performance, reliability, and security across the product lifecycle?',
-    analogyStory: {
-      title: 'The Bank Vault Doors',
-      text: 'A bank doesn\'t install locks after money is stolen! It designs thick vault doors from day one. In enterprise SaaS, security (encryption & access tokens) and reliability (handling traffic spikes) are built into code from the start.',
-      takeaway: 'Security and performance must be designed upfront, not added as an afterthought.'
-    },
-    diagramType: 'software-app',
-    simpleExplanation: 'Championing performance, reliability, and security means writing clean code with low memory footprint, implementing proper exception handling, using encrypted data transmission (HTTPS/SSL), and following strict authorization access controls.',
-    commonMistake: 'Thinking security is only the responsibility of the DevOps team.',
-    script30Sec: {
-      answerText: 'Championing reliability and security means writing defensive code with proper error handling, optimizing memory and query performance, enforcing authentication and input validation, and preventing data leaks across development and production.',
+      answerText: 'FSM stands for Financials and Supply Management. It is an enterprise cloud SaaS platform that powers global businesses. It automates financial transactions, ledger accounting, customer invoicing, raw material procurement, warehouse inventory tracking, and supply chain logistics.',
       durationSec: 26
     },
-    onePictureSummary: ['🛡️ Data Encryption', '↓ Error Handling', '↓ Low Latency', '↓ Reliable Enterprise SaaS'],
-    interviewTip: 'Input validation + defensive coding + SSL encryption.'
+    onePictureSummary: ['💰 Financial Invoices', '↓ 📦 Supply Warehouse', '↓ 📊 Real-time Ledger', '↓ Enterprise FSM SaaS'],
+    interviewTip: 'Financial money tracking + Warehouse inventory supply chain.'
+  },
+  {
+    id: 'ch-3-erp-systems',
+    partId: 'part-1',
+    partTitle: 'Section I: FSM & SaaS',
+    chapterNumber: 3,
+    title: 'Chapter 3: What is an ERP (Enterprise Resource Planning) System?',
+    shortTitle: '3. ERP Systems',
+    icon: '🔄',
+    estimatedMinutes: 6,
+    question: 'What is an ERP system and how does FSM fit into an ERP software suite?',
+    analogyStory: {
+      title: 'The Human Body Systems',
+      text: 'Think of a company like a human body. The HR department is the heart, the sales team is the voice, the finance department is the blood flowing, and the warehouse is the muscles. If the heart doesn\'t talk to the muscles, the body collapses! An ERP (Enterprise Resource Planning) system connects every department into one single database so the brain knows everything happening instantly.',
+      takeaway: 'ERP connects Finance, Supply Chain, HR, and Sales into one unified central system.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'ERP stands for Enterprise Resource Planning. It is a large suite of integrated software applications that manages a company\'s entire business operations. FSM (Financials and Supply Management) is the core engine inside an ERP system responsible for tracking money flow, procurement, and physical inventory across global business locations.',
+    commonMistake: 'Thinking ERP is a single small mobile app. ERP is a massive enterprise platform.',
+    script30Sec: {
+      answerText: 'An ERP system is an integrated software suite that connects core business functions—like Finance, Supply Chain, Human Resources, and Sales—into one centralized database. FSM is a key module within ERP that specifically handles global financial operations and supply chain management.',
+      durationSec: 26
+    },
+    onePictureSummary: ['🏢 Finance + HR + Supply', '↓ 🛢️ One Central Database', '↓ 🔄 Real-time Integration', '↓ Enterprise ERP'],
+    interviewTip: 'One central database connecting Finance, Supply Chain, and HR.'
   },
 
   // SECTION II: SOFTWARE ENGINEERING & AGILE SDLC
@@ -133,166 +132,216 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     shortTitle: '4. SDLC 6 Phases',
     icon: '🔄',
     estimatedMinutes: 7,
-    question: 'What is SDLC and what are its main phases?',
+    question: 'What is SDLC and what are its main 6 phases?',
     analogyStory: {
-      title: 'Baking a Wedding Cake',
-      text: 'Before baking a cake, you ask what flavor the customer wants (Requirements), write the recipe (Design), bake in oven (Coding), taste test (Testing), and serve on table (Deployment)! SDLC is this exact step-by-step process for software.',
+      title: 'Baking a Custom Birthday Cake',
+      text: 'Before baking a custom birthday cake, you don\'t just throw flour into the oven! First, you ask the customer what flavor they want (Requirements). Second, you sketch the cake design (Design). Third, you bake the cake in the oven (Coding). Fourth, you taste test the cake for safety (Testing). Fifth, you deliver the cake to the party (Deployment). Sixth, you fix any melted candles (Maintenance). SDLC is this exact step-by-step master recipe for building great software.',
       takeaway: 'SDLC guarantees software goes through planning, coding, testing, and release.'
     },
     diagramType: 'sdlc-loop',
-    simpleExplanation: 'SDLC stands for Software Development Life Cycle. It defines 6 key stages: Requirements Analysis, Architectural Design, Implementation (Coding), Testing, Deployment, and Maintenance.',
-    commonMistake: 'Thinking coding is the first step of SDLC. Requirements come first!',
+    simpleExplanation: 'SDLC stands for Software Development Life Cycle. It is a step-by-step engineering process that ensures software is built with high quality and zero defects. The 6 phases are: 1) Requirements Analysis, 2) System Design & Architecture, 3) Implementation (Coding), 4) Software Testing & QA, 5) Production Deployment, and 6) Ongoing Maintenance.',
+    commonMistake: 'Thinking coding is the first step of SDLC. Requirements gathering and system design always come first!',
     script30Sec: {
-      answerText: 'SDLC is the structured framework used by engineering teams to build software. It includes six main phases: Requirements Gathering, Architectural Design, Implementation, Testing, Deployment, and ongoing Maintenance.',
-      durationSec: 26
+      answerText: 'SDLC is the structured engineering process used to deliver high-quality software applications. It consists of six sequential phases: Requirements Gathering, System Design, Implementation, Testing, Deployment, and Maintenance.',
+      durationSec: 25
     },
     onePictureSummary: ['📝 Requirements', '↓ 📐 Design', '↓ 💻 Coding', '↓ 🧪 Testing', '↓ 🚀 Deployment'],
     interviewTip: 'List all 6 phases clearly: Requirements -> Design -> Coding -> Testing -> Deployment -> Maintenance.'
   },
   {
-    id: 'ch-5-agile-scrum',
+    id: 'ch-5-scrum-vs-kanban',
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
     chapterNumber: 5,
-    title: 'Chapter 5: Agile Scrum & Kanban (Sprints & Stand-ups)',
-    shortTitle: '5. Agile & Scrum',
+    title: 'Chapter 5: Agile Scrum vs Kanban Methodologies',
+    shortTitle: '5. Scrum vs Kanban',
     icon: '🏃',
-    estimatedMinutes: 8,
-    question: 'What is Agile Scrum and what happens in daily standups and retrospectives?',
+    estimatedMinutes: 7,
+    question: 'What is the difference between Agile Scrum and Kanban methodologies?',
     analogyStory: {
-      title: 'The Pizza Shop Slices',
-      text: 'Waterfall is waiting 4 hours for a 10-course meal. Agile is receiving hot pizza slices every 10 minutes so you can change toppings mid-way! Daily 15-minute standup meetings review: 1) What I did, 2) What I will do, 3) Blockers.',
-      takeaway: 'Agile delivers working software in short 2-week iterations called sprints.'
+      title: 'The Bakery Batch vs The Pizza Counter',
+      text: 'Agile Scrum is like a bakery that bakes batches of cookies every 2 weeks. The baker sets a timer for 2 weeks (a Sprint), commits to baking 100 cookies, and shows them to customers at the end. Kanban is like a fast-food pizza counter with a continuous visual board. As soon as a customer orders a slice, a worker slides a card from "To Do" to "In Progress" to "Done" continuously without waiting for a 2-week batch!',
+      takeaway: 'Scrum uses fixed 2-week time-boxed sprints; Kanban uses continuous flow visual task boards.'
     },
     diagramType: 'agile-loop',
-    simpleExplanation: 'Agile Scrum divides development into 2-week sprints. The team holds daily 15-minute standup meetings to answer 3 questions: What did I do yesterday? What will I do today? Are there any blockers? At sprint end, retrospectives review team improvements.',
-    commonMistake: 'Thinking Agile means working without any plan or documentation.',
+    simpleExplanation: 'Both Scrum and Kanban are Agile development frameworks. Scrum organizes work into fixed time-boxed periods called Sprints (usually 2 weeks long) with planned backlog commitments. Kanban focuses on continuous delivery using a visual task board (To Do, In Progress, Review, Done) to manage work-in-progress limits without fixed sprint time-boxes.',
+    commonMistake: 'Thinking Agile means working without any task boards or plans.',
     script30Sec: {
-      answerText: 'In Agile Scrum, development is divided into short 2-week sprints. We deliver working software frequently, gather continuous feedback, and hold daily 15-minute standup meetings to track progress and remove blockers.',
+      answerText: 'In Agile Scrum, development is structured into fixed 2-week time-boxed sprints with planned deliverables and sprint goals. In Kanban, work flows continuously on a visual board, focusing on managing work-in-progress limits and real-time task completion without fixed sprint deadlines.',
       durationSec: 27
     },
-    onePictureSummary: ['🏃 2-Week Sprint', '↓ Daily Standup (15m)', '↓ Working Demo', '↓ Continuous Feedback'],
-    interviewTip: 'Sprint duration (2 weeks) and Daily Standups (15 mins) are key details.'
+    onePictureSummary: ['🏃 Scrum (2-Week Sprints)', '↓ 📋 Kanban (Continuous Board)', '↓ Visual Progress', '↓ Rapid Delivery'],
+    interviewTip: 'Scrum = 2-week fixed sprints; Kanban = continuous task board flow.'
   },
   {
-    id: 'ch-6-cross-func-team',
+    id: 'ch-6-sprint-meetings',
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
     chapterNumber: 6,
-    title: 'Chapter 6: Cross-Functional Team Collaboration (PM, QA, UX)',
-    shortTitle: '6. Cross-Functional Teams',
-    icon: '🤝',
-    estimatedMinutes: 6,
-    question: 'How do software engineers collaborate with Product Managers, QA, and UX designers?',
+    title: 'Chapter 6: Sprint Planning, Daily Stand-ups & Retrospectives',
+    shortTitle: '6. Sprint Meetings',
+    icon: '⏰',
+    estimatedMinutes: 7,
+    question: 'What happens during Sprint Planning, Daily Stand-up, and Sprint Retrospective meetings?',
     analogyStory: {
-      title: 'The Movie Crew Assembly',
-      text: 'A director (Product Manager) writes the script story. An art designer (UX) sketches the costumes. The actors (Developers) perform on camera. The film editors (QA) review every scene for flaws. Everyone works together to release a blockbuster!',
-      takeaway: 'Engineers build what PM requests, UX designs, and QA validates.'
+      title: 'The Football Team Game Plan',
+      text: 'A professional football team does 3 things every match week. On Monday, they meet in the locker room to pick plays for the game (Sprint Planning). Every morning, they huddle for 5 minutes on the field to ask: "Did anyone get hurt? What is today\'s play?" (Daily Stand-up). On Sunday evening after the game, they watch video recordings to see what went wrong and how to play better next week (Retrospective)!',
+      takeaway: 'Sprint Planning picks tasks, Daily Stand-up reviews progress, Retrospective improves the process.'
     },
     diagramType: 'agile-loop',
-    simpleExplanation: 'Engineers collaborate with Product Managers to understand feature requirements, UX Designers to implement user-friendly Figma UI mockups, and QA Engineers to ensure test coverage and bug resolution prior to production release.',
-    commonMistake: 'Viewing QA as enemies! QA engineers are partners protecting customer quality.',
+    simpleExplanation: 'Agile Scrum uses 3 key meetings: 1) Sprint Planning happens at the start of a sprint to pick priority tasks from the backlog. 2) Daily Stand-up is a quick 15-minute morning huddle where every engineer answers 3 questions: What did I do yesterday? What will I do today? Are there any blockers? 3) Sprint Retrospective happens at sprint end to reflect on what went well and what team processes to improve.',
+    commonMistake: 'Rambling during daily stand-up for 30 minutes! Stand-ups must be crisp and under 15 minutes.',
     script30Sec: {
-      answerText: 'I collaborate closely with Product Managers to clarify feature specs, UX designers to implement responsive UI designs accurately, and QA engineers to write testable code and resolve defects quickly before release.',
-      durationSec: 26
+      answerText: 'Sprint Planning selects backlog user stories for the upcoming 2-week sprint. Daily Stand-up is a 15-minute meeting where we share yesterday\'s progress, today\'s goals, and any technical blockers. Sprint Retrospective allows the team to reflect on sprint performance and improve engineering workflows.',
+      durationSec: 28
     },
-    onePictureSummary: ['📋 PM Requirements', '↓ 🎨 UX Designs', '↓ 💻 Developer Code', '↓ 🧪 QA Verification'],
-    interviewTip: 'Emphasize teamwork and open communication.'
+    onePictureSummary: ['📋 Sprint Planning', '↓ ⏱️ Daily Stand-up (15m)', '↓ 🏃 2-Week Sprint', '↓ 💡 Retrospective Review'],
+    interviewTip: 'Stand-up 3 questions: Yesterday\'s work, Today\'s plan, Blockers.'
   },
 
-  // SECTION III: JAVA / J2EE & OOP FOUNDATIONS
+  // SECTION III: JAVA / J2EE & OBJECT-ORIENTED PRINCIPLES
   {
     id: 'ch-7-java-jvm',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
+    partTitle: 'Section III: Java & J2EE',
     chapterNumber: 7,
-    title: 'Chapter 7: What is Java & the JVM?',
+    title: 'Chapter 7: What is Java & the JVM (Java Virtual Machine)?',
     shortTitle: '7. Java & JVM',
     icon: '☕',
     estimatedMinutes: 8,
     question: 'What is Java and how does the JVM achieve "Write Once, Run Anywhere"?',
     analogyStory: {
-      title: 'The Universal Translator',
-      text: 'If a book is written in English, someone in Japan needs a translator. Java compiles code into universal "Bytecode" (.class file). The Java Virtual Machine (JVM) acts as an on-the-spot translator for Windows, Mac, or Linux!',
-      takeaway: 'JVM executes Java bytecode on any operating system.'
+      title: 'The Universal Language Translator',
+      text: 'If a famous book is written in English, people in Japan, France, and India cannot read it directly unless they have an on-the-spot translator. Java works the exact same way! When you write Java code, the compiler turns your code into a universal language called "Bytecode" (.class file). Then, a special program called the Java Virtual Machine (JVM) sits on Windows, Mac, or Linux and translates Bytecode into local machine instructions instantly!',
+      takeaway: 'JVM executes Java Bytecode on any operating system without rewriting code.'
     },
     diagramType: 'jvm-coffee',
-    simpleExplanation: 'Java is an object-oriented language. Java code compiles into Bytecode, which the Java Virtual Machine (JVM) interprets into machine code for any underlying operating system.',
-    commonMistake: 'Confusing JVM (runs bytecode) with JDK (development toolkit with compiler).',
+    simpleExplanation: 'Java is an object-oriented, platform-independent programming language. When Java code is compiled using `javac`, it produces platform-neutral intermediate code called Bytecode (.class file). The Java Virtual Machine (JVM) interprets and executes Bytecode on any target operating system, delivering Java\'s core promise: Write Once, Run Anywhere.',
+    commonMistake: 'Confusing JVM (executes bytecode) with JDK (Java Development Kit containing compiler tools).',
     script30Sec: {
-      answerText: 'Java is an object-oriented, platform-independent programming language. When we compile Java code, the compiler produces Bytecode. The Java Virtual Machine (JVM) translates Bytecode into native machine instructions on any operating system, enabling Write Once, Run Anywhere.',
+      answerText: 'Java is an object-oriented, platform-independent language. The Java compiler turns source code into intermediate Bytecode. The Java Virtual Machine (JVM) interprets Bytecode into native machine instructions for Windows, Mac, or Linux, enabling Write Once, Run Anywhere.',
       durationSec: 28
     },
-    onePictureSummary: ['📝 Java Source (.java)', '↓ ⚙️ javac Compiler', '↓ 📦 Bytecode (.class)', '↓ ☕ JVM Runtime'],
+    onePictureSummary: ['📝 Java Code (.java)', '↓ ⚙️ javac Compiler', '↓ 📦 Bytecode (.class)', '↓ ☕ JVM Execution'],
     interviewTip: 'Bytecode + JVM = Platform Independence.'
   },
   {
-    id: 'ch-8-classes-objects',
+    id: 'ch-8-what-is-j2ee',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
+    partTitle: 'Section III: Java & J2EE',
     chapterNumber: 8,
-    title: 'Chapter 8: Classes, Objects & Memory Allocation',
-    shortTitle: '8. Classes & Objects',
+    title: 'Chapter 8: What is J2EE / Jakarta EE (Java Enterprise Edition)?',
+    shortTitle: '8. What is J2EE?',
+    icon: '🏢',
+    estimatedMinutes: 7,
+    question: 'What is J2EE (Jakarta EE) and how does it differ from standard Core Java (J2SE)?',
+    analogyStory: {
+      title: 'The Standard Car Engine vs The Industrial Freight Train',
+      text: 'Core Java (J2SE) is like a standard car engine: it gives you basic wheels, steering, and engine parts to write simple desktop scripts. J2EE (Java Enterprise Edition) is an industrial freight train specification! It adds heavy enterprise features: web servlets, database transaction managers, security rules, and messaging queues so massive global companies can run enterprise applications 24/7.',
+      takeaway: 'J2EE adds enterprise web specifications (Servlets, JPA, Transactions) on top of Core Java.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'J2EE (Java 2 Enterprise Edition, now known as Jakarta EE) is a set of enterprise specifications built on top of standard Java (J2SE). It provides enterprise libraries and runtime specifications for building large-scale, multi-tiered, secure web applications. Key J2EE specifications include Servlets (web request handling), JSP, EJB, JPA (database mapping), and JMS (enterprise messaging).',
+    commonMistake: 'Thinking J2EE is a completely different programming language from Java. J2EE is just Java with extra enterprise libraries.',
+    script30Sec: {
+      answerText: 'Core Java (J2SE) provides basic language libraries like Collections and I/O. J2EE (now Jakarta EE) is an enterprise specification extending Java to build large web applications. It includes specifications for Servlets, database transactions, security, and web services.',
+      durationSec: 27
+    },
+    onePictureSummary: ['☕ Core Java (J2SE)', '↓ ➕ Enterprise Spec (J2EE)', '↓ Servlets + Transactions', '↓ Enterprise Web Application'],
+    interviewTip: 'Core Java = base language; J2EE = enterprise web & transaction specification.'
+  },
+  {
+    id: 'ch-9-maven-gradle',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 9,
+    title: 'Chapter 9: Maven & Gradle (Java Build Automation Tools)',
+    shortTitle: '9. Maven & Gradle',
+    icon: '🛠️',
+    estimatedMinutes: 6,
+    question: 'What are Maven and Gradle used for in Java application development?',
+    analogyStory: {
+      title: 'The Automated Grocery Delivery Bot',
+      text: 'When baking a cake, instead of walking to 10 different stores to buy flour, sugar, and chocolate chips yourself, an automated grocery bot reads your shopping list file (`pom.xml`) and fetches all ingredients from the central store automatically! Maven and Gradle read your dependency list, download required Java JAR libraries automatically, compile your code, and build the final executable WAR/JAR file.',
+      takeaway: 'Maven & Gradle download external Java library JARs automatically and automate project builds.'
+    },
+    diagramType: 'software-app',
+    simpleExplanation: 'Maven and Gradle are build automation and dependency management tools for Java applications. They use configuration files (`pom.xml` for Maven, `build.gradle` for Gradle) to automatically download external library JARs from central repositories, compile source code, execute unit tests, and package applications into deployable JAR or WAR files.',
+    commonMistake: 'Manually downloading `.jar` files and pasting them into folders instead of declaring dependencies in `pom.xml`.',
+    script30Sec: {
+      answerText: 'Maven and Gradle are Java build automation tools. They manage project dependencies by automatically downloading required library JAR files from central repositories, executing unit test suites, and packaging code into deployable JAR or WAR artifacts.',
+      durationSec: 26
+    },
+    onePictureSummary: ['📋 pom.xml List', '↓ 🌐 Auto Download JARs', '↓ ⚙️ Compile & Test', '↓ 📦 Executable JAR File'],
+    interviewTip: 'Automatic dependency downloading + build packaging.'
+  },
+  {
+    id: 'ch-10-classes-objects',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 10,
+    title: 'Chapter 10: Classes, Objects & Memory Allocation',
+    shortTitle: '10. Classes & Objects',
     icon: '🍪',
     estimatedMinutes: 8,
     question: 'What is a Class and an Object in Java, and where are they stored in memory?',
     analogyStory: {
       title: 'The Metal Cookie Cutter',
-      text: 'A CLASS is a metal cookie cutter shape. An OBJECT is the real chocolate cookie stamped out in memory! You can stamp out 100 cookies (objects) from one cutter (class).',
-      takeaway: 'Class is the blueprint; Object is the real instance created in memory.'
+      text: 'A CLASS is a metal cookie cutter shape. An OBJECT is the real chocolate cookie stamped out in memory! You can stamp out 100 cookies (objects) from one cutter (class). The cookie cutter lives in code blueprint storage, but every real chocolate cookie takes up physical space on the kitchen counter (Heap Memory).',
+      takeaway: 'Class is the blueprint; Object is the real instance created in heap memory.'
     },
     diagramType: 'cookie-class',
-    simpleExplanation: 'A Class is a blueprint defining fields (data) and methods (behavior). An Object is an actual instance of a class instantiated in Heap Memory using the `new` keyword.',
-    commonMistake: 'Thinking a class takes up heap memory before `new` is called.',
+    simpleExplanation: 'A Class is a blueprint or template defining properties (fields) and behaviors (methods). An Object is a specific instance of a class instantiated in Heap Memory using the `new` keyword. Stack Memory stores local variables and object reference pointers, while Heap Memory stores the actual object data.',
+    commonMistake: 'Thinking a class takes up heap memory before the `new` keyword is executed.',
     script30Sec: {
       answerText: 'A Class is a blueprint that defines properties and behaviors. An Object is an actual instance created in heap memory using the new keyword. Local variable references are stored on the Stack, pointing to objects on the Heap.',
       durationSec: 26
     },
     onePictureSummary: ['📐 Class Blueprint', '↓ new Keyword', '↓ 🍪 Heap Object', '↓ Executable Instance'],
-    interviewTip: 'Blueprint vs Instance is the gold standard answer.'
+    interviewTip: 'Class = Blueprint; Object = Heap Memory Instance.'
   },
   {
-    id: 'ch-9-encapsulation',
+    id: 'ch-11-encapsulation',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
-    chapterNumber: 9,
-    title: 'Chapter 9: Encapsulation & Data Hiding',
-    shortTitle: '9. Encapsulation',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 11,
+    title: 'Chapter 11: Encapsulation & Data Hiding',
+    shortTitle: '11. Encapsulation',
     icon: '📺',
     estimatedMinutes: 8,
     question: 'What is Encapsulation and how do you achieve it in Java?',
     analogyStory: {
       title: 'The TV Remote Control',
-      text: 'When you change TV volume, you press the Volume Up button. You don\'t open the TV with a screwdriver to touch internal wires! The remote control buttons protect the internal wiring.',
+      text: 'When you change TV volume, you press the Volume Up button. You don\'t open the TV with a screwdriver to touch internal high-voltage electrical wires! The plastic remote control buttons protect internal wires from being damaged or corrupted by mistake. In Java, Encapsulation puts safe public buttons (Getters and Setters) over private variables.',
       takeaway: 'Encapsulation protects class data by making fields private and providing safe getter/setter buttons.'
     },
     diagramType: 'tv-remote',
-    simpleExplanation: 'Encapsulation wraps variables and methods inside a single class while restricting direct access. In Java, we declare class variables as `private` and provide `public` getter and setter methods.',
-    commonMistake: 'Thinking encapsulation means hiding whole classes instead of hiding internal variables.',
+    simpleExplanation: 'Encapsulation is the Object-Oriented Programming principle of bundling data variables and methods together inside a single class while hiding direct access to internal fields. In Java, we achieve encapsulation by declaring class variables as `private` and providing `public` getter and setter methods to control how data is read or modified safely.',
+    commonMistake: 'Thinking encapsulation means hiding whole classes instead of restricting direct variable mutation.',
     script30Sec: {
-      answerText: 'Encapsulation is the OOP principle of bundling data and methods inside a single class and hiding internal fields. In Java, we achieve encapsulation by declaring class variables private and providing public getter and setter methods for safe access.',
+      answerText: 'Encapsulation is the OOP principle of bundling data and methods inside a single class while restricting direct access to fields. In Java, we declare class variables private and provide public getter and setter methods for safe data access.',
       durationSec: 26
     },
     onePictureSummary: ['📺 TV Remote', '↓ Public Buttons (Getters/Setters)', '↓ Private Wires', '↓ Encapsulation'],
     interviewTip: 'Private variables + public getters/setters = 100% full marks.'
   },
   {
-    id: 'ch-10-inheritance',
+    id: 'ch-12-inheritance',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
-    chapterNumber: 10,
-    title: 'Chapter 10: Inheritance & Code Reusability',
-    shortTitle: '10. Inheritance',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 12,
+    title: 'Chapter 12: Inheritance & Code Reusability',
+    shortTitle: '12. Inheritance',
     icon: '🧬',
     estimatedMinutes: 8,
     question: 'What is Inheritance and how is it implemented in Java?',
     analogyStory: {
       title: 'Parent & Child Attributes',
-      text: 'A child inherits eye color and last name from their parents, but also learns to play guitar! In Java, a Child Class inherits fields and methods from a Parent Class using the `extends` keyword.',
+      text: 'A child inherits eye color, height, and last name from their parents automatically, but the child can also learn new skills like playing guitar! In Java, a Child Class inherits fields and methods from a Parent Class using the `extends` keyword, saving you from rewriting identical code twice.',
       takeaway: 'Inheritance allows child classes to reuse parent code and add new features.'
     },
     diagramType: 'family-inherit',
-    simpleExplanation: 'Inheritance allows a subclass to inherit attributes and methods from a superclass using the `extends` keyword, promoting code reusability and establishing an IS-A relationship.',
+    simpleExplanation: 'Inheritance is an OOP mechanism where a subclass (child class) inherits attributes and methods from a superclass (parent class) using the `extends` keyword. It promotes code reusability and establishes an IS-A relationship (for example: a `Dog` IS-A `Animal`).',
     commonMistake: 'Thinking Java supports multiple inheritance with classes (Java supports single class inheritance, multiple interface implementation).',
     script30Sec: {
       answerText: 'Inheritance is an OOP concept where a subclass inherits properties and methods from a superclass using the extends keyword. It promotes code reusability and establishes an IS-A relationship between classes.',
@@ -302,50 +351,50 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Mention extends keyword and IS-A relationship.'
   },
   {
-    id: 'ch-11-polymorphism',
+    id: 'ch-13-polymorphism',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
-    chapterNumber: 11,
-    title: 'Chapter 11: Polymorphism (Overloading vs Overriding)',
-    shortTitle: '11. Polymorphism',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 13,
+    title: 'Chapter 13: Polymorphism (Overloading vs Overriding)',
+    shortTitle: '13. Polymorphism',
     icon: '🎭',
     estimatedMinutes: 9,
     question: 'What is Polymorphism and what is the difference between Overloading and Overriding?',
     analogyStory: {
       title: 'The Actor on Stage',
-      text: 'An actor plays Batman in a movie and plays a father at home. Same person, different behavior depending on context! In Java, a single method name can exhibit multiple behaviors.',
-      takeaway: 'Overloading = Same class (compile-time). Overriding = Child class (runtime).'
+      text: 'An actor plays a hero in an action movie, a comedian in a show, and a father at home. Same single actor, but completely different behavior depending on the situation! In Java, Polymorphism ("many forms") allows a single method name to behave differently depending on parameter arguments or child class definitions.',
+      takeaway: 'Overloading = Same class (compile-time). Overriding = Subclass (runtime).'
     },
     diagramType: 'actor-poly',
-    simpleExplanation: 'Polymorphism means "many forms". Method Overloading occurs in the same class (same method name, different parameters). Method Overriding occurs in a child class (redefining parent method).',
-    commonMistake: 'Thinking Overloading happens in child classes. Overloading is in the SAME class.',
+    simpleExplanation: 'Polymorphism means "many forms". Method Overloading occurs within the SAME class when methods share the same name but have different parameter lists (compile-time polymorphism). Method Overriding occurs when a SUBCLASS redefines a method inherited from its superclass with the exact same name and signature (runtime polymorphism).',
+    commonMistake: 'Thinking Method Overloading happens between parent and child classes. Overloading is inside the SAME class!',
     script30Sec: {
-      answerText: 'Polymorphism allows one interface or method name to take multiple forms. Method Overloading occurs within the same class with different parameter signatures at compile time. Method Overriding occurs when a subclass redefines a parent class method at runtime.',
+      answerText: 'Polymorphism allows one method name to take multiple forms. Method Overloading occurs within the same class with different parameter signatures at compile time. Method Overriding occurs when a subclass redefines a parent class method at runtime.',
       durationSec: 28
     },
     onePictureSummary: ['🎭 Polymorphism', '↓ Overloading (Same Class)', '↓ Overriding (Subclass)', '↓ Flexible Behavior'],
     interviewTip: 'Compile-time (Overloading) vs Runtime (Overriding) distinction is key.'
   },
   {
-    id: 'ch-12-abstraction',
+    id: 'ch-14-abstraction',
     partId: 'part-3',
-    partTitle: 'Section III: Java & OOP',
-    chapterNumber: 12,
-    title: 'Chapter 12: Abstraction (Abstract Classes vs Interfaces)',
-    shortTitle: '12. Abstraction',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 14,
+    title: 'Chapter 14: Abstraction (Abstract Classes vs Interfaces)',
+    shortTitle: '14. Abstraction',
     icon: '🚗',
     estimatedMinutes: 9,
     question: 'What is Abstraction and how does an Abstract Class differ from an Interface?',
     analogyStory: {
       title: 'The Car Steering Wheel',
-      text: 'When driving a car, you turn the steering wheel. You don\'t need to know how power steering fluid moves inside the engine block! Abstraction shows essential features while hiding implementation details.',
+      text: 'When driving a car, you turn the steering wheel to go left or right. You don\'t need to know how high-pressure power steering fluid flows inside the engine pipes! Abstraction shows essential user controls while hiding internal mechanical complexity.',
       takeaway: 'Interface = 100% abstract contract. Abstract Class = Partial contract with shared code.'
     },
     diagramType: 'car-abstract',
-    simpleExplanation: 'Abstraction hides internal implementation details and shows only essential functionality to the user using Abstract Classes and Interfaces.',
-    commonMistake: 'Confusing Abstraction (hiding implementation complexity) with Encapsulation (hiding data variables).',
+    simpleExplanation: 'Abstraction is the OOP principle of hiding internal implementation details and exposing only essential functionality. In Java, we achieve abstraction using Abstract Classes (which can contain both abstract methods and concrete implemented methods) and Interfaces (which define 100% abstract contracts that implementing classes must fulfill).',
+    commonMistake: 'Confusing Abstraction (hiding implementation complexity) with Encapsulation (hiding data variables behind getters/setters).',
     script30Sec: {
-      answerText: 'Abstraction is the OOP principle of hiding internal implementation details and showing only essential features. In Java, we achieve abstraction using Abstract Classes for partial implementation and Interfaces for 100% contract specification.',
+      answerText: 'Abstraction hides internal implementation details and shows only essential features. In Java, we use Abstract Classes for partial implementation and Interfaces for 100% contract specification.',
       durationSec: 26
     },
     onePictureSummary: ['🚗 Car Steering Wheel', '↓ Essential Controls', '↓ Hidden Engine Complexity', '↓ Abstraction'],
@@ -354,18 +403,18 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
 
   // SECTION IV: DATA STRUCTURES & ALGORITHMS (DSA)
   {
-    id: 'ch-13-arrays',
+    id: 'ch-15-arrays',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 13,
-    title: 'Chapter 13: Arrays & Memory Contiguity',
-    shortTitle: '13. Arrays',
+    chapterNumber: 15,
+    title: 'Chapter 15: Arrays & Memory Contiguity',
+    shortTitle: '15. Arrays',
     icon: '📦',
     estimatedMinutes: 7,
     question: 'What is an Array and what are its advantages and limitations?',
     analogyStory: {
       title: 'The Row of Hotel Rooms',
-      text: 'An Array is a row of 10 numbered hotel rooms side by side. If you know room index 4, you can walk straight to room 4 instantly in O(1) time! But you cannot expand the hotel row dynamically once built.',
+      text: 'An Array is like a row of 10 numbered hotel rooms side by side. If you know room index 4, you can walk straight to room 4 instantly in O(1) time! But you cannot expand the hotel row dynamically once built.',
       takeaway: 'Array provides O(1) index access but has fixed size.'
     },
     diagramType: 'array-lockers',
@@ -379,12 +428,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Contiguous memory + O(1) index access.'
   },
   {
-    id: 'ch-14-stack-queue',
+    id: 'ch-16-stack-queue',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 14,
-    title: 'Chapter 14: Stacks & Queues (LIFO vs FIFO)',
-    shortTitle: '14. Stack & Queue',
+    chapterNumber: 16,
+    title: 'Chapter 16: Stacks & Queues (LIFO vs FIFO)',
+    shortTitle: '16. Stack & Queue',
     icon: '🧱',
     estimatedMinutes: 8,
     question: 'What is the difference between a Stack and a Queue?',
@@ -404,100 +453,100 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'LIFO vs FIFO is the fundamental difference.'
   },
   {
-    id: 'ch-15-hashmaps',
+    id: 'ch-17-hashmaps-collision',
     partId: 'part-4',
     partTitle: 'Section IV: DSA',
-    chapterNumber: 15,
-    title: 'Chapter 15: HashMaps & O(1) Time Complexity',
-    shortTitle: '15. HashMaps O(1)',
+    chapterNumber: 17,
+    title: 'Chapter 17: HashMaps & Hash Collision Handling (O(1) Time)',
+    shortTitle: '17. HashMaps O(1)',
     icon: '📬',
-    estimatedMinutes: 8,
-    question: 'How does a HashMap work internally and what is its time complexity?',
+    estimatedMinutes: 9,
+    question: 'How does a HashMap work internally in Java and how does it handle hash collisions?',
     analogyStory: {
-      title: 'Apartment Mailboxes',
-      text: 'In an apartment building with 100 mailboxes, each mailbox has a key number like "Box 4B". Instead of opening 100 doors to find your mail, you go straight to Box 4B instantly!',
-      takeaway: 'HashMap retrieves values by unique key in O(1) constant time.'
+      title: 'Apartment Mailboxes & Shared Key Buckets',
+      text: 'In an apartment building with 100 mailboxes, each mailbox has a key number like "Box 4B". When mail arrives, you calculate the key number and drop mail directly into Box 4B in O(1) instant time! If two different letters accidentally calculate the exact same Box 4B key (a Hash Collision), Java attaches a small chain envelope (LinkedList) inside Box 4B to store both letters safely.',
+      takeaway: 'HashMap uses hashCode() for O(1) bucket lookups and LinkedList/Tree nodes for hash collisions.'
     },
     diagramType: 'hashmap-mail',
-    simpleExplanation: 'A HashMap stores data in Key-Value pairs. Java uses the key\'s `hashCode()` to calculate the storage bucket index directly, achieving average O(1) lookup time.',
-    commonMistake: 'Saying HashMap search takes O(N) linear time like a loop.',
+    simpleExplanation: 'A HashMap stores data in Key-Value pairs using an underlying array of buckets. When `put(key, value)` or `get(key)` is called, Java computes the key\'s `hashCode()` to calculate the bucket array index directly in O(1) average time. If two distinct keys produce the same bucket index (Hash Collision), Java stores them in the same bucket using a LinkedList (or a Red-Black Tree in Java 8+ when bucket size exceeds 8).',
+    commonMistake: 'Saying HashMap search takes O(N) linear time like a loop. HashMap average time complexity is O(1).',
     script30Sec: {
-      answerText: 'A HashMap stores data in Key-Value pairs. It uses the key\'s hashCode to locate array bucket indices directly. Its average time complexity for insertion, lookup, and deletion is O(1) constant time.',
-      durationSec: 26
+      answerText: 'A HashMap stores Key-Value pairs. It uses key.hashCode() to locate bucket array indices directly in O(1) average time. If two keys collide in the same bucket, Java handles collisions by chaining entries in a LinkedList, converting to a Red-Black Tree if bucket size exceeds 8.',
+      durationSec: 28
     },
-    onePictureSummary: ['📬 Mailbox Key', '↓ hashCode() Index', '↓ Direct Bucket', '↓ O(1) Fast Time'],
-    interviewTip: 'Key-Value pairs + O(1) time complexity.'
+    onePictureSummary: ['📬 Key.hashCode()', '↓ Direct Array Bucket Index', '↓ O(1) Constant Lookup', '↓ LinkedList Collision Chain'],
+    interviewTip: 'Key-Value pairs + O(1) lookup + LinkedList/Tree collision chaining.'
   },
 
   // SECTION V: RELATIONAL & NOSQL DATABASES
   {
-    id: 'ch-16-relational-keys',
+    id: 'ch-18-oracle-sqlserver',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 16,
-    title: 'Chapter 16: Relational DBs (Oracle/SQL Server) & Keys',
-    shortTitle: '16. Relational DB Keys',
+    chapterNumber: 18,
+    title: 'Chapter 18: Relational DBs (Oracle & Microsoft SQL Server)',
+    shortTitle: '18. Oracle & SQL Server',
     icon: '🔑',
     estimatedMinutes: 8,
-    question: 'What is a Primary Key and Foreign Key in relational databases like Oracle or SQL Server?',
+    question: 'What is a Relational Database (RDBMS) like Oracle or SQL Server?',
     analogyStory: {
-      title: 'Student ID Badges & Classrooms',
-      text: 'Every student wears a unique ID badge (Primary Key). On the badge, it says "Room 5" (Foreign Key). Foreign Key links the student table to the classroom table!',
-      takeaway: 'Primary Key uniquely identifies a row. Foreign Key links to another table.'
+      title: 'The Organized Library File Cabinet',
+      text: 'An RDBMS like Oracle or SQL Server is an organized library file cabinet. Every file folder is a table with strict columns (Book Title, Author, Year). Every single book is a row with a unique sticker badge (Primary Key).',
+      takeaway: 'RDBMS stores structured data in tables with fixed columns and primary key relationships.'
     },
     diagramType: 'sql-library',
-    simpleExplanation: 'A Primary Key uniquely identifies each row in a database table. A Foreign Key is a field in one table pointing to the Primary Key in another table to establish relationships.',
-    commonMistake: 'Thinking Foreign Key values must be unique in every row.',
+    simpleExplanation: 'Relational Database Management Systems (RDBMS) like Oracle Database and Microsoft SQL Server store data in structured tables consisting of rows and columns. They enforce data integrity, schema consistency, and ACID transactions (Atomicity, Consistency, Isolation, Durability).',
+    commonMistake: 'Thinking relational databases allow saving arbitrary unstructured JSON without table schemas.',
     script30Sec: {
-      answerText: 'A Primary Key uniquely identifies a record within a table and cannot contain null values. A Foreign Key is a reference field that points to the Primary Key of another table, creating relational links between tables.',
-      durationSec: 25
+      answerText: 'Relational databases like Oracle and SQL Server store structured enterprise data in tables with predefined schemas. They enforce relational integrity using Primary and Foreign Keys, and guarantee ACID properties for financial transactions.',
+      durationSec: 26
     },
-    onePictureSummary: ['🔑 Primary Key (Unique)', '↓ Foreign Key (Reference)', '↓ Relational Tables', '↓ Data Integrity'],
-    interviewTip: 'PK = unique row ID; FK = reference to another table.'
+    onePictureSummary: ['📊 Structured SQL Tables', '↓ 🔑 Primary & Foreign Keys', '↓ 🛡️ ACID Transactions', '↓ Enterprise Oracle/SQL Server'],
+    interviewTip: 'Structured tables + Primary/Foreign Keys + ACID transactions.'
   },
   {
-    id: 'ch-17-sql-joins',
+    id: 'ch-19-sql-joins',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 17,
-    title: 'Chapter 17: SQL Joins (INNER vs LEFT JOIN)',
-    shortTitle: '17. SQL Joins',
+    chapterNumber: 19,
+    title: 'Chapter 19: SQL Joins (INNER vs LEFT JOIN)',
+    shortTitle: '19. SQL Joins',
     icon: '🔗',
     estimatedMinutes: 9,
     question: 'What is the difference between INNER JOIN and LEFT JOIN in SQL?',
     analogyStory: {
       title: 'Matching Pair of Shoes',
-      text: 'INNER JOIN is combining left and right shoes only when a matching pair exists! LEFT JOIN keeps ALL left shoes, even if some don\'t have a matching right shoe.',
+      text: 'INNER JOIN is combining left and right shoes only when a matching pair exists! LEFT JOIN keeps ALL left shoes, even if some don\'t have a matching right shoe in the closet.',
       takeaway: 'INNER JOIN = Matching rows only. LEFT JOIN = All left rows + matching right rows.'
     },
     diagramType: 'sql-library',
     simpleExplanation: 'SQL JOIN combines rows from two tables using a common key. `INNER JOIN` returns matching records in both tables; `LEFT JOIN` returns all records from the left table plus matched records from the right table.',
     commonMistake: 'Confusing LEFT JOIN with FULL OUTER JOIN.',
     script30Sec: {
-      answerText: 'An INNER JOIN combines records from two tables only where the join condition matches in both tables. A LEFT JOIN returns all records from the left table and the matched records from the right table, filling non-matching right columns with NULL.',
+      answerText: 'An INNER JOIN combines records from two tables only where the join condition matches in both tables. A LEFT JOIN returns all records from the left table and matched records from the right table, filling non-matching right columns with NULL.',
       durationSec: 27
     },
     onePictureSummary: ['👟 Left Table', '↓ 👟 Right Table', '↓ INNER JOIN (Matches)', '↓ LEFT JOIN (All Left)'],
     interviewTip: 'Matching rows only (INNER) vs All left rows (LEFT).'
   },
   {
-    id: 'ch-18-nosql-firestore',
+    id: 'ch-20-nosql-firestore',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 18,
-    title: 'Chapter 18: NoSQL Databases & Document Storage',
-    shortTitle: '18. NoSQL Databases',
+    chapterNumber: 20,
+    title: 'Chapter 20: NoSQL Databases & Document Storage (Firestore)',
+    shortTitle: '20. NoSQL Databases',
     icon: '🗂️',
     estimatedMinutes: 7,
     question: 'How do NoSQL databases differ from SQL relational databases?',
     analogyStory: {
-      title: 'The Rigid Grid vs Flexible Folders',
-      text: 'A SQL database is like a strict Excel table where every row must fit fixed columns. A NoSQL database (like Firestore or MongoDB) is like a drawer of JSON document folders where each folder can hold different fields without schema locks.',
+      title: 'The Flexible Document Folder Drawer',
+      text: 'A SQL database is like a strict Excel table where every row must fit fixed columns. A NoSQL database (like Google Cloud Firestore or MongoDB) is like a drawer of JSON document folders where each document can hold different fields without table schema locks.',
       takeaway: 'SQL = Fixed relational tables. NoSQL = Flexible JSON document collections.'
     },
     diagramType: 'sql-library',
     simpleExplanation: 'NoSQL databases store unstructured or semi-structured data as JSON documents or Key-Value pairs without fixed table schemas, allowing horizontal scaling and flexible schema iterations.',
-    commonMistake: 'Thinking NoSQL is always better than SQL. SQL is preferred for complex transactional relational data.',
+    commonMistake: 'Thinking NoSQL is always better than SQL. SQL is preferred for complex relational financial data.',
     script30Sec: {
       answerText: 'SQL databases use rigid tables with predefined schemas and ACID transactions for relational data. NoSQL databases store flexible JSON documents, providing schema agility and easy horizontal scaling for modern cloud applications.',
       durationSec: 26
@@ -506,42 +555,67 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Fixed schema tables (SQL) vs Flexible JSON documents (NoSQL).'
   },
 
-  // SECTION VI: BACKEND & WEB SERVICES
+  // SECTION VI: BACKEND FRAMEWORKS & WEB SERVICES
   {
-    id: 'ch-19-rest-apis',
+    id: 'ch-21-soap-vs-rest',
     partId: 'part-6',
-    partTitle: 'Section VI: Backend & Web Services',
-    chapterNumber: 19,
-    title: 'Chapter 19: REST APIs & HTTP Methods',
-    shortTitle: '19. REST APIs',
-    icon: '🍽️',
-    estimatedMinutes: 9,
-    question: 'What is a REST API and what are common HTTP methods and status codes?',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 21,
+    title: 'Chapter 21: Web Services: SOAP vs REST APIs',
+    shortTitle: '21. SOAP vs REST',
+    icon: '🌐',
+    estimatedMinutes: 7,
+    question: 'What is a Web Service and what is the difference between SOAP and REST APIs?',
     analogyStory: {
-      title: 'The Restaurant Waiter',
-      text: 'You sit at a restaurant. You read the menu (API doc). You give your order to the waiter (REST API). The waiter takes order to kitchen (Database), gets cooked food, and brings it to your table in a clean tray (JSON payload)!',
-      takeaway: 'REST API acts as a middleman waiter delivering JSON data over HTTP.'
+      title: 'The Heavy Certified Letter vs The Quick Text Message',
+      text: 'SOAP is like sending a heavy certified letter sealed in a strict wax envelope (XML format only) with strict legal protocols. REST is like sending a quick text message (JSON format over HTTP). REST is fast, lightweight, and easy to read.',
+      takeaway: 'SOAP uses strict XML envelopes; REST uses lightweight JSON payloads over HTTP.'
     },
     diagramType: 'rest-waiter',
-    simpleExplanation: 'REST API allows web applications to communicate over HTTP using JSON. Common methods: GET (Fetch), POST (Create), PUT (Update), DELETE (Remove). Common status codes: 200 OK, 201 Created, 404 Not Found, 500 Server Error.',
-    commonMistake: 'Saying REST is a programming language written in Java.',
+    simpleExplanation: 'Web Services allow applications to communicate over networks. SOAP (Simple Object Access Protocol) is a strict protocol using XML messaging. REST (Representational State Transfer) is a lightweight architectural style using JSON over standard HTTP methods.',
+    commonMistake: 'Thinking SOAP and REST are programming languages. They are communication standards.',
     script30Sec: {
-      answerText: 'A REST API enables communication between applications over HTTP using JSON format. We use GET to retrieve data, POST to create resources, PUT to update resources, and DELETE to remove resources. Standard status codes include 200 OK, 201 Created, 404 Not Found, and 500 Internal Error.',
-      durationSec: 28
+      answerText: 'SOAP is a strict protocol relying on XML format and strict contracts. REST is a lightweight architectural style using standard HTTP methods and JSON payloads, making it faster and preferred for modern web APIs.',
+      durationSec: 26
     },
-    onePictureSummary: ['📱 Client Customer', '↓ 🤵 REST Waiter (HTTP)', '↓ 🍳 Kitchen Database', '↓ 🍱 JSON Food'],
+    onePictureSummary: ['✉️ SOAP Wax Envelope (XML)', '↓ 📱 REST Text Message (JSON)', '↓ HTTP Transport', '↓ Modern Web API'],
+    interviewTip: 'SOAP = XML protocol; REST = JSON HTTP architectural style.'
+  },
+  {
+    id: 'ch-22-http-methods',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 22,
+    title: 'Chapter 22: HTTP Methods & Status Codes',
+    shortTitle: '22. HTTP Methods',
+    icon: '🍽️',
+    estimatedMinutes: 8,
+    question: 'What are common HTTP methods (GET, POST, PUT, DELETE) and status codes (200, 201, 404, 500)?',
+    analogyStory: {
+      title: 'The Library Counter Operations',
+      text: 'GET is reading a book (Fetch). POST is registering a new library card (Create). PUT is updating your home address on the card (Update). DELETE is canceling your card (Remove). 200 OK means success; 404 Not Found means book isn\'t on the shelf!',
+      takeaway: 'GET = Read, POST = Create, PUT = Update, DELETE = Remove.'
+    },
+    diagramType: 'rest-waiter',
+    simpleExplanation: 'REST APIs use standard HTTP verbs: `GET` (retrieve data), `POST` (create data), `PUT` (update data), `DELETE` (remove data). Common status codes: `200 OK` (Success), `201 Created` (Resource Created), `404 Not Found` (Resource Missing), `500 Internal Server Error` (Backend Exception).',
+    commonMistake: 'Using GET to create or delete data. GET should only read data without side effects.',
+    script30Sec: {
+      answerText: 'REST APIs use HTTP methods: GET to fetch data, POST to create resources, PUT to update resources, and DELETE to remove resources. Key status codes are 200 OK, 201 Created, 404 Not Found, and 500 Internal Error.',
+      durationSec: 27
+    },
+    onePictureSummary: ['GET (Read)', '↓ POST (Create)', '↓ PUT (Update)', '↓ DELETE (Remove)'],
     interviewTip: 'GET/POST/PUT/DELETE + 200/404 status codes.'
   },
   {
-    id: 'ch-20-spring-boot',
+    id: 'ch-23-spring-boot',
     partId: 'part-6',
-    partTitle: 'Section VI: Backend & Web Services',
-    chapterNumber: 20,
-    title: 'Chapter 20: Spring Boot & 3-Tier Architecture',
-    shortTitle: '20. Spring Boot',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 23,
+    title: 'Chapter 23: Spring Boot & 3-Tier Architecture',
+    shortTitle: '23. Spring Boot',
     icon: '🔌',
     estimatedMinutes: 9,
-    question: 'What is Spring Boot and why do we use 3-tier architecture?',
+    question: 'What is Spring Boot and why do we use 3-tier architecture (@RestController, @Service, @Repository)?',
     analogyStory: {
       title: 'The 3-Worker Kitchen Assembly Line',
       text: 'In Spring Boot: `@RestController` is reception taking customer orders. `@Service` is chef executing business recipes. `@Repository` is pantry worker fetching ingredients from database cabinet.',
@@ -549,7 +623,7 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     },
     diagramType: 'spring-factory',
     simpleExplanation: 'Spring Boot is a Java framework that simplifies building microservices with auto-configuration. 3-tier architecture separates concerns cleanly into Controller, Service, and Repository layers.',
-    commonMistake: 'Thinking Spring Boot requires manual XML configuration files.',
+    commonMistake: 'Writing database SQL queries directly inside `@RestController`. Keep DB logic in `@Repository`!',
     script30Sec: {
       answerText: 'Spring Boot is a Java framework used to build production-ready web services quickly. We use 3-tier architecture to separate concerns: RestController manages HTTP endpoints, Service layer handles business logic, and Repository layer interacts with the database.',
       durationSec: 27
@@ -557,15 +631,90 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🌐 RestController', '↓ 🧠 Service Logic', '↓ 🛢️ Repository DB', '↓ 🔌 Spring Boot'],
     interviewTip: 'Explain Controller -> Service -> Repository flow.'
   },
-
-  // SECTION VII: AI TOOLS IN SDLC WORKFLOWS
   {
-    id: 'ch-21-ai-codegen',
+    id: 'ch-24-spring-data-jpa',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 24,
+    title: 'Chapter 24: Spring Data JPA & Hibernate (Object-Relational Mapping)',
+    shortTitle: '24. Spring Data JPA',
+    icon: '🛢️',
+    estimatedMinutes: 8,
+    question: 'What is ORM and how does Spring Data JPA simplify database queries?',
+    analogyStory: {
+      title: 'The Automatic Translator for Databases',
+      text: 'Java speaks in Objects (`new User()`), but SQL databases speak in Tables (`INSERT INTO users`). Instead of writing raw SQL strings manually, Spring Data JPA acts as an automatic translator (ORM) converting Java objects into database tables automatically!',
+      takeaway: 'Spring Data JPA maps Java objects to SQL tables automatically.'
+    },
+    diagramType: 'spring-factory',
+    simpleExplanation: 'ORM (Object-Relational Mapping) maps Java entity classes to relational database tables. Spring Data JPA uses Hibernate to generate SQL queries automatically from method names (like `findByEmail()`), eliminating repetitive JDBC SQL boilerplate.',
+    commonMistake: 'Writing raw JDBC SQL connection boilerplate instead of extending `JpaRepository`.',
+    script30Sec: {
+      answerText: 'Spring Data JPA is an ORM abstraction built on Hibernate. It automatically maps Java entity classes to database tables and generates SQL queries from method signatures, eliminating manual JDBC boilerplate code.',
+      durationSec: 26
+    },
+    onePictureSummary: ['☕ Java User Object', '↓ 🔄 Spring Data JPA / Hibernate', '↓ 🛢️ SQL User Table', '↓ Automatic Mapping'],
+    interviewTip: 'Object-Relational Mapping (ORM) maps Java Objects to SQL Tables.'
+  },
+  {
+    id: 'ch-25-spring-security-jwt',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 25,
+    title: 'Chapter 25: Spring Security & JWT Tokens (API Authentication)',
+    shortTitle: '25. Spring Security',
+    icon: '🔒',
+    estimatedMinutes: 8,
+    question: 'How do you secure REST APIs using Spring Security and JWT (JSON Web Tokens)?',
+    analogyStory: {
+      title: 'The VIP Concert Wristband',
+      text: 'When you enter a concert venue, the guard checks your ID once and gives you a stamped VIP wristband (JWT Token). For the rest of the night, whenever you buy drinks, you show your wristband instead of showing your ID over and over! A JWT token allows users to authenticate once and access REST endpoints securely.',
+      takeaway: 'JWT tokens authenticate REST API calls statelessly without storing sessions on the server.'
+    },
+    diagramType: 'spring-factory',
+    simpleExplanation: 'Spring Security protects REST APIs from unauthorized access. JSON Web Tokens (JWT) provide stateless authentication: after the user logs in, the server signs a encrypted JWT token sent in the HTTP Authorization header on every subsequent request.',
+    commonMistake: 'Storing passwords in plain text instead of hashing them using BCryptPasswordEncoder.',
+    script30Sec: {
+      answerText: 'Spring Security manages API authentication and authorization. We use JWT tokens for stateless authentication: upon login, the server issues a signed JWT token that the client sends in the HTTP Authorization header for subsequent API requests.',
+      durationSec: 27
+    },
+    onePictureSummary: ['🔑 User Login', '↓ 🎟️ Signed JWT Token', '↓ 🛡️ Spring Security Filter', '↓ Authorized REST Access'],
+    interviewTip: 'Stateless JWT tokens sent in HTTP Authorization header.'
+  },
+  {
+    id: 'ch-26-postman-swagger',
+    partId: 'part-6',
+    partTitle: 'Section VI: Backend Services',
+    chapterNumber: 26,
+    title: 'Chapter 26: Postman & Swagger / OpenAPI (API Testing & Docs)',
+    shortTitle: '26. Postman & Swagger',
+    icon: '🧪',
+    estimatedMinutes: 6,
+    question: 'How do you test and document REST APIs using Postman and Swagger/OpenAPI?',
+    analogyStory: {
+      title: 'The Menu Catalog & Quality Inspector',
+      text: 'Swagger is the interactive menu catalog that lists every available dish and ingredient automatically. Postman is the quality inspector taking orders, sending test requests, and verifying the response food delivered!',
+      takeaway: 'Postman tests REST API calls; Swagger auto-generates interactive API documentation.'
+    },
+    diagramType: 'rest-waiter',
+    simpleExplanation: 'Postman is an API client tool used to send HTTP requests (GET, POST, PUT, DELETE) and test REST API endpoints. Swagger (OpenAPI) automatically inspects `@RestController` annotations to generate interactive web documentation for developers.',
+    commonMistake: 'Sending REST requests blindly without inspecting HTTP status codes and JSON response bodies.',
+    script30Sec: {
+      answerText: 'Postman is an API client used to execute and validate HTTP requests during API development. Swagger OpenAPI automatically generates interactive web documentation from Spring Boot annotations for frontend team integration.',
+      durationSec: 26
+    },
+    onePictureSummary: ['🧪 Postman API Testing', '↓ 📄 Swagger Web Docs', '↓ 🌐 Endpoint Verification', '↓ Seamless Integration'],
+    interviewTip: 'Postman = endpoint testing; Swagger = automatic API documentation.'
+  },
+
+  // SECTION VII: AI TOOLS & GENAI IN THE SDLC WORKFLOW
+  {
+    id: 'ch-27-ai-codegen',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools in SDLC',
-    chapterNumber: 21,
-    title: 'Chapter 21: AI Code Generation (GitHub Copilot)',
-    shortTitle: '21. AI Code Generation',
+    chapterNumber: 27,
+    title: 'Chapter 27: AI Code Generation (GitHub Copilot)',
+    shortTitle: '27. AI Code Generation',
     icon: '🤖',
     estimatedMinutes: 7,
     question: 'How do code assistants like GitHub Copilot accelerate SDLC activities?',
@@ -585,12 +734,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Faster boilerplate generation + human developer verification.'
   },
   {
-    id: 'ch-22-prompt-eng',
+    id: 'ch-28-prompt-eng',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools in SDLC',
-    chapterNumber: 22,
-    title: 'Chapter 22: Prompt Engineering for Debugging & Documentation',
-    shortTitle: '22. Prompt Engineering',
+    chapterNumber: 28,
+    title: 'Chapter 28: Prompt Engineering for Debugging & Documentation',
+    shortTitle: '28. Prompt Engineering',
     icon: '💡',
     estimatedMinutes: 7,
     question: 'How do you use Prompt Engineering to debug stack traces and generate documentation?',
@@ -609,40 +758,15 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🔍 Error Stack Trace', '↓ 💡 Precise AI Prompt', '↓ 🛠️ Root Cause Fix', '↓ Clear Documentation'],
     interviewTip: 'Precise context + error logs = accurate AI debugging.'
   },
-  {
-    id: 'ch-23-ai-autotest',
-    partId: 'part-7',
-    partTitle: 'Section VII: AI Tools in SDLC',
-    chapterNumber: 23,
-    title: 'Chapter 23: AI-Driven Automated Testing & Documentation',
-    shortTitle: '23. AI Automated Testing',
-    icon: '🧪',
-    estimatedMinutes: 7,
-    question: 'How do emerging AI tools automate unit testing and documentation in enterprise applications?',
-    analogyStory: {
-      title: 'The Automated Quality Inspector',
-      text: 'Instead of manually clicking every button on a new smartphone, a robotic arm tests 1,000 screen taps per minute! AI test generators parse Java methods to create edge-case JUnit test scripts automatically.',
-      takeaway: 'AI tools auto-generate JUnit test cases covering edge cases.'
-    },
-    diagramType: 'ai-copilot',
-    simpleExplanation: 'AI testing frameworks analyze Java source code and automatically generate comprehensive JUnit test suites, mocking external dependencies and discovering edge-case inputs to maximize code coverage.',
-    commonMistake: 'Relying only on AI tests without manual integration testing.',
-    script30Sec: {
-      answerText: 'AI tools enhance quality assurance by analyzing method contracts to auto-generate JUnit unit tests, mock external REST calls, discover boundary condition bugs, and maintain up-to-date API documentation automatically.',
-      durationSec: 26
-    },
-    onePictureSummary: ['⚙️ Java Source Code', '↓ 🤖 AI Test Suite Generator', '↓ 🧪 Automated JUnit Tests', '↓ High Code Coverage'],
-    interviewTip: 'Edge-case discovery + automated JUnit generation.'
-  },
 
-  // SECTION VIII: DEVOPS, GIT & CLOUD INFRASTRUCTURE
+  // SECTION VIII: DEVOPS, CONTAINERS & CLOUD INFRASTRUCTURE
   {
-    id: 'ch-24-git-pull-req',
+    id: 'ch-29-git-pull-req',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 24,
-    title: 'Chapter 24: Git Version Control & Pull Requests',
-    shortTitle: '24. Git Workflows',
+    chapterNumber: 29,
+    title: 'Chapter 29: Git Version Control & Pull Requests',
+    shortTitle: '29. Git Workflows',
     icon: '🌿',
     estimatedMinutes: 8,
     question: 'What is your Git workflow when developing a new feature with a global team?',
@@ -662,12 +786,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Feature branching + Pull Request peer review.'
   },
   {
-    id: 'ch-25-docker-k8s',
+    id: 'ch-30-docker-k8s',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 25,
-    title: 'Chapter 25: Docker Containers & Kubernetes',
-    shortTitle: '25. Docker & Kubernetes',
+    chapterNumber: 30,
+    title: 'Chapter 30: Docker Containers & Kubernetes',
+    shortTitle: '30. Docker & Kubernetes',
     icon: '📦',
     estimatedMinutes: 8,
     question: 'What problem does Docker solve and what is Kubernetes used for?',
@@ -687,39 +811,39 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Docker = environment consistency; Kubernetes = container cluster orchestration.'
   },
   {
-    id: 'ch-26-cicd-devops',
+    id: 'ch-31-cloud-aws-gcp',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 26,
-    title: 'Chapter 26: CI/CD Pipelines & Automated Release',
-    shortTitle: '26. CI/CD Pipelines',
-    icon: '⚙️',
-    estimatedMinutes: 8,
-    question: 'What is CI/CD and how does GitHub Actions automate deployments?',
+    chapterNumber: 31,
+    title: 'Chapter 31: Cloud Platforms (AWS, Azure & GCP)',
+    shortTitle: '31. Cloud Platforms',
+    icon: '⚡',
+    estimatedMinutes: 7,
+    question: 'What are the main advantages of Cloud Platforms like AWS, Azure, and GCP?',
     analogyStory: {
-      title: 'The Automated Car Car-wash',
-      text: 'Instead of washing a car by hand, you drive into an automated tunnel: soap spray (Build), scrub (Test), dry (Package), and drive out clean (Deploy)! CI/CD pipelines run automated builds and tests every time code is pushed.',
-      takeaway: 'CI builds and tests code automatically; CD deploys tested code to production.'
+      title: 'The City Power Grid',
+      text: 'Instead of building your own private electrical generator in your backyard, you plug into the city power grid and pay only for the electricity you consume. Cloud platforms like AWS, Azure, and GCP let companies rent virtual servers and databases on demand without owning physical server hardware.',
+      takeaway: 'Cloud provides elastic computing resources on demand without physical hardware overhead.'
     },
-    diagramType: 'git-docs',
-    simpleExplanation: 'CI/CD stands for Continuous Integration and Continuous Deployment. Pipelines (using tools like GitHub Actions or Jenkins) automatically compile code, run unit tests, build Docker images, and deploy artifacts to cloud servers on every push.',
-    commonMistake: 'Deploying manually over SSH instead of using automated CI/CD pipelines.',
+    diagramType: 'cloud-power',
+    simpleExplanation: 'Cloud platforms (Amazon Web Services, Microsoft Azure, Google Cloud Platform) provide on-demand computing power, storage, and databases over the internet. They eliminate physical hardware maintenance and enable global auto-scaling.',
+    commonMistake: 'Thinking cloud platforms are only for file storage like Google Drive.',
     script30Sec: {
-      answerText: 'Continuous Integration automatically builds and tests code whenever developers push changes to Git. Continuous Deployment packages verified code into Docker images and deploys them automatically to production with zero manual intervention.',
-      durationSec: 27
+      answerText: 'Cloud platforms like AWS, Azure, and GCP offer on-demand infrastructure, managed databases, and scalable computing services. They enable elastic scaling, global availability, and pay-as-you-go cost optimization.',
+      durationSec: 26
     },
-    onePictureSummary: ['⚡ Git Push', '↓ 🔨 Auto Build', '↓ 🧪 Auto Test', '↓ 🚀 Auto Cloud Deploy'],
-    interviewTip: 'Auto build + auto test on push = Continuous Integration.'
+    onePictureSummary: ['⚡ On-Demand Virtual Servers', '↓ 🌐 Global Availability', '↓ 📈 Elastic Scaling', '↓ Cloud AWS / Azure / GCP'],
+    interviewTip: 'On-demand servers + elastic scaling + zero physical hardware maintenance.'
   },
 
-  // SECTION IX: RESUME PROJECT STORIES
+  // SECTION IX: RESUME PROJECT STORIES & BEHAVIORAL HR
   {
-    id: 'ch-27-pollaris-story',
+    id: 'ch-32-pollaris-story',
     partId: 'part-9',
-    partTitle: 'Section IX: Resume Stories',
-    chapterNumber: 27,
-    title: 'Chapter 27: Pollaris (Cloud-Native Voting App)',
-    shortTitle: '27. Pollaris Project',
+    partTitle: 'Section IX: Resume & HR',
+    chapterNumber: 32,
+    title: 'Chapter 32: Pollaris (Cloud-Native Voting App)',
+    shortTitle: '32. Pollaris Project',
     icon: '🗳️',
     estimatedMinutes: 8,
     question: 'Can you explain your project Pollaris and the technical challenges you solved?',
@@ -739,39 +863,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     interviewTip: 'Problem (concurrent vote race conditions) -> Solution (Firestore ACID transactions).'
   },
   {
-    id: 'ch-28-infor-ai-story',
+    id: 'ch-33-self-intro',
     partId: 'part-9',
-    partTitle: 'Section IX: Resume Stories',
-    chapterNumber: 28,
-    title: 'Chapter 28: Infor AI Internship (AWS DeepAR & GPT-4)',
-    shortTitle: '28. Infor AI Internship',
-    icon: '🤖',
-    estimatedMinutes: 8,
-    question: 'What did you build during your AI Internship at Infor?',
-    analogyStory: {
-      title: 'The Warehouse Weather Forecast',
-      text: 'Just like meteorologists forecast rain, we used AWS DeepAR machine learning to forecast warehouse supply demand. We also built a GPT-4 AI safety chatbot that answered warehouse hazardous storage rules instantly!',
-      takeaway: 'Predictive forecasting with AWS DeepAR + Safety Compliance Chatbot using GPT-4.'
-    },
-    diagramType: 'resume-story',
-    simpleExplanation: 'At Infor, I built predictive supply chain models using AWS DeepAR to forecast vendor contract demand, and architected an enterprise AI chatbot leveraging OpenAI GPT-4 APIs to automate hazardous material storage compliance for warehouse operations.',
-    commonMistake: 'Exaggerating AI training details. Focus on how you used DeepAR and GPT-4 APIs.',
-    script30Sec: {
-      answerText: 'During my AI internship at Infor, I deployed predictive supply chain models using AWS DeepAR to forecast vendor demand. I also built a secure enterprise AI chatbot using OpenAI GPT-4 APIs to automate warehouse hazardous material storage compliance guidelines.',
-      durationSec: 30
-    },
-    onePictureSummary: ['📈 AWS DeepAR Forecast', '↓ 🤖 GPT-4 Compliance Bot', '↓ 🏬 Warehouse Operations', '↓ B2B AI Integration'],
-    interviewTip: 'DeepAR sales forecasting + GPT-4 compliance chatbot.'
-  },
-
-  // SECTION X: HR, BEHAVIORAL & SELF INTRODUCTION
-  {
-    id: 'ch-29-self-intro',
-    partId: 'part-10',
-    partTitle: 'Section X: HR & Behavioral',
-    chapterNumber: 29,
-    title: 'Chapter 29: "Tell Me About Yourself"',
-    shortTitle: '29. Self Introduction',
+    partTitle: 'Section IX: Resume & HR',
+    chapterNumber: 33,
+    title: 'Chapter 33: "Tell Me About Yourself"',
+    shortTitle: '33. Self Introduction',
     icon: '🗣️',
     estimatedMinutes: 5,
     question: 'Tell me about yourself and your background.',
@@ -789,30 +886,5 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     },
     onePictureSummary: ['🎓 ECE Degree', '↓ Java, SQL, REST, AI', '↓ Project Stories', '↓ Ready for FSM Team'],
     interviewTip: 'Keep it technical, structured, and under 40 seconds.'
-  },
-  {
-    id: 'ch-30-star-method',
-    partId: 'part-10',
-    partTitle: 'Section X: HR & Behavioral',
-    chapterNumber: 30,
-    title: 'Chapter 30: Behavioral STAR Method (Conflict & Failure)',
-    shortTitle: '30. STAR Method HR',
-    icon: '⭐',
-    estimatedMinutes: 6,
-    question: 'Tell me about a time you faced a tough technical challenge or deadline.',
-    analogyStory: {
-      title: 'The STAR Navigator',
-      text: 'STAR stands for: S (Situation), T (Task), A (Action), R (Result). When asked a behavioral question, structure your story: What was the scenario? What was your task? What action did YOU take? What was the positive result?',
-      takeaway: 'S = Situation, T = Task, A = Action, R = Result.'
-    },
-    diagramType: 'star-hr',
-    simpleExplanation: 'Use the STAR method for behavioral questions. Explain the Situation, your specific Task, the technical Actions you implemented, and the measurable business Result.',
-    commonMistake: 'Rambling without a clear ending or blaming teammates for failure.',
-    script30Sec: {
-      answerText: 'In my Pollaris project, we faced a major race condition bug during load testing. My task was to guarantee vote data integrity. I implemented Firestore ACID transactions and established Docker containerized testing pipelines, resolving race conditions with 100% vote integrity.',
-      durationSec: 28
-    },
-    onePictureSummary: ['📍 Situation & Task', '↓ 🛠️ Technical Action', '↓ 📈 Positive Result', '↓ STAR Method Success'],
-    interviewTip: 'Structure: Situation -> Task -> Action -> Result.'
   }
 ];
