@@ -60,9 +60,9 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 6,
     question: 'What is the role of an Associate Software Engineer on the Financials & Supply Management (FSM) team?',
     analogyStory: {
-      title: 'The Line Chef in a Global Enterprise Restaurant',
-      text: 'Imagine a global restaurant serving 10,000 customers in 50 countries simultaneously. Senior chefs design the master menu, but the Associate Software Engineer is the talented line chef who cooks clean meals (Java code), tests every dish for safety (Unit Testing), and uses smart automated kitchen tools (AI Copilot) to deliver food fast! On the FSM team, you build modern Java SaaS applications that manage company money and warehouse inventory globally.',
-      takeaway: 'Your role is to design, develop, test, and maintain Java SaaS applications for the FSM product suite.'
+      title: 'The Line Chef in a Global Restaurant',
+      text: 'Imagine a very busy restaurant that serves thousands of customers every single day across many different cities. The senior head chef spends time designing the overall menu and deciding what new dishes to offer. However, the restaurant depends on a team of skilled line chefs who work in the kitchen every morning. These line chefs cook fresh meals following clear recipes, check every dish to make sure it is clean and safe to eat, and use modern kitchen tools like automatic choppers to work faster. As an Associate Software Engineer on the FSM team, you are like that talented line chef. Senior architects design the big system, but you write clean Java code, write unit tests to ensure there are no bugs, and use smart tools like GitHub Copilot to build applications that manage money and warehouse inventory for large companies around the world.',
+      takeaway: 'Your role is to design, develop, test, and maintain high-quality Java SaaS applications for the FSM product suite.'
     },
     diagramType: 'fsm-store',
     simpleExplanation: 'As an Associate Software Engineer on the Financials & Supply Management (FSM) product engineering team, your daily responsibility is to design, develop, test, and maintain scalable Java-based enterprise SaaS applications. You collaborate with Product Managers, QA, and UX teams in Agile sprints, write clean well-documented code, and leverage AI tools like GitHub Copilot to accelerate software delivery across the SDLC.',
@@ -91,9 +91,9 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is Enterprise SaaS, what are the multi-tenancy models, and how is SLA Uptime maintained?',
     analogyStory: {
-      title: 'The Secure Multi-Apartment Complex',
-      text: 'Instead of every family building their own private water tank and generator, everyone lives in a central luxury apartment complex sharing main utility pipes. However, every apartment has a digital lock so no tenant can enter another tenant\'s rooms! Multi-tenancy models range from Shared Database with Tenant ID discriminators to Database-Per-Tenant isolation. High availability SLAs (e.g. 99.99% uptime) guarantee the complex never loses power.',
-      takeaway: 'Multi-tenancy shares application infrastructure while strictly isolating client data with high-availability SLAs.'
+      title: 'The Modern Apartment Building with Private Locks',
+      text: 'Think about a large modern apartment building where hundreds of families live. Instead of every family building their own private water tank, electric generator, and security gate outside, all families share the building\'s main water pipes, electricity grid, and elevator. This saves a huge amount of money and effort for everyone. However, even though families share the same building infrastructure, every apartment has a private front door with a unique key. Family A can never walk into Family B\'s living room or open their private drawers. Enterprise SaaS and Multi-Tenancy work in the exact same way. Instead of every business buying expensive physical servers, hundreds of companies share the same cloud application. But special security rules ensure that Company A can never see or touch the private financial data of Company B. High-availability SLAs guarantee that the building never loses power or water.',
+      takeaway: 'Multi-tenancy lets multiple businesses share cloud software while keeping their private data completely separated and secure.'
     },
     diagramType: 'multi-tenant-saas',
     simpleExplanation: 'Enterprise Software-as-a-Service (SaaS) is cloud software hosted centrally and accessed via subscriptions. Multi-Tenancy serves multiple customers (tenants) from shared infrastructure while enforcing strict tenant isolation (e.g., using `tenant_id` row discriminators or schema isolation). High availability SLAs (Service Level Agreements) mandate 99.99% uptime via automated failover and redundant cloud infrastructure.',
@@ -122,8 +122,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 6,
     question: 'What is Financials & Supply Management (FSM) software and why do global businesses use it?',
     analogyStory: {
-      title: 'The Global Enterprise Store Super-Brain',
-      text: 'A global business buys raw materials, pays suppliers, ships products across oceans, collects customer payments, and files multi-currency taxes daily. FSM software acts as a global super-brain: the Financials module manages general ledgers, accounts payable/receivable, and invoices; the Supply Management module manages warehouse stock levels, purchase requisitions, and order fulfillment.',
+      title: 'The Global Store Super-Brain',
+      text: 'Imagine a company that sells bicycles in 20 different countries. Every day, they buy metal pipes from suppliers, pay factory workers, ship boxes across oceans, pay taxes in different currencies, and send bills to customers. If the business owner tried to write down all these numbers in paper notebooks, people would lose papers, make math errors, and run out of stock without knowing it! FSM software acts as a central digital super-brain for the entire company. The Financials part tracks every dollar entering or leaving the company, manages invoices, and handles tax reports. The Supply Management part tracks how many bicycle parts are sitting inside warehouses, when to order more metal from suppliers, and when shipments arrive at stores.',
       takeaway: 'FSM software manages company money (Financials) and warehouse product movement (Supply Management).'
     },
     diagramType: 'fsm-store',
@@ -155,8 +155,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is SDLC and what are its main 6 phases?',
     analogyStory: {
-      title: 'Baking a Custom Birthday Cake',
-      text: 'Before baking a custom birthday cake, you don\'t just throw flour into the oven! First, you ask the customer what flavor they want (Requirements). Second, you sketch the cake design (Design). Third, you bake the cake in the oven (Coding). Fourth, you taste test the cake for safety (Testing). Fifth, you deliver the cake to the party (Deployment). Sixth, you fix any melted candles (Maintenance). SDLC is this exact step-by-step master recipe for building great software.',
+      title: 'Building a Family House from Scratch',
+      text: 'Suppose a family wants to build their dream house. They do not start by buying bricks and cementing walls on day one! First, they sit down with an architect and discuss what they need—how many bedrooms, how big the kitchen should be, and what their budget is (Requirements Gathering). Second, the architect draws detailed paper blueprints and structural plans for plumbers and electricians (System Design). Third, builders arrive at the site to lay bricks, pour concrete, and install windows (Coding/Implementation). Fourth, inspectors test the water pipes for leaks and check if the electrical wiring is safe (Testing). Fifth, the family moves into the completed house (Deployment). Sixth, over the coming years, if a roof tile breaks or a faucet leaks, plumbers come to fix it (Maintenance). SDLC is this exact step-by-step master plan for building software without making costly mistakes.',
       takeaway: 'SDLC guarantees software goes through planning, coding, testing, and release.'
     },
     diagramType: 'sdlc-loop',
@@ -186,8 +186,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is the difference between Scrum and Kanban, and how do Work-In-Progress (WIP) limits work?',
     analogyStory: {
-      title: 'The Time-Boxed Restaurant vs The Fast Food Assembly Line',
-      text: 'Scrum is a time-boxed restaurant that serves a 5-course dinner in fixed 2-week intervals (Sprints), holding planning meetings before serving. Kanban is a continuous fast-food assembly line with a strict rule: "No more than 3 burgers on the grill at once!" (Work-In-Progress WIP Limit). If the grill is full, workers must help finish active orders before taking new ones.',
+      title: 'The Bakery Batch Oven vs The Car Repair Garage',
+      text: 'Think about a bakery versus a car repair garage. A bakery follows Scrum. Every 2 weeks, the bakers sit down, plan what cakes to bake for the upcoming fortnight, bake that batch, show the cakes to customers, and review how to bake better next time. Everything happens in clean 2-week time boxes called Sprints. On the other hand, a car repair garage follows Kanban. Cars arrive continuously throughout the day without waiting for a 2-week schedule. To prevent mechanics from getting stressed and making mistakes, the garage puts up a strict sign: "Maximum 3 cars in the repair bay at one time!" This is a Work-In-Progress (WIP) limit. If 3 cars are already being worked on, new cars wait outside until a mechanic finishes one car. Scrum uses fixed 2-week sprints; Kanban uses continuous flow with WIP limits to stop bottlenecks.',
       takeaway: 'Scrum uses time-boxed Sprints and ceremonies; Kanban uses continuous flow with WIP limits to prevent bottlenecks.'
     },
     diagramType: 'scrum-vs-kanban',
@@ -217,8 +217,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'How do software teams track requirements and daily task progress in real projects?',
     analogyStory: {
-      title: 'The Digital Ticket Board (Never Keep Tasks in Memory!)',
-      text: 'In real software engineering, engineers NEVER track requirements or tasks "in their brain"! Instead, Business Analysts log user requirements into official digital cards called JIRA TICKETS. Every Jira ticket has an ID number (e.g. FSM-104), description, acceptance criteria, and status (To Do, In Progress, Code Review, Done). Engineers pick tickets during 2-week Agile Sprints and update status daily.',
+      title: 'The Hospital Medical File Board',
+      text: 'Imagine a doctor working in a busy hospital with 50 patients. The doctor does not try to remember every patient\'s blood test results or medicine schedule in their personal memory! If they relied on memory, they would give the wrong medicine to the wrong patient. Instead, every patient has an official medical folder on a central wall chart. The folder states the patient\'s name, symptom, required treatment, and status (Admitted, In Treatment, Ready for Discharge). In software development, engineers work the exact same way. We NEVER keep tasks or requirements in our memory! Product Managers create digital cards called Jira Tickets (e.g. FSM-104). Each ticket describes what feature to build, acceptance rules, and who is working on it. During 2-week sprints, engineers move tickets across digital boards from To Do to In Progress, Code Review, and Done.',
       takeaway: 'Requirements and daily progress are tracked in Jira tickets during 2-week Agile sprints.'
     },
     diagramType: 'agile-loop',
@@ -248,8 +248,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What happens during Sprint Planning, Daily Stand-up, and Sprint Retrospective meetings?',
     analogyStory: {
-      title: 'The Football Team Game Plan',
-      text: 'A professional football team does 3 things every match week. On Monday, they meet in the locker room to pick plays for the game (Sprint Planning). Every morning, they huddle for 5 minutes on the field to ask: "Did anyone get hurt? What is today\'s play?" (Daily Stand-up). On Sunday evening after the game, they watch video recordings to see what went wrong and how to play better next week (Retrospective)!',
+      title: 'The Football Team Match Week Routine',
+      text: 'Consider how a professional sports team prepares for matches every week. On Monday morning, the coach and players sit in the locker room to study the game strategy and choose which plays they will execute during the week (Sprint Planning). Every morning before practice, players stand together on the field for a quick 5-minute huddle. They answer three simple questions: "What did I accomplish yesterday? What will I work on today? Is anything blocking me?" (Daily Stand-up). Finally, after the match on Sunday, the team watches video replay footage together to celebrate good goals and talk openly about how to improve their defense next week (Sprint Retrospective). These three meetings keep the team organized, focused, and constantly improving.',
       takeaway: 'Sprint Planning picks tasks, Daily Stand-up reviews progress, Retrospective improves the process.'
     },
     diagramType: 'agile-loop',
@@ -281,8 +281,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is Java and how does the JVM achieve "Write Once, Run Anywhere"?',
     analogyStory: {
-      title: 'The Universal Language Translator',
-      text: 'If a famous book is written in English, people in Japan, France, and India cannot read it directly unless they have an on-the-spot translator. Java works the exact same way! When you write Java code, the compiler turns your code into a universal language called "Bytecode" (.class file). Then, a special program called the Java Virtual Machine (JVM) sits on Windows, Mac, or Linux and translates Bytecode into local machine instructions instantly!',
+      title: 'The Universal Secret Code Book & Reading Glasses',
+      text: 'Suppose an author writes a wonderful adventure book. If she writes it only in English, people in Japan, France, and Germany cannot read it unless it is translated for each country. Writing a separate book for every country takes a lot of time. Java solves this problem in a very clever way! When you write Java code, the Java compiler translates your code into a universal intermediate language called "Bytecode" (.class file). Then, a special helper program called the Java Virtual Machine (JVM) sits on Windows computers, Mac computers, and Linux servers. The JVM acts like smart reading glasses that instantly reads Bytecode and converts it into local instructions for that specific computer. Because of this, developers write Java code once, and it runs anywhere seamlessly.',
       takeaway: 'JVM executes Java Bytecode on any operating system without rewriting code.'
     },
     diagramType: 'jvm-coffee',
@@ -312,8 +312,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is J2EE (Jakarta EE) and how does Maven automate Java dependencies via pom.xml?',
     analogyStory: {
-      title: 'The Industrial Train & Automated Library Download Bot',
-      text: 'Core Java (J2SE) is a standard car engine. J2EE is an industrial freight train specification adding servlets, database transactions, and security rules! Maven reads your dependency manifest (`pom.xml`) and automatically downloads external J2EE library JARs from central repositories.',
+      title: 'The Industrial Train & Automated Part Delivery Robot',
+      text: 'Standard Java (J2SE) is like a reliable engine for a small family car. It gives you basic tools like loops, arrays, and math functions. However, if you want to build a massive commercial freight train with 50 carriages, database connections, and web servers, you need extra enterprise tools! J2EE (now Jakarta EE) is that powerful set of enterprise rules for web applications. Now imagine building this train. Instead of searching hardware shops manually to find metal pipes and screws, you give a shopping list (`pom.xml`) to a smart automated robot called Maven. Maven reads your list, connects to central internet warehouses, downloads the exact library files (.jar) you need, and packages your application automatically.',
       takeaway: 'J2EE adds enterprise web specifications; Maven automates library downloading and builds.'
     },
     diagramType: 'software-app',
@@ -343,8 +343,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is the difference between a Class and an Object, and how are they stored in Heap vs Stack memory?',
     analogyStory: {
-      title: 'The Cookie Cutter & Real Baked Cookies',
-      text: 'A Class is a metal cookie cutter shape. It is not something you can eat! An Object is a real baked cookie created from that cookie cutter using the `new` keyword. Object instance fields live in Heap memory, while variable references live on Stack memory.',
+      title: 'The Metal Cookie Cutter & Real Chocolate Cookies',
+      text: 'Imagine a metal cookie cutter sitting on a kitchen table. The cookie cutter itself is not something you eat; it is simply a metal shape or blueprint. When you press the cookie cutter into dough and bake it in the oven using the `new` keyword, you get a real, delicious chocolate cookie! A Class is that metal cookie cutter—it defines what properties a cookie will have. An Object is the actual baked cookie created in memory. In computer memory, the variable name pointing to the cookie lives on a fast desk called Stack Memory, while the actual sweet cookie dough lives in a big storage room called Heap Memory.',
       takeaway: 'Class = Blueprint; Object = Real instance residing in Heap memory.'
     },
     diagramType: 'cookie-class',
@@ -374,8 +374,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is Encapsulation in Java and how do private fields and public getters/setters protect data?',
     analogyStory: {
-      title: 'The TV Remote Control Buttons',
-      text: 'Imagine if changing the volume on your television required opening the TV back plastic panel with a screwdriver and touching high-voltage copper wires! You would shock yourself! The TV manufacturer ENCAPSULATES the dangerous wires inside a plastic shell and gives you safe rubber buttons (public getters/setters).',
+      title: 'The Television Remote Control',
+      text: 'Think about how you use a television in your living room. If you want to increase the volume, you press the volume button on the remote control. You do not open the back plastic panel of the TV with a screwdriver and manually touch high-voltage wires inside! If the TV manufacturer left those wires exposed, someone might accidentally shock themselves or ruin the TV. The manufacturer ENCAPSULATES the sensitive wires inside a protective plastic casing and gives you safe, friendly buttons on the outside. In Java programming, encapsulation works the exact same way. We mark class variables as `private` to hide sensitive data, and provide safe `public` getter and setter methods so other code can interact with the data without breaking things.',
       takeaway: 'Encapsulation hides internal data fields using private modifiers and exposes safe public methods.'
     },
     diagramType: 'tv-remote',
@@ -405,8 +405,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'What is Inheritance in Java and how does the `extends` keyword enable code reusability?',
     analogyStory: {
-      title: 'The Family House & Blueprint Heritage',
-      text: 'If your parents build a house with a swimming pool and garage, you don\'t build a whole new house from scratch! You INHERIT the house (`class Child extends Parent`) and add your own bedroom upstairs. In Java, child classes inherit fields and methods from superclasses using `extends`.',
+      title: 'The Passed-Down Family Recipe',
+      text: 'Imagine a grandmother who creates a secret recipe for vegetable soup that tastes wonderful. Her daughter learns this recipe, reuses all the grandmother\'s ingredients, and simply adds a spoonful of cream at the end to make cream soup. The daughter did not spend 10 years experimenting from zero to reinvent the soup base—she inherited the working foundation! In Java, inheritance allows a child class (`class AdminUser extends User`) to inherit existing fields and methods from a parent class using the `extends` keyword. This saves time, prevents code duplication, and keeps your project neat.',
       takeaway: 'Subclasses inherit superclass attributes and methods using extends, promoting DRY code.'
     },
     diagramType: 'family-inherit',
@@ -436,8 +436,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is Polymorphism in Java, and what is the difference between Method Overloading and Method Overriding?',
     analogyStory: {
-      title: 'The Talented Actor & Universal Play Button',
-      text: 'Polymorphism means "many forms". An actor plays a doctor on Monday, a detective on Tuesday, and a pilot on Wednesday—same actor, many forms! Method Overloading is compile-time polymorphism (same class, same method name, different parameters). Method Overriding is runtime polymorphism (subclass redefining parent method with `@Override`).',
+      title: 'The Talented Stage Actor',
+      text: 'The word Polymorphism comes from Greek, meaning "many forms". Imagine a talented actor working in a theater. On Monday night, he puts on a white coat and plays a doctor. On Tuesday night, he puts on a hat and plays a detective. On Wednesday, he plays a teacher. He is the exact same actor, but he takes on different behaviors depending on the role! Method Overloading is compile-time polymorphism where methods in the SAME class share the same name but accept different parameters (like a doctor treating an adult versus a child). Method Overriding is runtime polymorphism where a child class redefines a method inherited from its parent using `@Override` (like a child actor performing a classic scene in their own unique way).',
       takeaway: 'Overloading = Same class, different parameters (Compile-time); Overriding = Subclass redefines parent method (Runtime).'
     },
     diagramType: 'actor-poly',
@@ -467,8 +467,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is Abstraction in Java, and what is the difference between an Abstract Class and an Interface?',
     analogyStory: {
-      title: 'The Car Steering Wheel & Engine Contract',
-      text: 'When you drive a car, you turn the steering wheel and press the gas pedal. You don\'t need to know how the fuel injectors or pistons spark inside the engine! The steering wheel is an ABSTRACTION that hides internal complexity. Abstract classes can hold partial implementations and state; Interfaces define pure behavioral contracts.',
+      title: 'Driving a Car without Inspecting the Pistons',
+      text: 'When you sit behind the steering wheel of a car, you turn the key, press the gas pedal, and steer down the road. You do not need to understand how liquid fuel ignites inside engine cylinders or how gears turn inside the gearbox. The steering wheel and pedals form an ABSTRACTION—they hide all the complicated mechanical machinery underneath so you can drive easily. In Java, Abstraction hides complex internal code while showing simple method contracts. Abstract Classes can hold partial code and variables; Interfaces act as pure contracts defining method names that implementing classes must fulfill.',
       takeaway: 'Abstraction hides internal implementation details. Abstract classes hold partial state; Interfaces define pure contracts.'
     },
     diagramType: 'car-abstract',
@@ -500,8 +500,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is the difference between Array, ArrayList, and Vector, and how does dynamic array resizing work?',
     analogyStory: {
-      title: 'The Fixed Storage Locker vs The Expanding Suitcase',
-      text: 'A standard Array is a fixed row of 5 storage lockers; you cannot add a 6th locker without building a whole new locker room! An ArrayList is an expanding smart suitcase: when full, it creates a new suitcase 50% larger (1.5x growth factor) and copies everything over automatically in amortized O(1) time. Vector is an older synchronized version of ArrayList.',
+      title: 'The Fixed Wooden Shoe Rack vs The Expanding Magic Suitcase',
+      text: 'Imagine buying a fixed wooden shoe rack that has exactly 5 slots. If you buy a 6th pair of shoes tomorrow, you cannot squeeze them into the rack—you must throw away the rack and buy a bigger one! That is a standard Java Array. An ArrayList is like a magic expanding suitcase. When you fill all 10 slots inside the suitcase, it automatically creates a new suitcase 50% larger (1.5x growth factor), moves all your clothes into the new suitcase, and discards the old one automatically. You can keep adding items smoothly. Vector is an older version of ArrayList that locks the suitcase every time anyone touches it (synchronized for thread safety).',
       takeaway: 'Array has fixed size; ArrayList dynamically resizes with 1.5x growth factor; Vector is thread-safe synchronized.'
     },
     diagramType: 'arraylist-vs-linkedlist',
@@ -531,8 +531,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'How do Stacks, Queues, and PriorityQueues differ, and what are their real-world enterprise applications?',
     analogyStory: {
-      title: 'The Buffet Plate Stack vs Ticket Line vs VIP Queue',
-      text: 'A Stack is a stack of cafeteria plates: the last plate put on top is the first one taken off (LIFO). A Queue is a movie ticket line: the first person in line gets served first (FIFO). A PriorityQueue is a hospital emergency room: patients with critical priority (VIP / Min-Max Heap key) get treated first regardless of arrival time!',
+      title: 'Cafeteria Trays vs Ticket Line vs Hospital Emergency Room',
+      text: 'Picture three real-life situations. First, look at a stack of cafeteria plates on a counter. The dishwasher puts new plates on top, and customers take plates off the top (Last-In, First-Out LIFO Stack). Second, look at a line of people waiting to buy ice cream. The first person who arrived in line gets served first (First-In, First-Out FIFO Queue). Third, look at a hospital emergency room. Even if 10 people with mild headaches arrived first, if an ambulance arrives with a severe patient, the doctors treat the severe patient immediately! That is a PriorityQueue—it uses a Binary Heap to always keep the highest priority item at the top.',
       takeaway: 'Stack = LIFO (push/pop); Queue = FIFO (offer/poll); PriorityQueue = Priority Binary Heap.'
     },
     diagramType: 'stack-plates',
@@ -562,8 +562,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 9,
     question: 'How does HashMap work internally in Java 8+, and why is overriding hashCode() and equals() critical?',
     analogyStory: {
-      title: 'The Post Office Mailbox Buckets',
-      text: 'A HashMap is a row of numbered mailboxes (`Node<K,V>[] table`). When you insert a key, `key.hashCode()` computes the mailbox number. If two keys land in mailbox #7 (Hash Collision), Java chains them in a LinkedList. If mailbox #7 gets over 8 items, Java 8+ transforms the LinkedList into a fast Red-Black Tree, turning O(N) lookup back into O(log N)!',
+      title: 'The Post Office Mailboxes and the Smart Postmaster',
+      text: 'Imagine a post office with 16 numbered mailboxes on the wall (`Node<K,V>[] table`). When a letter arrives with a person\'s name (Key), the postmaster runs a math formula called `hashCode()` on the name to calculate which mailbox number it belongs in. If two different names produce mailbox #7 (Hash Collision), the postmaster hangs both letters in a line on a string (LinkedList) inside mailbox #7. However, if mailbox #7 gets overcrowded with more than 8 letters, searching down a long string becomes slow. In Java 8+, when a bucket gets more than 8 items, the postmaster transforms the long string into a neat organized tree (Red-Black Tree)! Searching a tree is super fast—it turns slow search back into logarithmic speed. The contract mandates that if two keys are equal, their `hashCode()` MUST match so they go to the same mailbox.',
       takeaway: 'HashMap uses hashCode() for bucket indexing and equals() for key matching. Bucket threshold > 8 treeifies to Red-Black Tree.'
     },
     diagramType: 'hashmap-mail',
@@ -593,8 +593,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'What is a Binary Search Tree (BST), what are the tree traversals, and what algorithmic patterns are commonly tested?',
     analogyStory: {
-      title: 'The Sorted Family Tree & Two-Pointer Runners',
-      text: 'A Binary Search Tree is a family tree where every left child is smaller than parent, and right child is larger! In-Order traversal prints elements in perfect sorted numerical order. Algorithmic patterns like Two Pointers (runners from start/end) and Sliding Window (expanding/shrinking window) solve search problems in O(N) time.',
+      title: 'The Number Guessing Game & Two-Pointer Runners',
+      text: 'Play a guessing game with a friend who chooses a number between 1 and 100. If you guess 50 and she says "too high", you immediately know the secret number is in the lower half (1 to 49). You cut half the numbers away in one second! A Binary Search Tree operates on this exact rule: every left child is smaller than parent, and right child is larger. Walking through the tree In-Order prints all numbers in clean sorted order. Algorithmic patterns like Two Pointers (two runners starting from ends of an array) and Sliding Window (expanding a window frame across items) solve complex array problems efficiently.',
       takeaway: 'BST enforces Left < Root < Right. In-Order traversal yields sorted output. Two Pointers & Sliding Window optimize array searches.'
     },
     diagramType: 'tree-bst',
@@ -626,8 +626,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 7,
     question: 'Why do Enterprise SaaS platforms rely on Oracle DB and SQL Server for core data persistence?',
     analogyStory: {
-      title: 'The Underground Bank Vault',
-      text: 'If a bank kept account balances on loose sticky notes, notes would blow away in the wind! Oracle DB and SQL Server act as massive underground bank vaults. They organize data into strict structured tables with rows and columns, enforcing security permissions and ensuring zero data loss during power outages.',
+      title: 'The Underground Bank Vault Ledgers',
+      text: 'If a bank kept account balances on loose paper sticky notes, a sudden gust of wind would blow away millions of dollars! Oracle DB and SQL Server act as massive underground bank vaults. They organize data into strict tables with fixed rows and columns, enforcing security permissions and ensuring zero data loss even during power outages.',
       takeaway: 'Relational databases store structured enterprise data securely in ACID-compliant tables.'
     },
     diagramType: 'sql-library',
@@ -688,7 +688,7 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'How do SQL Joins work, and what are the 4 ACID transaction guarantees in enterprise databases?',
     analogyStory: {
-      title: 'The Two Guest Lists & Unbreakable Bank Transfer',
+      title: 'Matching Party Guest Lists & The Unbreakable Bank Transfer',
       text: 'Imagine List A (Invited Guests) and List B (Attended Guests). INNER JOIN returns only guests on BOTH lists. LEFT JOIN returns all invited guests, putting NULL next to those who didn\'t show up. ACID transactions guarantee that bank transfers deduct from Account A and credit Account B completely, or cancel 100% on error.',
       takeaway: 'INNER JOIN = Matching keys; LEFT JOIN = All left rows; ACID = Atomicity, Consistency, Isolation, Durability.'
     },
@@ -1225,8 +1225,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 8,
     question: 'Tell me about your 4-month experience at Infor and the technical AI projects you worked on.',
     analogyStory: {
-      title: 'The Enterprise AI Inventory Predictor & GPT-4 Assistant',
-      text: 'During her 4-month internship at Infor, Renuka worked in the enterprise SaaS engineering group focusing on AI capabilities for Supply Chain and Inventory Management. She worked on two key solutions: 1) Integrating a conversational AI chatbot using GPT-4 for internal enterprise documentation and query routing, and 2) Working with AWS DeepAR time-series forecasting models to predict warehouse inventory demand across thousands of SKUs.',
+      title: 'Predicting Warehouse Demand & The GPT-4 AI Assistant',
+      text: 'During her 4-month internship at Infor, Renuka worked in the enterprise SaaS engineering group focusing on AI tools for Supply Chain and Inventory Management. She worked on two key projects. First, she integrated a conversational AI assistant using GPT-4 and Retrieval-Augmented Generation (RAG) vector embeddings. Enterprise workers could ask natural language questions like "What is the reorder threshold for Product SKU-409 in the Chicago warehouse?", and the chatbot searched internal vector documents to return accurate answers without hallucinating. Second, she worked with AWS DeepAR time-series forecasting models on Amazon SageMaker. Traditional models fail when predicting new products with short sales history, but AWS DeepAR trains a deep learning Recurrent Neural Network across thousands of related inventory SKUs simultaneously to predict seasonal demand spikes and prevent warehouse stock-outs.',
       takeaway: '4-month Infor internship focusing on AWS DeepAR demand forecasting & GPT-4 RAG chatbot integration.'
     },
     diagramType: 'resume-story',
@@ -1256,8 +1256,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     estimatedMinutes: 9,
     question: 'Can you explain your project Pollaris, its lifecycle, and how you solved race conditions using Firestore ACID Transactions?',
     analogyStory: {
-      title: 'The Atomic Single-Slot Vote Box & Private Security Token',
-      text: 'When 100 users try to drop a vote into a box at the exact same millisecond, concurrent writes collide! Pollaris uses Firestore ACID Transactions (`db.runTransaction()`) to lock the target poll document and voter ledger atomically, guaranteeing 100% one-vote-per-user data integrity without duplicate votes. Private polls use unguessable 16-character share URLs and server security rules to verify invitee emails.',
+      title: 'The Atomic Ballot Box & Secret Invite Link',
+      text: 'Pollaris is an online polling platform built with Next.js 16 and Firebase Firestore. Imagine a voting room where 100 people try to push their vote cards into a single slot at the exact same millisecond. If the ballot box is not locked properly, votes get double-counted or overwritten! Pollaris solves this using Firestore ACID Transactions (`db.runTransaction()`). A transaction locks the poll document and voter ledger atomically in a single step, verifying that the poll status is Open, recording the user\'s vote, and updating aggregate counts without race conditions. Polls follow a clear lifecycle: Draft (creator editing), Open (voting enabled, options locked), and Closed (read-only). Private polls are secured using unguessable 16-character share tokens with server-side security rules checking if the voter\'s email is in the invitees list.',
       takeaway: 'Used Firestore ACID Transactions (`db.runTransaction()`) to eliminate vote concurrency race conditions.'
     },
     diagramType: 'pollaris-arch',
