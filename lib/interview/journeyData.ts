@@ -36,19 +36,19 @@ export interface PartItem {
 
 export const TEXTBOOK_PARTS: PartItem[] = [
   { id: 'part-1', partNumber: 1, title: 'Section I: FSM & Enterprise SaaS Domain', description: 'FSM Associate Role, Enterprise SaaS, Multi-Tenancy Models, ERP Systems, SLA Uptime', icon: '🏢' },
-  { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC 6 Phases, Scrum vs Kanban Deep Dive, WIP Limits, Jira Tickets, Sprint Ceremonies', icon: '🏃' },
-  { id: 'part-3', partNumber: 3, title: 'Section III: Java / J2EE & Object-Oriented Principles', description: 'Java, JVM, What is J2EE?, Maven, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
-  { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, ArrayList vs Vector, Stacks, Queues, HashMaps, hashCode & equals, Tree Traversals, Algorithmic Patterns', icon: '🧱' },
+  { id: 'part-2', partNumber: 2, title: 'Section II: Software Engineering & Agile SDLC', description: 'SDLC 6 Phases, Scrum vs Kanban, WIP Limits, Jira Tickets, Sprint Ceremonies, Teamwork', icon: '🏃' },
+  { id: 'part-3', partNumber: 3, title: 'Section III: Java / J2EE & Object-Oriented Principles', description: 'Java, JVM, J2EE, Maven, Classes, Encapsulation, Inheritance, Polymorphism, Abstraction', icon: '☕' },
+  { id: 'part-4', partNumber: 4, title: 'Section IV: Data Structures & Algorithms (DSA)', description: 'Arrays, ArrayList vs Vector, Stacks, Queues, HashMaps, hashCode & equals, Trees, Algorithmic Patterns', icon: '🧱' },
   { id: 'part-5', partNumber: 5, title: 'Section V: Relational & NoSQL Databases', description: 'Oracle DB, SQL Server, Primary/Foreign Keys, SQL Joins, Indexing, Sharding, NoSQL Firestore', icon: '🔗' },
   { id: 'part-6', partNumber: 6, title: 'Section VI: Backend Frameworks & Web Services', description: 'SOAP vs REST APIs, HTTP Verbs, Spring Boot 3-Tier, Spring Data JPA, Spring Security, Microservices API Gateway', icon: '🍽️' },
-  { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools & Unit Testing Evidences', description: 'GitHub Copilot, Gemini Assist, Prompt Engineering, Honest AI Usage, JUnit 5 & Mockito Unit Test Evidences', icon: '🤖' },
+  { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools & Unit Testing Evidences', description: 'GitHub Copilot, Gemini Assist, Prompt Engineering, Honest AI Framing, JUnit 5 & Mockito Unit Test Evidences', icon: '🤖' },
   { id: 'part-8', partNumber: 8, title: 'Section VIII: DevOps, Containers & Cloud Infrastructure', description: 'Git PR Workflows, Docker Multi-Stage Builds, Kubernetes Pods & Rolling Updates, CI/CD Pipelines, Cloud Scaling', icon: '📦' },
   { id: 'part-9', partNumber: 9, title: 'Section IX: SOLID Principles & System Architecture', description: 'S-O-L-I-D Deep Dives (SRP, OCP, LSP, ISP, DIP), LLD vs HLD, Scalable Microservices & Redis Caching', icon: '📐' },
-  { id: 'part-10', partNumber: 10, title: 'Section X: Resume Stories (Infor & Pollaris) & HR', description: 'Infor AWS DeepAR & GPT-4 RAG Internship Story, Pollaris Firestore ACID Transactions, Self Intro & STAR Method', icon: '🗣️' },
+  { id: 'part-10', partNumber: 10, title: 'Section X: Resume Stories & HR Exam', description: 'Infor AWS DeepAR & GPT-4 RAG Internship Story, Pollaris Firestore ACID Transactions, Self Intro & 100-MCQ Exam', icon: '🗣️' },
 ];
 
 export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
-  // SECTION I: FSM & ENTERPRISE SAAS DOMAIN
+  // SECTION I: FSM & ENTERPRISE SAAS DOMAIN (1-3)
   {
     id: 'ch-1-fsm-role',
     partId: 'part-1',
@@ -143,7 +143,7 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['💰 Financial Invoices', '↓ 📦 Supply Warehouse', '↓ 📊 Real-time Ledger', '↓ Enterprise FSM SaaS']
   },
 
-  // SECTION II: SOFTWARE ENGINEERING & AGILE SDLC
+  // SECTION II: SOFTWARE ENGINEERING & AGILE SDLC (4-7)
   {
     id: 'ch-4-sdlc-phases',
     partId: 'part-2',
@@ -211,8 +211,8 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     partId: 'part-2',
     partTitle: 'Section II: Software Engineering & Agile SDLC',
     chapterNumber: 6,
-    title: 'Chapter 6: Jira Ticket Tracking & Sprint Meetings (Not in Brain!)',
-    shortTitle: '6. Jira & Meetings',
+    title: 'Chapter 6: Jira Ticket Tracking & Agile Sprints (Not in Brain!)',
+    shortTitle: '6. Jira & Sprints',
     icon: '📋',
     estimatedMinutes: 7,
     question: 'How do software teams track requirements and daily task progress in real projects?',
@@ -237,15 +237,46 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     },
     onePictureSummary: ['📋 Product Backlog', '↓ 🎫 Jira Tickets (FSM-104)', '↓ 🏃 2-Week Sprint', '↓ 🎯 Status Board (Done)']
   },
-
-  // SECTION III: JAVA / J2EE & OBJECT-ORIENTED PRINCIPLES
   {
-    id: 'ch-7-java-jvm',
+    id: 'ch-7-sprint-meetings',
+    partId: 'part-2',
+    partTitle: 'Section II: Software Engineering & Agile SDLC',
+    chapterNumber: 7,
+    title: 'Chapter 7: Sprint Meetings & Cross-Functional Teamwork',
+    shortTitle: '7. Sprint Meetings',
+    icon: '⏰',
+    estimatedMinutes: 7,
+    question: 'What happens during Sprint Planning, Daily Stand-up, and Sprint Retrospective meetings?',
+    analogyStory: {
+      title: 'The Football Team Game Plan',
+      text: 'A professional football team does 3 things every match week. On Monday, they meet in the locker room to pick plays for the game (Sprint Planning). Every morning, they huddle for 5 minutes on the field to ask: "Did anyone get hurt? What is today\'s play?" (Daily Stand-up). On Sunday evening after the game, they watch video recordings to see what went wrong and how to play better next week (Retrospective)!',
+      takeaway: 'Sprint Planning picks tasks, Daily Stand-up reviews progress, Retrospective improves the process.'
+    },
+    diagramType: 'agile-loop',
+    simpleExplanation: 'Agile Scrum uses 3 key meetings: 1) Sprint Planning happens at the start of a sprint to pick priority tasks from the backlog. 2) Daily Stand-up is a quick 15-minute morning huddle where every engineer answers 3 questions: What did I do yesterday? What will I do today? Are there any blockers? 3) Sprint Retrospective happens at sprint end to reflect on what went well and what team processes to improve.',
+    commonMistake: 'Rambling during daily stand-up for 30 minutes! Stand-ups must be crisp and under 15 minutes.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Explain Sprint Planning (Selecting Jira backlog items for 2-week sprint).',
+        '2. Explain Daily Stand-up (15-minute huddle: Yesterday\'s work, Today\'s plan, Blockers).',
+        '3. Explain Retrospective (End-of-sprint review to improve team process).'
+      ],
+      exampleScript: 'Sprint Planning selects backlog user stories for the upcoming 2-week sprint. Daily Stand-up is a 15-minute morning huddle where we share yesterday\'s progress, today\'s goals, and any technical blockers. Sprint Retrospective allows the team to reflect on performance and continuously improve engineering workflows.',
+      durationSec: 28,
+      tip: 'Stand-up 3 questions: Yesterday\'s work, Today\'s plan, Blockers.'
+    },
+    onePictureSummary: ['📋 Sprint Planning', '↓ ⏱️ Daily Stand-up (15m)', '↓ 🏃 2-Week Sprint', '↓ 💡 Retrospective Review']
+  },
+
+  // SECTION III: JAVA / J2EE & OBJECT-ORIENTED PRINCIPLES (8-14)
+  {
+    id: 'ch-8-java-jvm',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 7,
-    title: 'Chapter 7: What is Java & the JVM (Java Virtual Machine)?',
-    shortTitle: '7. Java & JVM',
+    chapterNumber: 8,
+    title: 'Chapter 8: What is Java & the JVM (Java Virtual Machine)?',
+    shortTitle: '8. Java & JVM',
     icon: '☕',
     estimatedMinutes: 8,
     question: 'What is Java and how does the JVM achieve "Write Once, Run Anywhere"?',
@@ -271,12 +302,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['📝 Java Code (.java)', '↓ ⚙️ javac Compiler', '↓ 📦 Bytecode (.class)', '↓ ☕ JVM Execution']
   },
   {
-    id: 'ch-8-j2ee-maven',
+    id: 'ch-9-j2ee-maven',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 8,
-    title: 'Chapter 8: J2EE / Jakarta EE & Maven Build Automation',
-    shortTitle: '8. J2EE & Maven',
+    chapterNumber: 9,
+    title: 'Chapter 9: What is J2EE / Jakarta EE & Maven Build Automation?',
+    shortTitle: '9. J2EE & Maven',
     icon: '🏢',
     estimatedMinutes: 7,
     question: 'What is J2EE (Jakarta EE) and how does Maven automate Java dependencies via pom.xml?',
@@ -302,12 +333,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🏢 J2EE Enterprise Specs', '↓ ⚙️ pom.xml Manifest', '↓ 📦 Automated JAR Download', '↓ 🚀 Executable Build']
   },
   {
-    id: 'ch-9-classes-objects',
+    id: 'ch-10-classes-objects',
     partId: 'part-3',
     partTitle: 'Section III: Java & J2EE',
-    chapterNumber: 9,
-    title: 'Chapter 9: Classes vs Objects & Memory Allocation',
-    shortTitle: '9. Classes & Objects',
+    chapterNumber: 10,
+    title: 'Chapter 10: Classes vs Objects & Memory Allocation (Heap vs Stack)',
+    shortTitle: '10. Classes & Objects',
     icon: '🍪',
     estimatedMinutes: 7,
     question: 'What is the difference between a Class and an Object, and how are they stored in Heap vs Stack memory?',
@@ -332,15 +363,139 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     },
     onePictureSummary: ['📐 Class Blueprint', '↓ 🍪 new Object()', '↓ 📚 Stack References', '↓ 🛢️ Heap Objects']
   },
-
-  // SECTION IV: DATA STRUCTURES & ALGORITHMS (DSA DEEP DIVE)
   {
-    id: 'ch-10-arrays-arraylist',
+    id: 'ch-11-encapsulation',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 11,
+    title: 'Chapter 11: OOP Principle #1 - Encapsulation & Access Modifiers',
+    shortTitle: '11. Encapsulation',
+    icon: '📺',
+    estimatedMinutes: 7,
+    question: 'What is Encapsulation in Java and how do private fields and public getters/setters protect data?',
+    analogyStory: {
+      title: 'The TV Remote Control Buttons',
+      text: 'Imagine if changing the volume on your television required opening the TV back plastic panel with a screwdriver and touching high-voltage copper wires! You would shock yourself! The TV manufacturer ENCAPSULATES the dangerous wires inside a plastic shell and gives you safe rubber buttons (public getters/setters).',
+      takeaway: 'Encapsulation hides internal data fields using private modifiers and exposes safe public methods.'
+    },
+    diagramType: 'tv-remote',
+    simpleExplanation: 'Encapsulation is the OOP principle of bundling fields and methods inside a class while restricting direct access to object state. Fields are declared `private`, and controlled access is provided via `public` getter and setter methods. This protects object state from invalid mutations.',
+    commonMistake: 'Declaring class fields `public` directly, allowing external code to overwrite variables without validation.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Encapsulation (Bundling data and methods while restricting direct access).',
+        '2. Explain Implementation (Private fields + Public getters and setters).',
+        '3. Highlight Data Protection (Preventing invalid data mutation from external classes).'
+      ],
+      exampleScript: 'Encapsulation is bundling data fields and methods within a class while restricting direct external access. We declare class fields private and expose public getter and setter methods, ensuring data validation and protecting object state from unauthorized mutation.',
+      durationSec: 26,
+      tip: 'Private fields + Public getters/setters = Encapsulation.'
+    },
+    onePictureSummary: ['📺 Encapsulated TV Shell', '↓ 🔒 Private Fields', '↓ 🔘 Public Getters/Setters', '↓ 🛡️ Data Protection']
+  },
+  {
+    id: 'ch-12-inheritance',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 12,
+    title: 'Chapter 12: OOP Principle #2 - Inheritance & Code Reusability',
+    shortTitle: '12. Inheritance',
+    icon: '👨‍👦',
+    estimatedMinutes: 7,
+    question: 'What is Inheritance in Java and how does the `extends` keyword enable code reusability?',
+    analogyStory: {
+      title: 'The Family House & Blueprint Heritage',
+      text: 'If your parents build a house with a swimming pool and garage, you don\'t build a whole new house from scratch! You INHERIT the house (`class Child extends Parent`) and add your own bedroom upstairs. In Java, child classes inherit fields and methods from superclasses using `extends`.',
+      takeaway: 'Subclasses inherit superclass attributes and methods using extends, promoting DRY code.'
+    },
+    diagramType: 'family-inherit',
+    simpleExplanation: 'Inheritance allows a subclass to acquire fields and methods from a superclass using the `extends` keyword. This promotes the DRY (Don\'t Repeat Yourself) principle, allowing shared logic to be written once in a parent class (e.g. `User`) and inherited by child classes (e.g. `AdminUser`). Java supports single class inheritance.',
+    commonMistake: 'Thinking Java supports multiple class inheritance (`extends ClassA, ClassB`). Java supports single class inheritance only!',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Inheritance (Subclass inheriting fields and methods from superclass).',
+        '2. State Keyword (Using extends keyword).',
+        '3. Highlight Benefit (Promoting code reusability and DRY principle).'
+      ],
+      exampleScript: 'Inheritance allows a child class to inherit fields and methods from a parent class using the extends keyword. This promotes code reusability and DRY design, allowing common attributes to be defined in a superclass while child classes add specific functionality.',
+      durationSec: 26,
+      tip: 'Parent Superclass -> extends -> Child Subclass.'
+    },
+    onePictureSummary: ['👨 Parent Superclass', '↓ 🔑 extends Keyword', '↓ 👦 Child Subclass', '↓ ♻️ Code Reusability']
+  },
+  {
+    id: 'ch-13-polymorphism',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 13,
+    title: 'Chapter 13: OOP Principle #3 - Polymorphism: Overloading vs Overriding',
+    shortTitle: '13. Polymorphism',
+    icon: '🎭',
+    estimatedMinutes: 8,
+    question: 'What is Polymorphism in Java, and what is the difference between Method Overloading and Method Overriding?',
+    analogyStory: {
+      title: 'The Talented Actor & Universal Play Button',
+      text: 'Polymorphism means "many forms". An actor plays a doctor on Monday, a detective on Tuesday, and a pilot on Wednesday—same actor, many forms! Method Overloading is compile-time polymorphism (same class, same method name, different parameters). Method Overriding is runtime polymorphism (subclass redefining parent method with `@Override`).',
+      takeaway: 'Overloading = Same class, different parameters (Compile-time); Overriding = Subclass redefines parent method (Runtime).'
+    },
+    diagramType: 'actor-poly',
+    simpleExplanation: 'Polymorphism allows objects to take many forms. Method Overloading is compile-time polymorphism where methods in the SAME class share the same name but have different parameter signatures. Method Overriding is runtime polymorphism where a SUBCLASS redefines a method inherited from a superclass using `@Override`.',
+    commonMistake: 'Confusing Overloading (same class, different params) with Overriding (subclass redefining parent method).',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Polymorphism (Ability of methods to take multiple forms).',
+        '2. Explain Overloading (Compile-time: same class, different parameter signatures).',
+        '3. Explain Overriding (Runtime: subclass redefining superclass method using @Override).'
+      ],
+      exampleScript: 'Polymorphism enables objects to take on multiple forms. Method Overloading occurs at compile-time when methods in the same class share a name with different parameter signatures. Method Overriding occurs at runtime when a subclass provides a specific implementation for a parent method.',
+      durationSec: 29,
+      tip: 'Overloading = Same Class + Diff Params; Overriding = Subclass + @Override.'
+    },
+    onePictureSummary: ['🎭 Polymorphism', '↓ ⚙️ Overloading (Compile-time)', '↓ 🔄 Overriding (Runtime)', '↓ 🎯 Flexible Execution']
+  },
+  {
+    id: 'ch-14-abstraction',
+    partId: 'part-3',
+    partTitle: 'Section III: Java & J2EE',
+    chapterNumber: 14,
+    title: 'Chapter 14: OOP Principle #4 - Abstraction: Abstract Classes vs Interfaces',
+    shortTitle: '14. Abstraction',
+    icon: '🚗',
+    estimatedMinutes: 8,
+    question: 'What is Abstraction in Java, and what is the difference between an Abstract Class and an Interface?',
+    analogyStory: {
+      title: 'The Car Steering Wheel & Engine Contract',
+      text: 'When you drive a car, you turn the steering wheel and press the gas pedal. You don\'t need to know how the fuel injectors or pistons spark inside the engine! The steering wheel is an ABSTRACTION that hides internal complexity. Abstract classes can hold partial implementations and state; Interfaces define pure behavioral contracts.',
+      takeaway: 'Abstraction hides internal implementation details. Abstract classes hold partial state; Interfaces define pure contracts.'
+    },
+    diagramType: 'car-abstract',
+    simpleExplanation: 'Abstraction hides internal implementation details while exposing essential features to users. In Java, Abstraction is achieved via Abstract Classes (`abstract class`, can hold instance fields and partial implementations) and Interfaces (`interface`, pure contracts defining method signatures). Classes use `implements` for interfaces.',
+    commonMistake: 'Trying to instantiate an abstract class or interface directly using `new AbstractClass()`. They can only be extended or implemented!',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Abstraction (Hiding internal implementation complexity while exposing clear contracts).',
+        '2. Compare Abstract Class vs Interface (Abstract classes hold instance state & partial methods; Interfaces define pure contracts).',
+        '3. Highlight Java 8+ Interfaces (Supporting default and static methods).'
+      ],
+      exampleScript: 'Abstraction hides complex internal implementation details behind clean contracts. Abstract classes can maintain instance variables and partial method implementations, whereas Interfaces define pure behavioral contracts that implementing classes fulfill.',
+      durationSec: 28,
+      tip: 'Abstract Class = partial state; Interface = pure contract.'
+    },
+    onePictureSummary: ['🚗 Car Steering Interface', '↓ ⚙️ Hidden Engine Complexity', '↓ 📄 Abstract Class State', '↓ 🔌 Interface Contract']
+  },
+
+  // SECTION IV: DATA STRUCTURES & ALGORITHMS (15-18)
+  {
+    id: 'ch-15-arrays-arraylist',
     partId: 'part-4',
     partTitle: 'Section IV: DSA Deep Dive',
-    chapterNumber: 10,
-    title: 'Chapter 10: Arrays, ArrayList vs Vector & Dynamic Memory Resizing',
-    shortTitle: '10. Arrays & ArrayList',
+    chapterNumber: 15,
+    title: 'Chapter 15: Arrays, ArrayList vs Vector & Dynamic Memory Resizing',
+    shortTitle: '15. Arrays & ArrayList',
     icon: '🧱',
     estimatedMinutes: 8,
     question: 'What is the difference between Array, ArrayList, and Vector, and how does dynamic array resizing work?',
@@ -366,12 +521,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🔒 Fixed Array', '↓ 🧳 ArrayList 1.5x Growth', '↓ ⚡ Amortized O(1)', '↓ 🔒 Vector Synchronized']
   },
   {
-    id: 'ch-11-stacks-queues-heaps',
+    id: 'ch-16-stacks-queues-heaps',
     partId: 'part-4',
     partTitle: 'Section IV: DSA Deep Dive',
-    chapterNumber: 11,
-    title: 'Chapter 11: Stacks (LIFO), Queues (FIFO) & PriorityQueue (Min/Max Heaps)',
-    shortTitle: '11. Stacks & Queues',
+    chapterNumber: 16,
+    title: 'Chapter 16: Stacks (LIFO), Queues (FIFO) & PriorityQueue (Min/Max Heaps)',
+    shortTitle: '16. Stacks & Queues',
     icon: '🥞',
     estimatedMinutes: 8,
     question: 'How do Stacks, Queues, and PriorityQueues differ, and what are their real-world enterprise applications?',
@@ -397,12 +552,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🥞 Stack LIFO', '↓ 🎟️ Queue FIFO', '↓ 🏆 PriorityQueue Heap', '↓ ⚡ O(log N) Priority']
   },
   {
-    id: 'ch-12-hashmap-hashset-deep-dive',
+    id: 'ch-17-hashmap-hashset-deep-dive',
     partId: 'part-4',
     partTitle: 'Section IV: DSA Deep Dive',
-    chapterNumber: 12,
-    title: 'Chapter 12: HashMap & HashSet Mechanics: hashCode(), equals() & Red-Black Tree Threshold (>8)',
-    shortTitle: '12. HashMap Deep Dive',
+    chapterNumber: 17,
+    title: 'Chapter 17: HashMap & HashSet Mechanics: hashCode(), equals() & Treeification (>8)',
+    shortTitle: '17. HashMap Deep Dive',
     icon: '📫',
     estimatedMinutes: 9,
     question: 'How does HashMap work internally in Java 8+, and why is overriding hashCode() and equals() critical?',
@@ -428,12 +583,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['📫 hashCode() Bucket', '↓ 🔗 LinkedList Chaining', '↓ 🌲 Red-Black Tree (>8)', '↓ ⚡ O(1) Average Lookup']
   },
   {
-    id: 'ch-13-trees-bst-traversals',
+    id: 'ch-18-trees-bst-traversals',
     partId: 'part-4',
     partTitle: 'Section IV: DSA Deep Dive',
-    chapterNumber: 13,
-    title: 'Chapter 13: Binary Search Trees (BST), Traversals & Algorithmic Patterns',
-    shortTitle: '13. Trees & Patterns',
+    chapterNumber: 18,
+    title: 'Chapter 18: Binary Search Trees (BST), Traversals & Algorithmic Patterns',
+    shortTitle: '18. Trees & Patterns',
     icon: '🌲',
     estimatedMinutes: 8,
     question: 'What is a Binary Search Tree (BST), what are the tree traversals, and what algorithmic patterns are commonly tested?',
@@ -459,46 +614,108 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🌲 BST Node Order', '↓ 🔀 In-Order = Sorted', '↓ 🏃 Two Pointers', '↓ 🪟 Sliding Window']
   },
 
-  // SECTION V: RELATIONAL & NOSQL DATABASES
+  // SECTION V: RELATIONAL & NOSQL DATABASES (19-22)
   {
-    id: 'ch-14-sql-joins-acid',
+    id: 'ch-19-oracle-sqlserver-db',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 14,
-    title: 'Chapter 14: Relational Databases: Primary Keys, Foreign Keys, SQL Joins & ACID',
-    shortTitle: '14. SQL & ACID',
-    icon: '🔗',
-    estimatedMinutes: 8,
-    question: 'How do Primary Keys, Foreign Keys, SQL Joins, and ACID transactions work in Oracle and SQL Server?',
+    chapterNumber: 19,
+    title: 'Chapter 19: Oracle DB & SQL Server Enterprise Relational Foundations',
+    shortTitle: '19. Relational DBs',
+    icon: '🛢️',
+    estimatedMinutes: 7,
+    question: 'Why do Enterprise SaaS platforms rely on Oracle DB and SQL Server for core data persistence?',
     analogyStory: {
-      title: 'The Library Book Tag & Unbreakable Contract',
-      text: 'Every library book has a unique barcode ID (Primary Key). When a student checks out a book, the loan receipt links the student ID (Foreign Key). INNER JOIN returns only books currently checked out by active students. ACID properties guarantee that money transfers or ledger updates happen 100% completely or roll back to zero state on error!',
-      takeaway: 'Primary Keys uniquely identify rows; Foreign Keys link tables; INNER JOIN matches keys; ACID guarantees 100% data integrity.'
+      title: 'The Underground Bank Vault',
+      text: 'If a bank kept account balances on loose sticky notes, notes would blow away in the wind! Oracle DB and SQL Server act as massive underground bank vaults. They organize data into strict structured tables with rows and columns, enforcing security permissions and ensuring zero data loss during power outages.',
+      takeaway: 'Relational databases store structured enterprise data securely in ACID-compliant tables.'
     },
     diagramType: 'sql-library',
-    simpleExplanation: 'Relational databases (Oracle, SQL Server) organize structured data into tables. Primary Keys uniquely identify records; Foreign Keys establish relational integrity between parent and child tables. `INNER JOIN` returns matching records between tables; `LEFT JOIN` preserves all left-table rows with NULL fallbacks. ACID transactions guarantee Atomicity (all or nothing), Consistency, Isolation, and Durability.',
+    simpleExplanation: 'Relational Database Management Systems (RDBMS) like Oracle DB and Microsoft SQL Server power enterprise SaaS applications. They organize data into structured tables defined by strict schemas, support complex SQL querying, and guarantee high-availability transactional integrity.',
+    commonMistake: 'Storing unstructured JSON data directly into flat SQL string columns without proper normalization.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Identify Enterprise RDBMS (Oracle DB and Microsoft SQL Server).',
+        '2. Explain Data Structure (Organizing structured data into schemas, tables, rows, and columns).',
+        '3. Highlight Core Value (Providing ACID transaction reliability and high-speed indexing).'
+      ],
+      exampleScript: 'Enterprise SaaS applications rely on RDBMS platforms like Oracle DB and SQL Server to manage structured transactional data. They enforce strict relational schemas and provide robust ACID compliance for critical financial and inventory records.',
+      durationSec: 27,
+      tip: 'Enterprise RDBMS = Oracle & SQL Server table persistence.'
+    },
+    onePictureSummary: ['🛢️ Oracle DB / SQL Server', '↓ 📊 Structured Tables', '↓ 🛡️ ACID Compliance', '↓ ⚡ High-Speed Queries']
+  },
+  {
+    id: 'ch-20-primary-foreign-keys',
+    partId: 'part-5',
+    partTitle: 'Section V: Databases',
+    chapterNumber: 20,
+    title: 'Chapter 20: Primary Keys, Foreign Keys & Referential Integrity',
+    shortTitle: '20. Keys & Integrity',
+    icon: '🔑',
+    estimatedMinutes: 7,
+    question: 'What is the difference between a Primary Key and a Foreign Key, and what is Referential Integrity?',
+    analogyStory: {
+      title: 'The Student ID Badge & Library Checkout Slip',
+      text: 'Your National ID card number (Primary Key) uniquely identifies you—no two citizens share the same ID number! When you borrow a library book, the librarian stamps your National ID onto the book checkout slip (Foreign Key). This connects the book record to your identity without duplicating your name and address.',
+      takeaway: 'Primary Key uniquely identifies a row; Foreign Key connects child table rows to parent table Primary Keys.'
+    },
+    diagramType: 'sql-library',
+    simpleExplanation: 'A Primary Key (PK) is a unique, non-null column that uniquely identifies every record in a table. A Foreign Key (FK) is a column in a child table that points to the Primary Key of a parent table, establishing a relational link. Referential Integrity ensures child FK references always point to valid parent PK records.',
+    commonMistake: 'Deleting a parent table row while child table rows still reference its Foreign Key, causing constraint violations.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Primary Key (Unique non-null identifier for table rows).',
+        '2. Define Foreign Key (Column in child table referencing parent Primary Key).',
+        '3. Explain Referential Integrity (Guaranteeing child references always point to existing parent records).'
+      ],
+      exampleScript: 'A Primary Key uniquely identifies each record in a database table. A Foreign Key resides in a child table and points to the Primary Key of a parent table. Referential integrity guarantees that child Foreign Key references always match valid parent records.',
+      durationSec: 28,
+      tip: 'PK = Unique ID; FK = Reference link to Parent PK.'
+    },
+    onePictureSummary: ['🔑 Primary Key (Users)', '↓ 🔗 Foreign Key (Orders)', '↓ 🛡️ Referential Integrity', '↓ 📊 Linked Relational Data']
+  },
+  {
+    id: 'ch-21-sql-joins-acid',
+    partId: 'part-5',
+    partTitle: 'Section V: Databases',
+    chapterNumber: 21,
+    title: 'Chapter 21: SQL Joins (INNER, LEFT, RIGHT, FULL) & ACID Transactions',
+    shortTitle: '21. Joins & ACID',
+    icon: '🤝',
+    estimatedMinutes: 8,
+    question: 'How do SQL Joins work, and what are the 4 ACID transaction guarantees in enterprise databases?',
+    analogyStory: {
+      title: 'The Two Guest Lists & Unbreakable Bank Transfer',
+      text: 'Imagine List A (Invited Guests) and List B (Attended Guests). INNER JOIN returns only guests on BOTH lists. LEFT JOIN returns all invited guests, putting NULL next to those who didn\'t show up. ACID transactions guarantee that bank transfers deduct from Account A and credit Account B completely, or cancel 100% on error.',
+      takeaway: 'INNER JOIN = Matching keys; LEFT JOIN = All left rows; ACID = Atomicity, Consistency, Isolation, Durability.'
+    },
+    diagramType: 'sql-library',
+    simpleExplanation: 'SQL Joins combine columns from multiple tables: `INNER JOIN` returns matching records, `LEFT JOIN` preserves all left-table rows with NULL fallbacks. ACID transactions guarantee Atomicity (all or nothing), Consistency (schema valid), Isolation (concurrent safety), and Durability (persisted writes).',
     commonMistake: 'Forgetting to include `JOIN` conditions or foreign keys, resulting in disastrous Cartesian products (Cross Joins)!',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
-        '1. Define Relational Keys (Primary Key for unique identification; Foreign Key for table relationship).',
-        '2. Differentiate Joins (INNER JOIN for matching records; LEFT JOIN to preserve left table rows).',
-        '3. Explain ACID Properties (Atomicity, Consistency, Isolation, Durability for reliable transactions).'
+        '1. Differentiate SQL Joins (INNER JOIN matches keys; LEFT JOIN preserves left table rows).',
+        '2. Explain ACID Properties (Atomicity, Consistency, Isolation, Durability for reliable transactions).',
+        '3. Highlight Transaction Rollback (Undoing changes completely if an exception occurs).'
       ],
-      exampleScript: 'Primary Keys uniquely identify table rows while Foreign Keys maintain referential integrity across tables. INNER JOIN fetches matching records between tables. Relational engines guarantee ACID properties—Atomicity, Consistency, Isolation, and Durability—to protect transactional data integrity.',
+      exampleScript: 'INNER JOIN returns matching records between tables, whereas LEFT JOIN preserves all left-table rows with NULL fallbacks. Relational engines enforce ACID properties—Atomicity, Consistency, Isolation, and Durability—to ensure transactions execute completely or roll back safely.',
       durationSec: 30,
       tip: 'PK + FK + INNER/LEFT JOIN + ACID.'
     },
     onePictureSummary: ['🔑 Primary Key', '↓ 🔗 Foreign Key', '↓ 🤝 INNER/LEFT JOIN', '↓ 🛡️ ACID Guarantee']
   },
   {
-    id: 'ch-15-indexing-nosql',
+    id: 'ch-22-indexing-nosql',
     partId: 'part-5',
     partTitle: 'Section V: Databases',
-    chapterNumber: 15,
-    title: 'Chapter 15: Database Indexing, GROUP BY vs HAVING & NoSQL Firestore',
-    shortTitle: '15. Indexing & NoSQL',
-    icon: '🛢️',
+    chapterNumber: 22,
+    title: 'Chapter 22: Database Indexing, GROUP BY vs HAVING & NoSQL Firestore',
+    shortTitle: '22. Indexing & NoSQL',
+    icon: '📖',
     estimatedMinutes: 8,
     question: 'What is a Database Index, how do GROUP BY and HAVING differ, and how does NoSQL differ from SQL?',
     analogyStory: {
@@ -523,14 +740,14 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['📖 B-Tree Index', '↓ 🔍 WHERE (Before)', '↓ 📊 GROUP BY + HAVING', '↓ 📄 NoSQL JSON']
   },
 
-  // SECTION VI: BACKEND FRAMEWORKS & WEB SERVICES
+  // SECTION VI: BACKEND FRAMEWORKS & WEB SERVICES (23-26)
   {
-    id: 'ch-16-rest-apis-http',
+    id: 'ch-23-rest-apis-http',
     partId: 'part-6',
     partTitle: 'Section VI: Spring Boot & REST APIs',
-    chapterNumber: 16,
-    title: 'Chapter 16: REST APIs vs SOAP, HTTP Verbs & Status Codes',
-    shortTitle: '16. REST APIs & HTTP',
+    chapterNumber: 23,
+    title: 'Chapter 23: Web Services: SOAP vs REST APIs, HTTP Verbs & Status Codes',
+    shortTitle: '23. REST APIs & HTTP',
     icon: '🍽️',
     estimatedMinutes: 8,
     question: 'What is a REST API, how does it differ from SOAP, and what are standard HTTP verbs and status codes?',
@@ -556,45 +773,107 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🍽️ REST API Menu', '↓ 📥 GET/POST/PUT/DELETE', '↓ 📄 JSON Payload', '↓ 🏷️ Status Codes (200/201)']
   },
   {
-    id: 'ch-17-spring-boot-architecture',
+    id: 'ch-24-spring-boot-architecture',
     partId: 'part-6',
     partTitle: 'Section VI: Spring Boot & REST APIs',
-    chapterNumber: 17,
-    title: 'Chapter 17: Spring Boot 3-Tier Architecture & Microservices API Gateway',
-    shortTitle: '17. Spring Boot & Gateway',
+    chapterNumber: 24,
+    title: 'Chapter 24: Spring Boot 3-Tier Architecture (@RestController, @Service, @Repository)',
+    shortTitle: '24. Spring 3-Tier',
     icon: '⚡',
-    estimatedMinutes: 9,
-    question: 'How is a Spring Boot application structured across 3 tiers, and how does an API Gateway integrate with Microservices?',
+    estimatedMinutes: 8,
+    question: 'How is a Spring Boot application structured across 3 tiers using stereotype annotations?',
     analogyStory: {
-      title: 'The Enterprise Factory Assembly Line & Reception Gate',
-      text: 'An API Gateway is the security reception desk at the factory entrance: it checks visitor badges (Auth), routes visitors to the right department, and limits traffic. Inside, Spring Boot operates a 3-Tier assembly line: 1) `@RestController` accepts orders, 2) `@Service` executes business logic, 3) `@Repository` queries the database.',
-      takeaway: 'Controller routes HTTP requests; Service holds business logic; Repository handles database calls; API Gateway routes microservices.'
+      title: 'The Enterprise Factory Assembly Line',
+      text: 'Spring Boot operates a 3-Tier assembly line: 1) `@RestController` accepts HTTP requests at the front desk, 2) `@Service` executes business logic rules, 3) `@Repository` manages database access via Spring Data JPA.',
+      takeaway: 'Controller routes HTTP requests; Service holds business logic; Repository handles database calls.'
     },
-    diagramType: 'microservices-gateway',
-    simpleExplanation: 'Spring Boot follows 3-Tier Layered Architecture: `@RestController` handles HTTP routing and serialization, `@Service` executes business logic and transaction boundaries (`@Transactional`), and `@Repository` manages database access via Spring Data JPA. In Microservices, an API Gateway (Spring Cloud Gateway) handles reverse proxy routing, rate limiting, and JWT authentication.',
+    diagramType: 'spring-factory',
+    simpleExplanation: 'Spring Boot follows 3-Tier Layered Architecture: `@RestController` handles HTTP routing and serialization, `@Service` executes business logic, and `@Repository` manages database access via Spring Data JPA. Stereotype annotations register classes as Spring Beans for automated Dependency Injection.',
     commonMistake: 'Writing raw database SQL calls inside `@RestController` classes instead of delegating to `@Service` and `@Repository` tiers.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
         '1. Explain 3-Tier Layers (Controller for HTTP routing; Service for business logic; Repository for data access).',
-        '2. Mention Spring Data JPA & @Transactional (Automating database queries and transaction boundaries).',
-        '3. Explain API Gateway (Central entry point routing traffic to decoupled microservices).'
+        '2. Mention Spring Beans (Stereotype annotations registering components for Dependency Injection).',
+        '3. Highlight Separation of Concerns (Keeping HTTP logic separated from database persistence).'
       ],
-      exampleScript: 'Our Spring Boot applications follow 3-Tier architecture: RestControllers handle HTTP routing, Service classes execute business logic with @Transactional boundaries, and Repositories manage database access via Spring Data JPA. In microservices, an API Gateway acts as a central entry point for routing and authentication.',
-      durationSec: 32,
-      tip: 'Controller -> Service -> Repository + API Gateway.'
+      exampleScript: 'Our Spring Boot applications follow 3-Tier architecture: RestControllers handle HTTP routing, Service classes execute business logic, and Repositories manage database access via Spring Data JPA, ensuring clean separation of concerns.',
+      durationSec: 28,
+      tip: 'Controller -> Service -> Repository.'
     },
-    onePictureSummary: ['🌐 API Gateway', '↓ ⚡ @RestController', '↓ 🧠 @Service Logic', '↓ 🛢️ @Repository JPA']
+    onePictureSummary: ['⚡ @RestController', '↓ 🧠 @Service Logic', '↓ 🛢️ @Repository JPA', '↓ 📦 Spring Beans']
+  },
+  {
+    id: 'ch-25-spring-jpa-transactional',
+    partId: 'part-6',
+    partTitle: 'Section VI: Spring Boot & REST APIs',
+    chapterNumber: 25,
+    title: 'Chapter 25: Spring Data JPA & @Transactional Database Boundaries',
+    shortTitle: '25. JPA & @Transactional',
+    icon: '🛢️',
+    estimatedMinutes: 8,
+    question: 'How does Spring Data JPA eliminate boilerplate SQL, and how does @Transactional enforce ACID boundaries?',
+    analogyStory: {
+      title: 'The Automated SQL Generator & Safety Net',
+      text: 'Instead of writing manual JDBC SQL strings, Spring Data JPA reads method names like `findByEmail(String email)` and generates SQL automatically! `@Transactional` acts as a safety net: if any exception occurs halfway through updating 3 database tables, Spring rolls back all 3 updates automatically.',
+      takeaway: 'JpaRepository derives SQL queries from method names; @Transactional rolls back on runtime exceptions.'
+    },
+    diagramType: 'spring-factory',
+    simpleExplanation: 'Spring Data JPA (`JpaRepository`) inspects repository method signatures like `findByStatus()` and derives SQL queries automatically at runtime. `@Transactional` wraps method execution in a database transaction, committing on success or rolling back completely if an unhandled runtime exception occurs.',
+    commonMistake: 'Catching runtime exceptions inside `@Transactional` methods with empty try-catch blocks, preventing Spring from detecting failures and rolling back!',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Explain Spring Data JPA (Deriving SQL queries automatically from method signatures).',
+        '2. Explain @Transactional (Wrapping business methods in ACID transaction boundaries).',
+        '3. Highlight Rollback Behavior (Automatically rolling back database writes on runtime exceptions).'
+      ],
+      exampleScript: 'Spring Data JPA derives SQL queries automatically from repository method names like findByEmail(). We use @Transactional on service methods to establish ACID transaction boundaries, ensuring all database operations commit together or roll back completely on runtime exceptions.',
+      durationSec: 29,
+      tip: 'JpaRepository method names + @Transactional rollback safety.'
+    },
+    onePictureSummary: ['🛢️ JpaRepository', '↓ ⚙️ Auto Derived SQL', '↓ 🛡️ @Transactional Lock', '↓ 🔄 Automatic Rollback']
+  },
+  {
+    id: 'ch-26-microservices-api-gateway',
+    partId: 'part-6',
+    partTitle: 'Section VI: Spring Boot & REST APIs',
+    chapterNumber: 26,
+    title: 'Chapter 26: Microservices Architecture & API Gateway Pattern',
+    shortTitle: '26. Microservices & Gateway',
+    icon: '🌐',
+    estimatedMinutes: 9,
+    question: 'What is Microservices Architecture and what role does an API Gateway play?',
+    analogyStory: {
+      title: 'The Reception Desk & Autonomous Department Buildings',
+      text: 'Instead of putting 1,000 employees inside one giant monolithic room where a single pipe leak shuts down the whole company, Microservices places each department (Billing, Inventory) in its own autonomous building. An API Gateway is the central reception desk that routes visitors, verifies security tokens, and limits traffic before letting anyone enter.',
+      takeaway: 'Microservices decouple systems into autonomous services; API Gateway provides unified entry routing and security.'
+    },
+    diagramType: 'microservices-gateway',
+    simpleExplanation: 'Microservices Architecture breaks monolithic applications into small, autonomous, independently deployable services organized around business capabilities. An API Gateway (Spring Cloud Gateway) acts as a reverse proxy entry point that handles request routing, rate limiting, JWT authentication, and SSL termination for internal services.',
+    commonMistake: 'Sharing a single database between 10 microservices. Each microservice MUST own its private database schema!',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define Microservices (Autonomous, independently deployable services with private databases).',
+        '2. Explain API Gateway (Central entry point for routing, authentication, and rate limiting).',
+        '3. Highlight Scalability (Scaling high-traffic services independently without affecting others).'
+      ],
+      exampleScript: 'Microservices architecture decomposes applications into autonomous, independently deployable services that own private databases. An API Gateway acts as a central entry point, handling routing, rate limiting, and JWT authentication across backend services.',
+      durationSec: 30,
+      tip: 'Decoupled services + Private databases + API Gateway entry.'
+    },
+    onePictureSummary: ['🌐 API Gateway', '↓ 🔑 Auth & Rate Limit', '↓ ⚡ Autonomous Microservices', '↓ 🛢️ Private Databases']
   },
 
-  // SECTION VII: AI TOOLS & UNIT TESTING EVIDENCES
+  // SECTION VII: AI TOOLS & UNIT TESTING EVIDENCES (27-28)
   {
-    id: 'ch-18-ai-tools-sdlc',
+    id: 'ch-27-ai-tools-sdlc',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools & Unit Testing',
-    chapterNumber: 18,
-    title: 'Chapter 18: Leveraging GenAI Tools (GitHub Copilot & Gemini) in SDLC & Honest Framing',
-    shortTitle: '18. GenAI in SDLC',
+    chapterNumber: 27,
+    title: 'Chapter 27: Leveraging GenAI Tools (GitHub Copilot & Gemini) in SDLC & Honest Framing',
+    shortTitle: '27. GenAI in SDLC',
     icon: '🤖',
     estimatedMinutes: 8,
     question: 'How do you leverage AI/GenAI tools during SDLC, and how should you frame AI usage in technical interviews?',
@@ -620,12 +899,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['👨‍💻 Personal Code Control', '↓ 🤖 GitHub Copilot Assist', '↓ 🧪 Test Generation', '↓ ⚡ 2x SDLC Speed']
   },
   {
-    id: 'ch-19-unit-testing-evidences',
+    id: 'ch-28-unit-testing-evidences',
     partId: 'part-7',
     partTitle: 'Section VII: AI Tools & Unit Testing',
-    chapterNumber: 19,
-    title: 'Chapter 19: Automated Unit Testing (JUnit 5 & Mockito) & Test Evidences',
-    shortTitle: '19. Unit Test Evidences',
+    chapterNumber: 28,
+    title: 'Chapter 28: Automated Unit Testing (JUnit 5 & Mockito) & Test Evidences',
+    shortTitle: '28. Unit Test Evidences',
     icon: '🧪',
     estimatedMinutes: 8,
     question: 'How do JUnit 5 and Mockito work, and why are Unit Test Evidences mandatory before merging Pull Requests?',
@@ -651,14 +930,14 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🧪 JUnit 5 Tests', '↓ 🎭 Mockito Mocks', '↓ 📄 Test Evidences', '↓ 🔀 PR Quality Gate']
   },
 
-  // SECTION VIII: DEVOPS, CONTAINERS & CLOUD INFRASTRUCTURE
+  // SECTION VIII: DEVOPS, CONTAINERS & CLOUD INFRASTRUCTURE (29-31)
   {
-    id: 'ch-20-git-workflows',
+    id: 'ch-29-git-workflows',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 20,
-    title: 'Chapter 20: Git Branching & Peer Review Pull Request Workflows',
-    shortTitle: '20. Git & PRs',
+    chapterNumber: 29,
+    title: 'Chapter 29: Git Feature Branching & Peer Review Pull Request Workflows',
+    shortTitle: '29. Git & PRs',
     icon: '🌿',
     estimatedMinutes: 7,
     question: 'What is feature branching in Git and how does the Pull Request (PR) code review workflow operate?',
@@ -684,45 +963,76 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🌿 Feature Branch', '↓ 📸 Local Commits', '↓ 🔀 Pull Request Review', '↓ 🚀 Main Branch Merge']
   },
   {
-    id: 'ch-21-docker-kubernetes-cicd',
+    id: 'ch-30-docker-kubernetes-cicd',
     partId: 'part-8',
     partTitle: 'Section VIII: DevOps & Cloud',
-    chapterNumber: 21,
-    title: 'Chapter 21: Docker Multi-Stage Builds, Kubernetes & CI/CD Pipelines',
-    shortTitle: '21. Docker & K8s',
+    chapterNumber: 30,
+    title: 'Chapter 30: Docker Multi-Stage Builds & Kubernetes Pod Orchestration',
+    shortTitle: '30. Docker & K8s',
     icon: '📦',
     estimatedMinutes: 9,
-    question: 'How do Docker containerization, Kubernetes orchestration, and CI/CD pipelines work together?',
+    question: 'How do Docker containerization and Kubernetes orchestration work together?',
     analogyStory: {
       title: 'The Shipping Container Cargo Ship & Automated Crane',
       text: 'Docker packages your Java app and JRE runtime into an identical cargo container image. Multi-stage Docker builds use Maven in Stage 1 to compile code, then copy ONLY the final JAR into a lightweight JRE image in Stage 2 to minimize container size. Kubernetes acts as the cargo ship captain: auto-scaling containers in Pods and running Rolling Updates for zero downtime.',
       takeaway: 'Docker packages apps; Multi-stage builds shrink images; Kubernetes orchestrates zero-downtime rolling updates.'
     },
     diagramType: 'docker-ship',
-    simpleExplanation: 'Docker containerizes applications with their runtime dependencies. Multi-stage `Dockerfile` builds compile the app with Maven in Stage 1 and copy the JAR artifact into a slim JRE runtime in Stage 2, minimizing container footprint. Kubernetes (K8s) manages Pod clusters, executing automated health checks, auto-scaling, and zero-downtime Rolling Updates. CI/CD pipelines (GitHub Actions/Jenkins) automate building, testing, and deploying images.',
+    simpleExplanation: 'Docker containerizes applications with their runtime dependencies. Multi-stage `Dockerfile` builds compile the app with Maven in Stage 1 and copy the JAR artifact into a slim JRE runtime in Stage 2, minimizing container footprint. Kubernetes (K8s) manages Pod clusters, executing automated health checks, auto-scaling, and zero-downtime Rolling Updates.',
     commonMistake: 'Packaging full JDK build tools into production Docker images instead of using Multi-Stage builds.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
         '1. Explain Docker & Multi-Stage Builds (Packaging app into containers and using multi-stage builds to optimize image size).',
         '2. Explain Kubernetes (Orchestrating Pod clusters, auto-scaling, and zero-downtime rolling updates).',
-        '3. Explain CI/CD Integration (Automating build, test, and deployment steps on Git commit).'
+        '3. Explain Runtime Footprint (Shrinking production images by removing build tools).'
       ],
-      exampleScript: 'We containerize applications using Multi-Stage Docker builds—compiling with Maven in Stage 1 and transferring the artifact into a slim JRE runtime in Stage 2. Kubernetes orchestrates container Pods, delivering auto-scaling and zero-downtime rolling updates. CI/CD pipelines automate building, testing, and deployment.',
-      durationSec: 33,
-      tip: 'Multi-stage Docker + K8s rolling updates + CI/CD automation.'
+      exampleScript: 'We containerize applications using Multi-Stage Docker builds—compiling with Maven in Stage 1 and transferring the artifact into a slim JRE runtime in Stage 2. Kubernetes orchestrates container Pods, delivering auto-scaling and zero-downtime rolling updates.',
+      durationSec: 32,
+      tip: 'Multi-stage Docker + K8s rolling updates.'
     },
-    onePictureSummary: ['🐳 Docker Multi-Stage', '↓ 📦 Slim JRE Image', '↓ 🏗️ K8s Rolling Update', '↓ ⚙️ CI/CD Pipeline']
+    onePictureSummary: ['🐳 Docker Multi-Stage', '↓ 📦 Slim JRE Image', '↓ 🏗️ K8s Rolling Update', '↓ 🚀 Zero Downtime']
+  },
+  {
+    id: 'ch-31-cicd-cloud-deployments',
+    partId: 'part-8',
+    partTitle: 'Section VIII: DevOps & Cloud',
+    chapterNumber: 31,
+    title: 'Chapter 31: CI/CD Pipelines & High-Availability Cloud Deployments',
+    shortTitle: '31. CI/CD & Cloud',
+    icon: '🚀',
+    estimatedMinutes: 8,
+    question: 'What is a CI/CD pipeline and how are applications deployed to AWS/Azure/GCP cloud environments?',
+    analogyStory: {
+      title: 'The Automated Inspection Conveyor Belt',
+      text: 'CI/CD is an automated conveyor belt. When a developer pushes code, the CI server automatically compiles the code, executes JUnit tests, runs static security scans, and builds a Docker image. If all checks pass, CD automatically deploys the image to cloud server clusters.',
+      takeaway: 'CI automates building and testing; CD automates cloud deployments.'
+    },
+    diagramType: 'ci-cd-pipeline',
+    simpleExplanation: 'CI/CD stands for Continuous Integration and Continuous Deployment (or Delivery). CI pipelines (GitHub Actions, Jenkins) trigger on code push to automatically build, run unit test suites, and analyze code coverage. CD pipelines automate deploying validated artifacts to cloud environments (AWS EC2, Elastic Beanstalk, EKS), ensuring fast, reliable releases.',
+    commonMistake: 'Manually uploading compiled JAR files via FTP to cloud servers instead of using automated CI/CD pipelines.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define CI (Continuous Integration: automated compiling, testing, and static analysis on code push).',
+        '2. Define CD (Continuous Deployment: automated release of validated artifacts to cloud infrastructure).',
+        '3. State Tooling (Using GitHub Actions or Jenkins pipelines).'
+      ],
+      exampleScript: 'CI/CD automates our software release pipeline. Continuous Integration automatically compiles code and executes test suites on every Git commit. Continuous Deployment automatically deploys validated Docker artifacts to cloud environments, ensuring rapid and error-free releases.',
+      durationSec: 29,
+      tip: 'CI = automated build & test; CD = automated cloud release.'
+    },
+    onePictureSummary: ['⚙️ Git Push', '↓ 🧪 CI Automated Build/Test', '↓ 📦 Docker Artifact', '↓ 🚀 CD Cloud Release']
   },
 
-  // SECTION IX: SOLID PRINCIPLES & SYSTEM ARCHITECTURE
+  // SECTION IX: SOLID PRINCIPLES & SYSTEM ARCHITECTURE (32-37)
   {
-    id: 'ch-22-solid-srp',
+    id: 'ch-32-solid-srp',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 22,
-    title: 'Chapter 22: SOLID Principle #1 - S: Single Responsibility Principle (SRP)',
-    shortTitle: '22. S: SRP',
+    chapterNumber: 32,
+    title: 'Chapter 32: SOLID Principle #1 - S: Single Responsibility Principle (SRP)',
+    shortTitle: '32. S: SRP',
     icon: '✂️',
     estimatedMinutes: 8,
     question: 'What is the Single Responsibility Principle (SRP) and how do you enforce it in Java classes?',
@@ -748,12 +1058,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['✂️ Split God Class', '↓ 📄 UserRepo (DB)', '↓ ⚡ UserService (Logic)', '↓ 🖨️ PdfService (PDF)']
   },
   {
-    id: 'ch-23-solid-ocp',
+    id: 'ch-33-solid-ocp',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 23,
-    title: 'Chapter 23: SOLID Principle #2 - O: Open/Closed Principle (OCP)',
-    shortTitle: '23. O: OCP',
+    chapterNumber: 33,
+    title: 'Chapter 33: SOLID Principle #2 - O: Open/Closed Principle (OCP)',
+    shortTitle: '33. O: OCP',
     icon: '🔌',
     estimatedMinutes: 8,
     question: 'What is the Open/Closed Principle (OCP) and how do Interfaces enable adding features without modifying code?',
@@ -779,12 +1089,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🔌 Interface Socket', '↓ ➕ Add New Strategy Class', '↓ 🔒 Zero Edits to Core Code', '↓ 🎯 Clean OCP Design']
   },
   {
-    id: 'ch-24-solid-lsp',
+    id: 'ch-34-solid-lsp',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 24,
-    title: 'Chapter 24: SOLID Principle #3 - L: Liskov Substitution Principle (LSP)',
-    shortTitle: '24. L: LSP',
+    chapterNumber: 34,
+    title: 'Chapter 34: SOLID Principle #3 - L: Liskov Substitution Principle (LSP)',
+    shortTitle: '34. L: LSP',
     icon: '🦆',
     estimatedMinutes: 8,
     question: 'What is the Liskov Substitution Principle (LSP) and how do unexpected exceptions break inheritance?',
@@ -810,12 +1120,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🦆 Parent Class Contract', '↓ 🔄 Subclass Substitutability', '↓ 0 Unexpected Exceptions', '↓ Clean LSP']
   },
   {
-    id: 'ch-25-solid-isp',
+    id: 'ch-35-solid-isp',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 25,
-    title: 'Chapter 25: SOLID Principle #4 - I: Interface Segregation Principle (ISP)',
-    shortTitle: '25. I: ISP',
+    chapterNumber: 35,
+    title: 'Chapter 35: SOLID Principle #4 - I: Interface Segregation Principle (ISP)',
+    shortTitle: '35. I: ISP',
     icon: '✂️',
     estimatedMinutes: 8,
     question: 'What is the Interface Segregation Principle (ISP) and why prefer small focused interfaces over fat interfaces?',
@@ -841,12 +1151,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['✂️ Split Fat Interface', '↓ Small Specific Interfaces', '↓ 0 Dummy Empty Methods', '↓ Clean Implementation']
   },
   {
-    id: 'ch-26-solid-dip',
+    id: 'ch-36-solid-dip',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 26,
-    title: 'Chapter 26: SOLID Principle #5 - D: Dependency Inversion Principle (DIP)',
-    shortTitle: '26. D: DIP',
+    chapterNumber: 36,
+    title: 'Chapter 36: SOLID Principle #5 - D: Dependency Inversion Principle (DIP)',
+    shortTitle: '36. D: DIP',
     icon: '🔌',
     estimatedMinutes: 9,
     question: 'What is Dependency Inversion Principle (DIP) and how does Spring Boot use Dependency Injection (@Autowired)?',
@@ -872,12 +1182,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🔌 Interface Abstraction', '↓ High-Level Service Class', '↓ 💉 Spring @Autowired Injection', '↓ Easy Mocking & Testing']
   },
   {
-    id: 'ch-27-lld-hld-microservices',
+    id: 'ch-37-lld-hld-microservices',
     partId: 'part-9',
     partTitle: 'Section IX: SOLID Principles',
-    chapterNumber: 27,
-    title: 'Chapter 27: LLD vs HLD & Scalable Microservices Caching (Redis)',
-    shortTitle: '27. LLD/HLD & Microservices',
+    chapterNumber: 37,
+    title: 'Chapter 37: LLD vs HLD & Scalable Microservices Caching (Redis)',
+    shortTitle: '37. LLD/HLD & Microservices',
     icon: '🌐',
     estimatedMinutes: 8,
     question: 'How do LLD and HLD differ, and how do you design scalable microservices with Redis caching?',
@@ -903,14 +1213,14 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🏙️ HLD Macro System', '↓ 🔌 LLD Micro Classes', '↓ 🌐 API Gateway Entry', '↓ ⚡ Redis Cache']
   },
 
-  // SECTION X: RESUME STORIES & BEHAVIORAL HR
+  // SECTION X: RESUME STORIES & BEHAVIORAL HR (38-40)
   {
-    id: 'ch-28-infor-experience',
+    id: 'ch-38-infor-experience',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 28,
-    title: 'Chapter 28: Renuka\'s Infor Experience (Enterprise AI Internship)',
-    shortTitle: '28. Infor Internship',
+    chapterNumber: 38,
+    title: 'Chapter 38: Renuka\'s Infor Experience (Enterprise AI Internship)',
+    shortTitle: '38. Infor Internship',
     icon: '🏢',
     estimatedMinutes: 8,
     question: 'Tell me about your 4-month experience at Infor and the technical AI projects you worked on.',
@@ -936,12 +1246,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🏢 Infor 4-Month Internship', '↓ 🤖 GPT-4 RAG Vector Assistant', '↓ 📊 AWS DeepAR Time-Series RNN', '↓ Enterprise FSM AI Skills']
   },
   {
-    id: 'ch-29-pollaris-story',
+    id: 'ch-39-pollaris-story',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 29,
-    title: 'Chapter 29: Pollaris Online Polling Platform (Firestore ACID Transactions)',
-    shortTitle: '29. Pollaris Project',
+    chapterNumber: 39,
+    title: 'Chapter 39: Pollaris Online Polling Platform (Firestore ACID Transactions)',
+    shortTitle: '39. Pollaris Project',
     icon: '🗳️',
     estimatedMinutes: 9,
     question: 'Can you explain your project Pollaris, its lifecycle, and how you solved race conditions using Firestore ACID Transactions?',
@@ -967,44 +1277,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🗳️ Next.js 16 + Firestore', '↓ 📋 Draft ➔ Open ➔ Closed Lifecycle', '↓ 🔒 db.runTransaction() ACID Lock', '↓ 100% Vote Integrity & Token Security']
   },
   {
-    id: 'ch-30-renuka-self-intro',
+    id: 'ch-40-mega-mcq-exam',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 30,
-    title: 'Chapter 30: Renuka\'s Master Self-Introduction & STAR Method',
-    shortTitle: '30. Self Intro & STAR',
-    icon: '🗣️',
-    estimatedMinutes: 6,
-    question: 'Tell me about yourself and how you handle technical challenges using the STAR method.',
-    analogyStory: {
-      title: 'The 45-Second Technical Elevator Pitch & STAR Compass',
-      text: 'State 4 clear facts: 1) JNTU ECE degree, 2) Core stack (Java, SQL, REST APIs, Spring Boot), 3) Infor 4-month internship & Pollaris project, 4) Using STAR (Situation -> Task -> Action -> Result) to answer behavioral questions.',
-      takeaway: 'Structure: Background (JNTU ECE) ➔ Tech Stack ➔ Infor/Pollaris Projects ➔ STAR Method.'
-    },
-    diagramType: 'star-hr',
-    simpleExplanation: 'Keep your self-introduction under 45 seconds. State your name, B.Tech ECE degree from JNTU, core technical stack (Java, SQL, REST APIs, Cloud, AI), 4-month Infor internship experience, and enthusiasm for the Associate Software Engineer FSM role. Use STAR (Situation, Task, Action, Result) for behavioral questions.',
-    commonMistake: 'Talking about high school marks instead of core technical skills and projects.',
-    whatToTellInterviewer: {
-      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
-      structurePoints: [
-        '1. Greeting & Education (Hello, I am Renuka. B.Tech ECE graduate from JNTU).',
-        '2. Technical Stack (Passionate about Java, SQL, REST APIs, and AI tools).',
-        '3. Practical Experience (4-month Infor internship working on enterprise AI & Pollaris project).',
-        '4. Behavioral Approach (Using STAR method: Situation, Task, Action, Result).'
-      ],
-      exampleScript: 'Hello, thank you for this opportunity. I am Renuka. I completed my B.Tech in Electronics and Communication Engineering from JNTU. I am passionate about software development and enterprise SaaS solutions. My core technical skills include Java, SQL, REST APIs, and Spring Boot. I completed a 4-month internship at Infor working on enterprise AI tools, and built cloud projects like Pollaris. When faced with technical challenges, I use the STAR method to focus on clear actions and measurable results.',
-      durationSec: 38,
-      tip: 'Keep it crisp, technical, structured, and under 40 seconds.'
-    },
-    onePictureSummary: ['🎓 JNTU ECE Degree', '↓ Java, SQL, REST APIs', '↓ Infor 4-Month Internship', '↓ STAR Method Framework']
-  },
-  {
-    id: 'ch-31-mega-mcq-exam',
-    partId: 'part-10',
-    partTitle: 'Section X: Resume & HR',
-    chapterNumber: 31,
-    title: 'Chapter 31: Mega 100-Question Interview Master MCQ Exam',
-    shortTitle: '31. Mega 100 MCQs Exam',
+    chapterNumber: 40,
+    title: 'Chapter 40: Mega 100-Question Interview Master MCQ Exam',
+    shortTitle: '40. Mega 100 MCQs Exam',
     icon: '🏆',
     estimatedMinutes: 45,
     question: 'Are you ready to test your total mastery across all 10 sections with 100 high-yield interview MCQs?',
@@ -1014,7 +1292,7 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
       takeaway: '100 MCQs covering FSM SaaS, Agile, Java, OOP, DSA, SQL, Spring Boot, AI, DevOps, SOLID, and Projects.'
     },
     diagramType: 'mega-mcq',
-    simpleExplanation: 'Chapter 31 contains an interactive 100-question master examination player. Answer questions, track your live score, and read exhaustive option-by-option explanations.',
+    simpleExplanation: 'Chapter 40 contains an interactive 100-question master examination player. Answer questions, track your live score, and read exhaustive option-by-option explanations.',
     commonMistake: 'Rushing through answers without reading the detailed option-by-option explanations.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
