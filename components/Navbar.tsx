@@ -6,6 +6,9 @@ const links = [
   { href: "/track-1", label: "Track 1" },
   { href: "/track-2", label: "Track 2" },
   { href: "/track-3", label: "Track 3" },
+  { href: "/datstructures", label: "DSA Records" },
+  { href: "/snist", label: "SNIST Practice" },
+  { href: "/ds", label: "DS Codes" },
 ];
 
 export default function Navbar() {
