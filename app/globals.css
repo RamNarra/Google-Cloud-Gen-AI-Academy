@@ -36,10 +36,11 @@ body {
   font-family: var(--font-dm-mono), monospace;
 }
 
-h1,
-h2,
-h3,
-h4 {
+/* Scoped headings for dark notes articles */
+.notes-article h1,
+.notes-article h2,
+.notes-article h3,
+.notes-article h4 {
   color: #f3f6ff;
 }
 
