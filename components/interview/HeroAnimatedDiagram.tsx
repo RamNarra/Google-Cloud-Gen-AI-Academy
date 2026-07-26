@@ -11,21 +11,22 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
 
   return (
     <div className="my-4 rounded-3xl border border-[#E2DCD0] bg-white p-5 shadow-sm">
+      {/* Header Bar with Animation Controls */}
       <div className="flex items-center justify-between border-b border-slate-100 pb-3">
         <span className="font-mono text-xs font-extrabold uppercase tracking-wider text-blue-700">
-          📊 VISUAL SYSTEM DIAGRAM
+          📊 VISUAL ARCHITECTURE & SYSTEM DIAGRAM
         </span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setActiveStep((prev) => (prev > 0 ? prev - 1 : 2))}
-            className="rounded-lg border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-100"
+            className="rounded-lg border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-800 hover:bg-slate-100 cursor-pointer"
           >
             ← Prev
           </button>
           <span className="font-mono text-xs font-bold text-slate-600">Step {activeStep + 1}/3</span>
           <button
             onClick={() => setActiveStep((prev) => (prev < 2 ? prev + 1 : 0))}
-            className="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-blue-700 shadow-xs"
+            className="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-bold text-white hover:bg-blue-700 shadow-xs cursor-pointer"
           >
             Next →
           </button>
@@ -33,31 +34,31 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
       </div>
 
       {/* SVG Canvas Container */}
-      <div className="relative mt-4 flex min-h-[260px] w-full flex-col items-center justify-center rounded-2xl bg-[#FAF9F5] p-4 border border-slate-200/80">
+      <div className="relative mt-4 flex min-h-[280px] w-full flex-col items-center justify-center rounded-2xl bg-[#FAF9F5] p-4 border border-slate-200/80">
         
-        {/* 1. FSM PRODUCT ENGINEERING & ENTERPRISE SAAS */}
-        {(type === "fsm-store" || type === "software-app") && (
+        {/* 1. FSM PRODUCT SUITE & ENTERPRISE MULTI-TENANCY */}
+        {(type === "fsm-store" || type === "software-app" || type === "multi-tenant-saas") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              FSM Product Suite: Financials & Supply Chain Architecture
+              FSM Enterprise SaaS: Multi-Tenant Architecture & Data Isolation
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-lg">
               <div className={`rounded-xl border p-3 text-center transition-all ${activeStep === 0 ? "border-blue-600 bg-blue-50 ring-2 ring-blue-500/30 scale-105" : "border-slate-300 bg-white"}`}>
-                <span className="text-2xl">💰</span>
-                <h5 className="text-xs font-black text-slate-900 mt-1">Financials Module</h5>
-                <p className="text-[11px] font-mono text-blue-800 mt-1">Invoices & General Ledger</p>
+                <span className="text-2xl">🏢</span>
+                <h5 className="text-xs font-black text-slate-900 mt-1">Tenant A (Global Co)</h5>
+                <p className="text-[11px] font-mono text-blue-800 mt-1">Isolated Tenant Context</p>
               </div>
 
               <div className={`rounded-xl border p-3 text-center transition-all ${activeStep === 1 ? "border-blue-600 bg-blue-50 ring-2 ring-blue-500/30 scale-105" : "border-slate-300 bg-white"}`}>
-                <span className="text-2xl">📦</span>
-                <h5 className="text-xs font-black text-slate-900 mt-1">Supply Management</h5>
-                <p className="text-[11px] font-mono text-blue-800 mt-1">Warehouse & Inventory</p>
+                <span className="text-2xl">🏭</span>
+                <h5 className="text-xs font-black text-slate-900 mt-1">Tenant B (Logistics Inc)</h5>
+                <p className="text-[11px] font-mono text-blue-800 mt-1">Isolated Tenant Context</p>
               </div>
 
               <div className={`rounded-xl border p-3 text-center transition-all ${activeStep === 2 ? "border-emerald-600 bg-emerald-50 ring-2 ring-emerald-500/30 scale-105" : "border-slate-300 bg-white"}`}>
                 <span className="text-2xl">☁️</span>
-                <h5 className="text-xs font-black text-slate-900 mt-1">Global SaaS Cloud</h5>
-                <p className="text-[11px] font-mono text-emerald-900 mt-1">Multi-Tenant Isolated DB</p>
+                <h5 className="text-xs font-black text-slate-900 mt-1">Shared Cloud SaaS</h5>
+                <p className="text-[11px] font-mono text-emerald-900 font-bold mt-1">100% Data Isolation</p>
               </div>
             </div>
           </div>
@@ -86,10 +87,10 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
         )}
 
         {/* 3. AGILE SCRUM VS KANBAN BOARD */}
-        {type === "agile-loop" && (
+        {(type === "agile-loop" || type === "scrum-vs-kanban") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Agile Scrum 2-Week Sprint vs Kanban Flow Board
+              Agile Scrum (2-Week Time-Boxed Sprints) vs Kanban (Continuous Flow & WIP Limits)
             </span>
             <div className="grid grid-cols-3 gap-2 w-full max-w-md text-center font-mono text-xs font-bold">
               <div className="rounded-xl border border-slate-300 bg-slate-100 p-2 text-slate-800">
@@ -97,8 +98,8 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
                 <div className="mt-1 bg-white p-1.5 rounded border text-[11px] text-slate-700">Sprint Backlog</div>
               </div>
               <div className={`rounded-xl border p-2 ${activeStep === 1 ? "border-blue-600 bg-blue-50 text-blue-900 ring-2 ring-blue-500/30" : "border-slate-300 bg-slate-100 text-slate-800"}`}>
-                <span>In Progress</span>
-                <div className="mt-1 bg-blue-600 text-white p-1.5 rounded text-[11px]">Writing Code</div>
+                <span>In Progress (WIP: 3)</span>
+                <div className="mt-1 bg-blue-600 text-white p-1.5 rounded text-[11px]">WIP Limit Protection</div>
               </div>
               <div className={`rounded-xl border p-2 ${activeStep === 2 ? "border-emerald-600 bg-emerald-50 text-emerald-950 ring-2 ring-emerald-500/30" : "border-slate-300 bg-slate-100 text-slate-800"}`}>
                 <span>Done</span>
@@ -157,12 +158,12 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
         {type === "tv-remote" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Encapsulation: Public Buttons Protecting Private Wires
+              Encapsulation: Public Getter/Setter Methods Protecting Private Fields
             </span>
             <div className="flex items-center justify-around gap-3 w-full max-w-md">
               <div className="p-3 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center flex-1">
                 <span className="text-2xl">📺</span>
-                <h5 className="text-xs font-extrabold mt-1">Public Remote</h5>
+                <h5 className="text-xs font-extrabold mt-1">Public Getter/Setter</h5>
                 <span className="font-mono text-[10px] font-bold text-blue-800">+ getVolume()</span>
               </div>
               <span className="text-xs font-bold text-slate-400">Protects ➔</span>
@@ -198,28 +199,28 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
         {type === "actor-poly" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Polymorphism: Overloading (Same Class) vs Overriding (Subclass)
+              Polymorphism: Overloading (Compile-Time) vs Overriding (Runtime)
             </span>
             <div className="grid grid-cols-2 gap-3 w-full max-w-md text-center">
               <div className={`p-3 rounded-xl border ${activeStep === 1 ? "border-blue-600 bg-blue-50 ring-2 ring-blue-500/30" : "border-slate-300 bg-white"}`}>
                 <h5 className="text-xs font-extrabold text-slate-900">Overloading</h5>
                 <span className="font-mono text-[10px] text-blue-800 block mt-1">Same Class</span>
-                <span className="font-mono text-[10px] text-slate-600 block">Different Params</span>
+                <span className="font-mono text-[10px] text-slate-600 block">Different Parameters</span>
               </div>
               <div className={`p-3 rounded-xl border ${activeStep === 2 ? "border-emerald-600 bg-emerald-50 ring-2 ring-emerald-500/30" : "border-slate-300 bg-white"}`}>
                 <h5 className="text-xs font-extrabold text-slate-900">Overriding</h5>
                 <span className="font-mono text-[10px] text-emerald-900 font-bold block mt-1">Subclass</span>
-                <span className="font-mono text-[10px] text-slate-600 block">@Override Method</span>
+                <span className="font-mono text-[10px] text-slate-600 block">@Override Parent Method</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 9. ABSTRACTION STEERING WHEEL */}
+        {/* 9. ABSTRACTION INTERFACE */}
         {type === "car-abstract" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Abstraction: Essential Steering Controls Hiding Engine Complexity
+              Abstraction: Interface Contract Hiding Internal Implementation
             </span>
             <div className="flex items-center justify-around gap-3 w-full max-w-md">
               <div className="p-3 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center flex-1">
@@ -237,31 +238,31 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
           </div>
         )}
 
-        {/* 10. STACK & QUEUE MEMORY LAYOUT */}
-        {(type === "stack-plates" || type === "queue-line" || type === "array-lockers") && (
+        {/* 10. ARRAYLIST VS LINKEDLIST VS STACK & QUEUE */}
+        {(type === "stack-plates" || type === "queue-line" || type === "array-lockers" || type === "arraylist-vs-linkedlist") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Data Structure Memory Layout (LIFO Stack vs FIFO Queue)
+              Data Structures: Contiguous Array vs LinkedList Nodes vs Stack (LIFO) / Queue (FIFO)
             </span>
             <div className="flex flex-col items-center gap-2">
-              <div className={`w-56 rounded-xl border-2 p-2.5 text-center transition-all ${activeStep === 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold scale-105" : "border-slate-300 bg-white text-slate-800"}`}>
-                <span className="font-mono text-xs">Top Element [POP FIRST (LIFO)]</span>
+              <div className={`w-64 rounded-xl border-2 p-2.5 text-center transition-all ${activeStep === 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold scale-105" : "border-slate-300 bg-white text-slate-800"}`}>
+                <span className="font-mono text-xs">Array [0..N]: Contiguous RAM • O(1) Index</span>
               </div>
-              <div className={`w-56 rounded-xl border p-2.5 text-center transition-all ${activeStep === 1 ? "border-blue-600 bg-blue-50 text-blue-950 font-bold" : "border-slate-300 bg-white text-slate-800"}`}>
-                <span className="font-mono text-xs">Middle Element</span>
+              <div className={`w-64 rounded-xl border p-2.5 text-center transition-all ${activeStep === 1 ? "border-blue-600 bg-blue-50 text-blue-950 font-bold" : "border-slate-300 bg-white text-slate-800"}`}>
+                <span className="font-mono text-xs">Node ➔ Node: LinkedList Pointers • O(1) Insert</span>
               </div>
-              <div className="w-56 rounded-xl border border-slate-300 bg-slate-100 p-2.5 text-center text-slate-700">
-                <span className="font-mono text-xs">Bottom Element [PUSHED FIRST]</span>
+              <div className="w-64 rounded-xl border border-slate-300 bg-slate-100 p-2.5 text-center text-slate-700">
+                <span className="font-mono text-xs">LIFO Stack (push/pop) / FIFO Queue (poll)</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 11. HASHMAP COLLISION HANDLING */}
+        {/* 11. HASHMAP & HASHSET BUCKET ARCHITECTURE */}
         {type === "hashmap-mail" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              HashMap Array Buckets & LinkedList Collision Chaining
+              HashMap Bucket Array, hashCode() & Red-Black Tree Threshold (&gt; 8)
             </span>
             <div className="flex flex-col gap-2 w-full max-w-md">
               <div className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white p-2.5">
@@ -272,17 +273,39 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
               <div className={`flex items-center gap-2 rounded-xl border p-2.5 transition-all ${activeStep === 1 ? "border-emerald-600 bg-emerald-50" : "border-slate-300 bg-white"}`}>
                 <span className="rounded-lg bg-emerald-700 px-2 py-1 font-mono text-xs font-bold text-white">Bucket [7]</span>
                 <span className="font-mono text-xs text-slate-800 font-bold">&quot;Java&quot; ➔ &quot;JVM&quot;</span>
-                <span className="font-mono text-xs text-emerald-900 font-bold">➔ O(1) Fast Index</span>
+                <span className="font-mono text-xs text-emerald-900 font-bold">➔ O(1) Fast Lookup</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 12. RELATIONAL DB KEYS & JOINS */}
+        {/* 12. TREES & BINARY SEARCH TREES (BST) */}
+        {type === "tree-bst" && (
+          <div className="w-full flex flex-col items-center gap-3">
+            <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
+              Binary Search Tree (BST): Left &lt; Root &lt; Right • In-Order Sorted Traversal
+            </span>
+            <div className="flex flex-col items-center gap-2 w-full max-w-sm font-mono text-xs font-bold">
+              <div className="p-2 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center w-24">
+                Root: [50]
+              </div>
+              <div className="flex items-center justify-between w-full px-4">
+                <div className={`p-2 rounded-xl border text-center w-24 ${activeStep === 1 ? "border-emerald-600 bg-emerald-50 text-emerald-950" : "border-slate-300 bg-white"}`}>
+                  Left: [30]
+                </div>
+                <div className={`p-2 rounded-xl border text-center w-24 ${activeStep === 2 ? "border-emerald-600 bg-emerald-50 text-emerald-950" : "border-slate-300 bg-white"}`}>
+                  Right: [70]
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 13. RELATIONAL DB KEYS & JOINS */}
         {type === "sql-library" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Relational Database Tables: Primary Key ➔ Foreign Key ➔ INNER JOIN
+              Relational Database Schema: Primary Key ➔ Foreign Key ➔ INNER JOIN
             </span>
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 w-full max-w-md font-mono text-xs font-bold">
               <div className="p-3 rounded-xl border border-slate-300 bg-white text-center flex-1 w-full">
@@ -298,11 +321,11 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
           </div>
         )}
 
-        {/* 13. REST WAITERS & HTTP LIFECYCLE */}
+        {/* 14. REST CONTROLLERS & JSON PAYLOADS */}
         {type === "rest-waiter" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              UML Sequence Diagram: Client ➔ RestController ➔ JSON Response
+              REST Architecture: Client HTTP Request ➔ @RestController ➔ 200 OK JSON
             </span>
             <div className="flex w-full flex-col sm:flex-row items-center justify-between gap-2">
               <div className={`p-2.5 rounded-xl border text-center flex-1 w-full ${activeStep === 0 ? "border-blue-600 bg-blue-50" : "border-slate-300 bg-white"}`}>
@@ -319,23 +342,23 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
               <span className="text-xs font-mono font-bold text-blue-600">➔</span>
               <div className={`p-2.5 rounded-xl border text-center flex-1 w-full ${activeStep === 2 ? "border-emerald-600 bg-emerald-50" : "border-slate-300 bg-white"}`}>
                 <span className="text-xl">🛢️</span>
-                <h5 className="text-xs font-extrabold text-slate-900">DB JSON</h5>
-                <span className="font-mono text-[10px] text-emerald-900 font-bold">200 OK Payload</span>
+                <h5 className="text-xs font-extrabold text-slate-900">JSON Payload</h5>
+                <span className="font-mono text-[10px] text-emerald-900 font-bold">200 OK Response</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 14. SPRING BOOT 3-TIER ASSEMBLY LINE */}
+        {/* 15. SPRING BOOT 3-TIER ASSEMBLY LINE */}
         {type === "spring-factory" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Spring Boot 3-Tier Assembly Line: Controller ➔ Service ➔ Repository
+              Spring Boot 3-Tier Architecture: Controller ➔ Service ➔ Repository
             </span>
             <div className="grid grid-cols-3 gap-2 w-full max-w-md text-center font-mono text-xs font-bold">
               <div className={`p-2.5 rounded-xl border ${activeStep === 0 ? "border-blue-600 bg-blue-50" : "border-slate-300 bg-white"}`}>
                 <h5 className="text-xs font-extrabold text-slate-900">@RestController</h5>
-                <span className="text-[10px] text-slate-600 block mt-1">HTTP Request</span>
+                <span className="text-[10px] text-slate-600 block mt-1">HTTP Router</span>
               </div>
               <div className={`p-2.5 rounded-xl border ${activeStep === 1 ? "border-blue-600 bg-blue-50" : "border-slate-300 bg-white"}`}>
                 <h5 className="text-xs font-extrabold text-slate-900">@Service</h5>
@@ -343,104 +366,104 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
               </div>
               <div className={`p-2.5 rounded-xl border ${activeStep === 2 ? "border-emerald-600 bg-emerald-50" : "border-slate-300 bg-white"}`}>
                 <h5 className="text-xs font-extrabold text-slate-900">@Repository</h5>
-                <span className="text-[10px] text-emerald-900 font-bold block mt-1">Database Access</span>
+                <span className="text-[10px] text-emerald-900 font-bold block mt-1">JPA / Database</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 15. GIT PULL REQUEST WORKFLOW */}
-        {type === "git-docs" && (
+        {/* 16. MICROSERVICES & API GATEWAY */}
+        {(type === "microservices-gateway" || type === "cloud-power") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Git Feature Branching & Pull Request Review Workflow
+              Microservices Architecture: API Gateway ➔ Decoupled Services & Redis Cache
+            </span>
+            <div className="flex flex-col sm:flex-row items-center justify-around gap-3 w-full max-w-md font-mono text-xs font-bold">
+              <div className="p-3 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center flex-1 w-full">
+                <span className="text-2xl">🌐</span>
+                <h5 className="text-xs font-extrabold mt-1">API Gateway</h5>
+                <span className="text-[10px] text-blue-800">Auth & Rate Limit</span>
+              </div>
+              <span>➔</span>
+              <div className={`p-3 rounded-xl border text-center flex-1 w-full transition-all ${activeStep > 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 scale-105" : "border-slate-300 bg-white"}`}>
+                <span className="text-2xl">⚡</span>
+                <h5 className="text-xs font-extrabold mt-1">Microservices</h5>
+                <span className="text-[10px] text-emerald-900 font-bold">+ Redis RAM Cache</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 17. GIT & CI/CD PIPELINE */}
+        {(type === "git-docs" || type === "ci-cd-pipeline") && (
+          <div className="w-full flex flex-col items-center gap-3">
+            <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
+              DevOps CI/CD Pipeline: Feature Branch ➔ Automated Tests ➔ Production Deploy
             </span>
             <div className="flex items-center justify-around gap-2 w-full max-w-md font-mono text-xs font-bold">
               <div className="p-2.5 rounded-xl border border-slate-300 bg-white text-center">
-                <span>🌿 Branch</span>
-                <div className="text-[10px] text-slate-500">checkout -b</div>
+                <span>🌿 Git Push</span>
+                <div className="text-[10px] text-slate-500">PR Review</div>
               </div>
               <span>➔</span>
-              <div className="p-2.5 rounded-xl border border-slate-300 bg-white text-center">
-                <span>📸 Commit</span>
-                <div className="text-[10px] text-slate-500">git commit</div>
+              <div className="p-2.5 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center">
+                <span>⚙️ CI Build</span>
+                <div className="text-[10px] text-blue-800">JUnit Tests</div>
               </div>
               <span>➔</span>
               <div className={`p-2.5 rounded-xl border text-center ${activeStep > 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 font-bold" : "border-slate-300 bg-white"}`}>
-                <span>🔀 PR Merge</span>
-                <div className="text-[10px] text-emerald-800">Peer Review</div>
+                <span>🚀 CD Deploy</span>
+                <div className="text-[10px] text-emerald-800">K8s Pods</div>
               </div>
             </div>
           </div>
         )}
 
-        {/* 16. DOCKER & KUBERNETES */}
+        {/* 18. DOCKER & KUBERNETES */}
         {type === "docker-ship" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Docker Cargo Container Packaging vs Kubernetes Orchestration
+              Docker Container Image Packaging vs Kubernetes Cluster Orchestration
             </span>
             <div className="flex flex-col sm:flex-row items-center justify-around gap-3 w-full max-w-md font-mono text-xs font-bold">
               <div className="p-3 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center flex-1 w-full">
                 <span className="text-2xl">📦</span>
-                <h5 className="text-xs font-extrabold mt-1">Docker Container</h5>
+                <h5 className="text-xs font-extrabold mt-1">Docker Image</h5>
                 <span className="text-[10px] text-blue-800">App + JRE Runtime</span>
               </div>
               <span>➔</span>
               <div className={`p-3 rounded-xl border text-center flex-1 w-full transition-all ${activeStep > 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 scale-105" : "border-slate-300 bg-white"}`}>
                 <span className="text-2xl">🏗️</span>
                 <h5 className="text-xs font-extrabold mt-1">Kubernetes</h5>
-                <span className="text-[10px] text-emerald-900 font-bold">Auto-scaling Cluster</span>
+                <span className="text-[10px] text-emerald-900 font-bold">Auto-scaling Pods</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 17. CLOUD AWS PLATFORM */}
-        {type === "cloud-power" && (
-          <div className="w-full flex flex-col items-center gap-3">
-            <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Cloud Infrastructure: AWS / Azure / GCP On-Demand Virtual Servers
-            </span>
-            <div className="flex items-center justify-around gap-3 w-full max-w-md font-mono text-xs font-bold">
-              <div className="p-3 rounded-xl border border-slate-300 bg-white text-center flex-1">
-                <span className="text-2xl">⚡</span>
-                <h5 className="text-xs font-extrabold text-slate-900">Virtual Server</h5>
-                <span className="text-[10px] text-slate-500">EC2 / Compute Engine</span>
-              </div>
-              <span>➔</span>
-              <div className="p-3 rounded-xl border border-emerald-600 bg-emerald-50 text-emerald-950 text-center flex-1">
-                <span className="text-2xl">🌐</span>
-                <h5 className="text-xs font-extrabold">Elastic Scaling</h5>
-                <span className="text-[10px] text-emerald-900 font-bold">Auto Load Balancer</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* 18. AI COPILOT CODE GENERATION */}
+        {/* 19. AI COPILOT CODE GENERATION */}
         {type === "ai-copilot" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              AI Workflow: GitHub Copilot Inline Code Completion
+              AI SDLC Integration: GitHub Copilot & Gemini Code Assist Autocomplete
             </span>
             <div className="flex items-center justify-around gap-2 w-full max-w-md font-mono text-xs font-bold">
               <div className="p-2.5 rounded-xl border border-slate-300 bg-white text-center flex-1">
                 <span className="text-xl">📝</span>
-                <h5 className="text-xs font-extrabold text-slate-900">Prompt / Comment</h5>
-                <span className="text-[10px] text-slate-500">// write user test</span>
+                <h5 className="text-xs font-extrabold text-slate-900">Developer Context</h5>
+                <span className="text-[10px] text-slate-500">// write unit test</span>
               </div>
               <span>➔</span>
               <div className="p-2.5 rounded-xl border border-blue-600 bg-blue-50 text-blue-950 text-center flex-1">
                 <span className="text-xl">🤖</span>
-                <h5 className="text-xs font-extrabold">Copilot AI</h5>
-                <span className="text-[10px] text-blue-800">Inline Completion</span>
+                <h5 className="text-xs font-extrabold">GenAI Assistant</h5>
+                <span className="text-[10px] text-blue-800">JUnit & Mockito Code</span>
               </div>
             </div>
           </div>
         )}
 
-        {/* 19. RESUME POLLARIS ARCHITECTURE & FIRESTORE ACID TRANSACTIONS */}
+        {/* 20. RESUME STORIES: POLLARIS & INFOR */}
         {(type === "resume-story" || type === "pollaris-arch") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
@@ -466,7 +489,7 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
           </div>
         )}
 
-        {/* 20. BEHAVIORAL STAR METHOD */}
+        {/* 21. BEHAVIORAL STAR METHOD */}
         {type === "star-hr" && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
@@ -480,6 +503,35 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
               <span className="px-3 py-1.5 rounded-lg border border-blue-600 bg-blue-50 text-blue-950">A: Action</span>
               <span>➔</span>
               <span className="px-3 py-1.5 rounded-lg border border-emerald-600 bg-emerald-50 text-emerald-950">R: Result</span>
+            </div>
+          </div>
+        )}
+
+        {/* ROBUST FALLBACK FOR ANY OTHER DIAGRAM TYPE */}
+        {![
+          "fsm-store", "software-app", "multi-tenant-saas", "sdlc-loop", "agile-loop", "scrum-vs-kanban",
+          "jvm-coffee", "cookie-class", "tv-remote", "family-inherit", "actor-poly", "car-abstract",
+          "stack-plates", "queue-line", "array-lockers", "arraylist-vs-linkedlist", "hashmap-mail",
+          "tree-bst", "sql-library", "rest-waiter", "spring-factory", "microservices-gateway",
+          "cloud-power", "git-docs", "ci-cd-pipeline", "docker-ship", "ai-copilot", "resume-story",
+          "pollaris-arch", "star-hr"
+        ].includes(type) && (
+          <div className="w-full flex flex-col items-center gap-3">
+            <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
+              System Design & Architecture Flowchart
+            </span>
+            <div className="flex flex-col sm:flex-row items-center justify-around gap-3 w-full max-w-md font-mono text-xs font-bold">
+              <div className="p-3 rounded-xl border border-slate-300 bg-white text-center flex-1 w-full">
+                <span className="text-2xl">📥</span>
+                <h5 className="text-xs font-extrabold mt-1">Input / Request</h5>
+                <span className="text-[10px] text-slate-500">Client Call</span>
+              </div>
+              <span>➔</span>
+              <div className={`p-3 rounded-xl border text-center flex-1 w-full transition-all ${activeStep > 0 ? "border-emerald-600 bg-emerald-50 text-emerald-950 scale-105" : "border-slate-300 bg-white"}`}>
+                <span className="text-2xl">⚙️</span>
+                <h5 className="text-xs font-extrabold mt-1">Processing Engine</h5>
+                <span className="text-[10px] text-emerald-900 font-bold">Business Logic & DB</span>
+              </div>
             </div>
           </div>
         )}
