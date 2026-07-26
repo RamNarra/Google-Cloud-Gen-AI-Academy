@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { ChapterItem } from "@/lib/interview/journeyData";
 import HeroAnimatedDiagram from "./HeroAnimatedDiagram";
 
+import MegaMcqExam from "./MegaMcqExam";
+
 interface FullscreenSlideDeckProps {
   lesson: ChapterItem;
   totalLessons: number;
@@ -23,6 +25,35 @@ export default function FullscreenSlideDeck({
   useEffect(() => {
     setSlideIndex(0);
   }, [lesson.id]);
+
+  if (lesson.diagramType === "mega-mcq") {
+    return (
+      <div className="fixed inset-0 z-50 flex flex-col bg-[#F5F2EC] px-4 py-5 sm:px-10 sm:py-8 font-sans text-slate-900 overflow-y-auto">
+        <div className="mx-auto flex w-full max-w-4xl items-center justify-between border-b border-slate-200 pb-4 mb-4">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl sm:text-4xl">{lesson.icon}</span>
+            <div>
+              <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-800">
+                Chapter 40 • Master MCQ Examination
+              </span>
+              <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
+                {lesson.title}
+              </h3>
+            </div>
+          </div>
+
+          <button
+            onClick={onExit}
+            className="rounded-full bg-slate-900 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-slate-800 transition"
+          >
+            ✕ Table of Contents
+          </button>
+        </div>
+
+        <MegaMcqExam />
+      </div>
+    );
+  }
 
   const handleNextSlide = () => {
     if (slideIndex < totalSlides - 1) {

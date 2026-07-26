@@ -13,7 +13,7 @@ export interface ChapterItem {
     text: string;
     takeaway: string;
   };
-  diagramType: 'software-app' | 'sdlc-loop' | 'agile-loop' | 'jvm-coffee' | 'cookie-class' | 'tv-remote' | 'family-inherit' | 'actor-poly' | 'car-abstract' | 'array-lockers' | 'stack-plates' | 'queue-line' | 'hashmap-mail' | 'sql-library' | 'rest-waiter' | 'spring-factory' | 'git-docs' | 'docker-ship' | 'cloud-power' | 'ai-copilot' | 'fsm-store' | 'resume-story' | 'star-hr' | 'pollaris-arch';
+  diagramType: 'software-app' | 'sdlc-loop' | 'agile-loop' | 'jvm-coffee' | 'cookie-class' | 'tv-remote' | 'family-inherit' | 'actor-poly' | 'car-abstract' | 'array-lockers' | 'stack-plates' | 'queue-line' | 'hashmap-mail' | 'sql-library' | 'rest-waiter' | 'spring-factory' | 'git-docs' | 'docker-ship' | 'cloud-power' | 'ai-copilot' | 'fsm-store' | 'resume-story' | 'star-hr' | 'pollaris-arch' | 'mega-mcq';
   simpleExplanation: string;
   commonMistake: string;
   whatToTellInterviewer: {
@@ -1276,6 +1276,38 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
       tip: 'Keep it crisp, technical, structured, and under 40 seconds.'
     },
     onePictureSummary: ['🎓 JNTU ECE Degree', '↓ Java, SQL, REST APIs', '↓ Infor 4-Month Internship', '↓ STAR Method Framework']
+  },
+  {
+    id: 'ch-40-mega-mcq-exam',
+    partId: 'part-10',
+    partTitle: 'Section X: Resume & HR',
+    chapterNumber: 40,
+    title: 'Chapter 40: Mega 100-Question Interview Master MCQ Exam',
+    shortTitle: '40. Mega 100 MCQs Exam',
+    icon: '🏆',
+    estimatedMinutes: 45,
+    question: 'Are you ready to test your total mastery across all 10 sections with 100 high-yield interview MCQs?',
+    analogyStory: {
+      title: 'The Ultimate Interview Master Examination',
+      text: 'Test your knowledge across 100 real-world interview questions sourced from Reddit, Glassdoor, and tech interview panels. Select options A, B, C, or D, receive instant right/wrong feedback, and read exhaustive option-by-option breakdowns (Why A, Why B, Why C, Why D) for 100% interview confidence!',
+      takeaway: '100 MCQs covering FSM SaaS, Agile, Java, OOP, DSA, SQL, Spring Boot, AI, DevOps, SOLID, and Projects.'
+    },
+    diagramType: 'mega-mcq',
+    simpleExplanation: 'Chapter 40 contains an interactive 100-question master examination player. Answer questions, track your live score, and read exhaustive option-by-option explanations.',
+    commonMistake: 'Rushing through answers without reading the detailed option-by-option explanations.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Continuous Practice: Tested and verified comprehensive technical knowledge across 100 real-world interview MCQs.',
+        '2. Technical Breadth: Covered Java, Spring Boot, SQL, DSA, Cloud, SOLID, and Enterprise SaaS.',
+        '3. Practical Readiness: Confident in answering theoretical, scenario-based, and project-specific questions.'
+      ],
+      exampleScript: 'I have tested my technical knowledge across 100 real-world interview questions covering Java, Spring Boot, SQL, DSA, System Design, and Enterprise SaaS. This comprehensive exam has validated my ability to diagnose trade-offs and explain core software engineering concepts clearly.',
+      durationSec: 30,
+      tip: 'Use this 100-MCQ exam for rapid revision before the live interview.'
+    },
+    onePictureSummary: ['🏆 100 High-Yield MCQs', '↓ Instant Right/Wrong Feedback', '↓ Exhaustive Option Explanations', '↓ 100% Interview Mastery']
   }
 ];
+
 
