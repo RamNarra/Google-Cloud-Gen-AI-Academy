@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { LessonItem } from "@/lib/interview/journeyData";
+import { ChapterItem } from "@/lib/interview/journeyData";
 import HeroAnimatedDiagram from "./HeroAnimatedDiagram";
 
 interface CleanLessonPlayerProps {
-  lesson: LessonItem;
+  lesson: ChapterItem;
   onNextLesson: () => void;
   onPrevLesson: () => void;
 }
@@ -86,13 +86,13 @@ export default function CleanLessonPlayer({
           ← Back
         </button>
         <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-          Step {lesson.stepNumber} of 14
+          Chapter {lesson.chapterNumber} — {lesson.shortTitle}
         </span>
         <button
           onClick={onNextLesson}
           className="flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700"
         >
-          Next Step →
+          Next Chapter →
         </button>
       </div>
 
@@ -101,14 +101,14 @@ export default function CleanLessonPlayer({
         <div className="flex items-center gap-2">
           <span className="text-3xl">{lesson.icon}</span>
           <span className="font-mono text-xs font-bold uppercase text-blue-700">
-            INTERVIEWER ASKS:
+            CONCEPT QUESTION:
           </span>
         </div>
         <h1 className="mt-3 text-2xl font-extrabold text-slate-900 sm:text-3xl">
-          &ldquo;{lesson.interviewerQuestion}&rdquo;
+          &ldquo;{lesson.question}&rdquo;
         </h1>
         <p className="mt-2 text-xs font-medium text-slate-600">
-          Goal: Learn to answer this question confidently in under {lesson.estimatedMinutes} minutes.
+          Goal: Learn to understand and explain this concept in under {lesson.estimatedMinutes} minutes.
         </p>
       </div>
 

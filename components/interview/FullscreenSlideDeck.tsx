@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { LessonItem } from "@/lib/interview/journeyData";
+import { ChapterItem } from "@/lib/interview/journeyData";
 import HeroAnimatedDiagram from "./HeroAnimatedDiagram";
 
 interface FullscreenSlideDeckProps {
-  lesson: LessonItem;
+  lesson: ChapterItem;
   totalLessons: number;
   onFinishLesson: () => void;
   onExit: () => void;
@@ -82,7 +82,7 @@ export default function FullscreenSlideDeck({
     } else if (recordSec > 35) {
       setFeedbackTip("⏱️ Keep it a bit shorter (under 30 seconds).");
     } else {
-      setFeedbackTip("🎉 Great pacing! Clear duration and calm delivery. Ready for next step!");
+      setFeedbackTip("🎉 Great pacing! Clear duration and calm delivery. Ready for next chapter!");
     }
   };
 
@@ -101,7 +101,7 @@ export default function FullscreenSlideDeck({
         <div className="flex items-center gap-2">
           <span className="text-2xl">{lesson.icon}</span>
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-            Step {lesson.stepNumber} of {totalLessons} — {lesson.shortTitle}
+            Chapter {lesson.chapterNumber} of {totalLessons} — {lesson.shortTitle}
           </span>
         </div>
 
@@ -109,7 +109,7 @@ export default function FullscreenSlideDeck({
           onClick={onExit}
           className="rounded-full bg-slate-100 px-3.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-200"
         >
-          ✕ Exit
+          ✕ Table of Contents
         </button>
       </div>
 
@@ -119,13 +119,13 @@ export default function FullscreenSlideDeck({
         {slideIndex === 0 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="rounded-full bg-blue-50 px-3.5 py-1 font-mono text-xs font-bold text-blue-600">
-              INTERVIEWER ASKS:
+              CORE CONCEPT QUESTION:
             </span>
             <h2 className="mt-6 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">
-              &ldquo;{lesson.interviewerQuestion}&rdquo;
+              &ldquo;{lesson.question}&rdquo;
             </h2>
             <p className="mt-4 text-sm text-slate-500 max-w-md">
-              Let&apos;s understand how to answer this question calmly in simple English.
+              Let&apos;s learn this fundamental concept from scratch using a simple story.
             </p>
           </div>
         )}
@@ -134,7 +134,7 @@ export default function FullscreenSlideDeck({
         {slideIndex === 1 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-              REAL-WORLD STORY
+              REAL-LIFE STORY & ANALOGY
             </span>
             <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
               {lesson.analogyStory.title}
@@ -157,7 +157,7 @@ export default function FullscreenSlideDeck({
         {slideIndex === 2 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-              HERO VISUAL ANIMATION
+              ILLUSTRATED CONCEPT ANIMATION
             </span>
             <div className="w-full">
               <HeroAnimatedDiagram type={lesson.diagramType} />
@@ -170,7 +170,7 @@ export default function FullscreenSlideDeck({
           <div className="flex flex-col gap-6 text-center animate-fadeIn">
             <div>
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-                SIMPLE DEFINITION
+                SIMPLE BAND 5.5 ENGLISH EXPLANATION
               </span>
               <p className="mt-3 text-xl font-medium leading-relaxed text-slate-800">
                 {lesson.simpleExplanation}
@@ -210,12 +210,12 @@ export default function FullscreenSlideDeck({
         {slideIndex === 4 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-              WHAT TO SAY IN THE INTERVIEW
+              30-SECOND INTERVIEW SPOKEN ANSWER
             </span>
 
             <div className="mt-4 w-full rounded-3xl border border-blue-200 bg-blue-50/50 p-6 shadow-sm">
               <div className="flex items-center justify-between text-xs text-blue-700 border-b border-blue-100 pb-2 font-mono font-bold">
-                <span>30-SECOND SPOKEN ANSWER (BAND 5.5 ENGLISH):</span>
+                <span>EXPECTED INTERVIEW ANSWER:</span>
                 <span>~{lesson.script30Sec.durationSec}s</span>
               </div>
               <p className="mt-4 text-lg font-medium leading-relaxed text-slate-900">
@@ -238,7 +238,7 @@ export default function FullscreenSlideDeck({
         {slideIndex === 5 && (
           <div className="flex flex-col items-center text-center animate-fadeIn">
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-600">
-              LISTEN ➔ REPEAT ➔ PRACTICE
+              LISTEN ➔ REPEAT ➔ VOICE PRACTICE
             </span>
 
             <div className="mt-6 flex flex-wrap justify-center gap-4">
@@ -299,7 +299,7 @@ export default function FullscreenSlideDeck({
           onClick={handleNextSlide}
           className="rounded-2xl bg-blue-600 px-7 py-3 font-sans text-xs font-extrabold text-white shadow-md transition hover:bg-blue-700"
         >
-          {slideIndex === totalSlides - 1 ? "I Understand — Finish Step 🎉" : "Continue →"}
+          {slideIndex === totalSlides - 1 ? "I Understand — Finish Chapter 🎉" : "Continue →"}
         </button>
       </div>
     </div>
