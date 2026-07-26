@@ -43,7 +43,7 @@ export const TEXTBOOK_PARTS: PartItem[] = [
   { id: 'part-6', partNumber: 6, title: 'Section VI: Backend Frameworks & Web Services', description: 'SOAP vs REST APIs, HTTP Verbs, Spring Boot 3-Tier, Spring Data JPA, Spring Security, Postman', icon: '🍽️' },
   { id: 'part-7', partNumber: 7, title: 'Section VII: AI Tools & Unit Testing Evidences', description: 'GitHub Copilot, Prompt Engineering, Honest AI Usage, Unit Testing Logs & Evidence', icon: '🤖' },
   { id: 'part-8', partNumber: 8, title: 'Section VIII: DevOps, Containers & Cloud Infrastructure', description: 'Git PR Workflows, Docker, Kubernetes, CI/CD Pipelines, AWS/Azure/GCP Cloud', icon: '📦' },
-  { id: 'part-9', partNumber: 9, title: 'Section IX: System Design & Architectural Principles (JD Core)', description: 'SOLID Design Principles, LLD vs HLD, Microservices Architecture, Caching, Architectural Discussions', icon: '📐' },
+  { id: 'part-9', partNumber: 9, title: 'Section IX: SOLID Principles & System Architecture (JD Core)', description: 'S-O-L-I-D Deep Dives (SRP, OCP, LSP, ISP, DIP), LLD vs HLD, Microservices & Caching', icon: '📐' },
   { id: 'part-10', partNumber: 10, title: 'Section X: Resume Stories (Infor & Pollaris) & HR', description: 'Infor 4-Month Internship Story, Pollaris Voting App, Self Introduction, STAR Method', icon: '🗣️' },
 ];
 
@@ -994,78 +994,202 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['⚡ On-Demand Virtual Servers', '↓ 🌐 Global Availability', '↓ 📈 Elastic Scaling', '↓ Cloud AWS / Azure / GCP']
   },
 
-  // SECTION IX: SYSTEM DESIGN & ARCHITECTURAL PRINCIPLES (JD CORE DESIGN)
+  // SECTION IX: SOLID PRINCIPLES & SYSTEM ARCHITECTURE (JD CORE DEEP DIVES)
   {
-    id: 'ch-31-solid-lld-hld',
+    id: 'ch-31-solid-srp',
     partId: 'part-9',
-    partTitle: 'Section IX: System Design',
+    partTitle: 'Section IX: SOLID & Architecture',
     chapterNumber: 31,
-    title: 'Chapter 31: SOLID Design Principles & LLD vs HLD',
-    shortTitle: '31. SOLID & Design',
-    icon: '📐',
-    estimatedMinutes: 9,
-    question: 'What are the SOLID principles and how do High-Level (HLD) and Low-Level (LLD) design differ?',
+    title: 'Chapter 31: SOLID Principle #1 - S: Single Responsibility Principle (SRP)',
+    shortTitle: '31. S: Single Responsibility',
+    icon: '🔪',
+    estimatedMinutes: 8,
+    question: 'What is the Single Responsibility Principle (SRP) and why should a class have only one reason to change?',
     analogyStory: {
-      title: 'The City Map vs Room 204 Electrical Blueprint',
-      text: 'High-Level Design (HLD) is the city map from a helicopter: where hospitals, highways, and airports connect. Low-Level Design (LLD) is the room electrical blueprint inside the hospital room! SOLID principles (Lego building blocks) ensure every room wire and class stays clean and modular.',
-      takeaway: 'HLD defines macro service architecture; LLD defines micro class diagrams; SOLID ensures modular code.'
+      title: 'The Dedicated Chef Knife vs The 50-Tool Swiss Army Knife',
+      text: 'Imagine a master chef trying to slice sushi with a bulky 50-tool Swiss Army knife that has a magnifying glass, bottle opener, and scissors attached! If the bottle opener rusts, the whole knife breaks. A master chef uses a dedicated sushi knife that does ONE job perfectly. In Java, SRP means one class does ONE single duty (e.g. `UserService` manages users, `EmailService` sends emails).',
+      takeaway: 'SRP means a class must have only ONE responsibility and ONE reason to change.'
     },
     diagramType: 'car-abstract',
-    simpleExplanation: 'HLD focuses on macro architecture, microservices, API Gateways, and databases. LLD focuses on micro details: class diagrams, OOP design patterns, and database schemas. SOLID principles (Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion) keep LLD code modular and maintainable.',
-    commonMistake: 'Writing 2,000 lines of unorganized code inside a single class without using SOLID principles.',
+    simpleExplanation: 'The Single Responsibility Principle (SRP) states that a class should have one, and only one, reason to change. If a Java class handles database queries, business calculations, AND email notifications all inside one file, changing email logic risks breaking database saving! By separating duties into distinct classes (`UserRepository`, `InvoiceCalculator`, `EmailNotifier`), each class stays clean, focused, and testable.',
+    commonMistake: 'Writing a 1,500-line "God Class" that performs SQL execution, JSON parsing, and HTTP requests all in one file.',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
-        '1. Differentiate HLD (Macro system architecture and services) vs LLD (Micro class diagrams and schemas).',
-        '2. Explain SOLID Principles (5 core guidelines ensuring modular maintainable code).',
-        '3. Highlight Single Responsibility & Dependency Inversion benefits.'
+        '1. Define SRP (A class should have only one reason to change).',
+        '2. Give bad example (Mixing database access and email notification logic in one class).',
+        '3. Give good solution (Separating duties into distinct UserRepository and EmailService classes).'
       ],
-      exampleScript: 'High-Level Design defines macro service architecture and database choices, while Low-Level Design defines micro class diagrams and schemas. I apply SOLID design principles—like Single Responsibility and Dependency Inversion—to ensure classes remain modular, maintainable, and easy to extend.',
+      exampleScript: 'The Single Responsibility Principle states that a class should have only one reason to change. For example, instead of writing a single class that handles database operations and email notifications, we separate them into UserRepository and EmailNotifier. This ensures that changes to email formatting do not break database persistence.',
       durationSec: 28,
-      tip: 'HLD = Macro services; LLD = Micro classes; SOLID = Modular code.'
+      tip: 'Remember the keyword phrase: "One reason to change."'
     },
-    onePictureSummary: ['🏙️ HLD System Architecture', '↓ 🔌 LLD Class Diagrams', '↓ 📐 SOLID Principles', '↓ Modular Codebase']
+    onePictureSummary: ['🔪 One Focused Class', '↓ 1 Duty / Responsibility', '↓ 0 Side Effect Risk', '↓ Clean Testable Code']
   },
   {
-    id: 'ch-32-microservices-caching',
+    id: 'ch-32-solid-ocp',
     partId: 'part-9',
-    partTitle: 'Section IX: System Design',
+    partTitle: 'Section IX: SOLID & Architecture',
     chapterNumber: 32,
-    title: 'Chapter 32: Microservices System Design & Scalable Caching (Redis)',
-    shortTitle: '32. Microservices & Caching',
+    title: 'Chapter 32: SOLID Principle #2 - O: Open/Closed Principle (OCP)',
+    shortTitle: '32. O: Open/Closed',
+    icon: '🔌',
+    estimatedMinutes: 8,
+    question: 'What is the Open/Closed Principle (OCP) and how do interfaces let you extend code without modifying existing files?',
+    analogyStory: {
+      title: 'The Universal Wall Electrical Socket',
+      text: 'When you buy a new laptop or smartphone charger, you don\'t cut open your house walls with an axe to rewrite electrical copper wiring! You simply plug a new adapter into the wall socket interface. The wall socket is CLOSED for internal rewiring, but OPEN for plugging in new device adapters. In Java, OCP means adding new features by creating new classes that implement an interface, without modifying tested working code.',
+      takeaway: 'Open for extension (new features), Closed for modification (don\'t edit working code).'
+    },
+    diagramType: 'car-abstract',
+    simpleExplanation: 'The Open/Closed Principle (OCP) states that software entities (classes, modules, functions) should be OPEN for extension, but CLOSED for modification. Instead of modifying existing `if/else` or `switch` statements inside a working class when a new payment method (like Crypto or ApplePay) is added, you define a `PaymentStrategy` interface and create a new `ApplePayPayment` class.',
+    commonMistake: 'Modifying an existing 500-line `if/else` block inside a core payment processor every time a new option is added.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define OCP (Open for extension, closed for modification).',
+        '2. Explain the risk (Editing working production code risks introducing regression bugs).',
+        '3. Explain Java solution (Using Interfaces or Strategy Design Pattern to add new classes).'
+      ],
+      exampleScript: 'The Open/Closed Principle states that software entities should be open for extension but closed for modification. Rather than editing an existing payment processing class with nested if-else statements when adding a new payment method, we implement a PaymentStrategy interface and create a new class. This extends functionality without risking regressions in existing code.',
+      durationSec: 29,
+      tip: 'Open for extension, Closed for modification + Interfaces/Strategy pattern.'
+    },
+    onePictureSummary: ['🔌 Universal Interface Socket', '↓ Open for New Plug Classes', '↓ Closed to Editing Wiring', '↓ Zero Regression Risk']
+  },
+  {
+    id: 'ch-33-solid-lsp',
+    partId: 'part-9',
+    partTitle: 'Section IX: SOLID & Architecture',
+    chapterNumber: 33,
+    title: 'Chapter 33: SOLID Principle #3 - L: Liskov Substitution Principle (LSP)',
+    shortTitle: '33. L: Liskov Substitution',
+    icon: '🦆',
+    estimatedMinutes: 8,
+    question: 'What is the Liskov Substitution Principle (LSP) and why should subclasses be substitutable for superclasses?',
+    analogyStory: {
+      title: 'The Toy Plastic Rubber Duck',
+      text: 'If it looks like a duck and quacks like a duck, but needs AAA batteries to turn on, you have the wrong abstraction! A plastic toy rubber duck cannot fly across a lake like a real wild duck. If your code expects a `Bird` and calls `bird.fly()`, passing a `Penguin` class that throws an `Exception` breaks the application! LSP guarantees child classes honor the full contract of their parent classes without throwing unexpected errors.',
+      takeaway: 'Child classes must be completely substitutable for parent classes without breaking behavior.'
+    },
+    diagramType: 'family-inherit',
+    simpleExplanation: 'The Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program. A subclass must fulfill all behavior promises made by the parent class. If a subclass overrides a parent method by throwing `UnsupportedOperationException`, LSP is violated!',
+    commonMistake: 'Creating a `Square` class extending `Rectangle` and throwing exceptions when width and height are set independently.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define LSP (Subclasses must be substitutable for superclasses without breaking program behavior).',
+        '2. Give bad violation example (A subclass overriding a parent method to throw UnsupportedOperationException).',
+        '3. State design fix (Refactoring class hierarchy using separate interfaces like Flyable vs Walkable).'
+      ],
+      exampleScript: 'Liskov Substitution Principle states that objects of a subclass must be substitutable for objects of their superclass without breaking application behavior. If a subclass extends a parent class but throws an UnsupportedOperationException for an inherited method, LSP is violated and the hierarchy should be refactored using dedicated interfaces.',
+      durationSec: 29,
+      tip: 'Subclasses must be 100% substitutable for parent classes without throwing exceptions.'
+    },
+    onePictureSummary: ['🦆 Parent Class Expectation', '↓ 100% Subclass Substitution', '↓ 0 Thrown Exceptions', '↓ Reliable Inheritance']
+  },
+  {
+    id: 'ch-34-solid-isp',
+    partId: 'part-9',
+    partTitle: 'Section IX: SOLID & Architecture',
+    chapterNumber: 34,
+    title: 'Chapter 34: SOLID Principle #4 - I: Interface Segregation Principle (ISP)',
+    shortTitle: '34. I: Interface Segregation',
+    icon: '✂️',
+    estimatedMinutes: 8,
+    question: 'What is the Interface Segregation Principle (ISP) and why prefer small focused interfaces over fat interfaces?',
+    analogyStory: {
+      title: 'The Overcrowded Gym Membership Contract',
+      text: 'Imagine signing a basic gym membership contract, but the contract forces you to sign clauses agreeing to pay for scuba diving lessons, horse riding, and helicopter piloting even though you only want to use the treadmill! That is a fat interface. ISP breaks fat contracts into small specific passes (`TreadmillPass`, `ScubaPass`) so clients only sign what they actually use.',
+      takeaway: 'Many small specific interfaces are better than one bloated fat interface.'
+    },
+    diagramType: 'car-abstract',
+    simpleExplanation: 'The Interface Segregation Principle (ISP) states that clients should not be forced to depend upon interfaces they do not use. Instead of creating a single "fat" interface (`Worker`) containing `work()`, `eat()`, `sleep()`, and `code()`, ISP breaks it into small, specific interfaces (`Workable`, `Feedable`). This prevents implementing classes from having to write dummy empty methods.',
+    commonMistake: 'Creating a giant interface with 30 methods, forcing every implementing class to provide empty dummy method bodies.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define ISP (Clients should not be forced to depend on interface methods they do not use).',
+        '2. Explain the problem with fat interfaces (Classes implementing forced dummy empty methods).',
+        '3. State solution (Splitting giant interfaces into small, role-specific interfaces).'
+      ],
+      exampleScript: 'The Interface Segregation Principle states that clients should not be forced to depend on interface methods they do not use. Instead of creating one large, bloated interface that forces implementing classes to write dummy empty methods, we split it into smaller, role-specific interfaces.',
+      durationSec: 28,
+      tip: 'Small, role-specific interfaces > Giant fat interfaces.'
+    },
+    onePictureSummary: ['✂️ Split Fat Interface', '↓ Small Specific Interfaces', '↓ 0 Dummy Empty Methods', '↓ Clean Implementation']
+  },
+  {
+    id: 'ch-35-solid-dip',
+    partId: 'part-9',
+    partTitle: 'Section IX: SOLID & Architecture',
+    chapterNumber: 35,
+    title: 'Chapter 35: SOLID Principle #5 - D: Dependency Inversion Principle (DIP)',
+    shortTitle: '35. D: Dependency Inversion',
+    icon: '🔌',
+    estimatedMinutes: 9,
+    question: 'What is Dependency Inversion Principle (DIP) and how does Spring Boot use Dependency Injection (@Autowired)?',
+    analogyStory: {
+      title: 'The Desk Lamp & Wall Electrical Socket',
+      text: 'If a desk lamp\'s electrical cord was soldered directly into copper wires inside your house wall, you could never unplug the lamp to move it to another room! Instead, the lamp plugs into a standard wall socket interface. The lamp doesn\'t care if the electricity comes from solar panels, nuclear plants, or wind turbines. In Spring Boot, DIP means `@Service` classes depend on a `Repository` interface, while Spring injects (`@Autowired`) the concrete implementation automatically.',
+      takeaway: 'Depend on abstract interfaces, not concrete classes. Spring `@Autowired` implements Dependency Injection.'
+    },
+    diagramType: 'spring-factory',
+    simpleExplanation: 'The Dependency Inversion Principle (DIP) states: 1) High-level modules should not depend on low-level modules; both should depend on abstractions. 2) Abstractions should not depend on details; details should depend on abstractions. In Spring Boot, instead of `UserService` writing `new OracleUserRepository()`, it declares `private UserRepository repo;` and lets Spring inject the dependency via `@Autowired`.',
+    commonMistake: 'Using the `new` keyword directly inside service classes to instantiate hardcoded database dependencies.',
+    whatToTellInterviewer: {
+      heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
+      structurePoints: [
+        '1. Define DIP (High-level modules should depend on abstract interfaces, not concrete classes).',
+        '2. Explain Spring Boot integration (Using Dependency Injection with @Autowired or Constructor Injection).',
+        '3. Highlight testing benefit (Easy mocking with Mockito during unit testing).'
+      ],
+      exampleScript: 'The Dependency Inversion Principle states that high-level modules should depend on abstractions rather than concrete implementations. In Spring Boot, we implement this using Dependency Injection: service classes depend on interface abstractions, and Spring automatically injects the concrete implementation via Constructor Injection or @Autowired.',
+      durationSec: 29,
+      tip: 'Depend on interfaces, not concrete implementations + Spring @Autowired.'
+    },
+    onePictureSummary: ['🔌 Interface Abstraction', '↓ High-Level Service Class', '↓ 💉 Spring @Autowired Injection', '↓ Easy Mocking & Testing']
+  },
+  {
+    id: 'ch-36-lld-hld-microservices',
+    partId: 'part-9',
+    partTitle: 'Section IX: SOLID & Architecture',
+    chapterNumber: 36,
+    title: 'Chapter 36: LLD vs HLD & Scalable Microservices Caching (Redis)',
+    shortTitle: '36. LLD/HLD & Microservices',
     icon: '🌐',
     estimatedMinutes: 8,
-    question: 'How do you design scalable microservices using API Gateways, Caching, and Database Replicas?',
+    question: 'How do LLD and HLD differ, and how do you design scalable microservices with Redis caching?',
     analogyStory: {
-      title: 'The Airport Security Gate & School Hallway Notice Board',
-      text: 'An API Gateway acts as the single airport entrance routing traffic to independent backend services. In-memory Redis Caching is like posting a notice on the school hallway board: 999 students read the notice in 1 second without overloading the principal\'s office database!',
-      takeaway: 'API Gateways route traffic; Redis caching and DB read replicas ensure high-availability scaling.'
+      title: 'The Helicopter City Map & School Hallway Notice Board',
+      text: 'High-Level Design (HLD) is the city map from a helicopter: API Gateways and microservices. Low-Level Design (LLD) is the class diagram and table schema. Redis Caching is the hallway notice board: 999 students read the notice in 1 second without disturbing the principal\'s office database!',
+      takeaway: 'HLD = Macro services; LLD = Micro classes; Redis = Fast sub-second in-memory caching.'
     },
     diagramType: 'cloud-power',
-    simpleExplanation: 'Microservices architecture decomposes applications into autonomous REST services behind an API Gateway. To achieve high availability and sub-second latency, we implement in-memory Redis Caching for frequent reads and database read-replicas for load distribution.',
+    simpleExplanation: 'HLD defines macro service architecture and database choices; LLD defines micro class diagrams and database schemas. In microservices architecture, an API Gateway routes incoming traffic, while Redis in-memory caching serves read-heavy queries in sub-second latency.',
     commonMistake: 'Sharing a single database between 10 microservices. Each microservice must own its private database!',
     whatToTellInterviewer: {
       heading: 'WHAT TO TELL THE INTERVIEWER (Sentence Framing Structure):',
       structurePoints: [
-        '1. Explain Microservices & API Gateway (Autonomous services behind a single entry gateway).',
-        '2. Explain Caching (Using Redis in-memory cache to reduce database load).',
-        '3. Mention DB scaling (Read-replicas and database-per-service isolation).'
+        '1. Differentiate HLD vs LLD (Macro architecture vs Micro class designs).',
+        '2. Explain Microservices & API Gateway (Autonomous services behind a single entry point).',
+        '3. Explain Redis Caching (In-memory caching for high-availability read performance).'
       ],
-      exampleScript: 'In Microservices Architecture, we decompose applications into autonomous services behind an API Gateway. To scale for high availability, we use Redis in-memory caching for frequent read queries and database read-replicas to ensure fast sub-second response times.',
+      exampleScript: 'HLD defines macro architecture like API Gateways and microservices, while LLD defines detailed class diagrams and database schemas. For high availability, microservices use Redis in-memory caching to serve frequent read queries with sub-second latency.',
       durationSec: 28,
-      tip: 'API Gateway + Redis caching + Database-per-service.'
+      tip: 'HLD vs LLD + API Gateway + Redis in-memory caching.'
     },
-    onePictureSummary: ['🌐 API Gateway Entry', '↓ 📦 Microservice Isolation', '↓ ⚡ Redis In-Memory Cache', '↓ 🛢️ DB Read Replicas']
+    onePictureSummary: ['🏙️ HLD Macro System', '↓ 🔌 LLD Micro Classes', '↓ 🌐 API Gateway Entry', '↓ ⚡ Redis Cache']
   },
 
   // SECTION X: RESUME STORIES & BEHAVIORAL HR
   {
-    id: 'ch-33-infor-experience',
+    id: 'ch-37-infor-experience',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 33,
-    title: 'Chapter 33: Renuka\'s Infor Experience (Enterprise AI Internship)',
-    shortTitle: '33. Infor Internship',
+    chapterNumber: 37,
+    title: 'Chapter 37: Renuka\'s Infor Experience (Enterprise AI Internship)',
+    shortTitle: '37. Infor Internship',
     icon: '🏢',
     estimatedMinutes: 7,
     question: 'Tell me about your 4-month experience at Infor and the projects you worked on.',
@@ -1091,12 +1215,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🏢 Infor 4-Month Internship', '↓ 🤖 GPT-4 AI Chatbot', '↓ 📊 AWS DeepAR Forecasting', '↓ Enterprise SaaS Skills']
   },
   {
-    id: 'ch-34-pollaris-story',
+    id: 'ch-38-pollaris-story',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 34,
-    title: 'Chapter 34: Pollaris Voting App (Firestore ACID Transactions)',
-    shortTitle: '34. Pollaris Project',
+    chapterNumber: 38,
+    title: 'Chapter 38: Pollaris Voting App (Firestore ACID Transactions)',
+    shortTitle: '38. Pollaris Project',
     icon: '🗳️',
     estimatedMinutes: 8,
     question: 'Can you explain your project Pollaris and the technical challenges you solved?',
@@ -1122,12 +1246,12 @@ export const TEXTBOOK_CHAPTERS: ChapterItem[] = [
     onePictureSummary: ['🗳️ Pollaris Voting App', '↓ Next.js + Firestore', '↓ ACID Transactions', '↓ 100% Vote Integrity']
   },
   {
-    id: 'ch-35-renuka-self-intro',
+    id: 'ch-39-renuka-self-intro',
     partId: 'part-10',
     partTitle: 'Section X: Resume & HR',
-    chapterNumber: 35,
-    title: 'Chapter 35: Renuka\'s Master Self-Introduction & STAR Method',
-    shortTitle: '35. Self Intro & STAR',
+    chapterNumber: 39,
+    title: 'Chapter 39: Renuka\'s Master Self-Introduction & STAR Method',
+    shortTitle: '39. Self Intro & STAR',
     icon: '🗣️',
     estimatedMinutes: 6,
     question: 'Tell me about yourself and how you handle technical challenges using the STAR method.',
