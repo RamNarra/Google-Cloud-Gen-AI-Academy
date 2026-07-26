@@ -440,23 +440,27 @@ export default function HeroAnimatedDiagram({ type }: HeroAnimatedDiagramProps) 
           </div>
         )}
 
-        {/* 19. RESUME POLLARIS ACID TRANSACTIONS */}
-        {type === "resume-story" && (
+        {/* 19. RESUME POLLARIS ARCHITECTURE & FIRESTORE ACID TRANSACTIONS */}
+        {(type === "resume-story" || type === "pollaris-arch") && (
           <div className="w-full flex flex-col items-center gap-3">
             <span className="font-mono text-xs font-extrabold text-blue-800 uppercase">
-              Pollaris Project: Firestore ACID Transactions Lock Mechanism
+              Pollaris Architecture: Next.js 16 ➔ Share URL Token ➔ Firestore ACID Lock
             </span>
-            <div className="flex items-center justify-around gap-2 w-full max-w-md font-mono text-xs font-bold">
-              <div className="p-2.5 rounded-xl border border-slate-300 bg-white text-center flex-1">
-                <span className="text-xl">🗳️</span>
-                <h5 className="text-xs font-extrabold text-slate-900">Concurrent Vote</h5>
-                <span className="text-[10px] text-slate-500">100 Votes/Sec</span>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full max-w-lg font-mono text-xs font-bold text-center">
+              <div className={`p-2.5 rounded-xl border ${activeStep === 0 ? "border-blue-600 bg-blue-50 text-blue-950 scale-105" : "border-slate-300 bg-white text-slate-800"}`}>
+                <span className="text-xl">💻</span>
+                <h5 className="text-xs font-extrabold mt-1">Next.js 16 Client</h5>
+                <span className="text-[10px] text-blue-800 font-bold block mt-1">Share URL Token (16-char)</span>
               </div>
-              <span>➔</span>
-              <div className="p-2.5 rounded-xl border border-emerald-600 bg-emerald-50 text-emerald-950 text-center flex-1">
+              <div className={`p-2.5 rounded-xl border ${activeStep === 1 ? "border-amber-600 bg-amber-50 text-amber-950 scale-105" : "border-slate-300 bg-white text-slate-800"}`}>
                 <span className="text-xl">🔒</span>
-                <h5 className="text-xs font-extrabold">ACID Lock</h5>
-                <span className="text-[10px] text-emerald-900 font-bold">100% Data Integrity</span>
+                <h5 className="text-xs font-extrabold mt-1">Private Security Rules</h5>
+                <span className="text-[10px] text-amber-800 font-bold block mt-1">Invitee Email Check</span>
+              </div>
+              <div className={`p-2.5 rounded-xl border ${activeStep === 2 ? "border-emerald-600 bg-emerald-50 text-emerald-950 scale-105" : "border-slate-300 bg-white text-slate-800"}`}>
+                <span className="text-xl">🛡️</span>
+                <h5 className="text-xs font-extrabold mt-1">Firestore Transaction</h5>
+                <span className="text-[10px] text-emerald-900 font-bold block mt-1">1-Vote-Per-User ACID</span>
               </div>
             </div>
           </div>
